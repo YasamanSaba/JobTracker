@@ -78,6 +78,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		70AEFEE0248E49B00063C352 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F2035568248BBBC600A9F9F8 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +108,7 @@
 		F2035573248BBBC600A9F9F8 /* JobTracker */ = {
 			isa = PBXGroup;
 			children = (
+				70AEFEE0248E49B00063C352 /* Model */,
 				F2035574248BBBC600A9F9F8 /* AppDelegate.swift */,
 				F2035576248BBBC600A9F9F8 /* SceneDelegate.swift */,
 				F2035578248BBBC600A9F9F8 /* ViewController.swift */,
