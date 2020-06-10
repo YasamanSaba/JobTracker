@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */; };
 		70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244B2490A745007FD797 /* AppliesViewController.swift */; };
 		70EA244F2490A8D1007FD797 /* AppliesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244E2490A8D1007FD797 /* AppliesTableViewCell.swift */; };
 		70EA24522490AE55007FD797 /* Apply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70EA24502490AE55007FD797 /* Apply.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewApplyViewController.swift; sourceTree = "<group>"; };
 		70EA244B2490A745007FD797 /* AppliesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesViewController.swift; sourceTree = "<group>"; };
 		70EA244E2490A8D1007FD797 /* AppliesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesTableViewCell.swift; sourceTree = "<group>"; };
 		70EA24512490AE55007FD797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/Base.lproj/Apply.storyboard; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		70AEFEE5248E4D190063C352 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
+				70EA24502490AE55007FD797 /* Apply.storyboard */,
 				F203557A248BBBC600A9F9F8 /* Main.storyboard */,
 				F2035582248BBBD000A9F9F8 /* LaunchScreen.storyboard */,
 			);
@@ -135,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				70EA244B2490A745007FD797 /* AppliesViewController.swift */,
+				7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -165,7 +169,6 @@
 		F2035568248BBBC600A9F9F8 = {
 			isa = PBXGroup;
 			children = (
-				70EA24502490AE55007FD797 /* Apply.storyboard */,
 				F2035573248BBBC600A9F9F8 /* JobTracker */,
 				F203558D248BBBD100A9F9F8 /* JobTrackerTests */,
 				F2035598248BBBD100A9F9F8 /* JobTrackerUITests */,
@@ -349,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */,
 				F2035575248BBBC600A9F9F8 /* AppDelegate.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
 				F2035577248BBBC600A9F9F8 /* SceneDelegate.swift in Sources */,
