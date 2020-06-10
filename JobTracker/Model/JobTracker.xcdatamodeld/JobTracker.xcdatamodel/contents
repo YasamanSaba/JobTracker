@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Apply" representedClassName="Apply" syncable="YES" codeGenerationType="category">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="jobLink" attributeType="URI"/>
+        <attribute name="salaryExpectation" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="status" attributeType="Integer 16" usesScalarValueType="YES" customClassName="."/>
+        <relationship name="checkListItem" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CheckListItem" inverseName="apply" inverseEntity="CheckListItem"/>
+        <relationship name="company" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="apply" inverseEntity="Company"/>
+        <relationship name="interview" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Interview" inverseName="apply" inverseEntity="Interview"/>
+        <relationship name="resume" maxCount="1" deletionRule="Nullify" destinationEntity="Resume" inverseName="apply" inverseEntity="Resume"/>
+        <relationship name="tag" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="apply" inverseEntity="Tag"/>
+        <relationship name="task" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="apply" inverseEntity="Task"/>
+    </entity>
+    <entity name="CheckListItem" representedClassName="CheckListItem" syncable="YES" codeGenerationType="class">
+        <attribute name="isDone" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="apply" maxCount="1" deletionRule="Nullify" destinationEntity="Apply" inverseName="checkListItem" inverseEntity="Apply"/>
+    </entity>
+    <entity name="City" representedClassName="City" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="company" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Company" inverseName="city" inverseEntity="Company"/>
+        <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="city" inverseEntity="Country"/>
+    </entity>
+    <entity name="Company" representedClassName="Company" syncable="YES" codeGenerationType="class">
+        <attribute name="connecter" optional="YES" attributeType="String"/>
+        <attribute name="isFavorite" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="apply" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Apply" inverseName="company" inverseEntity="Apply"/>
+        <relationship name="city" toMany="YES" deletionRule="Nullify" destinationEntity="City" inverseName="company" inverseEntity="City"/>
+    </entity>
+    <entity name="Country" representedClassName="Country" syncable="YES" codeGenerationType="class">
+        <attribute name="minSalary" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="city" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="City" inverseName="country" inverseEntity="City"/>
+    </entity>
+    <entity name="Interview" representedClassName="Interview" syncable="YES" codeGenerationType="category">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="interviewerRole" attributeType="Integer 16" valueTransformerName="" usesScalarValueType="YES" customClassName=".InterviewerRole"/>
+        <attribute name="interviewers" optional="YES" attributeType="String"/>
+        <attribute name="link" optional="YES" attributeType="URI"/>
+        <relationship name="apply" maxCount="1" deletionRule="Nullify" destinationEntity="Apply" inverseName="interview" inverseEntity="Apply"/>
+        <relationship name="reminder" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reminder" inverseName="interview" inverseEntity="Reminder"/>
+        <relationship name="tag" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="interview" inverseEntity="Tag"/>
+    </entity>
+    <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
+        <attribute name="body" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+    </entity>
+    <entity name="Reminder" representedClassName="Reminder" syncable="YES" codeGenerationType="class">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="desc" attributeType="String"/>
+        <attribute name="notificationID" attributeType="String"/>
+        <relationship name="interview" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Interview" inverseName="reminder" inverseEntity="Interview"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="reminder" inverseEntity="Task"/>
+    </entity>
+    <entity name="Resume" representedClassName="Resume" syncable="YES" codeGenerationType="class">
+        <attribute name="linkToGit" optional="YES" attributeType="URI"/>
+        <attribute name="version" attributeType="String"/>
+        <relationship name="apply" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Apply" inverseName="resume" inverseEntity="Apply"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES" codeGenerationType="class">
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="apply" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Apply" inverseName="tag" inverseEntity="Apply"/>
+        <relationship name="interview" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Interview" inverseName="tag" inverseEntity="Interview"/>
+    </entity>
+    <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="deadline" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isDone" attributeType="Boolean" usesScalarValueType="YES" customClassName="."/>
+        <attribute name="linkToGit" optional="YES" attributeType="URI"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="apply" maxCount="1" deletionRule="Nullify" destinationEntity="Apply" inverseName="task" inverseEntity="Apply"/>
+        <relationship name="reminder" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reminder" inverseName="task" inverseEntity="Reminder"/>
+    </entity>
+    <elements>
+        <element name="Apply" positionX="-189.38671875" positionY="-151.8515625" width="128" height="193"/>
+        <element name="CheckListItem" positionX="-360" positionY="-144" width="128" height="88"/>
+        <element name="City" positionX="-416.11328125" positionY="-310.40625" width="128" height="88"/>
+        <element name="Company" positionX="-195.5703125" positionY="-314.9453125" width="128" height="118"/>
+        <element name="Country" positionX="-589.609375" positionY="-314.0703125" width="128" height="88"/>
+        <element name="Interview" positionX="17.23046875" positionY="-307.5625" width="128" height="163"/>
+        <element name="Note" positionX="210.48828125" positionY="-304.7578125" width="128" height="73"/>
+        <element name="Reminder" positionX="235.703125" positionY="-98.89453125" width="128" height="118"/>
+        <element name="Resume" positionX="-446.41015625" positionY="-169.046875" width="128" height="88"/>
+        <element name="Tag" positionX="10.6796875" positionY="-64.27734375" width="128" height="88"/>
+        <element name="Task" positionX="7.2421875" positionY="77.14453125" width="128" height="148"/>
+    </elements>
+</model>
