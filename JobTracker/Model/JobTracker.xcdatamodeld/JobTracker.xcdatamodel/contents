@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Apply" representedClassName="Apply" syncable="YES" codeGenerationType="category">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="jobLink" attributeType="URI"/>
@@ -27,7 +27,7 @@
         <attribute name="isFavorite" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="apply" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Apply" inverseName="company" inverseEntity="Apply"/>
-        <relationship name="city" toMany="YES" deletionRule="Nullify" destinationEntity="City" inverseName="company" inverseEntity="City"/>
+        <relationship name="city" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="company" inverseEntity="City"/>
     </entity>
     <entity name="Country" representedClassName="Country" syncable="YES" codeGenerationType="class">
         <attribute name="minSalary" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
