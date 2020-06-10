@@ -17,8 +17,11 @@
 		F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F203557D248BBBC600A9F9F8 /* JobTracker.xcdatamodeld */; };
 		F2035581248BBBD000A9F9F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2035580248BBBD000A9F9F8 /* Assets.xcassets */; };
 		F2035584248BBBD000A9F9F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2035582248BBBD000A9F9F8 /* LaunchScreen.storyboard */; };
-		F203558F248BBBD100A9F9F8 /* JobTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203558E248BBBD100A9F9F8 /* JobTrackerTests.swift */; };
 		F203559A248BBBD100A9F9F8 /* JobTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2035599248BBBD100A9F9F8 /* JobTrackerUITests.swift */; };
+		F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219F4F5248E797100B7A3D5 /* Interview+CoreDataClass.swift */; };
+		F219F4FB248E797100B7A3D5 /* Apply+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219F4F7248E797100B7A3D5 /* Apply+CoreDataClass.swift */; };
+		F2B6F2072490F6180088B0F7 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B6F2062490F6180088B0F7 /* CoreDataTests.swift */; };
+		F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B6F2082490F88F0088B0F7 /* InMemoryStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,11 +55,14 @@
 		F2035583248BBBD000A9F9F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2035585248BBBD000A9F9F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F203558A248BBBD100A9F9F8 /* JobTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F203558E248BBBD100A9F9F8 /* JobTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTrackerTests.swift; sourceTree = "<group>"; };
 		F2035590248BBBD100A9F9F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2035595248BBBD100A9F9F8 /* JobTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2035599248BBBD100A9F9F8 /* JobTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTrackerUITests.swift; sourceTree = "<group>"; };
 		F203559B248BBBD100A9F9F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F219F4F5248E797100B7A3D5 /* Interview+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Interview+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F219F4F7248E797100B7A3D5 /* Apply+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apply+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F2B6F2062490F6180088B0F7 /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
+		F2B6F2082490F88F0088B0F7 /* InMemoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,10 @@
 		70AEFEE0248E49B00063C352 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F203557D248BBBC600A9F9F8 /* JobTracker.xcdatamodeld */,
+				F219F4F5248E797100B7A3D5 /* Interview+CoreDataClass.swift */,
+				F219F4F7248E797100B7A3D5 /* Apply+CoreDataClass.swift */,
+				F2B6F2082490F88F0088B0F7 /* InMemoryStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -197,7 +207,6 @@
 				F2035574248BBBC600A9F9F8 /* AppDelegate.swift */,
 				F2035576248BBBC600A9F9F8 /* SceneDelegate.swift */,
 				F2035585248BBBD000A9F9F8 /* Info.plist */,
-				F203557D248BBBC600A9F9F8 /* JobTracker.xcdatamodeld */,
 			);
 			path = JobTracker;
 			sourceTree = "<group>";
@@ -205,7 +214,7 @@
 		F203558D248BBBD100A9F9F8 /* JobTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				F203558E248BBBD100A9F9F8 /* JobTrackerTests.swift */,
+				F2B6F2062490F6180088B0F7 /* CoreDataTests.swift */,
 				F2035590248BBBD100A9F9F8 /* Info.plist */,
 			);
 			path = JobTrackerTests;
@@ -354,7 +363,9 @@
 			files = (
 				7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */,
 				F2035575248BBBC600A9F9F8 /* AppDelegate.swift in Sources */,
+				F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
+				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
 				F2035577248BBBC600A9F9F8 /* SceneDelegate.swift in Sources */,
 				70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */,
 				70EA244F2490A8D1007FD797 /* AppliesTableViewCell.swift in Sources */,
@@ -365,7 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F203558F248BBBD100A9F9F8 /* JobTrackerTests.swift in Sources */,
+				F2B6F2072490F6180088B0F7 /* CoreDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
