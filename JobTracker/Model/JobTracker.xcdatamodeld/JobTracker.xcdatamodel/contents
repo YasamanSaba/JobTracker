@@ -30,7 +30,7 @@
         <relationship name="city" toMany="YES" deletionRule="Nullify" destinationEntity="City" inverseName="company" inverseEntity="City"/>
     </entity>
     <entity name="Country" representedClassName="Country" syncable="YES" codeGenerationType="class">
-        <attribute name="minSalary" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="minSalary" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
         <relationship name="city" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="City" inverseName="country" inverseEntity="City"/>
     </entity>
@@ -83,7 +83,7 @@
         <element name="Interview" positionX="17.23046875" positionY="-307.5625" width="128" height="163"/>
         <element name="Note" positionX="210.48828125" positionY="-304.7578125" width="128" height="73"/>
         <element name="Reminder" positionX="235.703125" positionY="-98.89453125" width="128" height="118"/>
-        <element name="Resume" positionX="-446.41015625" positionY="-169.046875" width="128" height="88"/>
+        <element name="Resume" positionX="-521.625" positionY="-68.96484375" width="128" height="88"/>
         <element name="Tag" positionX="10.6796875" positionY="-64.27734375" width="128" height="88"/>
         <element name="Task" positionX="7.2421875" positionY="77.14453125" width="128" height="148"/>
     </elements>
