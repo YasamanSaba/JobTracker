@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F2035575248BBBC600A9F9F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2035574248BBBC600A9F9F8 /* AppDelegate.swift */; };
 		F2035577248BBBC600A9F9F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2035576248BBBC600A9F9F8 /* SceneDelegate.swift */; };
-		F2035579248BBBC600A9F9F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2035578248BBBC600A9F9F8 /* ViewController.swift */; };
 		F203557C248BBBC600A9F9F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F203557A248BBBC600A9F9F8 /* Main.storyboard */; };
 		F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F203557D248BBBC600A9F9F8 /* JobTracker.xcdatamodeld */; };
 		F2035581248BBBD000A9F9F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2035580248BBBD000A9F9F8 /* Assets.xcassets */; };
@@ -41,7 +40,6 @@
 		F2035571248BBBC600A9F9F8 /* JobTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2035574248BBBC600A9F9F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2035576248BBBC600A9F9F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F2035578248BBBC600A9F9F8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F203557B248BBBC600A9F9F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F203557E248BBBC600A9F9F8 /* JobTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JobTracker.xcdatamodel; sourceTree = "<group>"; };
 		F2035580248BBBD000A9F9F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,6 +90,69 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		70AEFEE1248E4C390063C352 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				70AEFEE3248E4CFA0063C352 /* Coordinator */,
+				70AEFEE2248E4CF20063C352 /* ViewModel */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		70AEFEE2248E4CF20063C352 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		70AEFEE3248E4CFA0063C352 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		70AEFEE4248E4D0F0063C352 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				70AEFEE6248E4D2A0063C352 /* ViewController */,
+				70AEFEE5248E4D190063C352 /* StoryBoard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		70AEFEE5248E4D190063C352 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				F203557A248BBBC600A9F9F8 /* Main.storyboard */,
+				F2035582248BBBD000A9F9F8 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		70AEFEE6248E4D2A0063C352 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		70AEFEE7248E4D3C0063C352 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		70AEFEE8248E4D670063C352 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F2035580248BBBD000A9F9F8 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		F2035568248BBBC600A9F9F8 = {
 			isa = PBXGroup;
 			children = (
@@ -115,13 +176,13 @@
 		F2035573248BBBC600A9F9F8 /* JobTracker */ = {
 			isa = PBXGroup;
 			children = (
+				70AEFEE8248E4D670063C352 /* Resource */,
+				70AEFEE7248E4D3C0063C352 /* Service */,
+				70AEFEE4248E4D0F0063C352 /* View */,
+				70AEFEE1248E4C390063C352 /* Business */,
 				70AEFEE0248E49B00063C352 /* Model */,
 				F2035574248BBBC600A9F9F8 /* AppDelegate.swift */,
 				F2035576248BBBC600A9F9F8 /* SceneDelegate.swift */,
-				F2035578248BBBC600A9F9F8 /* ViewController.swift */,
-				F203557A248BBBC600A9F9F8 /* Main.storyboard */,
-				F2035580248BBBD000A9F9F8 /* Assets.xcassets */,
-				F2035582248BBBD000A9F9F8 /* LaunchScreen.storyboard */,
 				F2035585248BBBD000A9F9F8 /* Info.plist */,
 			);
 			path = JobTracker;
@@ -276,7 +337,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2035579248BBBC600A9F9F8 /* ViewController.swift in Sources */,
 				F2035575248BBBC600A9F9F8 /* AppDelegate.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
@@ -454,15 +514,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8W28R8275P;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = N9VZPP2C5Z;
 				INFOPLIST_FILE = JobTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.JobTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.jobtrackerapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = Job;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -472,15 +534,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8W28R8275P;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = N9VZPP2C5Z;
 				INFOPLIST_FILE = JobTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.JobTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.jobtrackerapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = Job;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
