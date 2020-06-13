@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Apply" representedClassName="Apply" syncable="YES" codeGenerationType="category">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="jobLink" attributeType="URI"/>
-        <attribute name="salaryExpectation" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="salaryExpectation" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="status" attributeType="Integer 16" usesScalarValueType="YES" customClassName="."/>
         <relationship name="checkListItem" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CheckListItem" inverseName="apply" inverseEntity="CheckListItem"/>
         <relationship name="company" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="apply" inverseEntity="Company"/>
