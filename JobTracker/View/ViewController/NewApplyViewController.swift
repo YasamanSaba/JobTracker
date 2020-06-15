@@ -24,28 +24,40 @@ class NewApplyViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func btnSave(_ sender: Any) {
+        
     }
-    @IBAction func btnAddTag(_ sender: Any) {
+
+    
+    // MARK: - Properties
+    var tags: String = "" {
+        didSet{
+            txtTags.text = tags
+        }
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if txtJobURL.isFirstResponder {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+        }
     }
-    */
 
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
 }
 
 
@@ -86,4 +98,11 @@ extension NewApplyViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         }
     }
     
+}
+
+extension NewApplyViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

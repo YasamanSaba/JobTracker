@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		70483E77249651DC00612288 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E76249651DC00612288 /* NoteViewController.swift */; };
 		7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */; };
 		7060EFF32491288300A229B8 /* Apply+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219F4F7248E797100B7A3D5 /* Apply+CoreDataClass.swift */; };
+		7060EFF52494A32900A229B8 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060EFF42494A32900A229B8 /* TagViewController.swift */; };
+		7060EFF82494A47500A229B8 /* Tag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7060EFF62494A47500A229B8 /* Tag.storyboard */; };
+		7060EFFA2494E6CB00A229B8 /* ApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060EFF92494E6CB00A229B8 /* ApplyViewController.swift */; };
+		7060EFFD2496178300A229B8 /* Reminder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7060EFFB2496178300A229B8 /* Reminder.storyboard */; };
 		70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244B2490A745007FD797 /* AppliesViewController.swift */; };
 		70EA244F2490A8D1007FD797 /* AppliesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244E2490A8D1007FD797 /* AppliesTableViewCell.swift */; };
 		70EA24522490AE55007FD797 /* Apply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70EA24502490AE55007FD797 /* Apply.storyboard */; };
@@ -42,7 +47,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		70483E76249651DC00612288 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewApplyViewController.swift; sourceTree = "<group>"; };
+		7060EFF42494A32900A229B8 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
+		7060EFF72494A47500A229B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/JobTracker/View/StoryBoard/Base.lproj/Tag.storyboard; sourceTree = "<group>"; };
+		7060EFF92494E6CB00A229B8 /* ApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyViewController.swift; sourceTree = "<group>"; };
+		7060EFFC2496178300A229B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/JobTracker/View/StoryBoard/Base.lproj/Reminder.storyboard; sourceTree = "<group>"; };
 		70EA244B2490A745007FD797 /* AppliesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesViewController.swift; sourceTree = "<group>"; };
 		70EA244E2490A8D1007FD797 /* AppliesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesTableViewCell.swift; sourceTree = "<group>"; };
 		70EA24512490AE55007FD797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/Base.lproj/Apply.storyboard; sourceTree = "<group>"; };
@@ -137,6 +147,7 @@
 		70AEFEE5248E4D190063C352 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
+				7060EFF62494A47500A229B8 /* Tag.storyboard */,
 				70EA24502490AE55007FD797 /* Apply.storyboard */,
 				F203557A248BBBC600A9F9F8 /* Main.storyboard */,
 				F2035582248BBBD000A9F9F8 /* LaunchScreen.storyboard */,
@@ -149,6 +160,9 @@
 			children = (
 				70EA244B2490A745007FD797 /* AppliesViewController.swift */,
 				7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */,
+				7060EFF42494A32900A229B8 /* TagViewController.swift */,
+				7060EFF92494E6CB00A229B8 /* ApplyViewController.swift */,
+				70483E76249651DC00612288 /* NoteViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -179,6 +193,7 @@
 		F2035568248BBBC600A9F9F8 = {
 			isa = PBXGroup;
 			children = (
+				7060EFFB2496178300A229B8 /* Reminder.storyboard */,
 				F2035573248BBBC600A9F9F8 /* JobTracker */,
 				F203558D248BBBD100A9F9F8 /* JobTrackerTests */,
 				F2035598248BBBD100A9F9F8 /* JobTrackerUITests */,
@@ -335,7 +350,9 @@
 			files = (
 				F2035584248BBBD000A9F9F8 /* LaunchScreen.storyboard in Resources */,
 				70EA24522490AE55007FD797 /* Apply.storyboard in Resources */,
+				7060EFFD2496178300A229B8 /* Reminder.storyboard in Resources */,
 				F2035581248BBBD000A9F9F8 /* Assets.xcassets in Resources */,
+				7060EFF82494A47500A229B8 /* Tag.storyboard in Resources */,
 				F203557C248BBBC600A9F9F8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,10 +381,13 @@
 				7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */,
 				7060EFF32491288300A229B8 /* Apply+CoreDataClass.swift in Sources */,
 				F2035575248BBBC600A9F9F8 /* AppDelegate.swift in Sources */,
+				7060EFFA2494E6CB00A229B8 /* ApplyViewController.swift in Sources */,
+				70483E77249651DC00612288 /* NoteViewController.swift in Sources */,
 				F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
 				F2035577248BBBC600A9F9F8 /* SceneDelegate.swift in Sources */,
+				7060EFF52494A32900A229B8 /* TagViewController.swift in Sources */,
 				70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */,
 				70EA244F2490A8D1007FD797 /* AppliesTableViewCell.swift in Sources */,
 			);
@@ -405,6 +425,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7060EFF62494A47500A229B8 /* Tag.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7060EFF72494A47500A229B8 /* Base */,
+			);
+			name = Tag.storyboard;
+			sourceTree = "<group>";
+		};
+		7060EFFB2496178300A229B8 /* Reminder.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7060EFFC2496178300A229B8 /* Base */,
+			);
+			name = Reminder.storyboard;
+			sourceTree = "<group>";
+		};
 		70EA24502490AE55007FD797 /* Apply.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

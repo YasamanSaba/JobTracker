@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2CM-vX-DpW">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Oqz-Y0-wIQ">
+            <objects>
+                <viewController id="2CM-vX-DpW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dze-BZ-u0u"/>
+                        <viewControllerLayoutGuide type="bottom" id="sai-90-InX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ljo-hF-q9A">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1KG-No-QP8">
+                                <rect key="frame" x="16" y="54" width="343" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="H4X-3D-O7M"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="gA2-7S-oZy">
+                                <rect key="frame" x="0.0" y="88" width="375" height="312"/>
+                            </datePicker>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ke0-NL-1do">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="oG1-He-xKp">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NfD-gS-wV1"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="sdz-DB-zy5"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="sai-90-InX" firstAttribute="top" secondItem="gA2-7S-oZy" secondAttribute="bottom" id="0mR-K9-Cw4"/>
+                            <constraint firstItem="ke0-NL-1do" firstAttribute="top" secondItem="Ljo-hF-q9A" secondAttribute="top" id="I6R-y1-fwe"/>
+                            <constraint firstAttribute="trailing" secondItem="ke0-NL-1do" secondAttribute="trailing" id="Jp2-wQ-cJ8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1KG-No-QP8" secondAttribute="trailing" id="MB6-VE-Olf"/>
+                            <constraint firstAttribute="trailing" secondItem="gA2-7S-oZy" secondAttribute="trailing" id="SG7-dP-Zsa"/>
+                            <constraint firstItem="gA2-7S-oZy" firstAttribute="top" secondItem="1KG-No-QP8" secondAttribute="bottom" id="UHN-ZJ-hQM"/>
+                            <constraint firstItem="1KG-No-QP8" firstAttribute="leading" secondItem="Ljo-hF-q9A" secondAttribute="leadingMargin" id="Wrw-VE-bpE"/>
+                            <constraint firstItem="ke0-NL-1do" firstAttribute="leading" secondItem="Ljo-hF-q9A" secondAttribute="leading" id="gW5-Q3-nif"/>
+                            <constraint firstItem="1KG-No-QP8" firstAttribute="top" secondItem="ke0-NL-1do" secondAttribute="bottom" constant="10" id="xeZ-Lr-4Pk"/>
+                            <constraint firstItem="gA2-7S-oZy" firstAttribute="leading" secondItem="Ljo-hF-q9A" secondAttribute="leading" id="zin-mN-oMG"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="375" height="400"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hgl-V1-Iop" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1620" y="2568"/>
+        </scene>
+    </scenes>
+</document>
