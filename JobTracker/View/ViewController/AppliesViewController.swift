@@ -22,6 +22,11 @@ class AppliesViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpView()
+    }
+    
+    private func setUpView() {
+        collectionView.register(TitleSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier)
         tableView.dataSource = self
         collectionView.collectionViewLayout = configureLayout()
         configureDataSource()
@@ -33,9 +38,10 @@ class AppliesViewController: UIViewController {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2), heightDimension: .fractionalHeight(1.0))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
         return UICollectionViewCompositionalLayout(section: section)
     }
     
@@ -47,6 +53,8 @@ class AppliesViewController: UIViewController {
             cell.lblFlag.text = item.flag
             return cell
         }
+        
+        // MARK: - This is for test clean it -
         let contex = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         var countries: [Country] = []
         let c1 = Country(context: contex)
@@ -63,6 +71,18 @@ class AppliesViewController: UIViewController {
         c3.name = "USA"
         c3.flag = "🇺🇸"
         countries.append(c3)
+        
+        let c4 = Country(context: contex)
+        c4.name = "USA"
+        c4.flag = "🇺🇸"
+        countries.append(c4)
+        
+        let c5 = Country(context: contex)
+        c5.name = "USA"
+        c5.flag = "🇺🇸"
+        countries.append(c5)
+        // MARK: - Testing finished -
+                
         initialSnapshot.appendSections([.main])
         initialSnapshot.appendItems(countries, toSection: .main)
         dataSource.apply(initialSnapshot)
