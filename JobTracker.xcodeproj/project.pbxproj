@@ -26,6 +26,8 @@
 		70ADFFA12498B93600345379 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFA02498B93600345379 /* ReminderViewController.swift */; };
 		70ADFFA42498BD8800345379 /* ReminderServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFA32498BD8800345379 /* ReminderServiceType.swift */; };
 		70ADFFA72498D3C300345379 /* ReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFA62498D3C300345379 /* ReminderTests.swift */; };
+		70ADFFA92498EC1B00345379 /* TagServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFA82498EC1B00345379 /* TagServiceType.swift */; };
+		70ADFFAB2498F9D400345379 /* TagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFAA2498F9D400345379 /* TagService.swift */; };
 		70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244B2490A745007FD797 /* AppliesViewController.swift */; };
 		70EA244F2490A8D1007FD797 /* AppliesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244E2490A8D1007FD797 /* AppliesTableViewCell.swift */; };
 		70EA24522490AE55007FD797 /* Apply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70EA24502490AE55007FD797 /* Apply.storyboard */; };
@@ -82,6 +84,8 @@
 		70ADFFA02498B93600345379 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		70ADFFA32498BD8800345379 /* ReminderServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderServiceType.swift; sourceTree = "<group>"; };
 		70ADFFA62498D3C300345379 /* ReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTests.swift; sourceTree = "<group>"; };
+		70ADFFA82498EC1B00345379 /* TagServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagServiceType.swift; sourceTree = "<group>"; };
+		70ADFFAA2498F9D400345379 /* TagService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagService.swift; sourceTree = "<group>"; };
 		70EA244B2490A745007FD797 /* AppliesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesViewController.swift; sourceTree = "<group>"; };
 		70EA244E2490A8D1007FD797 /* AppliesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesTableViewCell.swift; sourceTree = "<group>"; };
 		70EA24512490AE55007FD797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/Base.lproj/Apply.storyboard; sourceTree = "<group>"; };
@@ -154,7 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				70ADFFA32498BD8800345379 /* ReminderServiceType.swift */,
-				F2EAA8B12498DCE900876FA9 /* CountryServiceType.swift */,
+				70ADFFA82498EC1B00345379 /* TagServiceType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -247,6 +251,7 @@
 				70ADFFA22498BD6700345379 /* Protocol */,
 				70ADFF9B2498A61800345379 /* ReminderService.swift */,
 				F2EAA8B32498E8BB00876FA9 /* CountryService.swift */,
+				70ADFFAA2498F9D400345379 /* TagService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 				F2EAA8B82498F43E00876FA9 /* DataInitializer.swift in Sources */,
 				70ADFFA42498BD8800345379 /* ReminderServiceType.swift in Sources */,
 				F2EAA8B22498DCE900876FA9 /* CountryServiceType.swift in Sources */,
+				70ADFFAB2498F9D400345379 /* TagService.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
 				70483E82249799E700612288 /* TaskTableViewCell.swift in Sources */,
@@ -488,6 +494,7 @@
 				7060EFF52494A32900A229B8 /* TagViewController.swift in Sources */,
 				70483E7A249761D200612288 /* UITextViewExtension.swift in Sources */,
 				70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */,
+				70ADFFA92498EC1B00345379 /* TagServiceType.swift in Sources */,
 				70EA244F2490A8D1007FD797 /* AppliesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
