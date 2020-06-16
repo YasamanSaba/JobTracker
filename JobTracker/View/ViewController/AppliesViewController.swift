@@ -26,7 +26,6 @@ class AppliesViewController: UIViewController {
     }
     
     private func setUpView() {
-        collectionView.register(TitleSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier)
         tableView.dataSource = self
         collectionView.collectionViewLayout = configureLayout()
         configureDataSource()
