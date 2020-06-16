@@ -39,6 +39,10 @@
 		F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219F4F5248E797100B7A3D5 /* Interview+CoreDataClass.swift */; };
 		F2B6F2072490F6180088B0F7 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B6F2062490F6180088B0F7 /* CoreDataTests.swift */; };
 		F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B6F2082490F88F0088B0F7 /* InMemoryStore.swift */; };
+		F2EAA8B22498DCE900876FA9 /* CountryServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EAA8B12498DCE900876FA9 /* CountryServiceType.swift */; };
+		F2EAA8B42498E8BB00876FA9 /* CountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EAA8B32498E8BB00876FA9 /* CountryService.swift */; };
+		F2EAA8B62498EBAC00876FA9 /* AppliesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EAA8B52498EBAC00876FA9 /* AppliesViewModel.swift */; };
+		F2EAA8B82498F43E00876FA9 /* DataInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EAA8B72498F43E00876FA9 /* DataInitializer.swift */; };
 		F2F9BE9224977ACD005C6C20 /* FlagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F9BE9124977ACD005C6C20 /* FlagCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +102,10 @@
 		F219F4F7248E797100B7A3D5 /* Apply+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apply+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F2B6F2062490F6180088B0F7 /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		F2B6F2082490F88F0088B0F7 /* InMemoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryStore.swift; sourceTree = "<group>"; };
+		F2EAA8B12498DCE900876FA9 /* CountryServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryServiceType.swift; sourceTree = "<group>"; };
+		F2EAA8B32498E8BB00876FA9 /* CountryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryService.swift; sourceTree = "<group>"; };
+		F2EAA8B52498EBAC00876FA9 /* AppliesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesViewModel.swift; sourceTree = "<group>"; };
+		F2EAA8B72498F43E00876FA9 /* DataInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInitializer.swift; sourceTree = "<group>"; };
 		F2F9BE9124977ACD005C6C20 /* FlagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				70ADFFA32498BD8800345379 /* ReminderServiceType.swift */,
+				F2EAA8B12498DCE900876FA9 /* CountryServiceType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -183,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				70ADFF992498A08F00345379 /* ReminderViewModel.swift */,
+				F2EAA8B52498EBAC00876FA9 /* AppliesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -236,6 +246,7 @@
 			children = (
 				70ADFFA22498BD6700345379 /* Protocol */,
 				70ADFF9B2498A61800345379 /* ReminderService.swift */,
+				F2EAA8B32498E8BB00876FA9 /* CountryService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -244,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				F2035580248BBBD000A9F9F8 /* Assets.xcassets */,
+				F2EAA8B72498F43E00876FA9 /* DataInitializer.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -453,6 +465,7 @@
 				70ADFF9C2498A61800345379 /* ReminderService.swift in Sources */,
 				70483E7C249795B100612288 /* ChecklistViewController.swift in Sources */,
 				7060EFF32491288300A229B8 /* Apply+CoreDataClass.swift in Sources */,
+				F2EAA8B42498E8BB00876FA9 /* CountryService.swift in Sources */,
 				F2035575248BBBC600A9F9F8 /* AppDelegate.swift in Sources */,
 				F2F9BE9224977ACD005C6C20 /* FlagCell.swift in Sources */,
 				7060EFFA2494E6CB00A229B8 /* ApplyViewController.swift in Sources */,
@@ -462,12 +475,15 @@
 				70483E80249799D600612288 /* InterviewTableViewCell.swift in Sources */,
 				70ADFF9A2498A08F00345379 /* ReminderViewModel.swift in Sources */,
 				F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */,
+				F2EAA8B82498F43E00876FA9 /* DataInitializer.swift in Sources */,
 				70ADFFA42498BD8800345379 /* ReminderServiceType.swift in Sources */,
+				F2EAA8B22498DCE900876FA9 /* CountryServiceType.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
 				70483E82249799E700612288 /* TaskTableViewCell.swift in Sources */,
 				F2035577248BBBC600A9F9F8 /* SceneDelegate.swift in Sources */,
 				70483E8424979ACF00612288 /* ReminderTableViewCell.swift in Sources */,
+				F2EAA8B62498EBAC00876FA9 /* AppliesViewModel.swift in Sources */,
 				70ADFF9824989F7400345379 /* Reminderable.swift in Sources */,
 				7060EFF52494A32900A229B8 /* TagViewController.swift in Sources */,
 				70483E7A249761D200612288 /* UITextViewExtension.swift in Sources */,

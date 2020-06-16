@@ -9,28 +9,31 @@
 import UIKit
 
 class AppliesViewController: UIViewController {
-    
-    enum Section {
-        case main
-    }
-    var dataSource: UICollectionViewDiffableDataSource<Section, Country>!
-    var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Country>()
+        
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // MARK: - ViewModel
+    var viewModel: AppliesViewModel!
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Temporary
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let countryService = CountryService(context: context)
+        self.viewModel = AppliesViewModel(countryService: countryService)
         setUpView()
     }
     
     private func setUpView() {
         tableView.dataSource = self
         collectionView.collectionViewLayout = configureLayout()
-        configureDataSource()
-        
+        self.viewModel.configureCountryDataSource(for: self.collectionView)
     }
+    
+
     
     func configureLayout() -> UICollectionViewCompositionalLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
@@ -42,49 +45,6 @@ class AppliesViewController: UIViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
         return UICollectionViewCompositionalLayout(section: section)
-    }
-    
-    func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Country>(collectionView: self.collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlagCell.reuseIdentifier, for: indexPath) as! FlagCell
-            
-            cell.lblCountryName.text = item.name
-            cell.lblFlag.text = item.flag
-            return cell
-        }
-        
-        // MARK: - This is for test clean it -
-        let contex = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        var countries: [Country] = []
-        let c1 = Country(context: contex)
-        c1.name = "Germany"
-        c1.flag = "🇩🇪"
-        countries.append(c1)
-        
-        let c2 = Country(context: contex)
-        c2.name = "Italy"
-        c2.flag = "🇮🇹"
-        countries.append(c2)
-
-        let c3 = Country(context: contex)
-        c3.name = "USA"
-        c3.flag = "🇺🇸"
-        countries.append(c3)
-        
-        let c4 = Country(context: contex)
-        c4.name = "USA"
-        c4.flag = "🇺🇸"
-        countries.append(c4)
-        
-        let c5 = Country(context: contex)
-        c5.name = "USA"
-        c5.flag = "🇺🇸"
-        countries.append(c5)
-        // MARK: - Testing finished -
-                
-        initialSnapshot.appendSections([.main])
-        initialSnapshot.appendItems(countries, toSection: .main)
-        dataSource.apply(initialSnapshot)
     }
 }
 
