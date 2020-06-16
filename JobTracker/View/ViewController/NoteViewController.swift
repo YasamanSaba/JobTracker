@@ -10,18 +10,27 @@ import UIKit
 
 class NoteViewController: UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var txtTitle: UITextView!
     @IBOutlet weak var txtDesc: UITextView!
     
+    // MARK: - Properties
     var keyboardYSize: CGFloat = 0
     var lastCursorY: CGFloat = 0
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.txtDesc.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
+        self.txtTitle.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    // MARK: - Methods
     @objc func keyboardWillShow(notification: NSNotification) {
         if txtDesc.isFirstResponder {
             if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -35,9 +44,13 @@ class NoteViewController: UIViewController {
             self.view.frame.origin.y = 0
         }
     }
+    
+    @objc func tapDone(sender: Any) {
+        self.view.endEditing(true)
+    }
 }
 
-
+// MARK: - UITextViewDelegate
 extension NoteViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
@@ -61,6 +74,5 @@ extension NoteViewController: UITextViewDelegate {
         }
         
     }
-    
     
 }

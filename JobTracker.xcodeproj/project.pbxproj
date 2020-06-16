@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		70483E77249651DC00612288 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E76249651DC00612288 /* NoteViewController.swift */; };
+		70483E7A249761D200612288 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E79249761D200612288 /* UITextViewExtension.swift */; };
+		70483E7C249795B100612288 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E7B249795B100612288 /* ChecklistViewController.swift */; };
+		70483E7E249797C700612288 /* ChecklistItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E7D249797C700612288 /* ChecklistItemTableViewCell.swift */; };
+		70483E80249799D600612288 /* InterviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E7F249799D600612288 /* InterviewTableViewCell.swift */; };
+		70483E82249799E700612288 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E81249799E700612288 /* TaskTableViewCell.swift */; };
+		70483E8424979ACF00612288 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E8324979ACF00612288 /* ReminderTableViewCell.swift */; };
 		7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */; };
 		7060EFF32491288300A229B8 /* Apply+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219F4F7248E797100B7A3D5 /* Apply+CoreDataClass.swift */; };
 		7060EFF52494A32900A229B8 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060EFF42494A32900A229B8 /* TagViewController.swift */; };
@@ -48,6 +54,12 @@
 
 /* Begin PBXFileReference section */
 		70483E76249651DC00612288 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		70483E79249761D200612288 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
+		70483E7B249795B100612288 /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
+		70483E7D249797C700612288 /* ChecklistItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemTableViewCell.swift; sourceTree = "<group>"; };
+		70483E7F249799D600612288 /* InterviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewTableViewCell.swift; sourceTree = "<group>"; };
+		70483E81249799E700612288 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		70483E8324979ACF00612288 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
 		7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewApplyViewController.swift; sourceTree = "<group>"; };
 		7060EFF42494A32900A229B8 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		7060EFF72494A47500A229B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/JobTracker/View/StoryBoard/Base.lproj/Tag.storyboard; sourceTree = "<group>"; };
@@ -100,6 +112,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		70483E78249761A200612288 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				70483E79249761D200612288 /* UITextViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		70AEFEE0248E49B00063C352 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +157,7 @@
 		70AEFEE4248E4D0F0063C352 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				70483E78249761A200612288 /* Extensions */,
 				70EA244D2490A8AF007FD797 /* Cell */,
 				70AEFEE6248E4D2A0063C352 /* ViewController */,
 				70AEFEE5248E4D190063C352 /* StoryBoard */,
@@ -163,6 +184,7 @@
 				7060EFF42494A32900A229B8 /* TagViewController.swift */,
 				7060EFF92494E6CB00A229B8 /* ApplyViewController.swift */,
 				70483E76249651DC00612288 /* NoteViewController.swift */,
+				70483E7B249795B100612288 /* ChecklistViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -186,6 +208,10 @@
 			isa = PBXGroup;
 			children = (
 				70EA244E2490A8D1007FD797 /* AppliesTableViewCell.swift */,
+				70483E7D249797C700612288 /* ChecklistItemTableViewCell.swift */,
+				70483E7F249799D600612288 /* InterviewTableViewCell.swift */,
+				70483E81249799E700612288 /* TaskTableViewCell.swift */,
+				70483E8324979ACF00612288 /* ReminderTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -379,15 +405,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */,
+				70483E7C249795B100612288 /* ChecklistViewController.swift in Sources */,
 				7060EFF32491288300A229B8 /* Apply+CoreDataClass.swift in Sources */,
 				F2035575248BBBC600A9F9F8 /* AppDelegate.swift in Sources */,
 				7060EFFA2494E6CB00A229B8 /* ApplyViewController.swift in Sources */,
+				70483E7E249797C700612288 /* ChecklistItemTableViewCell.swift in Sources */,
 				70483E77249651DC00612288 /* NoteViewController.swift in Sources */,
+				70483E80249799D600612288 /* InterviewTableViewCell.swift in Sources */,
 				F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
+				70483E82249799E700612288 /* TaskTableViewCell.swift in Sources */,
 				F2035577248BBBC600A9F9F8 /* SceneDelegate.swift in Sources */,
+				70483E8424979ACF00612288 /* ReminderTableViewCell.swift in Sources */,
 				7060EFF52494A32900A229B8 /* TagViewController.swift in Sources */,
+				70483E7A249761D200612288 /* UITextViewExtension.swift in Sources */,
 				70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */,
 				70EA244F2490A8D1007FD797 /* AppliesTableViewCell.swift in Sources */,
 			);
