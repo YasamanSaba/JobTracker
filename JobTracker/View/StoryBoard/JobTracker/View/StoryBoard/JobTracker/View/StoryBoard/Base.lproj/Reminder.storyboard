@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2CM-vX-DpW">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Reminder View Controller-->
         <scene sceneID="Oqz-Y0-wIQ">
             <objects>
-                <viewController id="2CM-vX-DpW" sceneMemberID="viewController">
+                <viewController id="2CM-vX-DpW" customClass="ReminderViewController" customModule="JobTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dze-BZ-u0u"/>
                         <viewControllerLayoutGuide type="bottom" id="sai-90-InX"/>
@@ -32,8 +33,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="oG1-He-xKp">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NfD-gS-wV1"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="sdz-DB-zy5"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NfD-gS-wV1">
+                                            <connections>
+                                                <action selector="btnCancel:" destination="2CM-vX-DpW" id="hhw-Ca-5eq"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="sdz-DB-zy5">
+                                            <connections>
+                                                <action selector="btnDone:" destination="2CM-vX-DpW" id="kLD-eK-ARf"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -53,6 +62,10 @@
                         </constraints>
                     </view>
                     <size key="freeformSize" width="375" height="400"/>
+                    <connections>
+                        <outlet property="dpkDate" destination="gA2-7S-oZy" id="NGW-Sy-SgU"/>
+                        <outlet property="txtMessage" destination="1KG-No-QP8" id="AqB-ic-xZ9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgl-V1-Iop" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
