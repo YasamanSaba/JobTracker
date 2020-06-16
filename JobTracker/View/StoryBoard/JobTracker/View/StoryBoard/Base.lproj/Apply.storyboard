@@ -3,6 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -313,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhz-aw-Tq1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-378.39999999999998" y="2582.5123152709361"/>
+            <point key="canvasLocation" x="588" y="1711"/>
         </scene>
         <!--Interview-->
         <scene sceneID="7FG-mv-2GZ">
@@ -498,7 +499,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5H-wj-TS3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="680.79999999999995" y="2582.5123152709361"/>
+            <point key="canvasLocation" x="2250" y="1711"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qNq-Qq-9Yw">
@@ -646,7 +647,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="giQ-ay-zZn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="680.79999999999995" y="3312.5615763546798"/>
+            <point key="canvasLocation" x="588" y="2495"/>
         </scene>
         <!--Applies-->
         <scene sceneID="uBX-2Q-IFU">
@@ -661,7 +662,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dfu-IP-ix9">
-                                <rect key="frame" x="0.0" y="144" width="375" height="634"/>
+                                <rect key="frame" x="0.0" y="198" width="375" height="580"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ApplyCell" id="ata-Zh-ypA" customClass="AppliesTableViewCell" customModule="JobTracker" customModuleProvider="target">
@@ -799,16 +800,60 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="o3h-cR-6RB">
+                                <rect key="frame" x="0.0" y="144" width="375" height="54"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ry4-VD-O0J">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlagCell" id="Oke-1N-IMv" customClass="FlagCell" customModule="JobTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uN8-8u-ZAC">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="World" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQR-Bx-K2A">
+                                                    <rect key="frame" x="4" y="29" width="45" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="🌏" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XN9-jE-ACg">
+                                                    <rect key="frame" x="39" y="8" width="23" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblCountryName" destination="cQR-Bx-K2A" id="Nmh-st-hS9"/>
+                                            <outlet property="lblFlag" destination="XN9-jE-ACg" id="3Bw-vc-ztC"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="o3h-cR-6RB" firstAttribute="top" secondItem="FsW-lo-hdB" secondAttribute="bottom" symbolic="YES" id="2La-6Z-DZm"/>
                             <constraint firstItem="jld-6c-m7H" firstAttribute="top" secondItem="dfu-IP-ix9" secondAttribute="bottom" id="5E6-Ij-DOH"/>
+                            <constraint firstItem="o3h-cR-6RB" firstAttribute="bottom" secondItem="dfu-IP-ix9" secondAttribute="top" id="5ft-1n-oC4"/>
                             <constraint firstAttribute="trailing" secondItem="dfu-IP-ix9" secondAttribute="trailing" id="7md-IL-jRh"/>
+                            <constraint firstItem="o3h-cR-6RB" firstAttribute="leading" secondItem="aeK-GE-ZIK" secondAttribute="leading" id="H8l-YR-Sqd"/>
                             <constraint firstItem="dfu-IP-ix9" firstAttribute="leading" secondItem="aeK-GE-ZIK" secondAttribute="leading" id="HXn-j1-gjv"/>
+                            <constraint firstAttribute="trailing" secondItem="o3h-cR-6RB" secondAttribute="trailing" id="RTO-Zd-vml"/>
                             <constraint firstItem="FsW-lo-hdB" firstAttribute="trailing" secondItem="aeK-GE-ZIK" secondAttribute="trailing" id="W4G-I8-Vuk"/>
+                            <constraint firstItem="o3h-cR-6RB" firstAttribute="height" secondItem="aeK-GE-ZIK" secondAttribute="height" multiplier="1/15" id="haV-Pu-tUU"/>
                             <constraint firstItem="FsW-lo-hdB" firstAttribute="leading" secondItem="aeK-GE-ZIK" secondAttribute="leading" id="m4L-JB-4pU"/>
-                            <constraint firstItem="FsW-lo-hdB" firstAttribute="top" secondItem="pAs-vT-ohA" secondAttribute="bottom" id="tS0-eD-DO1"/>
-                            <constraint firstItem="dfu-IP-ix9" firstAttribute="top" secondItem="FsW-lo-hdB" secondAttribute="bottom" id="vzb-2f-ZkN"/>
+                            <constraint firstItem="pAs-vT-ohA" firstAttribute="bottom" secondItem="FsW-lo-hdB" secondAttribute="top" symbolic="YES" id="vzb-2f-ZkN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Applies" id="azl-cS-HhV">
@@ -820,12 +865,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="o3h-cR-6RB" id="ABq-pB-L81"/>
                         <outlet property="tableView" destination="dfu-IP-ix9" id="18S-YG-vQn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ou-fJ-72v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-375.36231884057975" y="1575.6696428571429"/>
+            <point key="canvasLocation" x="588" y="989"/>
         </scene>
         <!--New Apply View Controller-->
         <scene sceneID="ift-dg-3uT">
@@ -1123,7 +1169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTp-77-knJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="389.85507246376812" y="1575.6696428571429"/>
+            <point key="canvasLocation" x="1681" y="989"/>
         </scene>
         <!--Applies-->
         <scene sceneID="GeS-FU-8pt">
@@ -1142,7 +1188,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LSf-9f-Cwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-375.36231884057975" y="827.67857142857144"/>
+            <point key="canvasLocation" x="-385" y="989"/>
         </scene>
         <!--Tag-->
         <scene sceneID="cEm-5V-wbH">
@@ -1152,7 +1198,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SxK-HX-Jqo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1706" y="2786"/>
+            <point key="canvasLocation" x="1595" y="2143"/>
         </scene>
         <!--Reminder-->
         <scene sceneID="pL7-dd-Kg5">
@@ -1160,12 +1206,12 @@
                 <viewControllerPlaceholder storyboardName="Reminder" id="2Kz-6R-HQx" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1c-F9-72Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1618" y="3173"/>
+            <point key="canvasLocation" x="2285" y="2506"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Akn-qd-oTh"/>
-        <segue reference="sqq-ML-qC1"/>
+        <segue reference="Kaf-Sf-mDh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="alarm.fill" catalog="system" width="124" height="128"/>

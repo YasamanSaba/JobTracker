@@ -30,6 +30,7 @@
         <relationship name="city" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="company" inverseEntity="City"/>
     </entity>
     <entity name="Country" representedClassName="Country" syncable="YES" codeGenerationType="class">
+        <attribute name="flag" optional="YES" attributeType="String"/>
         <attribute name="minSalary" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
         <relationship name="city" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="City" inverseName="country" inverseEntity="City"/>
@@ -79,7 +80,7 @@
         <element name="CheckListItem" positionX="-360" positionY="-144" width="128" height="88"/>
         <element name="City" positionX="-416.11328125" positionY="-310.40625" width="128" height="88"/>
         <element name="Company" positionX="-195.5703125" positionY="-314.9453125" width="128" height="118"/>
-        <element name="Country" positionX="-589.609375" positionY="-314.0703125" width="128" height="88"/>
+        <element name="Country" positionX="-589.609375" positionY="-314.0703125" width="128" height="103"/>
         <element name="Interview" positionX="17.23046875" positionY="-307.5625" width="128" height="163"/>
         <element name="Note" positionX="210.48828125" positionY="-304.7578125" width="128" height="73"/>
         <element name="Reminder" positionX="235.703125" positionY="-98.89453125" width="128" height="118"/>

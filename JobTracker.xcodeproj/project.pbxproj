@@ -27,6 +27,7 @@
 		F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219F4F5248E797100B7A3D5 /* Interview+CoreDataClass.swift */; };
 		F2B6F2072490F6180088B0F7 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B6F2062490F6180088B0F7 /* CoreDataTests.swift */; };
 		F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B6F2082490F88F0088B0F7 /* InMemoryStore.swift */; };
+		F2F9BE9224977ACD005C6C20 /* FlagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F9BE9124977ACD005C6C20 /* FlagCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		F219F4F7248E797100B7A3D5 /* Apply+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apply+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F2B6F2062490F6180088B0F7 /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		F2B6F2082490F88F0088B0F7 /* InMemoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryStore.swift; sourceTree = "<group>"; };
+		F2F9BE9124977ACD005C6C20 /* FlagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				70EA244E2490A8D1007FD797 /* AppliesTableViewCell.swift */,
+				F2F9BE9124977ACD005C6C20 /* FlagCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */,
 				7060EFF32491288300A229B8 /* Apply+CoreDataClass.swift in Sources */,
 				F2035575248BBBC600A9F9F8 /* AppDelegate.swift in Sources */,
+				F2F9BE9224977ACD005C6C20 /* FlagCell.swift in Sources */,
 				7060EFFA2494E6CB00A229B8 /* ApplyViewController.swift in Sources */,
 				70483E77249651DC00612288 /* NoteViewController.swift in Sources */,
 				F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */,
