@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct TagService: TagServiceType {
     let context: NSManagedObjectContext!
@@ -16,6 +17,6 @@ struct TagService: TagServiceType {
     }
     
     func fetchAll() -> NSFetchedResultsController<Tag> {
-        
+        return NSFetchedResultsController<Tag>()
     }
 }
