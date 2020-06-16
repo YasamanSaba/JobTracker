@@ -20,6 +20,12 @@
 		7060EFF82494A47500A229B8 /* Tag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7060EFF62494A47500A229B8 /* Tag.storyboard */; };
 		7060EFFA2494E6CB00A229B8 /* ApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060EFF92494E6CB00A229B8 /* ApplyViewController.swift */; };
 		7060EFFD2496178300A229B8 /* Reminder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7060EFFB2496178300A229B8 /* Reminder.storyboard */; };
+		70ADFF9824989F7400345379 /* Reminderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFF9724989F7400345379 /* Reminderable.swift */; };
+		70ADFF9A2498A08F00345379 /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFF992498A08F00345379 /* ReminderViewModel.swift */; };
+		70ADFF9C2498A61800345379 /* ReminderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFF9B2498A61800345379 /* ReminderService.swift */; };
+		70ADFFA12498B93600345379 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFA02498B93600345379 /* ReminderViewController.swift */; };
+		70ADFFA42498BD8800345379 /* ReminderServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFA32498BD8800345379 /* ReminderServiceType.swift */; };
+		70ADFFA72498D3C300345379 /* ReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFA62498D3C300345379 /* ReminderTests.swift */; };
 		70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244B2490A745007FD797 /* AppliesViewController.swift */; };
 		70EA244F2490A8D1007FD797 /* AppliesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244E2490A8D1007FD797 /* AppliesTableViewCell.swift */; };
 		70EA24522490AE55007FD797 /* Apply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70EA24502490AE55007FD797 /* Apply.storyboard */; };
@@ -66,6 +72,12 @@
 		7060EFF72494A47500A229B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/JobTracker/View/StoryBoard/Base.lproj/Tag.storyboard; sourceTree = "<group>"; };
 		7060EFF92494E6CB00A229B8 /* ApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyViewController.swift; sourceTree = "<group>"; };
 		7060EFFC2496178300A229B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/JobTracker/View/StoryBoard/Base.lproj/Reminder.storyboard; sourceTree = "<group>"; };
+		70ADFF9724989F7400345379 /* Reminderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminderable.swift; sourceTree = "<group>"; };
+		70ADFF992498A08F00345379 /* ReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModel.swift; sourceTree = "<group>"; };
+		70ADFF9B2498A61800345379 /* ReminderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderService.swift; sourceTree = "<group>"; };
+		70ADFFA02498B93600345379 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
+		70ADFFA32498BD8800345379 /* ReminderServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderServiceType.swift; sourceTree = "<group>"; };
+		70ADFFA62498D3C300345379 /* ReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTests.swift; sourceTree = "<group>"; };
 		70EA244B2490A745007FD797 /* AppliesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesViewController.swift; sourceTree = "<group>"; };
 		70EA244E2490A8D1007FD797 /* AppliesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesTableViewCell.swift; sourceTree = "<group>"; };
 		70EA24512490AE55007FD797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/Base.lproj/Apply.storyboard; sourceTree = "<group>"; };
@@ -122,6 +134,30 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		70ADFF9624989F3D00345379 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				70ADFF9724989F7400345379 /* Reminderable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		70ADFFA22498BD6700345379 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				70ADFFA32498BD8800345379 /* ReminderServiceType.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		70ADFFA52498D38C00345379 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				70ADFFA62498D3C300345379 /* ReminderTests.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		70AEFEE0248E49B00063C352 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +172,7 @@
 		70AEFEE1248E4C390063C352 /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				70ADFF9624989F3D00345379 /* Protocol */,
 				70AEFEE3248E4CFA0063C352 /* Coordinator */,
 				70AEFEE2248E4CF20063C352 /* ViewModel */,
 			);
@@ -145,6 +182,7 @@
 		70AEFEE2248E4CF20063C352 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				70ADFF992498A08F00345379 /* ReminderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -170,6 +208,7 @@
 		70AEFEE5248E4D190063C352 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
+				7060EFFB2496178300A229B8 /* Reminder.storyboard */,
 				7060EFF62494A47500A229B8 /* Tag.storyboard */,
 				70EA24502490AE55007FD797 /* Apply.storyboard */,
 				F203557A248BBBC600A9F9F8 /* Main.storyboard */,
@@ -187,6 +226,7 @@
 				7060EFF92494E6CB00A229B8 /* ApplyViewController.swift */,
 				70483E76249651DC00612288 /* NoteViewController.swift */,
 				70483E7B249795B100612288 /* ChecklistViewController.swift */,
+				70ADFFA02498B93600345379 /* ReminderViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -194,6 +234,8 @@
 		70AEFEE7248E4D3C0063C352 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				70ADFFA22498BD6700345379 /* Protocol */,
+				70ADFF9B2498A61800345379 /* ReminderService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -222,7 +264,6 @@
 		F2035568248BBBC600A9F9F8 = {
 			isa = PBXGroup;
 			children = (
-				7060EFFB2496178300A229B8 /* Reminder.storyboard */,
 				F2035573248BBBC600A9F9F8 /* JobTracker */,
 				F203558D248BBBD100A9F9F8 /* JobTrackerTests */,
 				F2035598248BBBD100A9F9F8 /* JobTrackerUITests */,
@@ -258,6 +299,7 @@
 		F203558D248BBBD100A9F9F8 /* JobTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				70ADFFA52498D38C00345379 /* Service */,
 				F2B6F2062490F6180088B0F7 /* CoreDataTests.swift */,
 				F2035590248BBBD100A9F9F8 /* Info.plist */,
 			);
@@ -408,20 +450,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */,
+				70ADFF9C2498A61800345379 /* ReminderService.swift in Sources */,
 				70483E7C249795B100612288 /* ChecklistViewController.swift in Sources */,
 				7060EFF32491288300A229B8 /* Apply+CoreDataClass.swift in Sources */,
 				F2035575248BBBC600A9F9F8 /* AppDelegate.swift in Sources */,
 				F2F9BE9224977ACD005C6C20 /* FlagCell.swift in Sources */,
 				7060EFFA2494E6CB00A229B8 /* ApplyViewController.swift in Sources */,
 				70483E7E249797C700612288 /* ChecklistItemTableViewCell.swift in Sources */,
+				70ADFFA12498B93600345379 /* ReminderViewController.swift in Sources */,
 				70483E77249651DC00612288 /* NoteViewController.swift in Sources */,
 				70483E80249799D600612288 /* InterviewTableViewCell.swift in Sources */,
+				70ADFF9A2498A08F00345379 /* ReminderViewModel.swift in Sources */,
 				F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */,
+				70ADFFA42498BD8800345379 /* ReminderServiceType.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
 				70483E82249799E700612288 /* TaskTableViewCell.swift in Sources */,
 				F2035577248BBBC600A9F9F8 /* SceneDelegate.swift in Sources */,
 				70483E8424979ACF00612288 /* ReminderTableViewCell.swift in Sources */,
+				70ADFF9824989F7400345379 /* Reminderable.swift in Sources */,
 				7060EFF52494A32900A229B8 /* TagViewController.swift in Sources */,
 				70483E7A249761D200612288 /* UITextViewExtension.swift in Sources */,
 				70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */,
@@ -434,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2B6F2072490F6180088B0F7 /* CoreDataTests.swift in Sources */,
+				70ADFFA72498D3C300345379 /* ReminderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,8 +670,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N9VZPP2C5Z;
 				INFOPLIST_FILE = JobTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -632,7 +680,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.jobtrackerapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Job;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -642,8 +690,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N9VZPP2C5Z;
 				INFOPLIST_FILE = JobTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -652,7 +700,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.jobtrackerapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Job;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -663,8 +711,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8W28R8275P;
+				DEVELOPMENT_TEAM = N9VZPP2C5Z;
 				INFOPLIST_FILE = JobTrackerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -674,6 +724,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.JobTrackerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JobTracker.app/JobTracker";
@@ -685,8 +737,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8W28R8275P;
+				DEVELOPMENT_TEAM = N9VZPP2C5Z;
 				INFOPLIST_FILE = JobTrackerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -696,6 +750,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.JobTrackerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JobTracker.app/JobTracker";
@@ -706,8 +762,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8W28R8275P;
+				DEVELOPMENT_TEAM = N9VZPP2C5Z;
 				INFOPLIST_FILE = JobTrackerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -716,6 +774,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.JobTrackerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = JobTracker;
@@ -726,8 +786,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8W28R8275P;
+				DEVELOPMENT_TEAM = N9VZPP2C5Z;
 				INFOPLIST_FILE = JobTrackerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -736,6 +798,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.JobTrackerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = JobTracker;
