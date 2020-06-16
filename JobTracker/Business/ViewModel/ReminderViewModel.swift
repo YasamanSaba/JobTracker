@@ -11,9 +11,9 @@ import UserNotifications
 
 struct ReminderViewModel {
     let subject: Reminderable
-    let service: ReminderService
+    let service: ReminderServiceType
     
-    init(subject: Reminderable, service: ReminderService) {
+    init(subject: Reminderable, service: ReminderServiceType) {
         self.subject = subject
         self.service = service
     }
@@ -43,7 +43,8 @@ struct ReminderViewModel {
                 return
             }
             do {
-                try self.service.add(date: date, message: message, notificationID: reminderNotificationID)
+                let reminder = try self.service.add(date: date, message: message, notificationID: reminderNotificationID)
+                self.subject.addToReminder(reminder)
                 success(true)
             } catch {
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [reminderNotificationID])

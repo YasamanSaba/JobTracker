@@ -9,20 +9,21 @@
 import UIKit
 import CoreData
 
-enum ReminderServiceError: Error {
-    case saveError
-}
-
-class ReminderService{
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+class ReminderService: ReminderServiceType{
+    let context: NSManagedObjectContext!
     
-    func add(date: Date, message: String, notificationID: String) throws {
+    init(context: NSManagedObjectContext) {
+        self.context = context
+    }
+    
+    func add(date: Date, message: String, notificationID: String) throws -> Reminder {
         let reminder = Reminder(context: context)
         reminder.date = date
         reminder.desc = message
         reminder.notificationID = notificationID
         do {
             try context.save()
+            return reminder
         } catch {
             throw ReminderServiceError.saveError
         }

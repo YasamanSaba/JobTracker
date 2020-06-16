@@ -24,6 +24,8 @@
 		70ADFF9A2498A08F00345379 /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFF992498A08F00345379 /* ReminderViewModel.swift */; };
 		70ADFF9C2498A61800345379 /* ReminderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFF9B2498A61800345379 /* ReminderService.swift */; };
 		70ADFFA12498B93600345379 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFA02498B93600345379 /* ReminderViewController.swift */; };
+		70ADFFA42498BD8800345379 /* ReminderServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFA32498BD8800345379 /* ReminderServiceType.swift */; };
+		70ADFFA72498D3C300345379 /* ReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFA62498D3C300345379 /* ReminderTests.swift */; };
 		70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244B2490A745007FD797 /* AppliesViewController.swift */; };
 		70EA244F2490A8D1007FD797 /* AppliesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244E2490A8D1007FD797 /* AppliesTableViewCell.swift */; };
 		70EA24522490AE55007FD797 /* Apply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70EA24502490AE55007FD797 /* Apply.storyboard */; };
@@ -74,6 +76,8 @@
 		70ADFF992498A08F00345379 /* ReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModel.swift; sourceTree = "<group>"; };
 		70ADFF9B2498A61800345379 /* ReminderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderService.swift; sourceTree = "<group>"; };
 		70ADFFA02498B93600345379 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
+		70ADFFA32498BD8800345379 /* ReminderServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderServiceType.swift; sourceTree = "<group>"; };
+		70ADFFA62498D3C300345379 /* ReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTests.swift; sourceTree = "<group>"; };
 		70EA244B2490A745007FD797 /* AppliesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesViewController.swift; sourceTree = "<group>"; };
 		70EA244E2490A8D1007FD797 /* AppliesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesTableViewCell.swift; sourceTree = "<group>"; };
 		70EA24512490AE55007FD797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/Base.lproj/Apply.storyboard; sourceTree = "<group>"; };
@@ -136,6 +140,22 @@
 				70ADFF9724989F7400345379 /* Reminderable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		70ADFFA22498BD6700345379 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				70ADFFA32498BD8800345379 /* ReminderServiceType.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		70ADFFA52498D38C00345379 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				70ADFFA62498D3C300345379 /* ReminderTests.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		70AEFEE0248E49B00063C352 /* Model */ = {
@@ -214,6 +234,7 @@
 		70AEFEE7248E4D3C0063C352 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				70ADFFA22498BD6700345379 /* Protocol */,
 				70ADFF9B2498A61800345379 /* ReminderService.swift */,
 			);
 			path = Service;
@@ -278,6 +299,7 @@
 		F203558D248BBBD100A9F9F8 /* JobTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				70ADFFA52498D38C00345379 /* Service */,
 				F2B6F2062490F6180088B0F7 /* CoreDataTests.swift */,
 				F2035590248BBBD100A9F9F8 /* Info.plist */,
 			);
@@ -440,6 +462,7 @@
 				70483E80249799D600612288 /* InterviewTableViewCell.swift in Sources */,
 				70ADFF9A2498A08F00345379 /* ReminderViewModel.swift in Sources */,
 				F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */,
+				70ADFFA42498BD8800345379 /* ReminderServiceType.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
 				70483E82249799E700612288 /* TaskTableViewCell.swift in Sources */,
@@ -458,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2B6F2072490F6180088B0F7 /* CoreDataTests.swift in Sources */,
+				70ADFFA72498D3C300345379 /* ReminderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,8 +670,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N9VZPP2C5Z;
 				INFOPLIST_FILE = JobTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -656,7 +680,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.jobtrackerapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Job;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -666,8 +690,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N9VZPP2C5Z;
 				INFOPLIST_FILE = JobTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -676,7 +700,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.jobtrackerapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Job;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -687,8 +711,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8W28R8275P;
+				DEVELOPMENT_TEAM = N9VZPP2C5Z;
 				INFOPLIST_FILE = JobTrackerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -698,6 +724,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.JobTrackerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JobTracker.app/JobTracker";
@@ -709,8 +737,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8W28R8275P;
+				DEVELOPMENT_TEAM = N9VZPP2C5Z;
 				INFOPLIST_FILE = JobTrackerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -720,6 +750,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.JobTrackerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JobTracker.app/JobTracker";
@@ -730,8 +762,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8W28R8275P;
+				DEVELOPMENT_TEAM = N9VZPP2C5Z;
 				INFOPLIST_FILE = JobTrackerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -740,6 +774,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.JobTrackerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = JobTracker;
@@ -750,8 +786,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8W28R8275P;
+				DEVELOPMENT_TEAM = N9VZPP2C5Z;
 				INFOPLIST_FILE = JobTrackerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -760,6 +798,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreamcatcher.JobTrackerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = JobTracker;
