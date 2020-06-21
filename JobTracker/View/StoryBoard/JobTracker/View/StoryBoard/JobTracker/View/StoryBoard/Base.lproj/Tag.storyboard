@@ -18,14 +18,43 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d3u-dG-b8y">
                                 <rect key="frame" x="0.0" y="144" width="414" height="627"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TagTableViewCell" id="AJk-aP-Erc" customClass="TagTableViewCell" customModule="JobTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AJk-aP-Erc" id="AIv-Dp-YbX">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvX-IX-Bbi">
+                                                    <rect key="frame" x="30" y="11.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="BvX-IX-Bbi" firstAttribute="leading" secondItem="AIv-Dp-YbX" secondAttribute="leadingMargin" constant="10" id="LyP-yT-fUb"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="BvX-IX-Bbi" secondAttribute="trailing" constant="10" id="c8S-sZ-rDQ"/>
+                                                <constraint firstItem="BvX-IX-Bbi" firstAttribute="centerY" secondItem="AIv-Dp-YbX" secondAttribute="centerY" id="oxH-yZ-us7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblTitle" destination="BvX-IX-Bbi" id="H76-vv-9Ya"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" placeholder="Tag" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9qw-MQ-i6n">
+                            <searchBar contentMode="redraw" placeholder="Tag" translatesAutoresizingMaskIntoConstraints="NO" id="9qw-MQ-i6n">
                                 <rect key="frame" x="0.0" y="88" width="354" height="56"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
                                     <string>Title</string>
                                 </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="tck-Ha-jOm" id="ab9-Mm-Gqq"/>
+                                </connections>
                             </searchBar>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMS-YN-cRW">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -36,15 +65,15 @@
                                                 <action selector="btnCancel:" destination="tck-Ha-jOm" id="Auu-HZ-BXZ"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="IlG-Dk-5qc">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="IlG-Dk-5qc">
                                             <connections>
-                                                <action selector="btnDone:" destination="tck-Ha-jOm" id="YrF-LO-xDO"/>
+                                                <action selector="btnSave:" destination="tck-Ha-jOm" id="YrF-LO-xDO"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z1Q-uZ-SlQ">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z1Q-uZ-SlQ">
                                 <rect key="frame" x="354" y="93" width="60" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="iZj-V7-ulp"/>
@@ -58,8 +87,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YjV-ej-Djh">
                                 <rect key="frame" x="0.0" y="771" width="414" height="91"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="#coredata #autolayout #pushkit" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v6a-I2-VGS">
-                                        <rect key="frame" x="8" y="8" width="398" height="75"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="#coredata #autolayout #pushkit" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6a-I2-VGS">
+                                        <rect key="frame" x="3" y="3" width="408" height="85"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -68,10 +97,10 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="v6a-I2-VGS" secondAttribute="trailing" constant="8" id="4oe-rE-4rj"/>
-                                    <constraint firstAttribute="bottom" secondItem="v6a-I2-VGS" secondAttribute="bottom" constant="8" id="IRb-zV-vcs"/>
-                                    <constraint firstItem="v6a-I2-VGS" firstAttribute="leading" secondItem="YjV-ej-Djh" secondAttribute="leading" constant="8" id="ghS-ak-qmk"/>
-                                    <constraint firstItem="v6a-I2-VGS" firstAttribute="top" secondItem="YjV-ej-Djh" secondAttribute="top" constant="8" id="sYe-Sy-JN2"/>
+                                    <constraint firstAttribute="trailing" secondItem="v6a-I2-VGS" secondAttribute="trailing" constant="3" id="4oe-rE-4rj"/>
+                                    <constraint firstAttribute="bottom" secondItem="v6a-I2-VGS" secondAttribute="bottom" constant="3" id="IRb-zV-vcs"/>
+                                    <constraint firstItem="v6a-I2-VGS" firstAttribute="leading" secondItem="YjV-ej-Djh" secondAttribute="leading" constant="3" id="ghS-ak-qmk"/>
+                                    <constraint firstItem="v6a-I2-VGS" firstAttribute="top" secondItem="YjV-ej-Djh" secondAttribute="top" constant="3" id="sYe-Sy-JN2"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -99,6 +128,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="5ix-i9-br9"/>
                     <connections>
+                        <outlet property="btnAdd" destination="Z1Q-uZ-SlQ" id="BzY-hg-b3O"/>
                         <outlet property="srbSearchBar" destination="9qw-MQ-i6n" id="cup-2a-DjD"/>
                         <outlet property="tblTableView" destination="d3u-dG-b8y" id="s49-VX-hJr"/>
                         <outlet property="txtTag" destination="v6a-I2-VGS" id="WPa-YH-7Wf"/>

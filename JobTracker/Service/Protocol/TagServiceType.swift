@@ -10,9 +10,14 @@ import Foundation
 import CoreData
 
 enum TagServiceError: Error {
-    
+    case fetchError
+    case existingTag
+    case addError
+    case deleteError
 }
 
 protocol TagServiceType {
     func fetchAll() -> NSFetchedResultsController<Tag>
+    func add(tag: String) throws
+    func delete(tag: Tag) throws
 }
