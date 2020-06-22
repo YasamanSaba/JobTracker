@@ -10,8 +10,14 @@ import UIKit
 
 struct DataInitializer {
     static func importInitialData() {
+        // MARK: - Checking first time -
         guard !UserDefaults.standard.bool(forKey: "FirstTime") else {return}
+        // MARK: - Reach Context -
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        // MARK: - Create Country -
+        let world = Country(context: context)
+        world.name = "World"
+        world.flag = "🌍"
         let germany = Country(context: context)
         germany.name = "Germany"
         germany.flag = "🇩🇪"
@@ -39,6 +45,9 @@ struct DataInitializer {
         let england = Country(context: context)
         england.name = "England"
         england.flag = "🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+        let luxembourg = Country(context: context)
+        luxembourg.name = "Luxembourg"
+        luxembourg.flag = "🇱🇺"
         do {
             try context.save()
             UserDefaults.standard.set(true, forKey: "FirstTime")

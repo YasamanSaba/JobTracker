@@ -6,6 +6,7 @@
         <attribute name="salaryExpectation" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="status" attributeType="Integer 16" usesScalarValueType="YES" customClassName="."/>
         <relationship name="checkListItem" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CheckListItem" inverseName="apply" inverseEntity="CheckListItem"/>
+        <relationship name="city" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="apply" inverseEntity="City"/>
         <relationship name="company" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="apply" inverseEntity="Company"/>
         <relationship name="interview" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Interview" inverseName="apply" inverseEntity="Interview"/>
         <relationship name="resume" maxCount="1" deletionRule="Nullify" destinationEntity="Resume" inverseName="apply" inverseEntity="Resume"/>
@@ -19,7 +20,7 @@
     </entity>
     <entity name="City" representedClassName="City" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String"/>
-        <relationship name="company" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Company" inverseName="city" inverseEntity="Company"/>
+        <relationship name="apply" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Apply" inverseName="city" inverseEntity="Apply"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="city" inverseEntity="Country"/>
     </entity>
     <entity name="Company" representedClassName="Company" syncable="YES" codeGenerationType="class">
@@ -27,13 +28,12 @@
         <attribute name="isFavorite" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="apply" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Apply" inverseName="company" inverseEntity="Apply"/>
-        <relationship name="city" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="company" inverseEntity="City"/>
     </entity>
     <entity name="Country" representedClassName="Country" syncable="YES" codeGenerationType="class">
         <attribute name="flag" optional="YES" attributeType="String"/>
         <attribute name="minSalary" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
-        <relationship name="city" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="City" inverseName="country" inverseEntity="City"/>
+        <relationship name="city" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="City" inverseName="country" inverseEntity="City"/>
     </entity>
     <entity name="Interview" representedClassName="Interview" syncable="YES" codeGenerationType="category">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
@@ -76,15 +76,15 @@
         <relationship name="reminder" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reminder" inverseName="task" inverseEntity="Reminder"/>
     </entity>
     <elements>
-        <element name="Apply" positionX="-189.38671875" positionY="-151.8515625" width="128" height="193"/>
-        <element name="CheckListItem" positionX="-360" positionY="-144" width="128" height="88"/>
-        <element name="City" positionX="-416.11328125" positionY="-310.40625" width="128" height="88"/>
-        <element name="Company" positionX="-195.5703125" positionY="-314.9453125" width="128" height="118"/>
-        <element name="Country" positionX="-589.609375" positionY="-314.0703125" width="128" height="103"/>
+        <element name="Apply" positionX="-189.38671875" positionY="-151.8515625" width="128" height="208"/>
+        <element name="CheckListItem" positionX="-504.34375" positionY="-160.9609375" width="128" height="88"/>
+        <element name="City" positionX="-359.04296875" positionY="-272.3828125" width="128" height="88"/>
+        <element name="Company" positionX="-195.5703125" positionY="-314.9453125" width="128" height="103"/>
+        <element name="Country" positionX="-567.90625" positionY="-309.46484375" width="128" height="103"/>
         <element name="Interview" positionX="17.23046875" positionY="-307.5625" width="128" height="163"/>
         <element name="Note" positionX="210.48828125" positionY="-304.7578125" width="128" height="73"/>
         <element name="Reminder" positionX="235.703125" positionY="-98.89453125" width="128" height="118"/>
-        <element name="Resume" positionX="-521.625" positionY="-68.96484375" width="128" height="88"/>
+        <element name="Resume" positionX="-380.53515625" positionY="51.80078125" width="128" height="88"/>
         <element name="Tag" positionX="10.6796875" positionY="-64.27734375" width="128" height="88"/>
         <element name="Task" positionX="7.2421875" positionY="77.14453125" width="128" height="148"/>
     </elements>
