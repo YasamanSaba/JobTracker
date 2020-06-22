@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 struct TagService: TagServiceType {
+    
     let context: NSManagedObjectContext!
     
     init(context: NSManagedObjectContext) {
@@ -17,6 +18,38 @@ struct TagService: TagServiceType {
     }
     
     func fetchAll() -> NSFetchedResultsController<Tag> {
-        return NSFetchedResultsController<Tag>()
+        let request: NSFetchRequest<Tag> = Tag.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Tag.title), ascending: true)]
+        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        return controller
+    }
+    
+    func add(tag: String) throws {
+        let request: NSFetchRequest<Tag> = Tag.fetchRequest()
+        let predicate = NSPredicate(format: "%K == %@", #keyPath(Tag.title), tag)
+        request.predicate = predicate
+        
+        do {
+            let result = try context.fetch(request)
+            if result.count != 0 {
+                throw TagServiceError.existingTag
+            }
+            let newTag = Tag(context: context)
+            newTag.title = tag
+            try context.save()
+        } catch TagServiceError.existingTag {
+            throw TagServiceError.existingTag
+        } catch {
+            throw TagServiceError.addError
+        }
+    }
+    
+    func delete(tag: Tag) throws {
+        context.delete(tag)
+        do {
+            try context.save()
+        } catch {
+            throw TagServiceError.deleteError
+        }
     }
 }

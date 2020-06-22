@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class ReminderService: ReminderServiceType{
+    
     let context: NSManagedObjectContext!
     
     init(context: NSManagedObjectContext) {
@@ -26,6 +27,16 @@ class ReminderService: ReminderServiceType{
             return reminder
         } catch {
             throw ReminderServiceError.saveError
+        }
+    }
+    
+    func delete(reminder: Reminder) throws {
+        context.delete(reminder)
+        do {
+            try context.save()
+            return
+        } catch {
+            throw ReminderServiceError.deleteError
         }
     }
 }
