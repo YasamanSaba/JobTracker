@@ -7,78 +7,130 @@
 //
 
 import UIKit
+import CoreData
 
 class AppliesViewController: UIViewController {
-    
-    enum Section {
-        case main
-    }
-    var dataSource: UICollectionViewDiffableDataSource<Section, Country>!
-    var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Country>()
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    // MARK: - Test -
+    @IBAction func addCompany(_ sender: Any) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let city = City(context: context)
+        city.name = "Munich"
+        let country = Country(context: context)
+        country.name = "Germany"
+        country.minSalary = 70000
+        country.flag = "🇩🇪"
+        country.addToCity(city)
+        let company = Company(context: context)
+        company.title = "StarBox"
+        company.isFavorite = false
+        let resume = Resume(context: context)
+        resume.version = "2.3"
+        let apply = Apply(context: context)
+        apply.date = Date()
+        apply.status = 1
+        apply.salaryExpectation = 54000
+        apply.jobLink = URL(string: "https://www.google.com/?client=safari")
+        city.addToApply(apply)
+        resume.addToApply(apply)
+        company.addToApply(apply)
+        
+        let barcelona = City(context: context)
+        barcelona.name = "Barcelona"
+        let spain = Country(context: context)
+        spain.name = "Spain"
+        spain.minSalary = 734676
+        spain.flag = "🇪🇸"
+        spain.addToCity(barcelona)
+        let company2 = Company(context: context)
+        company2.title = "fly"
+        company2.isFavorite = false
+        let resume2 = Resume(context: context)
+        resume2.version = "2.3"
+        let apply2 = Apply(context: context)
+        apply2.date = Date()
+        apply2.status = 1
+        apply2.salaryExpectation = 52000
+        apply2.jobLink = URL(string: "https://www.google.com/?client=safari")
+        barcelona.addToApply(apply2)
+        resume2.addToApply(apply2)
+        company2.addToApply(apply2)
+        
+        let london = City(context: context)
+        london.name = "London"
+        let england = Country(context: context)
+        england.name = "England"
+        england.minSalary = 87342
+        england.flag = "🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+        england.addToCity(london)
+        let company3 = Company(context: context)
+        company3.title = "Polo"
+        company3.isFavorite = false
+        let resume3 = Resume(context: context)
+        resume3.version = "2.3"
+        let apply3 = Apply(context: context)
+        apply3.date = Date()
+        apply3.status = 1
+        apply3.salaryExpectation = 52000
+        apply3.jobLink = URL(string: "https://www.google.com/?client=safari")
+        london.addToApply(apply3)
+        resume3.addToApply(apply3)
+        company3.addToApply(apply3)
+        
+        try! context.save()
+    }
+    // MARK: - Properties
+    var viewModel: AppliesViewModel!
+    private var searchController = UISearchController(searchResultsController: nil)
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        collectionView.collectionViewLayout = configureLayout()
-        configureDataSource()
-        
+        // Temporary
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let countryService = CountryService(context: context)
+        let applyService = ApplyService(context: context)
+        self.viewModel = AppliesViewModel(countryService: countryService, applyService: applyService)
+        setUpView()
     }
-    
+    // MARK: - Functions
+    private func setUpView() {
+        collectionView.delegate = self
+        collectionView.collectionViewLayout = configureLayout()
+        self.viewModel.configureCountryDataSource(for: self.collectionView)
+        self.viewModel.configureApplyDataSource(for: self.tableView)
+        configureSearchController()
+    }
     func configureLayout() -> UICollectionViewCompositionalLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2), heightDimension: .fractionalHeight(1.0))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
         return UICollectionViewCompositionalLayout(section: section)
     }
-    
-    func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Country>(collectionView: self.collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlagCell.reuseIdentifier, for: indexPath) as! FlagCell
-            
-            cell.lblCountryName.text = item.name
-            cell.lblFlag.text = item.flag
-            return cell
-        }
-        let contex = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        var countries: [Country] = []
-        let c1 = Country(context: contex)
-        c1.name = "Germany"
-        c1.flag = "🇩🇪"
-        countries.append(c1)
-        
-        let c2 = Country(context: contex)
-        c2.name = "Italy"
-        c2.flag = "🇮🇹"
-        countries.append(c2)
-
-        let c3 = Country(context: contex)
-        c3.name = "USA"
-        c3.flag = "🇺🇸"
-        countries.append(c3)
-        initialSnapshot.appendSections([.main])
-        initialSnapshot.appendItems(countries, toSection: .main)
-        dataSource.apply(initialSnapshot)
+}
+// MARK: - Extensions
+extension AppliesViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.viewModel.selectCountry(at: indexPath)
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
 }
-
-
-extension AppliesViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+// MARK: - UISearchResultsUpdating Delegate
+extension AppliesViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        viewModel.filterCompanies(for: searchController.searchBar.text ?? "")
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ApplyCell") else {
-            return UITableViewCell()
-        }
-        return cell
+    func configureSearchController() {
+      searchController.searchResultsUpdater = self
+      searchController.obscuresBackgroundDuringPresentation = false
+      searchController.searchBar.placeholder = "Search Companies"
+      navigationItem.searchController = searchController
+      definesPresentationContext = true
     }
 }

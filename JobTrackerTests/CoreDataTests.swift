@@ -25,16 +25,9 @@ class CoreDataTests: XCTestCase {
     }
     
     func test_Company() {
-        let country = Country(context: self.context)
-        country.name = "Spain"
-        country.minSalary = 47000
-        let city = City(context: self.context)
-        city.name = "Barcelona"
-        city.country = country
         let company = Company(context: self.context)
         company.title = "Fox"
         company.isFavorite = true
-        company.addToCity(city)
         XCTAssertNoThrow(try context.save())
         XCTAssertTrue(company.isFavorite)
         XCTAssertNil(company.connecter)
@@ -77,9 +70,8 @@ class CoreDataTests: XCTestCase {
         country.minSalary = 70000
         country.addToCity(city)
         let company = Company(context: self.context)
-        company.title = "OLDB"
+        company.title = "Koft"
         company.isFavorite = false
-        company.addToCity(city)
         let resume = Resume(context: self.context)
         resume.version = "2.3"
         let apply = Apply(context: self.context)
@@ -87,8 +79,9 @@ class CoreDataTests: XCTestCase {
         apply.status = 1
         apply.salaryExpectation = 54000
         apply.jobLink = URL(string: "https://www.google.com/?client=safari")
-        company.addToApply(apply)
+        city.addToApply(apply)
         resume.addToApply(apply)
+        company.addToApply(apply)
         XCTAssertNoThrow(try self.context.save())
         let fetchRequest: NSFetchRequest<Apply> = Apply.fetchRequest()
         var applyItem: [Apply] = []
@@ -126,11 +119,11 @@ class CoreDataTests: XCTestCase {
         let company = Company(context: self.context)
         company.title = "eFly"
         company.isFavorite = true
-        company.addToCity(city)
         let apply = Apply(context: self.context)
         apply.date = Date()
         apply.status = 2
         apply.jobLink = URL(string: "google")
+        city.addToApply(apply)
         let resume = Resume(context: self.context)
         resume.version = "1.4"
         resume.addToApply(apply)
@@ -160,11 +153,11 @@ class CoreDataTests: XCTestCase {
         let company = Company(context: self.context)
         company.title = "eee"
         company.isFavorite = false
-        company.addToCity(city)
         let apply = Apply(context: self.context)
         apply.date = Date()
         apply.status = 2
         apply.jobLink = URL(string: "test")
+        city.addToApply(apply)
         let resume = Resume(context: self.context)
         resume.version = "1.5"
         resume.addToApply(apply)
@@ -221,7 +214,6 @@ class CoreDataTests: XCTestCase {
         let company = Company(context: self.context)
         company.title = "OLDB"
         company.isFavorite = false
-        company.addToCity(city)
         let resume = Resume(context: self.context)
         resume.version = "2.3"
         let apply = Apply(context: self.context)
@@ -232,6 +224,7 @@ class CoreDataTests: XCTestCase {
         company.addToApply(apply)
         resume.addToApply(apply)
         apply.addToCheckListItem(checkList)
+        city.addToApply(apply)
         XCTAssertNoThrow(try self.context.save())
         let checkListFetchRequest: NSFetchRequest<CheckListItem> = CheckListItem.fetchRequest()
         var checkListItems: [CheckListItem] = []
@@ -255,7 +248,6 @@ class CoreDataTests: XCTestCase {
         company.title = "eGym"
         company.isFavorite = true
         company.connecter = "Rose"
-        company.addToCity(city)
         XCTAssertNoThrow(try context.save())
         let fetchRequest: NSFetchRequest<Company> = Company.fetchRequest()
         var item: [Company] = []
@@ -266,31 +258,6 @@ class CoreDataTests: XCTestCase {
         XCTAssertEqual(storedCompany!.title, company.title)
         XCTAssertTrue(storedCompany!.isFavorite)
         XCTAssertEqual(storedCompany!.connecter, company.connecter)
-    }
-    func test_Company_ToCity_City_ToCompany() {
-        let country = Country(context: self.context)
-        country.name = "Germany"
-        country.minSalary = 40000
-        let city = City(context: self.context)
-        city.name = "Berlin"
-        city.country = country
-        let company = Company(context: self.context)
-        company.title = "OLX"
-        company.isFavorite = false
-        company.addToCity(city)
-        XCTAssertNoThrow(try context.save())
-        let fetchCity: NSFetchRequest<City> = City.fetchRequest()
-        var cityItem: [City] = []
-        XCTAssertNoThrow(cityItem = try context.fetch(fetchCity))
-        XCTAssertEqual(cityItem.count, 1)
-        let storedCity = cityItem.first
-        XCTAssertNotNil(storedCity)
-        XCTAssertEqual(storedCity!.name, city.name)
-        XCTAssertEqual(storedCity!.company!.count, 1)
-        let storedCompany = storedCity!.company!.first{_ in true} as? Company
-        XCTAssertNotNil(storedCompany)
-        XCTAssertEqual(storedCompany!.title , company.title)
-        XCTAssertEqual(storedCompany!.city!.count, 1)
     }
     func test_AddReminder_OnInterview() {
         let reminder = Reminder(context: self.context)
@@ -306,7 +273,6 @@ class CoreDataTests: XCTestCase {
         let company = Company(context: self.context)
         company.title = "OLDB"
         company.isFavorite = false
-        company.addToCity(city)
         let resume = Resume(context: self.context)
         resume.version = "2.3"
         let apply = Apply(context: self.context)
@@ -316,6 +282,7 @@ class CoreDataTests: XCTestCase {
         apply.jobLink = URL(string: "https://www.google.com/?client=safari")
         company.addToApply(apply)
         resume.addToApply(apply)
+        city.addToApply(apply)
         let interview = Interview(context: self.context)
         interview.date = Date()
         interview.interviewerRole = 10
@@ -351,7 +318,6 @@ class CoreDataTests: XCTestCase {
         let company = Company(context: self.context)
         company.title = "eee"
         company.isFavorite = false
-        company.addToCity(city)
         let apply = Apply(context: self.context)
         apply.date = Date()
         apply.status = 2
@@ -362,6 +328,7 @@ class CoreDataTests: XCTestCase {
         company.addToApply(apply)
         apply.addToTask(task)
         task.addToReminder(reminder)
+        city.addToApply(apply)
         XCTAssertNoThrow(try self.context.save())
         let reminderFetchRequest: NSFetchRequest<Reminder> = Reminder.fetchRequest()
         var reminderItems: [Reminder] = []
@@ -388,7 +355,6 @@ class CoreDataTests: XCTestCase {
         let company = Company(context: self.context)
         company.title = "Forrest"
         company.isFavorite = false
-        company.addToCity(city)
         let resume = Resume(context: self.context)
         resume.version = "2.8"
         let apply = Apply(context: self.context)
@@ -396,6 +362,7 @@ class CoreDataTests: XCTestCase {
         apply.status = 2
         apply.salaryExpectation = 74000
         apply.jobLink = URL(string: "https://www.google.com")
+        city.addToApply(apply)
         company.addToApply(apply)
         resume.addToApply(apply)
         let interview = Interview(context: self.context)
@@ -437,11 +404,11 @@ class CoreDataTests: XCTestCase {
         let company = Company(context: self.context)
         company.title = "eee"
         company.isFavorite = false
-        company.addToCity(city)
         let apply = Apply(context: self.context)
         apply.date = Date()
         apply.status = 2
         apply.jobLink = URL(string: "test")
+        city.addToApply(apply)
         let resume = Resume(context: self.context)
         resume.version = "1.5"
         resume.addToApply(apply)
@@ -467,7 +434,6 @@ class CoreDataTests: XCTestCase {
         let company = Company(context: self.context)
         company.title = "Gurus"
         company.isFavorite = true
-        company.addToCity(city)
         let resume = Resume(context: self.context)
         resume.version = "2.5"
         let apply = Apply(context: self.context)
@@ -475,6 +441,7 @@ class CoreDataTests: XCTestCase {
         apply.status = 2
         apply.salaryExpectation = 35000
         apply.jobLink = URL(string: "https://www.google.com")
+        city.addToApply(apply)
         company.addToApply(apply)
         resume.addToApply(apply)
         XCTAssertNoThrow(try self.context.save())
@@ -487,6 +454,35 @@ class CoreDataTests: XCTestCase {
         XCTAssertEqual(storedApply!.salaryExpectation, apply.salaryExpectation)
         XCTAssertEqual(storedApply!.jobLink, apply.jobLink)
         XCTAssertEqual(storedApply!.resume, apply.resume)
+    }
+    func test_Apply_ToCountry_ByCity() {
+        let city = City(context: self.context)
+        city.name = "Berlin"
+        let country = Country(context: self.context)
+        country.name = "Germany"
+        country.minSalary = 7365476
+        country.addToCity(city)
+        let company = Company(context: self.context)
+        company.title = "eGym"
+        company.isFavorite = true
+        let resume = Resume(context: self.context)
+        resume.version = "6.3.2"
+        let apply = Apply(context: self.context)
+        apply.date = Date()
+        apply.status = 1
+        apply.salaryExpectation = 54000
+        apply.jobLink = URL(string: "https://www.test.com")
+        resume.addToApply(apply)
+        company.addToApply(apply)
+        city.addToApply(apply)
+        XCTAssertNoThrow(try self.context.save())
+        let fetchRequest: NSFetchRequest<Apply> = Apply.fetchRequest()
+        var applyItem: [Apply] = []
+        XCTAssertNoThrow(applyItem = try self.context.fetch(fetchRequest))
+        XCTAssertEqual(applyItem.count, 1)
+        let countryStored = applyItem.first!.city?.country
+        XCTAssertNotNil(countryStored)
+        XCTAssertEqual(countryStored, country)
     }
     func test_Tag_OnApply() {
         let tag = Tag(context: self.context)
@@ -501,13 +497,13 @@ class CoreDataTests: XCTestCase {
         apply.date = Date()
         apply.status = 2
         apply.jobLink = URL(string: "test")
+        city.addToApply(apply)
         let resume = Resume(context: self.context)
         resume.version = "3.1"
         resume.addToApply(apply)
         let company = Company(context: self.context)
         company.title = "Apple"
         company.isFavorite = true
-        company.addToCity(city)
         company.addToApply(apply)
         apply.addToTag(tag)
         XCTAssertNoThrow(try self.context.save())
@@ -539,11 +535,11 @@ class CoreDataTests: XCTestCase {
         apply.status = 2
         apply.jobLink = URL(string: "jobtest")
         apply.addToInterview(interview)
+        city.addToApply(apply)
         let company = Company(context: self.context)
         company.title = "LG"
         company.isFavorite = false
         company.addToApply(apply)
-        city.addToCompany(company)
         let resume = Resume(context: self.context)
         resume.version = "2.3"
         resume.addToApply(apply)
@@ -576,11 +572,11 @@ class CoreDataTests: XCTestCase {
         apply.jobLink = URL(string: "jobtest")
         apply.addToInterview(interview)
         apply.addToTag(tag)
+        city.addToApply(apply)
         let company = Company(context: self.context)
         company.title = "Zalando"
         company.isFavorite = true
         company.addToApply(apply)
-        city.addToCompany(company)
         let resume = Resume(context: self.context)
         resume.version = "2.2"
         resume.addToApply(apply)

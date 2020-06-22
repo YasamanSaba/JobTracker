@@ -8,8 +8,8 @@
 
 import UIKit
 
-class FlagCell: UICollectionViewCell {
-    static let reuseIdentifier = String(describing: FlagCell.self)
+class FlagCollectinViewCell: UICollectionViewCell {
+    static let reuseIdentifier = String(describing: FlagCollectinViewCell.self)
     @IBOutlet weak var lblFlag: UILabel!
     @IBOutlet weak var lblCountryName: UILabel!
 }
