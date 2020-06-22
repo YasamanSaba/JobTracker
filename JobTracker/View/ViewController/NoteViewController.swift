@@ -11,7 +11,6 @@ import UIKit
 class NoteViewController: UIViewController {
     
     // MARK: - Outlets
-    
     @IBOutlet weak var txtTitle: UITextView!
     @IBOutlet weak var txtDesc: UITextView!
     

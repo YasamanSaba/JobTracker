@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TagViewController: UIViewController {
+class TagViewController: UIViewController, ViewModelSupportedViewControllers {
     
     // MARK: - Properties
     var viewModel: TagViewModel!
