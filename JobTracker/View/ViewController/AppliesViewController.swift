@@ -23,6 +23,7 @@ class AppliesViewController: UIViewController {
         country.minSalary = 70000
         country.flag = "🇩🇪"
         country.addToCity(city)
+        
         let company = Company(context: context)
         company.title = "StarBox"
         company.isFavorite = false
@@ -82,6 +83,7 @@ class AppliesViewController: UIViewController {
         try! context.save()
     }
     // MARK: - Properties
+    static let badgeElementKind = "badge-element-kind"
     var viewModel: AppliesViewModel!
     private var searchController = UISearchController(searchResultsController: nil)
     // MARK: - Life Cycle
@@ -97,14 +99,22 @@ class AppliesViewController: UIViewController {
     // MARK: - Functions
     private func setUpView() {
         collectionView.delegate = self
+        tableView.delegate = self
+        collectionView.register(BadgeSupplementaryView.self, forSupplementaryViewOfKind: AppliesViewController.badgeElementKind, withReuseIdentifier: BadgeSupplementaryView.reuseIdentifier)
         collectionView.collectionViewLayout = configureLayout()
-        self.viewModel.configureCountryDataSource(for: self.collectionView)
         self.viewModel.configureApplyDataSource(for: self.tableView)
+        self.viewModel.configureCountryDataSource(for: self.collectionView)
         configureSearchController()
     }
     func configureLayout() -> UICollectionViewCompositionalLayout {
+        let anchorEdges: NSDirectionalRectEdge = [.top, .trailing]
+        let offset = CGPoint(x: 0.2, y: -0.2)
+        let badgeAncher = NSCollectionLayoutAnchor(edges: anchorEdges, fractionalOffset: offset)
+        let badgeSize = NSCollectionLayoutSize(widthDimension: .absolute(17), heightDimension: .absolute(17))
+        let badge = NSCollectionLayoutSupplementaryItem(layoutSize: badgeSize, elementKind: AppliesViewController.badgeElementKind, containerAnchor: badgeAncher)
+        
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let item = NSCollectionLayoutItem(layoutSize: itemSize, supplementaryItems: [badge])
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2), heightDimension: .fractionalHeight(1.0))
@@ -118,7 +128,21 @@ class AppliesViewController: UIViewController {
 extension AppliesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.viewModel.selectCountry(at: indexPath)
-        collectionView.deselectItem(at: indexPath, animated: true)
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            let color:UIColor = .systemGray
+            cell.backgroundColor = color.withAlphaComponent(0.23)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            cell.backgroundColor = nil
+        }
+    }
+}
+extension AppliesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 // MARK: - UISearchResultsUpdating Delegate
@@ -134,3 +158,4 @@ extension AppliesViewController: UISearchResultsUpdating {
       definesPresentationContext = true
     }
 }
+

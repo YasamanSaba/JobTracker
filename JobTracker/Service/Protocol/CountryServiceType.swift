@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import CoreData
 
 enum CountryServiceError: Error {
     case fetchError
 }
 
 protocol CountryServiceType {
-    func fetchAll() throws -> [Country]
+    func fetchAll() -> NSFetchedResultsController<Country>
 }
