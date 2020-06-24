@@ -68,7 +68,7 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
         england.addToCity(london)
         let company3 = Company(context: context)
         company3.title = "Polo"
-        company3.isFavorite = false
+        company3.isFavorite = true
         let resume3 = Resume(context: context)
         resume3.version = "2.3"
         let apply3 = Apply(context: context)
