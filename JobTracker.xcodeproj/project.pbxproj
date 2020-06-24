@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7009B1C024A327D400B6437D /* BoxUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009B1BF24A327D400B6437D /* BoxUIView.swift */; };
+		7009B1C224A33FD100B6437D /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009B1C124A33FD100B6437D /* TagCollectionViewCell.swift */; };
 		700F52F9249DE262000EBCD3 /* TagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F52F8249DE262000EBCD3 /* TagTests.swift */; };
 		700F52FB249DF4B2000EBCD3 /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F52FA249DF4B2000EBCD3 /* TagViewModel.swift */; };
 		700F52FD249DF749000EBCD3 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F52FC249DF749000EBCD3 /* TagTableViewCell.swift */; };
@@ -83,6 +85,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7009B1BF24A327D400B6437D /* BoxUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxUIView.swift; sourceTree = "<group>"; };
+		7009B1C124A33FD100B6437D /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		700F52F8249DE262000EBCD3 /* TagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTests.swift; sourceTree = "<group>"; };
 		700F52FA249DF4B2000EBCD3 /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 		700F52FC249DF749000EBCD3 /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 			children = (
 				70483E79249761D200612288 /* UITextViewExtension.swift */,
 				70BE562D249F47AA0039D123 /* UITextFieldExtension.swift */,
+				7009B1BF24A327D400B6437D /* BoxUIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -351,6 +356,7 @@
 				70483E8324979ACF00612288 /* ReminderTableViewCell.swift */,
 				F2F9BE9124977ACD005C6C20 /* FlagCollectinViewCell.swift */,
 				700F52FC249DF749000EBCD3 /* TagTableViewCell.swift */,
+				7009B1C124A33FD100B6437D /* TagCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -580,6 +586,7 @@
 				709CDEE824A20DB000A9DAE0 /* NoteViewModel.swift in Sources */,
 				7043B02F24A0D22000F760AA /* Scene+ViewController.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
+				7009B1C224A33FD100B6437D /* TagCollectionViewCell.swift in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
 				7043B02D24A0CEE500F760AA /* Scene.swift in Sources */,
 				F24C3D67249903B0004C16B9 /* CountryServiceType.swift in Sources */,
@@ -597,6 +604,7 @@
 				709CDEE224A1E66400A9DAE0 /* NotesViewController.swift in Sources */,
 				70ADFFA92498EC1B00345379 /* TagServiceType.swift in Sources */,
 				F23F3052249DF28B00A92C49 /* ApplyServiceType.swift in Sources */,
+				7009B1C024A327D400B6437D /* BoxUIView.swift in Sources */,
 				70EA244F2490A8D1007FD797 /* ApplyTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

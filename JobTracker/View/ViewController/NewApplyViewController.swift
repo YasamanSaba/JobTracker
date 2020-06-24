@@ -13,15 +13,18 @@ class NewApplyViewController: UIViewController {
     
     
     // MARK: - Outlets
-    @IBOutlet weak var pkvCountry: UIPickerView!
-    @IBOutlet weak var pkvCity: UIPickerView!
+    
     @IBOutlet weak var pkvResume: UIPickerView!
     @IBOutlet weak var pkvStatus: UIPickerView!
     @IBOutlet weak var txtCompanyName: UITextField!
     @IBOutlet weak var txtJobURL: UITextField!
-    @IBOutlet weak var txtTags: UITextView!
-    @IBOutlet weak var dpkvApplyDate: UIDatePicker!
-    
+    @IBOutlet weak var txtApplyDate: UITextField!
+    @IBOutlet weak var txtSalary: UITextField!
+    @IBOutlet weak var txtCity: UITextField!
+    @IBOutlet weak var txtCountry: UITextField!
+    @IBOutlet weak var vwDatePicker: UIView!
+    @IBOutlet weak var vwCountryPicker: UIView!
+    @IBOutlet weak var vwCityPicker: UIView!
     // MARK: - Actions
     @IBAction func btnSave(_ sender: Any) {
         
@@ -29,21 +32,21 @@ class NewApplyViewController: UIViewController {
 
     
     // MARK: - Properties
-    var tags: String = "" {
-        didSet{
-            txtTags.text = tags
-        }
-    }
     
-    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        txtApplyDate.inputView = vwDatePicker
+        txtCountry.inputView = vwCountryPicker
+        txtCity.inputView = vwCityPicker
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
+        /*
         if txtJobURL.isFirstResponder {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
@@ -51,12 +54,15 @@ class NewApplyViewController: UIViewController {
             }
         }
         }
+ */
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
+        /*
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
         }
+ */
     }
 }
 
