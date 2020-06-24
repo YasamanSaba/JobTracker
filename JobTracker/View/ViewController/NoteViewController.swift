@@ -8,7 +8,10 @@
 
 import UIKit
 
-class NoteViewController: UIViewController {
+class NoteViewController: UIViewController, ViewModelSupportedViewControllers {
+    
+    // MARK: - ViewModel
+    var viewModel: NoteViewModel!
     
     // MARK: - Outlets
     @IBOutlet weak var txtTitle: UITextView!

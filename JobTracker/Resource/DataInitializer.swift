@@ -23,7 +23,7 @@ struct DataInitializer {
         germany.flag = "🇩🇪"
         let spain = Country(context: context)
         spain.name = "Spain"
-        spain.flag = "🇮🇹"
+        spain.flag = "🇪🇸"
         let france = Country(context: context)
         france.name = "France"
         france.flag = "🇫🇷"

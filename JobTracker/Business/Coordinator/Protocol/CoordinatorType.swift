@@ -10,4 +10,7 @@ import Foundation
 
 protocol CoordinatorType {
     
+    func start(by tabs: [Tab])
+    func push(scene: Scene, sender: Any)
+    func present(scene: Scene, sender: Any)
 }

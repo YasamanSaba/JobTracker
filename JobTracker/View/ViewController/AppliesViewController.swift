@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AppliesViewController: UIViewController {
+class AppliesViewController: UIViewController, ViewModelSupportedViewControllers {
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!

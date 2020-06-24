@@ -1,17 +1,14 @@
 //
-//  Scene.swift
+//  Tab.swift
 //  JobTracker
 //
 //  Created by Sam Javadizadeh on 6/22/20.
 //  Copyright © 2020 Dream Catcher. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-enum Scene {
+enum Tab {
     case applies
     case notes
-    case note
-    case tag
-    case reminder(Reminderable)
 }

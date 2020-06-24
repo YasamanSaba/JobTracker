@@ -839,7 +839,7 @@
         <!--Applies-->
         <scene sceneID="uBX-2Q-IFU">
             <objects>
-                <viewController id="EPI-cB-SfL" customClass="AppliesViewController" customModule="JobTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AppliesViewController" id="EPI-cB-SfL" customClass="AppliesViewController" customModule="JobTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pAs-vT-ohA"/>
                         <viewControllerLayoutGuide type="bottom" id="jld-6c-m7H"/>
