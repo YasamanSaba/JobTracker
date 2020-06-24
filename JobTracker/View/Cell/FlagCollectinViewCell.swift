@@ -12,4 +12,8 @@ class FlagCollectinViewCell: UICollectionViewCell {
     static let reuseIdentifier = String(describing: FlagCollectinViewCell.self)
     @IBOutlet weak var lblFlag: UILabel!
     @IBOutlet weak var lblCountryName: UILabel!
+    
+    override func prepareForReuse() {
+        backgroundColor = nil
+    }
 }
