@@ -1462,6 +1462,7 @@
                         <outlet property="txtCountry" destination="zVZ-lO-7wM" id="NTH-Po-Djo"/>
                         <outlet property="txtJobURL" destination="9da-Zg-7AV" id="vIL-3M-2Ak"/>
                         <outlet property="txtSalary" destination="4nK-VG-Ni4" id="RtH-AG-XPc"/>
+                        <outlet property="vwCityPicker" destination="J3J-GQ-E3i" id="YuB-Pp-tmh"/>
                         <outlet property="vwDatePicker" destination="e8s-ns-eu0" id="Zf9-0G-gBL"/>
                     </connections>
                 </viewController>
@@ -1498,28 +1499,76 @@
                     <rect key="frame" x="0.0" y="0.0" width="378" height="231"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQG-17-tWN">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZY-Tf-wPb" userLabel="FrontView">
+                            <rect key="frame" x="0.0" y="0.0" width="378" height="231"/>
+                            <subviews>
+                                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQG-17-tWN">
+                                    <rect key="frame" x="0.0" y="0.0" width="378" height="44"/>
+                                    <items>
+                                        <navigationItem title="Choose Country" id="8ES-8E-0we">
+                                            <barButtonItem key="leftBarButtonItem" systemItem="done" id="vMt-bt-3Fe"/>
+                                            <barButtonItem key="rightBarButtonItem" systemItem="add" id="Z6E-ww-TXc"/>
+                                        </navigationItem>
+                                    </items>
+                                </navigationBar>
+                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JsL-Il-o0H">
+                                    <rect key="frame" x="0.0" y="44" width="378" height="187"/>
+                                </pickerView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="zQG-17-tWN" firstAttribute="top" secondItem="OZY-Tf-wPb" secondAttribute="top" id="6Vl-jD-gYk"/>
+                                <constraint firstAttribute="trailing" secondItem="zQG-17-tWN" secondAttribute="trailing" id="avK-hm-YEC"/>
+                                <constraint firstAttribute="trailing" secondItem="JsL-Il-o0H" secondAttribute="trailing" id="esz-xZ-DcU"/>
+                                <constraint firstItem="JsL-Il-o0H" firstAttribute="leading" secondItem="OZY-Tf-wPb" secondAttribute="leading" id="hvd-L2-Lqe"/>
+                                <constraint firstItem="zQG-17-tWN" firstAttribute="leading" secondItem="OZY-Tf-wPb" secondAttribute="leading" id="u0C-Qw-ANh"/>
+                                <constraint firstItem="JsL-Il-o0H" firstAttribute="top" secondItem="zQG-17-tWN" secondAttribute="bottom" id="vRk-Bu-Bxo"/>
+                                <constraint firstAttribute="bottom" secondItem="JsL-Il-o0H" secondAttribute="bottom" id="xys-Dj-80N"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyC-aL-6g7" userLabel="BackView">
+                            <rect key="frame" x="0.0" y="0.0" width="378" height="231"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="OZY-Tf-wPb" secondAttribute="trailing" id="4Ke-6g-Z8h"/>
+                        <constraint firstItem="OZY-Tf-wPb" firstAttribute="top" secondItem="rud-qg-m2w" secondAttribute="top" id="Kej-n7-PYE"/>
+                        <constraint firstItem="OZY-Tf-wPb" firstAttribute="leading" secondItem="rud-qg-m2w" secondAttribute="leading" id="L71-NK-J8w"/>
+                        <constraint firstItem="kyC-aL-6g7" firstAttribute="top" secondItem="rud-qg-m2w" secondAttribute="top" id="MLl-Bk-K5M"/>
+                        <constraint firstAttribute="bottom" secondItem="kyC-aL-6g7" secondAttribute="bottom" id="YV5-aI-DkF"/>
+                        <constraint firstItem="kyC-aL-6g7" firstAttribute="leading" secondItem="rud-qg-m2w" secondAttribute="leading" id="efD-GY-1sV"/>
+                        <constraint firstAttribute="bottom" secondItem="OZY-Tf-wPb" secondAttribute="bottom" id="pZ2-RR-aJT"/>
+                        <constraint firstAttribute="trailing" secondItem="kyC-aL-6g7" secondAttribute="trailing" id="pd0-Ap-hWA"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="J3J-GQ-E3i">
+                    <rect key="frame" x="0.0" y="0.0" width="378" height="231"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZx-ui-epq">
                             <rect key="frame" x="0.0" y="0.0" width="378" height="44"/>
                             <items>
-                                <navigationItem title="Title" id="8ES-8E-0we">
-                                    <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vMt-bt-3Fe"/>
-                                    <barButtonItem key="rightBarButtonItem" systemItem="done" id="Z6E-ww-TXc"/>
+                                <navigationItem title="Title" id="duK-Km-pze">
+                                    <barButtonItem key="leftBarButtonItem" systemItem="done" id="41J-wp-X7v"/>
+                                    <barButtonItem key="rightBarButtonItem" systemItem="add" id="a3b-Ak-m6J"/>
                                 </navigationItem>
                             </items>
                         </navigationBar>
-                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JsL-Il-o0H">
+                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sac-VS-8aa">
                             <rect key="frame" x="0.0" y="44" width="378" height="187"/>
                         </pickerView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="JsL-Il-o0H" secondAttribute="trailing" id="Cxa-Yy-BdQ"/>
-                        <constraint firstAttribute="trailing" secondItem="zQG-17-tWN" secondAttribute="trailing" id="NFV-qn-KHr"/>
-                        <constraint firstItem="JsL-Il-o0H" firstAttribute="top" secondItem="zQG-17-tWN" secondAttribute="bottom" id="NH1-c9-Zlf"/>
-                        <constraint firstItem="zQG-17-tWN" firstAttribute="leading" secondItem="rud-qg-m2w" secondAttribute="leading" id="bOT-Lp-vGj"/>
-                        <constraint firstAttribute="bottom" secondItem="JsL-Il-o0H" secondAttribute="bottom" id="cPg-F6-lX4"/>
-                        <constraint firstItem="JsL-Il-o0H" firstAttribute="leading" secondItem="rud-qg-m2w" secondAttribute="leading" id="kAf-38-HFM"/>
-                        <constraint firstItem="zQG-17-tWN" firstAttribute="top" secondItem="rud-qg-m2w" secondAttribute="top" id="m9E-Ct-peW"/>
+                        <constraint firstAttribute="bottom" secondItem="Sac-VS-8aa" secondAttribute="bottom" id="3G5-Vk-Hth"/>
+                        <constraint firstItem="Sac-VS-8aa" firstAttribute="top" secondItem="iZx-ui-epq" secondAttribute="bottom" id="6yv-aE-Uyf"/>
+                        <constraint firstItem="Sac-VS-8aa" firstAttribute="leading" secondItem="J3J-GQ-E3i" secondAttribute="leading" id="Api-cV-nBH"/>
+                        <constraint firstItem="iZx-ui-epq" firstAttribute="top" secondItem="J3J-GQ-E3i" secondAttribute="top" id="IgK-1E-wAm"/>
+                        <constraint firstAttribute="trailing" secondItem="Sac-VS-8aa" secondAttribute="trailing" id="OgX-pU-YEw"/>
+                        <constraint firstItem="iZx-ui-epq" firstAttribute="leading" secondItem="J3J-GQ-E3i" secondAttribute="leading" id="o5Z-tA-qxL"/>
+                        <constraint firstAttribute="trailing" secondItem="iZx-ui-epq" secondAttribute="trailing" id="ze1-AZ-vEP"/>
                     </constraints>
                 </view>
             </objects>
