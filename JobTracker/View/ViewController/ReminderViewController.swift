@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReminderViewController: UIViewController {
+class ReminderViewController: UIViewController, ViewModelSupportedViewControllers {
 
     // MARK: - Outlets
     @IBOutlet weak var txtMessage: UITextField!

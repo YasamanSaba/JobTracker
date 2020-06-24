@@ -10,6 +10,12 @@
 		700F52F9249DE262000EBCD3 /* TagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F52F8249DE262000EBCD3 /* TagTests.swift */; };
 		700F52FB249DF4B2000EBCD3 /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F52FA249DF4B2000EBCD3 /* TagViewModel.swift */; };
 		700F52FD249DF749000EBCD3 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F52FC249DF749000EBCD3 /* TagTableViewCell.swift */; };
+		7043B02924A0A40A00F760AA /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043B02824A0A40A00F760AA /* CoordinatorType.swift */; };
+		7043B02B24A0A42F00F760AA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043B02A24A0A42F00F760AA /* AppCoordinator.swift */; };
+		7043B02D24A0CEE500F760AA /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043B02C24A0CEE500F760AA /* Scene.swift */; };
+		7043B02F24A0D22000F760AA /* Scene+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043B02E24A0D22000F760AA /* Scene+ViewController.swift */; };
+		7043B03224A0D3CF00F760AA /* ViewModelSupportedViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043B03124A0D3CF00F760AA /* ViewModelSupportedViewControllers.swift */; };
+		7043B03424A0E4D500F760AA /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043B03324A0E4D500F760AA /* Tab.swift */; };
 		70483E77249651DC00612288 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E76249651DC00612288 /* NoteViewController.swift */; };
 		70483E7A249761D200612288 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E79249761D200612288 /* UITextViewExtension.swift */; };
 		70483E7C249795B100612288 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E7B249795B100612288 /* ChecklistViewController.swift */; };
@@ -23,6 +29,12 @@
 		7060EFF82494A47500A229B8 /* Tag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7060EFF62494A47500A229B8 /* Tag.storyboard */; };
 		7060EFFA2494E6CB00A229B8 /* ApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060EFF92494E6CB00A229B8 /* ApplyViewController.swift */; };
 		7060EFFD2496178300A229B8 /* Reminder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7060EFFB2496178300A229B8 /* Reminder.storyboard */; };
+		709CDEE024A1E62200A9DAE0 /* Note.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 709CDEDF24A1E62200A9DAE0 /* Note.storyboard */; };
+		709CDEE224A1E66400A9DAE0 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709CDEE124A1E66400A9DAE0 /* NotesViewController.swift */; };
+		709CDEE424A1E7C500A9DAE0 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709CDEE324A1E7C500A9DAE0 /* NotesViewModel.swift */; };
+		709CDEE624A20C2D00A9DAE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 709CDEE524A20C2D00A9DAE0 /* Main.storyboard */; };
+		709CDEE824A20DB000A9DAE0 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709CDEE724A20DB000A9DAE0 /* NoteViewModel.swift */; };
+		709CDEEB24A2113E00A9DAE0 /* CoordinatorSupportedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709CDEEA24A2113E00A9DAE0 /* CoordinatorSupportedViewModel.swift */; };
 		70ADFF9824989F7400345379 /* Reminderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFF9724989F7400345379 /* Reminderable.swift */; };
 		70ADFF9A2498A08F00345379 /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFF992498A08F00345379 /* ReminderViewModel.swift */; };
 		70ADFF9C2498A61800345379 /* ReminderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFF9B2498A61800345379 /* ReminderService.swift */; };
@@ -37,7 +49,6 @@
 		70EA24522490AE55007FD797 /* Apply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70EA24502490AE55007FD797 /* Apply.storyboard */; };
 		F2035575248BBBC600A9F9F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2035574248BBBC600A9F9F8 /* AppDelegate.swift */; };
 		F2035577248BBBC600A9F9F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2035576248BBBC600A9F9F8 /* SceneDelegate.swift */; };
-		F203557C248BBBC600A9F9F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F203557A248BBBC600A9F9F8 /* Main.storyboard */; };
 		F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F203557D248BBBC600A9F9F8 /* JobTracker.xcdatamodeld */; };
 		F2035581248BBBD000A9F9F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2035580248BBBD000A9F9F8 /* Assets.xcassets */; };
 		F2035584248BBBD000A9F9F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2035582248BBBD000A9F9F8 /* LaunchScreen.storyboard */; };
@@ -76,6 +87,12 @@
 		700F52F8249DE262000EBCD3 /* TagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTests.swift; sourceTree = "<group>"; };
 		700F52FA249DF4B2000EBCD3 /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 		700F52FC249DF749000EBCD3 /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
+		7043B02824A0A40A00F760AA /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
+		7043B02A24A0A42F00F760AA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		7043B02C24A0CEE500F760AA /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		7043B02E24A0D22000F760AA /* Scene+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scene+ViewController.swift"; sourceTree = "<group>"; };
+		7043B03124A0D3CF00F760AA /* ViewModelSupportedViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelSupportedViewControllers.swift; sourceTree = "<group>"; };
+		7043B03324A0E4D500F760AA /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		70483E76249651DC00612288 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		70483E79249761D200612288 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		70483E7B249795B100612288 /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +105,12 @@
 		7060EFF72494A47500A229B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/JobTracker/View/StoryBoard/Base.lproj/Tag.storyboard; sourceTree = "<group>"; };
 		7060EFF92494E6CB00A229B8 /* ApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyViewController.swift; sourceTree = "<group>"; };
 		7060EFFC2496178300A229B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/JobTracker/View/StoryBoard/Base.lproj/Reminder.storyboard; sourceTree = "<group>"; };
+		709CDEDF24A1E62200A9DAE0 /* Note.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Note.storyboard; sourceTree = "<group>"; };
+		709CDEE124A1E66400A9DAE0 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		709CDEE324A1E7C500A9DAE0 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
+		709CDEE524A20C2D00A9DAE0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		709CDEE724A20DB000A9DAE0 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
+		709CDEEA24A2113E00A9DAE0 /* CoordinatorSupportedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorSupportedViewModel.swift; sourceTree = "<group>"; };
 		70ADFF9724989F7400345379 /* Reminderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminderable.swift; sourceTree = "<group>"; };
 		70ADFF992498A08F00345379 /* ReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModel.swift; sourceTree = "<group>"; };
 		70ADFF9B2498A61800345379 /* ReminderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderService.swift; sourceTree = "<group>"; };
@@ -103,7 +126,6 @@
 		F2035571248BBBC600A9F9F8 /* JobTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2035574248BBBC600A9F9F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2035576248BBBC600A9F9F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F203557B248BBBC600A9F9F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F203557E248BBBC600A9F9F8 /* JobTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JobTracker.xcdatamodel; sourceTree = "<group>"; };
 		F2035580248BBBD000A9F9F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2035583248BBBD000A9F9F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -153,6 +175,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7043B02724A0A3E500F760AA /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7043B02824A0A40A00F760AA /* CoordinatorType.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7043B03024A0D36600F760AA /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7043B03124A0D3CF00F760AA /* ViewModelSupportedViewControllers.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		70483E78249761A200612288 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +198,14 @@
 				70BE562D249F47AA0039D123 /* UITextFieldExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		709CDEE924A2111B00A9DAE0 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				709CDEEA24A2113E00A9DAE0 /* CoordinatorSupportedViewModel.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		70ADFF9624989F3D00345379 /* Protocol */ = {
@@ -214,9 +260,12 @@
 		70AEFEE2248E4CF20063C352 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				709CDEE924A2111B00A9DAE0 /* Protocol */,
 				70ADFF992498A08F00345379 /* ReminderViewModel.swift */,
 				700F52FA249DF4B2000EBCD3 /* TagViewModel.swift */,
 				F2EAA8B52498EBAC00876FA9 /* AppliesViewModel.swift */,
+				709CDEE324A1E7C500A9DAE0 /* NotesViewModel.swift */,
+				709CDEE724A20DB000A9DAE0 /* NoteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -224,6 +273,11 @@
 		70AEFEE3248E4CFA0063C352 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				7043B02724A0A3E500F760AA /* Protocol */,
+				7043B02A24A0A42F00F760AA /* AppCoordinator.swift */,
+				7043B02C24A0CEE500F760AA /* Scene.swift */,
+				7043B02E24A0D22000F760AA /* Scene+ViewController.swift */,
+				7043B03324A0E4D500F760AA /* Tab.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -231,6 +285,7 @@
 		70AEFEE4248E4D0F0063C352 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7043B03024A0D36600F760AA /* Protocol */,
 				70483E78249761A200612288 /* Extensions */,
 				70EA244D2490A8AF007FD797 /* Cell */,
 				70AEFEE6248E4D2A0063C352 /* ViewController */,
@@ -242,11 +297,12 @@
 		70AEFEE5248E4D190063C352 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
+				709CDEDF24A1E62200A9DAE0 /* Note.storyboard */,
 				7060EFFB2496178300A229B8 /* Reminder.storyboard */,
 				7060EFF62494A47500A229B8 /* Tag.storyboard */,
 				70EA24502490AE55007FD797 /* Apply.storyboard */,
-				F203557A248BBBC600A9F9F8 /* Main.storyboard */,
 				F2035582248BBBD000A9F9F8 /* LaunchScreen.storyboard */,
+				709CDEE524A20C2D00A9DAE0 /* Main.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -261,6 +317,7 @@
 				70483E76249651DC00612288 /* NoteViewController.swift */,
 				70483E7B249795B100612288 /* ChecklistViewController.swift */,
 				70ADFFA02498B93600345379 /* ReminderViewController.swift */,
+				709CDEE124A1E66400A9DAE0 /* NotesViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -468,12 +525,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				709CDEE624A20C2D00A9DAE0 /* Main.storyboard in Resources */,
+				709CDEE024A1E62200A9DAE0 /* Note.storyboard in Resources */,
 				F2035584248BBBD000A9F9F8 /* LaunchScreen.storyboard in Resources */,
 				70EA24522490AE55007FD797 /* Apply.storyboard in Resources */,
 				7060EFFD2496178300A229B8 /* Reminder.storyboard in Resources */,
 				F2035581248BBBD000A9F9F8 /* Assets.xcassets in Resources */,
 				7060EFF82494A47500A229B8 /* Tag.storyboard in Resources */,
-				F203557C248BBBC600A9F9F8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,25 +558,33 @@
 			files = (
 				7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */,
 				70ADFF9C2498A61800345379 /* ReminderService.swift in Sources */,
+				7043B03224A0D3CF00F760AA /* ViewModelSupportedViewControllers.swift in Sources */,
 				70483E7C249795B100612288 /* ChecklistViewController.swift in Sources */,
 				7060EFF32491288300A229B8 /* Apply+CoreDataClass.swift in Sources */,
+				7043B02B24A0A42F00F760AA /* AppCoordinator.swift in Sources */,
 				F23F3054249DF35A00A92C49 /* ApplyService.swift in Sources */,
 				F2EAA8B42498E8BB00876FA9 /* CountryService.swift in Sources */,
 				F2035575248BBBC600A9F9F8 /* AppDelegate.swift in Sources */,
 				F2F9BE9224977ACD005C6C20 /* FlagCollectinViewCell.swift in Sources */,
 				7060EFFA2494E6CB00A229B8 /* ApplyViewController.swift in Sources */,
 				70483E7E249797C700612288 /* ChecklistItemTableViewCell.swift in Sources */,
+				709CDEE424A1E7C500A9DAE0 /* NotesViewModel.swift in Sources */,
 				70ADFFA12498B93600345379 /* ReminderViewController.swift in Sources */,
+				7043B03424A0E4D500F760AA /* Tab.swift in Sources */,
 				70483E77249651DC00612288 /* NoteViewController.swift in Sources */,
 				70483E80249799D600612288 /* InterviewTableViewCell.swift in Sources */,
 				70ADFF9A2498A08F00345379 /* ReminderViewModel.swift in Sources */,
 				F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */,
 				F2EAA8B82498F43E00876FA9 /* DataInitializer.swift in Sources */,
 				70ADFFA42498BD8800345379 /* ReminderServiceType.swift in Sources */,
+				7043B02924A0A40A00F760AA /* CoordinatorType.swift in Sources */,
 				70BE562E249F47AA0039D123 /* UITextFieldExtension.swift in Sources */,
 				70ADFFAB2498F9D400345379 /* TagService.swift in Sources */,
+				709CDEE824A20DB000A9DAE0 /* NoteViewModel.swift in Sources */,
+				7043B02F24A0D22000F760AA /* Scene+ViewController.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
+				7043B02D24A0CEE500F760AA /* Scene.swift in Sources */,
 				F24C3D67249903B0004C16B9 /* CountryServiceType.swift in Sources */,
 				F2B147B024A0E53D00BD5A22 /* BadgeSupplementaryView.swift in Sources */,
 				70483E82249799E700612288 /* TaskTableViewCell.swift in Sources */,
@@ -529,8 +595,10 @@
 				7060EFF52494A32900A229B8 /* TagViewController.swift in Sources */,
 				70483E7A249761D200612288 /* UITextViewExtension.swift in Sources */,
 				700F52FB249DF4B2000EBCD3 /* TagViewModel.swift in Sources */,
+				709CDEEB24A2113E00A9DAE0 /* CoordinatorSupportedViewModel.swift in Sources */,
 				700F52FD249DF749000EBCD3 /* TagTableViewCell.swift in Sources */,
 				70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */,
+				709CDEE224A1E66400A9DAE0 /* NotesViewController.swift in Sources */,
 				70ADFFA92498EC1B00345379 /* TagServiceType.swift in Sources */,
 				F23F3052249DF28B00A92C49 /* ApplyServiceType.swift in Sources */,
 				70EA244F2490A8D1007FD797 /* ApplyTableViewCell.swift in Sources */,
@@ -593,14 +661,6 @@
 				70EA24512490AE55007FD797 /* Base */,
 			);
 			name = Apply.storyboard;
-			sourceTree = "<group>";
-		};
-		F203557A248BBBC600A9F9F8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F203557B248BBBC600A9F9F8 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		F2035582248BBBD000A9F9F8 /* LaunchScreen.storyboard */ = {

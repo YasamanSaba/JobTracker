@@ -9,7 +9,7 @@
         <!--Reminder View Controller-->
         <scene sceneID="Oqz-Y0-wIQ">
             <objects>
-                <viewController id="2CM-vX-DpW" customClass="ReminderViewController" customModule="JobTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReminderViewController" id="2CM-vX-DpW" customClass="ReminderViewController" customModule="JobTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dze-BZ-u0u"/>
                         <viewControllerLayoutGuide type="bottom" id="sai-90-InX"/>
