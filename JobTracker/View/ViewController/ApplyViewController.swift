@@ -11,25 +11,17 @@ import UIKit
 class ApplyViewController: UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var vwStateHeightConst: NSLayoutConstraint!
     @IBOutlet weak var lblPassedTime: UILabel!
     @IBOutlet weak var lblLocation: UILabel!
     @IBOutlet weak var btnCompanyName: UIButton!
     @IBOutlet weak var btnState: UIButton!
     @IBOutlet weak var btnResume: UIButton!
-    @IBOutlet weak var txtTags: UITextView!
-    @IBOutlet weak var pkrState: UIPickerView!
-    @IBOutlet weak var vwState: UIView!
+    
     
     // MARK: - Actions
     @IBAction func btnResumeTap(_ sender: Any) {
     }
-    @IBAction func btnStateChangeDone(_ sender: Any) {
-        UIView.animate(withDuration: 1.0){
-                   self.vwStateHeightConst.constant = 0
-                   self.vwState.isHidden = true
-               }
-    }
+    
     @IBAction func btnCompany(_ sender: Any) {
     }
     @IBAction func btnAddInterview(_ sender: Any) {
@@ -38,17 +30,11 @@ class ApplyViewController: UIViewController {
     }
     
     @IBAction func btnStateChange(_ sender: Any) {
-        UIView.animate(withDuration: 1.0){
-            self.vwStateHeightConst.constant = 88
-            self.vwState.isHidden = false
-        }
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.vwStateHeightConst.constant = 0
-        self.vwState.isHidden = true
     }
 }
 

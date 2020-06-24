@@ -19,7 +19,7 @@ class ApplyTableViewCell: UITableViewCell {
     @IBOutlet weak var lblNumberOfTasks: UILabel!
     @IBOutlet weak var lblCheckListStatus: UILabel!
     @IBOutlet weak var lblApplyStatus: UILabel!
-    
+    @IBOutlet weak var imgIsFavorite: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -67,5 +67,6 @@ class ApplyTableViewCell: UITableViewCell {
         case .none:
             print("Unexpected status")
         }
+        imgIsFavorite.isHidden = !(apply.company?.isFavorite ?? false)
     }
 }

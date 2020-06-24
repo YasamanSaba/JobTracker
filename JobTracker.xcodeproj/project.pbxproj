@@ -59,6 +59,7 @@
 		F23F3052249DF28B00A92C49 /* ApplyServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23F3051249DF28B00A92C49 /* ApplyServiceType.swift */; };
 		F23F3054249DF35A00A92C49 /* ApplyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23F3053249DF35A00A92C49 /* ApplyService.swift */; };
 		F24C3D67249903B0004C16B9 /* CountryServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24C3D66249903B0004C16B9 /* CountryServiceType.swift */; };
+		F2B147B024A0E53D00BD5A22 /* BadgeSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B147AF24A0E53D00BD5A22 /* BadgeSupplementaryView.swift */; };
 		F2B6F2072490F6180088B0F7 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B6F2062490F6180088B0F7 /* CoreDataTests.swift */; };
 		F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B6F2082490F88F0088B0F7 /* InMemoryStore.swift */; };
 		F2EAA8B42498E8BB00876FA9 /* CountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EAA8B32498E8BB00876FA9 /* CountryService.swift */; };
@@ -143,6 +144,7 @@
 		F23F3051249DF28B00A92C49 /* ApplyServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyServiceType.swift; sourceTree = "<group>"; };
 		F23F3053249DF35A00A92C49 /* ApplyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyService.swift; sourceTree = "<group>"; };
 		F24C3D66249903B0004C16B9 /* CountryServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryServiceType.swift; sourceTree = "<group>"; };
+		F2B147AF24A0E53D00BD5A22 /* BadgeSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeSupplementaryView.swift; sourceTree = "<group>"; };
 		F2B6F2062490F6180088B0F7 /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		F2B6F2082490F88F0088B0F7 /* InMemoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryStore.swift; sourceTree = "<group>"; };
 		F2EAA8B12498DCE900876FA9 /* CountryServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryServiceType.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				70483E8324979ACF00612288 /* ReminderTableViewCell.swift */,
 				F2F9BE9124977ACD005C6C20 /* FlagCollectinViewCell.swift */,
 				700F52FC249DF749000EBCD3 /* TagTableViewCell.swift */,
+				F2B147AF24A0E53D00BD5A22 /* BadgeSupplementaryView.swift */,
 				7009B1C124A33FD100B6437D /* TagCollectionViewCell.swift */,
 			);
 			path = Cell;
@@ -590,6 +593,7 @@
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
 				7043B02D24A0CEE500F760AA /* Scene.swift in Sources */,
 				F24C3D67249903B0004C16B9 /* CountryServiceType.swift in Sources */,
+				F2B147B024A0E53D00BD5A22 /* BadgeSupplementaryView.swift in Sources */,
 				70483E82249799E700612288 /* TaskTableViewCell.swift in Sources */,
 				F2035577248BBBC600A9F9F8 /* SceneDelegate.swift in Sources */,
 				70483E8424979ACF00612288 /* ReminderTableViewCell.swift in Sources */,

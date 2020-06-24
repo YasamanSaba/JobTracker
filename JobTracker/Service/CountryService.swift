@@ -6,7 +6,7 @@
 //  Copyright © 2020 Dream Catcher. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 struct CountryService: CountryServiceType {
@@ -17,13 +17,11 @@ struct CountryService: CountryServiceType {
         self.context = context
     }
     
-    func fetchAll() throws -> [Country] {
+    func fetchAll() -> NSFetchedResultsController<Country> {
         let fetchRequest: NSFetchRequest<Country> = Country.fetchRequest()
-        do {
-            let countries = try context.fetch(fetchRequest)
-            return countries
-        } catch {
-            throw CountryServiceError.fetchError
-        }
+        let sort = NSSortDescriptor(key: #keyPath(Country.name), ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultsController
     }
 }
