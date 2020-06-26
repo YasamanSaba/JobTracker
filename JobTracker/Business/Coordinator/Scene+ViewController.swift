@@ -56,6 +56,13 @@ extension Scene {
             //viewController.viewModel = viewModel
 
             return viewController
+        case .apply:
+            let storyboard = UIStoryboard(name: "ApplyDetail", bundle: nil)
+            let viewController = storyboard.instantiateViewController(identifier: ApplyViewController.reuseIdentifier) as ApplyViewController
+            let applyService = ApplyService(context: context)
+            let viewModel = ApplyViewModel(service: applyService)
+            viewController.viewModel = viewModel
+            return viewController
         }
     }
 }

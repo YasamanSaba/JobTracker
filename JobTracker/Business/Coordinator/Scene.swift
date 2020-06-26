@@ -10,6 +10,7 @@ import Foundation
 
 enum Scene {
     case applies
+    case apply
     case notes
     case note
     case tag

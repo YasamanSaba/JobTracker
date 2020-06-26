@@ -15,6 +15,28 @@ struct ApplyService: ApplyServiceType {
     init(context: NSManagedObjectContext) {
         self.context = context
     }
+    func getAllState() -> [String] {
+        var result: [String] = []
+        Status.allCases.forEach { state in
+            switch state {
+            case .ceo:
+                result.append("CEO")
+            case .challenge:
+                result.append("Challenge")
+            case .contract:
+                result.append("Contract")
+            case .hr:
+                result.append("HR")
+            case .inSite:
+                result.append("inSite")
+            case .rejected:
+                result.append("Rejected")
+            case .tech:
+                result.append("Technical")
+            }
+        }
+        return result
+    }
     
     func fetchAll() -> NSFetchedResultsController<Apply> {
         let fetchRequest: NSFetchRequest<Apply> = Apply.fetchRequest()
