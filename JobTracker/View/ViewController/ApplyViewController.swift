@@ -29,13 +29,18 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     }
     @IBAction func btnAddTask(_ sender: Any) {
     }
-    @IBAction func btnStateChange(_ sender: PickerButton) {
-        sender.becomeFirstResponder()
+    fileprivate func activateBlur() {
         blurEffect = UIBlurEffect(style: .light)
         blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.alpha = 0.95
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(blurEffectView)
+    }
+    
+    @IBAction func btnStateChange(_ sender: PickerButton) {
+        sender.becomeFirstResponder()
+        activateBlur()
     }
     // MARK: - Life Cycle -
     override func viewDidLoad() {
@@ -64,9 +69,13 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
         statePickerView.dataSource = self
         statePickerView.delegate = self
     }
+    fileprivate func deactiveBlur() {
+        self.blurEffectView.removeFromSuperview()
+    }
+    
     @objc func cancelClick() {
         self.btnState.resignFirstResponder()
-        self.blurEffectView.removeFromSuperview()
+        deactiveBlur()
     }
 }
 // MARK: - Extensions -
