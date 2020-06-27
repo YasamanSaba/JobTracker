@@ -142,6 +142,7 @@ extension AppliesViewController: UICollectionViewDelegate {
 }
 extension AppliesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.showApplyDetail(for: indexPath, sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

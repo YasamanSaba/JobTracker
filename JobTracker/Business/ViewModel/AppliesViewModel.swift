@@ -21,7 +21,7 @@ class AppliesViewModel: NSObject {
     var countryDataSource: UICollectionViewDiffableDataSource<Section, Country>!
     var applyDataSource: UITableViewDiffableDataSource<Section, Apply>!
     var selectedCountryName = "World"
-    
+    let appCoordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
     var countryResultControllerDelegate: CountryResultControllerDelegate!
     var applyResultControllerDelegate: ApplyResultControllerDelegate!
     // MARK: - Initialization -
@@ -137,7 +137,9 @@ class AppliesViewModel: NSObject {
             applyDataSource.apply(snapShot)
         }
     }
-    
+    func showApplyDetail(for indexPath: IndexPath, sender: UIViewController) {
+        appCoordinator?.push(scene: .apply, sender: sender)
+    }
     
     // MARK: - ApplyResultControllerDelegate
     class ApplyResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {

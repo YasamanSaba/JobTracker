@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-enum Status: Int16 {
+enum Status: Int16, CaseIterable {
     case hr = 1
     case tech = 2
     case challenge = 3
@@ -19,7 +19,6 @@ enum Status: Int16 {
     case rejected = 6
     case contract = 7
 }
-
 
 @objc(Apply)
 public class Apply: NSManagedObject {
