@@ -16,6 +16,10 @@ class NewApplyViewController: UIViewController {
     
     @IBOutlet weak var pkvResume: UIPickerView!
     @IBOutlet weak var pkvStatus: UIPickerView!
+    @IBOutlet weak var pkvCountry: UIPickerView!
+    @IBOutlet weak var pkvCity: UIPickerView!
+    @IBOutlet weak var pkvDate: UIDatePicker!
+    
     @IBOutlet weak var txtCompanyName: UITextField!
     @IBOutlet weak var txtJobURL: UITextField!
     @IBOutlet weak var txtApplyDate: UITextField!
@@ -25,44 +29,63 @@ class NewApplyViewController: UIViewController {
     @IBOutlet weak var vwDatePicker: UIView!
     @IBOutlet weak var vwCountryPicker: UIView!
     @IBOutlet weak var vwCityPicker: UIView!
+    @IBOutlet weak var imgHeart: UIImageView!
     // MARK: - Actions
     @IBAction func btnSave(_ sender: Any) {
         
     }
-
+    
+    @IBAction func btnDateViewCancel(_ sender: Any) {
+        txtApplyDate.resignFirstResponder()
+    }
+    @IBAction func btnDateViewDone(_ sender: Any) {
+        
+    }
+    @IBAction func btnCountryViewCancel(_ sender: Any) {
+        txtCountry.resignFirstResponder()
+    }
+    @IBAction func btnCountryViewDone(_ sender: Any) {
+        
+    }
+    @IBAction func btnCountryViewAdd(_ sender: Any) {
+        
+    }
+    @IBAction func btnCityViewCancel(_ sender: Any) {
+        txtCity.resignFirstResponder()
+    }
+    @IBAction func btnCityViewDone(_ sender: Any) {
+        
+    }
+    @IBAction func btnCityViewAdd(_ sender: Any) {
+        
+    }
+    
+    @IBAction func tapOnHeart(_ sender: Any) {
+        heartState.toggle()
+    }
     
     // MARK: - Properties
-    
+    var heartState: Bool = false {
+        didSet {
+            if heartState {
+                imgHeart.image = UIImage(systemName: "heart.fill")
+            } else {
+                imgHeart.image = UIImage(systemName: "heart")
+            }
+        }
+    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         txtApplyDate.inputView = vwDatePicker
         txtCountry.inputView = vwCountryPicker
         txtCity.inputView = vwCityPicker
+        self.txtSalary.addDoneButton(title: "Done", target: self, selector: #selector(tapSalaryDone(sender:)))
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        /*
-        if txtJobURL.isFirstResponder {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-        }
- */
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-        /*
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
- */
+    @objc func tapSalaryDone(sender: Any?) {
+        txtSalary.resignFirstResponder()
     }
 }
 
