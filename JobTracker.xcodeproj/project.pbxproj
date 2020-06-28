@@ -30,6 +30,7 @@
 		70483E80249799D600612288 /* InterviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E7F249799D600612288 /* InterviewTableViewCell.swift */; };
 		70483E82249799E700612288 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E81249799E700612288 /* TaskTableViewCell.swift */; };
 		70483E8424979ACF00612288 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E8324979ACF00612288 /* ReminderTableViewCell.swift */; };
+		704866D324A777EF00FA80B5 /* NewApplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704866D224A777EF00FA80B5 /* NewApplyViewModel.swift */; };
 		7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */; };
 		7060EFF32491288300A229B8 /* Apply+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219F4F7248E797100B7A3D5 /* Apply+CoreDataClass.swift */; };
 		7060EFF52494A32900A229B8 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060EFF42494A32900A229B8 /* TagViewController.swift */; };
@@ -116,6 +117,7 @@
 		70483E7F249799D600612288 /* InterviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewTableViewCell.swift; sourceTree = "<group>"; };
 		70483E81249799E700612288 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		70483E8324979ACF00612288 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
+		704866D224A777EF00FA80B5 /* NewApplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewApplyViewModel.swift; sourceTree = "<group>"; };
 		7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewApplyViewController.swift; sourceTree = "<group>"; };
 		7060EFF42494A32900A229B8 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		7060EFF72494A47500A229B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/JobTracker/View/StoryBoard/Base.lproj/Tag.storyboard; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				709CDEE324A1E7C500A9DAE0 /* NotesViewModel.swift */,
 				709CDEE724A20DB000A9DAE0 /* NoteViewModel.swift */,
 				F24A0DC824A470F600D38217 /* ApplyViewModel.swift */,
+				704866D224A777EF00FA80B5 /* NewApplyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -615,6 +618,7 @@
 				70ADFFAB2498F9D400345379 /* TagService.swift in Sources */,
 				709CDEE824A20DB000A9DAE0 /* NoteViewModel.swift in Sources */,
 				7043B02F24A0D22000F760AA /* Scene+ViewController.swift in Sources */,
+				704866D324A777EF00FA80B5 /* NewApplyViewModel.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
 				7009B1C224A33FD100B6437D /* TagCollectionViewCell.swift in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,

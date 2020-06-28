@@ -8,8 +8,10 @@
 
 import UIKit
 
-class NewApplyViewController: UIViewController {
+class NewApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     
+    // MARK: - ViewModel
+    var viewModel: NewApplyViewModel!
     
     
     // MARK: - Outlets
@@ -74,6 +76,28 @@ class NewApplyViewController: UIViewController {
             }
         }
     }
+    var blurEffect: UIBlurEffect?
+    var blurEffectView: UIVisualEffectView?
+        
+    // MARK: - Functions
+    fileprivate func activateBlur() {
+        blurEffect = UIBlurEffect(style: .light)
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView?.alpha = 0.95
+        blurEffectView?.frame = view.bounds
+        blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        if let blurEffectView = blurEffectView {
+            self.view.addSubview(blurEffectView)
+        }
+    }
+    
+    fileprivate func deactiveBlur() {
+        self.blurEffectView?.removeFromSuperview()
+    }
+    
+    @objc func tapSalaryDone(sender: Any?) {
+        txtSalary.resignFirstResponder()
+    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,20 +108,18 @@ class NewApplyViewController: UIViewController {
         self.txtSalary.addDoneButton(title: "Done", target: self, selector: #selector(tapSalaryDone(sender:)))
     }
     
-    @objc func tapSalaryDone(sender: Any?) {
-        txtSalary.resignFirstResponder()
-    }
+    
 }
 
 
 
 extension NewApplyViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     // MARK: - UIPickerViewDataSource
-     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-         1
-     }
-     
-     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView.accessibilityIdentifier {
         case "Country":
             return 10
@@ -110,7 +132,7 @@ extension NewApplyViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         default:
             return 22
         }
-     }
+    }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView.accessibilityIdentifier {
@@ -133,5 +155,17 @@ extension NewApplyViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.accessibilityIdentifier == "ApplyDate" ||
+            textField.accessibilityIdentifier == "Country" ||
+            textField.accessibilityIdentifier == "City" ||
+            textField.accessibilityIdentifier == "Salary" {
+            activateBlur()
+        }
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        deactiveBlur()
     }
 }
