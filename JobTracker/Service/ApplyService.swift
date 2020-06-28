@@ -15,34 +15,29 @@ struct ApplyService: ApplyServiceType {
     init(context: NSManagedObjectContext) {
         self.context = context
     }
-    func getAllState() -> [String] {
-        var result: [String] = []
-        Status.allCases.forEach { state in
-            switch state {
-            case .ceo:
-                result.append("CEO")
-            case .challenge:
-                result.append("Challenge")
-            case .contract:
-                result.append("Contract")
-            case .hr:
-                result.append("HR")
-            case .inSite:
-                result.append("inSite")
-            case .rejected:
-                result.append("Rejected")
-            case .tech:
-                result.append("Technical")
-            }
-        }
-        return result
+    func getAllState() -> [Status] {
+        Status.allCases
     }
-    
+    func getAllResumeVersion() -> NSFetchedResultsController<Resume> {
+        let fetchRequest: NSFetchRequest<Resume> = Resume.fetchRequest()
+        let sort = NSSortDescriptor(key: #keyPath(Resume.version), ascending: false)
+        fetchRequest.sortDescriptors = [sort]
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultsController
+    }
     func fetchAll() -> NSFetchedResultsController<Apply> {
         let fetchRequest: NSFetchRequest<Apply> = Apply.fetchRequest()
         let sort = NSSortDescriptor(key: #keyPath(Apply.date), ascending: true)
         fetchRequest.sortDescriptors = [sort]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultsController
+    }
+    func save(apply: Apply, state: Status) throws {
+        apply.statusEnum = state
+        do {
+            try context.save()
+        } catch {
+            throw ApplyServiceError.saveError
+        }
     }
 }

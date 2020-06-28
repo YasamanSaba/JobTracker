@@ -28,12 +28,12 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
         company.title = "StarBox"
         company.isFavorite = false
         let resume = Resume(context: context)
-        resume.version = "2.3"
+        resume.version = "1.4"
         let apply = Apply(context: context)
         apply.date = Date()
-        apply.status = 1
+        apply.statusEnum = .hr
         apply.salaryExpectation = 54000
-        apply.jobLink = URL(string: "https://www.google.com/?client=safari")
+        apply.jobLink = URL(string: "https://www.linkedin.com")
         city.addToApply(apply)
         resume.addToApply(apply)
         company.addToApply(apply)
@@ -52,9 +52,9 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
         resume2.version = "2.3"
         let apply2 = Apply(context: context)
         apply2.date = Date()
-        apply2.status = 1
+        apply2.statusEnum = .contract
         apply2.salaryExpectation = 52000
-        apply2.jobLink = URL(string: "https://www.google.com/?client=safari")
+        apply2.jobLink = URL(string: "https://www.mofidonline.com")
         barcelona.addToApply(apply2)
         resume2.addToApply(apply2)
         company2.addToApply(apply2)
@@ -70,12 +70,12 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
         company3.title = "Polo"
         company3.isFavorite = true
         let resume3 = Resume(context: context)
-        resume3.version = "2.3"
+        resume3.version = "5.8"
         let apply3 = Apply(context: context)
         apply3.date = Date()
-        apply3.status = 1
+        apply3.statusEnum = .rejected
         apply3.salaryExpectation = 52000
-        apply3.jobLink = URL(string: "https://www.google.com/?client=safari")
+        apply3.jobLink = URL(string: "https://www.yahoo.com")
         london.addToApply(apply3)
         resume3.addToApply(apply3)
         company3.addToApply(apply3)

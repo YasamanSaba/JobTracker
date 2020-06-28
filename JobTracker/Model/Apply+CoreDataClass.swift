@@ -10,27 +10,27 @@
 import Foundation
 import CoreData
 
-enum Status: Int16, CaseIterable {
-    case hr = 1
-    case tech = 2
-    case challenge = 3
-    case inSite = 4
-    case ceo = 5
-    case rejected = 6
-    case contract = 7
+enum Status: String, CaseIterable {
+    case hr = "HR"
+    case tech = "Technical"
+    case challenge = "Challenge"
+    case inSite = "inSite"
+    case ceo = "CEO"
+    case rejected = "Rejected"
+    case contract = "Contract"
 }
 
 @objc(Apply)
 public class Apply: NSManagedObject {
     var statusEnum: Status? {
         get {
-            guard let newItem = Status(rawValue: self.status) else {
+            guard let newItem = Status(rawValue: self.status ?? "") else {
                 return nil
             }
             return newItem
         }
         set {
-            self.status = newValue?.rawValue ?? 0
+            self.status = newValue?.rawValue ?? ""
         }
     }
 }

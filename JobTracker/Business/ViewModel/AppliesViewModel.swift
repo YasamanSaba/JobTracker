@@ -122,7 +122,6 @@ class AppliesViewModel: NSObject {
             applyDataSource.apply(snapShot)
         }
     }
-    
     func filterCompanies(for query: String) {
         if let objects = applyResultController.fetchedObjects {
             let filteredObjects = objects.filter { apply in
@@ -138,9 +137,9 @@ class AppliesViewModel: NSObject {
         }
     }
     func showApplyDetail(for indexPath: IndexPath, sender: UIViewController) {
-        appCoordinator?.push(scene: .apply, sender: sender)
+        let apply = applyDataSource.snapshot().itemIdentifiers[indexPath.row]
+        appCoordinator?.push(scene: .apply(apply), sender: sender)
     }
-    
     // MARK: - ApplyResultControllerDelegate
     class ApplyResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
         let applyDataSource: UITableViewDiffableDataSource<Section, Apply>
@@ -161,7 +160,6 @@ class AppliesViewModel: NSObject {
             applyDataSource.apply(diff)
         }
     }
-    
     class CountryResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
         let countryDataSource: UICollectionViewDiffableDataSource<Section, Country>
         
