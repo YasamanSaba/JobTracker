@@ -11,7 +11,7 @@ import CoreData
 
 class ApplyViewModel: NSObject {
     
-    // MARK: -
+    // MARK: - Define nested type -
     struct ApplyInfo {
         let companyName: String
         let jobOfferURL: URL
@@ -20,20 +20,23 @@ class ApplyViewModel: NSObject {
         let state: String
         let resume: String
     }
-    
+    // MARK: - Properties -
     private let service: ApplyServiceType
     private let apply: Apply
     var resumeResultController: NSFetchedResultsController<Resume>!
-    var statePickerView: UIPickerView?
-    var resumePickerView: UIPickerView?
+    weak var statePickerView: UIPickerView?
+    weak var resumePickerView: UIPickerView?
     var states: [Status] = []
+    // MARK: - Initializer -
     init(service: ApplyServiceType, apply: Apply) {
         self.service = service
         self.apply = apply
     }
+    // MARK: - Functions -
     func configureResume(pickerView: UIPickerView) {
         pickerView.accessibilityIdentifier = "ResumePickerView"
         resumeResultController = service.getAllResumeVersion()
+        self.resumePickerView = pickerView
         resumeResultController.delegate = self
         do {
             try resumeResultController.performFetch()
@@ -47,6 +50,7 @@ class ApplyViewModel: NSObject {
     }
     func configureState(pickerView: UIPickerView) {
         self.states = service.getAllState()
+        self.statePickerView = pickerView
         pickerView.accessibilityIdentifier = "StatePickerView"
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -60,15 +64,37 @@ class ApplyViewModel: NSObject {
         }
         return ApplyInfo(companyName: apply.company?.title ?? "Unknown", jobOfferURL: apply.jobLink ?? URL(string: "www.google.com")!, location: "\(apply.city?.country?.name ?? "Unknown"), \(apply.city?.name ?? "Unknown")", timeElapsed: "\(components?.day ?? 0) days ago",state: apply.statusEnum?.rawValue ?? "Unknown", resume: apply.resume?.version ?? "Unknown")
     }
-    func changeState() {
-    
+    func changeState() -> String {
+        if let statePickerView = statePickerView {
+        let selectedRow = statePickerView.selectedRow(inComponent: 0)
+            do {
+                try service.save(apply: apply, state: states[selectedRow])
+                return states[selectedRow].rawValue
+            } catch {
+                print(error)
+            }
+        }
+        return ""
+    }
+    func changeResumeVersion() -> String {
+        if let resumePickerView = resumePickerView {
+            let selectedRow = resumePickerView.selectedRow(inComponent: 0)
+            do {
+                let resume = resumeResultController.object(at: IndexPath(row: selectedRow, section: 0))
+                try service.save(apply: apply, resume: resume)
+                return resume.version ?? ""
+            } catch {
+                print(error)
+            }
+        }
+        return ""
     }
 }
+// MARK: - Extensions -
 extension ApplyViewModel: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
-    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.accessibilityIdentifier == "ResumePickerView", let objects = resumeResultController.fetchedObjects {
             return objects.count
@@ -78,7 +104,6 @@ extension ApplyViewModel: UIPickerViewDelegate, UIPickerViewDataSource {
         }
         return 0
     }
-    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.accessibilityIdentifier == "ResumePickerView", let objects = resumeResultController.fetchedObjects {
             return objects[row].version ?? ""

@@ -10,11 +10,13 @@ import UIKit
 import CoreData
 
 struct ApplyService: ApplyServiceType {
+    // MARK: - Properties -
     let context: NSManagedObjectContext!
-    
+    // MARK: - Initializer -
     init(context: NSManagedObjectContext) {
         self.context = context
     }
+    // MARK: - Functions -
     func getAllState() -> [Status] {
         Status.allCases
     }
@@ -37,7 +39,15 @@ struct ApplyService: ApplyServiceType {
         do {
             try context.save()
         } catch {
-            throw ApplyServiceError.saveError
+            throw ApplyServiceError.saveApplyStateError
+        }
+    }
+    func save(apply: Apply, resume: Resume) throws {
+        apply.resume = resume
+        do {
+            try context.save()
+        } catch {
+            throw ApplyServiceError.saveResumeVersionError
         }
     }
 }

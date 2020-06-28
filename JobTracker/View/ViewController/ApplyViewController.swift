@@ -87,7 +87,7 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
         toolbarResumePickerView.barStyle = UIBarStyle.default
         toolbarResumePickerView.isTranslucent = true
         toolbarResumePickerView.sizeToFit()
-        let doneResumePRVtn = UIBarButtonItem(title: "Done", style: .plain, target: self, action: nil)
+        let doneResumePRVtn = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(resumeDoneClick))
         let spaceResumePRBtn = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let cancelResumePRBtn = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(resumeCancelClick))
         toolbarResumePickerView.setItems([cancelResumePRBtn, spaceResumePRBtn, doneResumePRVtn], animated: false)
@@ -101,8 +101,13 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
         deactiveBlur()
     }
     @objc func stateDoneClick() {
-        self.viewModel.changeState()
+        self.btnState.setTitle(self.viewModel.changeState(), for: .normal) 
         self.btnState.resignFirstResponder()
+        deactiveBlur()
+    }
+    @objc func resumeDoneClick() {
+        self.btnResume.setTitle(self.viewModel.changeResumeVersion(), for: .normal)
+        self.btnResume.resignFirstResponder()
         deactiveBlur()
     }
     @objc func resumeCancelClick() {
