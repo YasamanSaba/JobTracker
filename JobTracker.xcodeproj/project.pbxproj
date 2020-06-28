@@ -17,6 +17,9 @@
 		700F52F9249DE262000EBCD3 /* TagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F52F8249DE262000EBCD3 /* TagTests.swift */; };
 		700F52FB249DF4B2000EBCD3 /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F52FA249DF4B2000EBCD3 /* TagViewModel.swift */; };
 		700F52FD249DF749000EBCD3 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F52FC249DF749000EBCD3 /* TagTableViewCell.swift */; };
+		702056AA24A87268002495E1 /* CityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702056A924A87268002495E1 /* CityService.swift */; };
+		702056AC24A87288002495E1 /* CityServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702056AB24A87288002495E1 /* CityServiceType.swift */; };
+		702056AE24A87E67002495E1 /* CityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702056AD24A87E67002495E1 /* CityTests.swift */; };
 		7043B02924A0A40A00F760AA /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043B02824A0A40A00F760AA /* CoordinatorType.swift */; };
 		7043B02B24A0A42F00F760AA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043B02A24A0A42F00F760AA /* AppCoordinator.swift */; };
 		7043B02D24A0CEE500F760AA /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043B02C24A0CEE500F760AA /* Scene.swift */; };
@@ -104,6 +107,9 @@
 		700F52F8249DE262000EBCD3 /* TagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTests.swift; sourceTree = "<group>"; };
 		700F52FA249DF4B2000EBCD3 /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 		700F52FC249DF749000EBCD3 /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
+		702056A924A87268002495E1 /* CityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityService.swift; sourceTree = "<group>"; };
+		702056AB24A87288002495E1 /* CityServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityServiceType.swift; sourceTree = "<group>"; };
+		702056AD24A87E67002495E1 /* CityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTests.swift; sourceTree = "<group>"; };
 		7043B02824A0A40A00F760AA /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
 		7043B02A24A0A42F00F760AA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		7043B02C24A0CEE500F760AA /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
@@ -245,6 +251,7 @@
 				70ADFFA82498EC1B00345379 /* TagServiceType.swift */,
 				F24C3D66249903B0004C16B9 /* CountryServiceType.swift */,
 				F23F3051249DF28B00A92C49 /* ApplyServiceType.swift */,
+				702056AB24A87288002495E1 /* CityServiceType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -254,6 +261,7 @@
 			children = (
 				70ADFFA62498D3C300345379 /* ReminderTests.swift */,
 				700F52F8249DE262000EBCD3 /* TagTests.swift */,
+				702056AD24A87E67002495E1 /* CityTests.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -359,6 +367,7 @@
 				F2EAA8B32498E8BB00876FA9 /* CountryService.swift */,
 				70ADFFAA2498F9D400345379 /* TagService.swift */,
 				F23F3053249DF35A00A92C49 /* ApplyService.swift */,
+				702056A924A87268002495E1 /* CityService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -593,6 +602,7 @@
 			files = (
 				7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */,
 				70ADFF9C2498A61800345379 /* ReminderService.swift in Sources */,
+				702056AC24A87288002495E1 /* CityServiceType.swift in Sources */,
 				7043B03224A0D3CF00F760AA /* ViewModelSupportedViewControllers.swift in Sources */,
 				70483E7C249795B100612288 /* ChecklistViewController.swift in Sources */,
 				7060EFF32491288300A229B8 /* Apply+CoreDataClass.swift in Sources */,
@@ -621,6 +631,7 @@
 				704866D324A777EF00FA80B5 /* NewApplyViewModel.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
 				7009B1C224A33FD100B6437D /* TagCollectionViewCell.swift in Sources */,
+				702056AA24A87268002495E1 /* CityService.swift in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
 				7043B02D24A0CEE500F760AA /* Scene.swift in Sources */,
 				F24C3D67249903B0004C16B9 /* CountryServiceType.swift in Sources */,
@@ -651,6 +662,7 @@
 			files = (
 				F2B6F2072490F6180088B0F7 /* CoreDataTests.swift in Sources */,
 				700F52F9249DE262000EBCD3 /* TagTests.swift in Sources */,
+				702056AE24A87E67002495E1 /* CityTests.swift in Sources */,
 				70ADFFA72498D3C300345379 /* ReminderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

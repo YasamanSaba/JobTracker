@@ -76,7 +76,7 @@ class CoreDataTests: XCTestCase {
         resume.version = "2.3"
         let apply = Apply(context: self.context)
         apply.date = Date()
-        apply.status = 1
+        apply.statusEnum = .ceo
         apply.salaryExpectation = 54000
         apply.jobLink = URL(string: "https://www.google.com/?client=safari")
         city.addToApply(apply)
@@ -121,7 +121,7 @@ class CoreDataTests: XCTestCase {
         company.isFavorite = true
         let apply = Apply(context: self.context)
         apply.date = Date()
-        apply.status = 2
+        apply.statusEnum = .challenge
         apply.jobLink = URL(string: "google")
         city.addToApply(apply)
         let resume = Resume(context: self.context)
@@ -155,7 +155,7 @@ class CoreDataTests: XCTestCase {
         company.isFavorite = false
         let apply = Apply(context: self.context)
         apply.date = Date()
-        apply.status = 2
+        apply.statusEnum = .contract
         apply.jobLink = URL(string: "test")
         city.addToApply(apply)
         let resume = Resume(context: self.context)
@@ -218,7 +218,7 @@ class CoreDataTests: XCTestCase {
         resume.version = "2.3"
         let apply = Apply(context: self.context)
         apply.date = Date()
-        apply.status = 1
+        apply.statusEnum = .inSite
         apply.salaryExpectation = 54000
         apply.jobLink = URL(string: "https://www.google.com/?client=safari")
         company.addToApply(apply)
