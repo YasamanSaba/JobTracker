@@ -47,7 +47,7 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
         txtCountry.resignFirstResponder()
     }
     @IBAction func btnCountryViewDone(_ sender: Any) {
-        
+        txtCountry.resignFirstResponder()
     }
     @IBAction func btnCountryViewAdd(_ sender: Any) {
         
@@ -56,7 +56,7 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
         txtCity.resignFirstResponder()
     }
     @IBAction func btnCityViewDone(_ sender: Any) {
-        
+        txtCity.resignFirstResponder()
     }
     @IBAction func btnCityViewAdd(_ sender: Any) {
         
@@ -106,50 +106,20 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
         txtCountry.inputView = vwCountryPicker
         txtCity.inputView = vwCityPicker
         self.txtSalary.addDoneButton(title: "Done", target: self, selector: #selector(tapSalaryDone(sender:)))
+        viewModel.setCountryName{ [weak self] in
+            self?.txtCountry.text = $0
+        }
+        viewModel.setCityName{ [weak self] in
+            self?.txtCity.text = $0
+        }
+        viewModel.configureCountry(pickerView: pkvCountry)
+        viewModel.configureCity(pickerView: pkvCity)
+        
     }
     
     
 }
 
-
-
-extension NewApplyViewController: UIPickerViewDataSource, UIPickerViewDelegate {
-    // MARK: - UIPickerViewDataSource
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        switch pickerView.accessibilityIdentifier {
-        case "Country":
-            return 10
-        case "City":
-            return 20
-        case "Resume":
-            return 3
-        case "Status":
-            return 5
-        default:
-            return 22
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch pickerView.accessibilityIdentifier {
-        case "Country":
-            return "Germany"
-        case "City":
-            return "Berlin"
-        case "Resume":
-            return "V2.3"
-        case "Status":
-            return "HR"
-        default:
-            return "Unknown"
-        }
-    }
-    
-}
 
 extension NewApplyViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -160,8 +130,7 @@ extension NewApplyViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.accessibilityIdentifier == "ApplyDate" ||
             textField.accessibilityIdentifier == "Country" ||
-            textField.accessibilityIdentifier == "City" ||
-            textField.accessibilityIdentifier == "Salary" {
+            textField.accessibilityIdentifier == "City" {
             activateBlur()
         }
     }

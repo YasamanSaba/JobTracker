@@ -11,6 +11,7 @@ import Foundation
 enum Scene {
     case applies
     case apply(Apply)
+    case newApply
     case notes
     case note
     case tag

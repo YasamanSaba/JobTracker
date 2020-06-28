@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-struct CountryService: CountryServiceType {
+class CountryService: CountryServiceType {
     
     let context: NSManagedObjectContext!
     

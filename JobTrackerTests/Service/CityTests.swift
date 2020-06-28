@@ -47,4 +47,30 @@ class CityTests: XCTestCase {
         XCTAssertEqual(controller.fetchedObjects!.count, 2)
         
     }
+    
+    func test_fetchAll_By_Different_Country() {
+        let germany = Country(context: context)
+        germany.name = "Germany"
+        germany.flag = "🇩🇪"
+        
+        let uk = Country(context: context)
+        uk.name = "United Kingdom"
+        uk.flag = "🇬🇧"
+        
+        let berlin = City(context: context)
+        berlin.name = "Berlin"
+        
+        let munich = City(context: context)
+        munich.name = "Munich"
+        
+        germany.addToCity(berlin)
+        germany.addToCity(munich)
+        
+        XCTAssertNoThrow(try context.save())
+        let controller = service.fetchAll(in: uk)
+        XCTAssertNoThrow(try controller.performFetch())
+        XCTAssertNotNil(controller.fetchedObjects)
+        XCTAssertEqual(controller.fetchedObjects!.count, 0)
+        
+    }
 }

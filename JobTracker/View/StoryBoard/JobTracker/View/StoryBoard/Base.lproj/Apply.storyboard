@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hB2-uH-ZBm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hB2-uH-ZBm">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -233,7 +233,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="c2x-f1-qQF">
                                 <connections>
-                                    <segue destination="xbW-ZY-CXd" kind="show" id="K6V-us-TS1"/>
+                                    <action selector="addApply:" destination="EPI-cB-SfL" id="snc-Cz-bg6"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Company" id="mOw-OY-h9U">
@@ -288,16 +288,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1c-F9-72Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2285" y="2506"/>
-        </scene>
-        <!--CreateApply-->
-        <scene sceneID="WMu-Db-KLN">
-            <objects>
-                <viewControllerPlaceholder storyboardName="CreateApply" id="xbW-ZY-CXd" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="AQT-vP-kke"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hiD-lQ-fAP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1254" y="971"/>
         </scene>
         <!--CheckList-->
         <scene sceneID="ahs-Vu-FRV">

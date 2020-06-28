@@ -140,6 +140,9 @@ class AppliesViewModel: NSObject {
         let apply = applyDataSource.snapshot().itemIdentifiers[indexPath.row]
         appCoordinator?.push(scene: .apply(apply), sender: sender)
     }
+    func addApply(sender: UIViewController) {
+        appCoordinator?.push(scene: .newApply, sender: sender)
+    }
     // MARK: - ApplyResultControllerDelegate
     class ApplyResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
         let applyDataSource: UITableViewDiffableDataSource<Section, Apply>

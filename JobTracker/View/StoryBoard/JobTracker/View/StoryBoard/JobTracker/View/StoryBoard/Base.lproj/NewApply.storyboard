@@ -10,7 +10,7 @@
         <!--New Apply View Controller-->
         <scene sceneID="ift-dg-3uT">
             <objects>
-                <viewController id="IbK-hr-YdP" customClass="NewApplyViewController" customModule="JobTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewApplyViewController" id="IbK-hr-YdP" customClass="NewApplyViewController" customModule="JobTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xpH-xy-D6h"/>
                         <viewControllerLayoutGuide type="bottom" id="bmL-2w-t48"/>
@@ -182,10 +182,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="ahE-NY-tgl"/>
                                         </constraints>
-                                        <connections>
-                                            <outlet property="dataSource" destination="IbK-hr-YdP" id="qZI-pR-baP"/>
-                                            <outlet property="delegate" destination="IbK-hr-YdP" id="jLp-dy-9Ak"/>
-                                        </connections>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="751" text="Resume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5PT-x5-Ppy">
                                         <rect key="frame" x="50" y="94" width="62" height="21"/>
@@ -199,10 +195,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Dt5-F1-ZHb"/>
                                         </constraints>
-                                        <connections>
-                                            <outlet property="dataSource" destination="IbK-hr-YdP" id="NSo-8M-ngL"/>
-                                            <outlet property="delegate" destination="IbK-hr-YdP" id="MTU-ad-w3c"/>
-                                        </connections>
                                     </pickerView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apply Date" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="tH0-zN-rhl">
                                         <rect key="frame" x="50" y="126.5" width="314" height="34"/>
@@ -398,7 +390,7 @@
                     <connections>
                         <outlet property="imgHeart" destination="vSR-tE-rY1" id="l5S-s8-wHq"/>
                         <outlet property="pkvCity" destination="Sac-VS-8aa" id="HyA-nO-NuZ"/>
-                        <outlet property="pkvCountry" destination="JsL-Il-o0H" id="Tx2-tK-iVN"/>
+                        <outlet property="pkvCountry" destination="OLH-RO-YIE" id="GR3-yE-AmQ"/>
                         <outlet property="pkvDate" destination="by0-2o-j8b" id="4ej-H8-0Ag"/>
                         <outlet property="pkvResume" destination="Fjk-Iv-r0V" id="2hF-rE-Yog"/>
                         <outlet property="pkvStatus" destination="OSt-Bz-ZKa" id="Z0K-u8-NNH"/>
@@ -454,43 +446,46 @@
                     <rect key="frame" x="0.0" y="0.0" width="378" height="231"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQG-17-tWN">
+                        <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bk7-YN-h6Q">
                             <rect key="frame" x="0.0" y="0.0" width="378" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="aMw-N7-jVe"/>
+                            </constraints>
                             <items>
-                                <navigationItem title="Choose Country" id="8ES-8E-0we">
-                                    <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vMt-bt-3Fe">
+                                <navigationItem title="Title" id="T8q-rr-jE2">
+                                    <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vTB-QQ-Ft8">
                                         <connections>
-                                            <action selector="btnCountryViewCancel:" destination="IbK-hr-YdP" id="CwP-I8-4Pa"/>
+                                            <action selector="btnCountryViewCancel:" destination="IbK-hr-YdP" id="dNO-kg-Vrz"/>
                                         </connections>
                                     </barButtonItem>
                                     <rightBarButtonItems>
-                                        <barButtonItem systemItem="done" id="Z6E-ww-TXc">
+                                        <barButtonItem systemItem="done" id="teD-mg-81Y">
                                             <connections>
-                                                <action selector="btnCountryViewDone:" destination="IbK-hr-YdP" id="KMz-Ht-LDK"/>
+                                                <action selector="btnCountryViewDone:" destination="IbK-hr-YdP" id="Xcd-FL-Xtg"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem systemItem="add" id="rt6-X0-vju">
+                                        <barButtonItem systemItem="add" id="cem-AC-huN">
                                             <connections>
-                                                <action selector="btnCountryViewAdd:" destination="IbK-hr-YdP" id="yZT-xy-bWw"/>
+                                                <action selector="btnCountryViewAdd:" destination="IbK-hr-YdP" id="1jC-40-fEj"/>
                                             </connections>
                                         </barButtonItem>
                                     </rightBarButtonItems>
                                 </navigationItem>
                             </items>
                         </navigationBar>
-                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JsL-Il-o0H">
+                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLH-RO-YIE">
                             <rect key="frame" x="0.0" y="44" width="378" height="187"/>
                         </pickerView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="JsL-Il-o0H" secondAttribute="bottom" id="ILF-OI-bAi"/>
-                        <constraint firstItem="zQG-17-tWN" firstAttribute="top" secondItem="rud-qg-m2w" secondAttribute="top" id="PIK-EA-zto"/>
-                        <constraint firstAttribute="trailing" secondItem="zQG-17-tWN" secondAttribute="trailing" id="cfW-WA-PFq"/>
-                        <constraint firstItem="JsL-Il-o0H" firstAttribute="leading" secondItem="rud-qg-m2w" secondAttribute="leading" id="d8I-QM-w1B"/>
-                        <constraint firstAttribute="trailing" secondItem="JsL-Il-o0H" secondAttribute="trailing" id="deZ-84-b7H"/>
-                        <constraint firstItem="JsL-Il-o0H" firstAttribute="top" secondItem="zQG-17-tWN" secondAttribute="bottom" id="i1S-xh-ojn"/>
-                        <constraint firstItem="zQG-17-tWN" firstAttribute="leading" secondItem="rud-qg-m2w" secondAttribute="leading" id="oWr-UV-tfI"/>
+                        <constraint firstAttribute="trailing" secondItem="Bk7-YN-h6Q" secondAttribute="trailing" id="5O3-fl-Jt4"/>
+                        <constraint firstItem="OLH-RO-YIE" firstAttribute="top" secondItem="Bk7-YN-h6Q" secondAttribute="bottom" id="CJ5-Yf-89y"/>
+                        <constraint firstAttribute="trailing" secondItem="OLH-RO-YIE" secondAttribute="trailing" id="EOm-55-Vjl"/>
+                        <constraint firstItem="Bk7-YN-h6Q" firstAttribute="leading" secondItem="rud-qg-m2w" secondAttribute="leading" id="KWX-tU-AgA"/>
+                        <constraint firstItem="OLH-RO-YIE" firstAttribute="leading" secondItem="rud-qg-m2w" secondAttribute="leading" id="aUr-Qp-9ez"/>
+                        <constraint firstAttribute="bottom" secondItem="OLH-RO-YIE" secondAttribute="bottom" id="lyZ-Fm-85n"/>
+                        <constraint firstItem="Bk7-YN-h6Q" firstAttribute="top" secondItem="rud-qg-m2w" secondAttribute="top" id="vLb-hS-jv1"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" id="J3J-GQ-E3i">
@@ -499,6 +494,9 @@
                     <subviews>
                         <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZx-ui-epq">
                             <rect key="frame" x="0.0" y="0.0" width="378" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="bVV-sG-bpw"/>
+                            </constraints>
                             <items>
                                 <navigationItem title="Choose City" id="duK-Km-pze">
                                     <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="41J-wp-X7v">

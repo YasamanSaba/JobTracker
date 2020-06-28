@@ -48,6 +48,24 @@ struct DataInitializer {
         let luxembourg = Country(context: context)
         luxembourg.name = "Luxembourg"
         luxembourg.flag = "🇱🇺"
+        
+        let berlin = City(context: context)
+        berlin.name = "Berlin"
+        let munich = City(context: context)
+        munich.name = "Munich"
+        let frankfurt = City(context: context)
+        frankfurt.name = "Frankfurt"
+        germany.addToCity(berlin)
+        germany.addToCity(munich)
+        germany.addToCity(frankfurt)
+        
+        let london = City(context: context)
+        london.name = "London"
+        let manchester = City(context: context)
+        manchester.name = "Manchester"
+        england.addToCity(london)
+        england.addToCity(manchester)
+        
         do {
             try context.save()
             UserDefaults.standard.set(true, forKey: "FirstTime")

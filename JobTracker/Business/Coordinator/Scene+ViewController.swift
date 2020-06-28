@@ -63,6 +63,14 @@ extension Scene {
             let viewModel = ApplyViewModel(service: applyService, apply: apply)
             viewController.viewModel = viewModel
             return viewController
+        case .newApply:
+            let storyboard = UIStoryboard(name: "NewApply", bundle: nil)
+            let viewController = storyboard.instantiateViewController(identifier: NewApplyViewController.reuseIdentifier) as NewApplyViewController
+            let countryService = CountryService(context: context)
+            let cityService = CityService(context: context)
+            let viewModel = NewApplyViewModel(countryService: countryService, cityService: cityService)
+            viewController.viewModel = viewModel
+            return viewController
         }
     }
 }
