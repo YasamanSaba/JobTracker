@@ -155,7 +155,7 @@ class CoreDataTests: XCTestCase {
         company.isFavorite = false
         let apply = Apply(context: self.context)
         apply.date = Date()
-        apply.statusEnum = .contract
+        apply.statusEnum = .hr
         apply.jobLink = URL(string: "test")
         city.addToApply(apply)
         let resume = Resume(context: self.context)
@@ -277,7 +277,7 @@ class CoreDataTests: XCTestCase {
         resume.version = "2.3"
         let apply = Apply(context: self.context)
         apply.date = Date()
-        apply.status = 1
+        apply.statusEnum = .rejected
         apply.salaryExpectation = 54000
         apply.jobLink = URL(string: "https://www.google.com/?client=safari")
         company.addToApply(apply)
@@ -320,7 +320,7 @@ class CoreDataTests: XCTestCase {
         company.isFavorite = false
         let apply = Apply(context: self.context)
         apply.date = Date()
-        apply.status = 2
+        apply.statusEnum = .inSite
         apply.jobLink = URL(string: "test")
         let resume = Resume(context: self.context)
         resume.version = "1.5"
@@ -359,7 +359,7 @@ class CoreDataTests: XCTestCase {
         resume.version = "2.8"
         let apply = Apply(context: self.context)
         apply.date = Date()
-        apply.status = 2
+        apply.statusEnum = .challenge
         apply.salaryExpectation = 74000
         apply.jobLink = URL(string: "https://www.google.com")
         city.addToApply(apply)
@@ -406,7 +406,7 @@ class CoreDataTests: XCTestCase {
         company.isFavorite = false
         let apply = Apply(context: self.context)
         apply.date = Date()
-        apply.status = 2
+        apply.statusEnum = .hr
         apply.jobLink = URL(string: "test")
         city.addToApply(apply)
         let resume = Resume(context: self.context)
@@ -438,7 +438,7 @@ class CoreDataTests: XCTestCase {
         resume.version = "2.5"
         let apply = Apply(context: self.context)
         apply.date = Date()
-        apply.status = 2
+        apply.statusEnum = .ceo
         apply.salaryExpectation = 35000
         apply.jobLink = URL(string: "https://www.google.com")
         city.addToApply(apply)
@@ -469,7 +469,7 @@ class CoreDataTests: XCTestCase {
         resume.version = "6.3.2"
         let apply = Apply(context: self.context)
         apply.date = Date()
-        apply.status = 1
+        apply.statusEnum = .contract
         apply.salaryExpectation = 54000
         apply.jobLink = URL(string: "https://www.test.com")
         resume.addToApply(apply)
@@ -495,7 +495,7 @@ class CoreDataTests: XCTestCase {
         country.addToCity(city)
         let apply = Apply(context: self.context)
         apply.date = Date()
-        apply.status = 2
+        apply.statusEnum = .contract
         apply.jobLink = URL(string: "test")
         city.addToApply(apply)
         let resume = Resume(context: self.context)
@@ -532,7 +532,7 @@ class CoreDataTests: XCTestCase {
         country.addToCity(city)
         let apply = Apply(context: self.context)
         apply.date = Date()
-        apply.status = 2
+        apply.statusEnum = .inSite
         apply.jobLink = URL(string: "jobtest")
         apply.addToInterview(interview)
         city.addToApply(apply)
@@ -568,7 +568,7 @@ class CoreDataTests: XCTestCase {
         country.addToCity(city)
         let apply = Apply(context: self.context)
         apply.date = Date()
-        apply.status = 1
+        apply.statusEnum = .hr
         apply.jobLink = URL(string: "jobtest")
         apply.addToInterview(interview)
         apply.addToTag(tag)
