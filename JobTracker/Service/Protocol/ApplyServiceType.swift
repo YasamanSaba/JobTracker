@@ -11,11 +11,13 @@ import CoreData
 
 enum ApplyServiceError: Error {
     case fetchError
-    case saveError
+    case saveApplyStateError
+    case saveResumeVersionError
 }
 protocol ApplyServiceType {
     func getAllState() -> [Status]
     func getAllResumeVersion() -> NSFetchedResultsController<Resume>
     func fetchAll() -> NSFetchedResultsController<Apply>
     func save(apply: Apply, state: Status) throws
+    func save(apply: Apply, resume: Resume) throws
 }
