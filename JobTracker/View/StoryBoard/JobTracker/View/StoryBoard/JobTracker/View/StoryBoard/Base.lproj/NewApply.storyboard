@@ -44,7 +44,7 @@
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="zVZ-lO-7wM">
-                                        <rect key="frame" x="50" y="54" width="107" height="34"/>
+                                        <rect key="frame" x="50" y="54" width="154.5" height="34"/>
                                         <accessibility key="accessibilityConfiguration" identifier="Country"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="organization"/>
@@ -53,7 +53,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="4VY-uh-YAz">
-                                        <rect key="frame" x="257" y="54" width="107" height="34"/>
+                                        <rect key="frame" x="209.5" y="54" width="154.5" height="34"/>
                                         <accessibility key="accessibilityConfiguration" identifier="City"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="organization"/>
@@ -105,7 +105,7 @@
                                     <constraint firstAttribute="height" constant="142" id="1S3-be-1EI"/>
                                     <constraint firstAttribute="bottom" secondItem="deE-qw-fZ4" secondAttribute="bottom" constant="14" id="4bK-N1-neT"/>
                                     <constraint firstItem="73f-y3-1ZB" firstAttribute="leading" secondItem="Igj-t6-Nso" secondAttribute="leading" constant="10" id="4sY-E8-EXI"/>
-                                    <constraint firstItem="4VY-uh-YAz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zVZ-lO-7wM" secondAttribute="trailing" constant="5" id="500-7Q-Jfd"/>
+                                    <constraint firstItem="4VY-uh-YAz" firstAttribute="leading" secondItem="zVZ-lO-7wM" secondAttribute="trailing" constant="5" id="500-7Q-Jfd"/>
                                     <constraint firstItem="vSR-tE-rY1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oQh-YG-vUJ" secondAttribute="trailing" constant="15" id="6QK-R6-jOB"/>
                                     <constraint firstItem="73f-y3-1ZB" firstAttribute="centerY" secondItem="Igj-t6-Nso" secondAttribute="centerY" id="8eB-8v-Jwk"/>
                                     <constraint firstAttribute="trailing" secondItem="vSR-tE-rY1" secondAttribute="trailing" constant="10" id="PIJ-q1-vIu"/>
