@@ -20,6 +20,8 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     @IBOutlet weak var btnCompanyName: UIButton!
     @IBOutlet weak var btnState: PickerButton!
     @IBOutlet weak var btnResume: PickerButton!
+    @IBOutlet weak var tblInterview: UITableView!
+    @IBOutlet weak var tblTask: UITableView!
     // MARK: - Actions -
     @IBAction func btnResumeChange(_ sender: PickerButton) {
         sender.becomeFirstResponder()
@@ -33,14 +35,6 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     }
     @IBAction func btnAddTask(_ sender: Any) {
     }
-    fileprivate func activateBlur() {
-        let blurEffect = UIBlurEffect(style: .light)
-        blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.alpha = 0.95
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.view.addSubview(blurEffectView)
-    }
     @IBAction func btnStateChange(_ sender: PickerButton) {
         sender.becomeFirstResponder()
         activateBlur()
@@ -52,6 +46,8 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     }
     // MARK: - Functions -
     func setUp() {
+        tblInterview.delegate = self
+        tblTask.delegate = self
         configureSatetPickerView()
         configureResumePickerView()
         applyInfo = viewModel.getApplyInfo()
@@ -60,6 +56,16 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
         lblLocation.text = applyInfo!.location
         btnState.setTitle(applyInfo!.state, for: .normal)
         btnResume.setTitle(applyInfo!.resume, for: .normal)
+        viewModel.configureInterviewDataSource(for: tblInterview)
+        viewModel.configureTaskDataSource(for: tblTask)
+    }
+    fileprivate func activateBlur() {
+        let blurEffect = UIBlurEffect(style: .light)
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.alpha = 0.95
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.view.addSubview(blurEffectView)
     }
     fileprivate func deactiveBlur() {
         self.blurEffectView.removeFromSuperview()
@@ -115,17 +121,8 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
         deactiveBlur()
     }
 }
-// MARK: - Extensions -
-extension ApplyViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else {
-            return UITableViewCell()
-        }
-        
-        return cell
+extension ApplyViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

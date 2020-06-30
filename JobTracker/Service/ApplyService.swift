@@ -50,4 +50,13 @@ struct ApplyService: ApplyServiceType {
             throw ApplyServiceError.saveResumeVersionError
         }
     }
+    func delete(apply: Apply) throws {
+        context.delete(apply)
+        do {
+        try context.save()
+        } catch {
+            throw ApplyServiceError.deleteError
+        }
+    }
+    
 }

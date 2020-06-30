@@ -10,24 +10,24 @@
 import Foundation
 import CoreData
 
-enum InterviewerRole: Int16 {
-    case hr = 1
-    case recruiter = 2
-    case tech = 3
-    case ceo = 4
+enum InterviewerRole: String {
+    case hr = "HR"
+    case recruiter = "Recruiter"
+    case tech = "Technical"
+    case ceo = "CEO"
 }
 
 @objc(Interview)
 public class Interview: NSManagedObject {
     var interviewerRoleEnum: InterviewerRole? {
         get {
-            guard let newItem = InterviewerRole(rawValue: self.interviewerRole) else {
+            guard let newItem = InterviewerRole(rawValue: self.interviewerRole ?? "") else {
                 return nil
             }
             return newItem
         }
         set {
-            self.interviewerRole = newValue?.rawValue ?? 0
+            self.interviewerRole = newValue?.rawValue ?? ""
         }
     }
 }

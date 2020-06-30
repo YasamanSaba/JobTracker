@@ -35,7 +35,7 @@
                                 <rect key="frame" x="0.0" y="347.5" width="414" height="134.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="jUs-Na-See" customClass="TaskTableViewCell" customModule="JobTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskTableViewCell" id="jUs-Na-See" customClass="TaskTableViewCell" customModule="JobTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jUs-Na-See" id="Su5-6j-ajx">
@@ -87,15 +87,12 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="L30-Hf-gIh" id="UiM-b1-8Qk"/>
-                                </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="250" restorationIdentifier="interviews" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5RZ-J9-DqF" userLabel="Interviw Table View">
                                 <rect key="frame" x="0.0" y="164.5" width="414" height="134"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="hVm-Bv-b66" customClass="InterviewTableViewCell" customModule="JobTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InterviewTableViewCell" id="hVm-Bv-b66" customClass="InterviewTableViewCell" customModule="JobTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hVm-Bv-b66" id="w8H-sf-AXc">
@@ -147,9 +144,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="L30-Hf-gIh" id="S5M-kf-fNZ"/>
-                                </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vxn-ok-lxq">
                                 <rect key="frame" x="0.0" y="303.5" width="414" height="44"/>
@@ -158,7 +152,6 @@
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="faF-83-0cg">
                                             <connections>
                                                 <action selector="btnAddTask:" destination="L30-Hf-gIh" id="eHt-6A-BEY"/>
-                                                <segue destination="tOZ-Mn-aeN" kind="show" id="hDW-qF-QVn"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -185,7 +178,6 @@
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dLk-y5-Jde">
                                             <connections>
                                                 <action selector="btnAddInterview:" destination="L30-Hf-gIh" id="iRR-1G-EKV"/>
-                                                <segue destination="tzh-At-Vnj" kind="show" id="dE2-YV-wyh"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -344,11 +336,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nJj-VL-9el">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="list.number" catalog="system" id="uQj-ue-GNq">
-                            <connections>
-                                <segue destination="xrS-RM-6zp" kind="show" id="bGv-dS-ogc"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="list.number" catalog="system" id="uQj-ue-GNq"/>
                     </navigationItem>
                     <connections>
                         <outlet property="btnCompanyName" destination="xWk-Tx-wjw" id="fDQ-dk-ZFh"/>
@@ -356,37 +344,13 @@
                         <outlet property="btnState" destination="LlX-UH-D3r" id="MbZ-Il-K1D"/>
                         <outlet property="lblLocation" destination="B3N-bG-ObQ" id="oeB-xp-ri4"/>
                         <outlet property="lblPassedTime" destination="7ZB-Lx-lbQ" id="RwI-IT-FKM"/>
+                        <outlet property="tblInterview" destination="5RZ-J9-DqF" id="gq6-DT-Vdd"/>
+                        <outlet property="tblTask" destination="vpK-23-kc3" id="laL-Xj-tox"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhz-aw-Tq1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="586.95652173913049" y="1710.9375"/>
-        </scene>
-        <!--CheckList-->
-        <scene sceneID="ahs-Vu-FRV">
-            <objects>
-                <viewControllerPlaceholder storyboardName="CheckList" id="xrS-RM-6zp" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="gn1-w1-vXP"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nAG-AL-VPb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="334" y="2131"/>
-        </scene>
-        <!--UIViewController-31L-Sv-rjV-->
-        <scene sceneID="3kV-Jd-39R">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Apply" referencedIdentifier="UIViewController-31L-Sv-rjV" id="tOZ-Mn-aeN" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dtQ-k9-h1y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="930" y="2131"/>
-        </scene>
-        <!--UIViewController-DZp-6O-936-->
-        <scene sceneID="ZNM-uT-POE">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Apply" referencedIdentifier="UIViewController-DZp-6O-936" id="tzh-At-Vnj" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aAY-1g-wtW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="588" y="2131"/>
         </scene>
     </scenes>
     <resources>

@@ -9,7 +9,7 @@
 import UIKit
 
 class TaskTableViewCell: UITableViewCell {
-
+    static let reuseIdentifier = String(describing: TaskTableViewCell.self)
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblDeadline: UILabel!
     override func awakeFromNib() {
@@ -22,5 +22,8 @@ class TaskTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    func configure(title: String, deadLine: String) {
+        self.lblTitle.text = title
+        self.lblDeadline.text = deadLine
+    }
 }
