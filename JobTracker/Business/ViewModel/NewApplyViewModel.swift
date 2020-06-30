@@ -9,6 +9,11 @@
 import UIKit
 import CoreData
 
+enum NewApplyViewModelError: String, Error {
+    case inCompleteDataToSave = "Please fill all the fields."
+    case unKnownError = "Please try again later."
+}
+
 class NewApplyViewModel: NSObject {
     
     // MARK: - Properties
@@ -29,6 +34,7 @@ class NewApplyViewModel: NSObject {
     var companySetter: ((String?) -> Void)?
     var selectedResume: Resume?
     var states: [Status] = []
+    var selectedStateIndex: Int = 0
     var selectedTags: [Tag] = []
     var selectedCountry: Country? {
         didSet {
@@ -187,6 +193,23 @@ class NewApplyViewModel: NSObject {
         }), sender: sender)
     }
     
+    func save(link: String, salary: Int) throws {
+        if let url = URL(string: link),
+            let city = selectedCity,
+            let date = selectedDate,
+            let company = selectedComapy,
+            let resume = selectedResume
+        {
+            let item = ApplyService.ApplyItem(date: date, link: url, salary: salary, state: states[selectedStateIndex], city: city, company: company, resume: resume, tags: selectedTags)
+            do {
+                try applyService.save(applyItem: item)
+            } catch {
+                throw NewApplyViewModelError.unKnownError
+            }
+        } else {
+            throw NewApplyViewModelError.inCompleteDataToSave
+        }
+    }
 }
 
 
@@ -258,14 +281,13 @@ extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
             selectedCity = cityResultController?.fetchedObjects?[row]
         case "ResumePickerView":
             selectedResume = resumeResultController?.fetchedObjects?[row]
+        case "StatePickerView":
+            selectedStateIndex = row
         default:
             return
         }
     }
     
-    func save(company:String, offerURL: String, salary: Int) throws {
-        
-    }
 }
 
 extension NewApplyViewModel {

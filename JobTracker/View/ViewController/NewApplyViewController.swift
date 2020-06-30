@@ -34,7 +34,18 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
     @IBOutlet weak var colTags: UICollectionView!
     // MARK: - Actions
     @IBAction func btnSave(_ sender: Any) {
-        
+        guard let url = txtJobURL.text, let salaryText = txtSalary.text, salaryText != "" else {
+            showAlert(text: "Complete fields.")
+            return
+        }
+        do {
+            try viewModel.save(link: url, salary: Int(salaryText)!)
+            self.dismiss(animated: true, completion: nil)
+        } catch let error as NewApplyViewModelError {
+            showAlert(text: error.rawValue)
+        } catch {
+            print(error)
+        }
     }
     @IBAction func btnChooseCompany(_ sender: Any) {
         viewModel.chooseCompany(sender: self)
@@ -86,6 +97,13 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
     var blurEffectView: UIVisualEffectView?
         
     // MARK: - Functions
+    func showAlert(text: String) {
+        let alertController = UIAlertController(title: "Warning!", message: text, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(alertAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     fileprivate func activateBlur() {
         blurEffect = UIBlurEffect(style: .light)
         blurEffectView = UIVisualEffectView(effect: blurEffect)

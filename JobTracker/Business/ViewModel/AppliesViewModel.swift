@@ -157,6 +157,7 @@ class AppliesViewModel: NSObject {
         }
         currentSnapshot.deleteItems(applies)
         applyDataSource.apply(currentSnapshot)
+    }
     func addApply(sender: UIViewController) {
         appCoordinator?.push(scene: .newApply, sender: sender)
     }
