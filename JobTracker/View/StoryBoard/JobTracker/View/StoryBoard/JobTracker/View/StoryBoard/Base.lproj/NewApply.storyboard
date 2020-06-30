@@ -186,7 +186,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fjk-Iv-r0V">
-                                        <rect key="frame" x="117" y="82" width="252" height="45"/>
+                                        <rect key="frame" x="117" y="82" width="217" height="45"/>
                                         <accessibility key="accessibilityConfiguration" identifier="Resume"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Dt5-F1-ZHb"/>
@@ -218,6 +218,11 @@
                                             <outlet property="delegate" destination="IbK-hr-YdP" id="sKO-a4-SwF"/>
                                         </connections>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aR4-WE-zNp">
+                                        <rect key="frame" x="339" y="81.5" width="30" height="46"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <state key="normal" title="+"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -228,6 +233,8 @@
                                     <constraint firstItem="0Sa-PP-x0S" firstAttribute="top" secondItem="WpG-q3-g1y" secondAttribute="bottom" constant="14" id="8f5-YY-Q3z"/>
                                     <constraint firstItem="OSt-Bz-ZKa" firstAttribute="leading" secondItem="2hZ-BX-7oE" secondAttribute="trailing" constant="5" id="8w5-3e-fPw"/>
                                     <constraint firstItem="4nK-VG-Ni4" firstAttribute="leading" secondItem="Ufs-7z-F5y" secondAttribute="trailing" constant="15" id="92S-zG-dQK"/>
+                                    <constraint firstAttribute="trailing" secondItem="aR4-WE-zNp" secondAttribute="trailing" constant="5" id="BNC-Lo-0cQ"/>
+                                    <constraint firstItem="aR4-WE-zNp" firstAttribute="centerY" secondItem="Fjk-Iv-r0V" secondAttribute="centerY" id="Bg0-r0-8rT"/>
                                     <constraint firstAttribute="trailing" secondItem="OSt-Bz-ZKa" secondAttribute="trailing" constant="5" id="C3o-qQ-O0S"/>
                                     <constraint firstItem="0Sa-PP-x0S" firstAttribute="leading" secondItem="Xra-Wu-kcW" secondAttribute="leading" constant="10" id="IYz-7X-ca8"/>
                                     <constraint firstItem="WpG-q3-g1y" firstAttribute="top" secondItem="Ufs-7z-F5y" secondAttribute="bottom" constant="14" id="ItQ-4F-89c"/>
@@ -238,7 +245,7 @@
                                     <constraint firstItem="OSt-Bz-ZKa" firstAttribute="centerY" secondItem="WpG-q3-g1y" secondAttribute="centerY" id="ZwT-BP-u2r"/>
                                     <constraint firstItem="tH0-zN-rhl" firstAttribute="leading" secondItem="kDE-oi-IW8" secondAttribute="trailing" constant="15" id="daI-aW-0lV"/>
                                     <constraint firstItem="kDE-oi-IW8" firstAttribute="leading" secondItem="Xra-Wu-kcW" secondAttribute="leading" constant="10" id="eGM-42-dTw"/>
-                                    <constraint firstAttribute="trailing" secondItem="Fjk-Iv-r0V" secondAttribute="trailing" constant="5" id="mFw-zy-XF6"/>
+                                    <constraint firstItem="aR4-WE-zNp" firstAttribute="leading" secondItem="Fjk-Iv-r0V" secondAttribute="trailing" constant="5" id="hte-lj-VyI"/>
                                     <constraint firstItem="WpG-q3-g1y" firstAttribute="leading" secondItem="Xra-Wu-kcW" secondAttribute="leading" constant="10" id="owt-qt-6aZ"/>
                                     <constraint firstAttribute="bottom" secondItem="kDE-oi-IW8" secondAttribute="bottom" constant="14" id="pJR-So-KxU"/>
                                     <constraint firstItem="Fjk-Iv-r0V" firstAttribute="leading" secondItem="5PT-x5-Ppy" secondAttribute="trailing" constant="5" id="ti3-AP-GEh"/>
@@ -542,7 +549,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2449" y="868"/>
+            <point key="canvasLocation" x="2447.826086956522" y="867.85714285714278"/>
         </scene>
     </scenes>
     <resources>
