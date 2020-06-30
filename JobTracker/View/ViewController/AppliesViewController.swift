@@ -13,6 +13,12 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    // MARK: - Actions
+    @IBAction func addApply(_ sender: Any) {
+        viewModel.addApply(sender: self)
+    }
+    
     // MARK: - Test -
     @IBAction func addCompany(_ sender: Any) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

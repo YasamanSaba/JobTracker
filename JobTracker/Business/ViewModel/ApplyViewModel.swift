@@ -284,3 +284,8 @@ extension ApplyViewModel: UIPickerViewDelegate, UIPickerViewDataSource {
         return ""
     }
 }
+extension ApplyViewModel: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.resumePickerView?.reloadAllComponents()
+    }
+}

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		7009B1C024A327D400B6437D /* BoxUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009B1BF24A327D400B6437D /* BoxUIView.swift */; };
 		7009B1C224A33FD100B6437D /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009B1C124A33FD100B6437D /* TagCollectionViewCell.swift */; };
-		7009B1C524A382FA00B6437D /* CreateApply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7009B1C324A382FA00B6437D /* CreateApply.storyboard */; };
+		7009B1C524A382FA00B6437D /* NewApply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7009B1C324A382FA00B6437D /* NewApply.storyboard */; };
 		7009B1C724A3832E00B6437D /* CheckList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7009B1C624A3832E00B6437D /* CheckList.storyboard */; };
 		7009B1CA24A3835C00B6437D /* ApplyDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7009B1C824A3835C00B6437D /* ApplyDetail.storyboard */; };
 		7009B1CC24A383A600B6437D /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7009B1CB24A383A600B6437D /* Task.storyboard */; };
@@ -17,6 +17,10 @@
 		700F52F9249DE262000EBCD3 /* TagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F52F8249DE262000EBCD3 /* TagTests.swift */; };
 		700F52FB249DF4B2000EBCD3 /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F52FA249DF4B2000EBCD3 /* TagViewModel.swift */; };
 		700F52FD249DF749000EBCD3 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F52FC249DF749000EBCD3 /* TagTableViewCell.swift */; };
+		702056AA24A87268002495E1 /* CityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702056A924A87268002495E1 /* CityService.swift */; };
+		702056AC24A87288002495E1 /* CityServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702056AB24A87288002495E1 /* CityServiceType.swift */; };
+		702056AE24A87E67002495E1 /* CityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702056AD24A87E67002495E1 /* CityTests.swift */; };
+		702056B024A8A003002495E1 /* CountryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702056AF24A8A003002495E1 /* CountryTests.swift */; };
 		7043B02924A0A40A00F760AA /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043B02824A0A40A00F760AA /* CoordinatorType.swift */; };
 		7043B02B24A0A42F00F760AA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043B02A24A0A42F00F760AA /* AppCoordinator.swift */; };
 		7043B02D24A0CEE500F760AA /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043B02C24A0CEE500F760AA /* Scene.swift */; };
@@ -30,6 +34,7 @@
 		70483E80249799D600612288 /* InterviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E7F249799D600612288 /* InterviewTableViewCell.swift */; };
 		70483E82249799E700612288 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E81249799E700612288 /* TaskTableViewCell.swift */; };
 		70483E8424979ACF00612288 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E8324979ACF00612288 /* ReminderTableViewCell.swift */; };
+		704866D324A777EF00FA80B5 /* NewApplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704866D224A777EF00FA80B5 /* NewApplyViewModel.swift */; };
 		7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */; };
 		7060EFF32491288300A229B8 /* Apply+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219F4F7248E797100B7A3D5 /* Apply+CoreDataClass.swift */; };
 		7060EFF52494A32900A229B8 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060EFF42494A32900A229B8 /* TagViewController.swift */; };
@@ -99,7 +104,7 @@
 /* Begin PBXFileReference section */
 		7009B1BF24A327D400B6437D /* BoxUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxUIView.swift; sourceTree = "<group>"; };
 		7009B1C124A33FD100B6437D /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
-		7009B1C424A382FA00B6437D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/JobTracker/View/StoryBoard/Base.lproj/CreateApply.storyboard; sourceTree = "<group>"; };
+		7009B1C424A382FA00B6437D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/JobTracker/View/StoryBoard/Base.lproj/NewApply.storyboard; sourceTree = "<group>"; };
 		7009B1C624A3832E00B6437D /* CheckList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CheckList.storyboard; sourceTree = "<group>"; };
 		7009B1C924A3835C00B6437D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/JobTracker/View/StoryBoard/Base.lproj/ApplyDetail.storyboard; sourceTree = "<group>"; };
 		7009B1CB24A383A600B6437D /* Task.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Task.storyboard; sourceTree = "<group>"; };
@@ -107,6 +112,10 @@
 		700F52F8249DE262000EBCD3 /* TagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTests.swift; sourceTree = "<group>"; };
 		700F52FA249DF4B2000EBCD3 /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 		700F52FC249DF749000EBCD3 /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
+		702056A924A87268002495E1 /* CityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityService.swift; sourceTree = "<group>"; };
+		702056AB24A87288002495E1 /* CityServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityServiceType.swift; sourceTree = "<group>"; };
+		702056AD24A87E67002495E1 /* CityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTests.swift; sourceTree = "<group>"; };
+		702056AF24A8A003002495E1 /* CountryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTests.swift; sourceTree = "<group>"; };
 		7043B02824A0A40A00F760AA /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
 		7043B02A24A0A42F00F760AA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		7043B02C24A0CEE500F760AA /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
@@ -120,6 +129,7 @@
 		70483E7F249799D600612288 /* InterviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewTableViewCell.swift; sourceTree = "<group>"; };
 		70483E81249799E700612288 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		70483E8324979ACF00612288 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
+		704866D224A777EF00FA80B5 /* NewApplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewApplyViewModel.swift; sourceTree = "<group>"; };
 		7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewApplyViewController.swift; sourceTree = "<group>"; };
 		7060EFF42494A32900A229B8 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		7060EFF72494A47500A229B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/JobTracker/View/StoryBoard/Base.lproj/Tag.storyboard; sourceTree = "<group>"; };
@@ -253,6 +263,7 @@
 				F23F3051249DF28B00A92C49 /* ApplyServiceType.swift */,
 				F24633AB24A8A291004D1DE5 /* InterviewServiceType.swift */,
 				F24633AD24A8C814004D1DE5 /* TaskServiceType.swift */,
+				702056AB24A87288002495E1 /* CityServiceType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -262,6 +273,8 @@
 			children = (
 				70ADFFA62498D3C300345379 /* ReminderTests.swift */,
 				700F52F8249DE262000EBCD3 /* TagTests.swift */,
+				702056AD24A87E67002495E1 /* CityTests.swift */,
+				702056AF24A8A003002495E1 /* CountryTests.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -297,6 +310,7 @@
 				709CDEE324A1E7C500A9DAE0 /* NotesViewModel.swift */,
 				709CDEE724A20DB000A9DAE0 /* NoteViewModel.swift */,
 				F24A0DC824A470F600D38217 /* ApplyViewModel.swift */,
+				704866D224A777EF00FA80B5 /* NewApplyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -332,7 +346,7 @@
 				7009B1CB24A383A600B6437D /* Task.storyboard */,
 				7009B1C824A3835C00B6437D /* ApplyDetail.storyboard */,
 				7009B1C624A3832E00B6437D /* CheckList.storyboard */,
-				7009B1C324A382FA00B6437D /* CreateApply.storyboard */,
+				7009B1C324A382FA00B6437D /* NewApply.storyboard */,
 				709CDEDF24A1E62200A9DAE0 /* Note.storyboard */,
 				7060EFFB2496178300A229B8 /* Reminder.storyboard */,
 				7060EFF62494A47500A229B8 /* Tag.storyboard */,
@@ -368,6 +382,7 @@
 				F23F3053249DF35A00A92C49 /* ApplyService.swift */,
 				F24633A924A8A226004D1DE5 /* InterviewService.swift */,
 				F24633AF24A8C89E004D1DE5 /* TaskService.swift */,
+				702056A924A87268002495E1 /* CityService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -573,7 +588,7 @@
 				F2035581248BBBD000A9F9F8 /* Assets.xcassets in Resources */,
 				7060EFF82494A47500A229B8 /* Tag.storyboard in Resources */,
 				7009B1CE24A383C300B6437D /* Interview.storyboard in Resources */,
-				7009B1C524A382FA00B6437D /* CreateApply.storyboard in Resources */,
+				7009B1C524A382FA00B6437D /* NewApply.storyboard in Resources */,
 				7009B1CA24A3835C00B6437D /* ApplyDetail.storyboard in Resources */,
 				7009B1C724A3832E00B6437D /* CheckList.storyboard in Resources */,
 			);
@@ -602,6 +617,7 @@
 			files = (
 				7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */,
 				70ADFF9C2498A61800345379 /* ReminderService.swift in Sources */,
+				702056AC24A87288002495E1 /* CityServiceType.swift in Sources */,
 				7043B03224A0D3CF00F760AA /* ViewModelSupportedViewControllers.swift in Sources */,
 				70483E7C249795B100612288 /* ChecklistViewController.swift in Sources */,
 				7060EFF32491288300A229B8 /* Apply+CoreDataClass.swift in Sources */,
@@ -628,8 +644,10 @@
 				70ADFFAB2498F9D400345379 /* TagService.swift in Sources */,
 				709CDEE824A20DB000A9DAE0 /* NoteViewModel.swift in Sources */,
 				7043B02F24A0D22000F760AA /* Scene+ViewController.swift in Sources */,
+				704866D324A777EF00FA80B5 /* NewApplyViewModel.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
 				7009B1C224A33FD100B6437D /* TagCollectionViewCell.swift in Sources */,
+				702056AA24A87268002495E1 /* CityService.swift in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
 				F24633AE24A8C814004D1DE5 /* TaskServiceType.swift in Sources */,
 				7043B02D24A0CEE500F760AA /* Scene.swift in Sources */,
@@ -663,7 +681,9 @@
 			files = (
 				F2B6F2072490F6180088B0F7 /* CoreDataTests.swift in Sources */,
 				700F52F9249DE262000EBCD3 /* TagTests.swift in Sources */,
+				702056AE24A87E67002495E1 /* CityTests.swift in Sources */,
 				70ADFFA72498D3C300345379 /* ReminderTests.swift in Sources */,
+				702056B024A8A003002495E1 /* CountryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,12 +711,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7009B1C324A382FA00B6437D /* CreateApply.storyboard */ = {
+		7009B1C324A382FA00B6437D /* NewApply.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				7009B1C424A382FA00B6437D /* Base */,
 			);
-			name = CreateApply.storyboard;
+			name = NewApply.storyboard;
 			sourceTree = "<group>";
 		};
 		7009B1C824A3835C00B6437D /* ApplyDetail.storyboard */ = {

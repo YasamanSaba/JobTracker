@@ -1,15 +1,15 @@
 //
-//  CountryService.swift
+//  CityService.swift
 //  JobTracker
 //
-//  Created by Yasaman Farahani Saba on 6/16/20.
+//  Created by Sam Javadizadeh on 6/28/20.
 //  Copyright © 2020 Dream Catcher. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class CountryService: CountryServiceType {
+struct CityService: CityServiceType {
     
     let context: NSManagedObjectContext!
     
@@ -17,9 +17,11 @@ class CountryService: CountryServiceType {
         self.context = context
     }
     
-    func fetchAll() -> NSFetchedResultsController<Country> {
-        let fetchRequest: NSFetchRequest<Country> = Country.fetchRequest()
-        let sort = NSSortDescriptor(key: #keyPath(Country.name), ascending: true)
+    func fetchAll(in country: Country) -> NSFetchedResultsController<City> {
+        let fetchRequest: NSFetchRequest<City> = City.fetchRequest()
+        let predicate = NSPredicate(format: "%K == %@", #keyPath(City.country), country)
+        fetchRequest.predicate = predicate
+        let sort = NSSortDescriptor(key: #keyPath(City.name), ascending: true)
         fetchRequest.sortDescriptors = [sort]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultsController
