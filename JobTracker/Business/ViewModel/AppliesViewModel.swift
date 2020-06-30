@@ -19,7 +19,7 @@ class AppliesViewModel: NSObject {
     var applyResultController: NSFetchedResultsController<Apply>!
     var countryResultController: NSFetchedResultsController<Country>!
     var countryDataSource: UICollectionViewDiffableDataSource<Section, Country>!
-    var applyDataSource: UITableViewDiffableDataSource<Section, Apply>!
+    var applyDataSource: ApplyDataSource!
     var selectedCountryName = "World"
     let appCoordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
     var countryResultControllerDelegate: CountryResultControllerDelegate!
@@ -48,11 +48,11 @@ class AppliesViewModel: NSObject {
                     return nil
             }
             if let currentApplyObjects = self.applyResultController.fetchedObjects {
-            let currentCountrySnapshot = self.countryDataSource.snapshot()
+                let currentCountrySnapshot = self.countryDataSource.snapshot()
                 let countryName = currentCountrySnapshot.itemIdentifiers(inSection: .main)[indexPath.row].name
-            let countryCount = currentApplyObjects.filter{ $0.city?.country?.name == countryName }.count
-            let count = countryName == "World" ? currentApplyObjects.count : countryCount
-            badgeView.label.text = "\(count)"
+                let countryCount = currentApplyObjects.filter{ $0.city?.country?.name == countryName }.count
+                let count = countryName == "World" ? currentApplyObjects.count : countryCount
+                badgeView.label.text = "\(count)"
             } else {
                 badgeView.label.text = "0"
             }
@@ -89,11 +89,12 @@ class AppliesViewModel: NSObject {
         }
     }
     func configureApplyDataSource(for tableView: UITableView) {
-        applyDataSource = UITableViewDiffableDataSource<Section, Apply>(tableView: tableView) { (tableView, indexPath, apply) -> UITableViewCell? in
+        applyDataSource = ApplyDataSource(tableView: tableView) { (tableView, indexPath, apply) -> UITableViewCell? in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ApplyTableViewCell.reuseIdentifier, for: indexPath) as? ApplyTableViewCell else { return nil }
             cell.configure(apply: apply)
             return cell
         }
+        applyDataSource.applyService = applyService
         applyResultController = applyService.fetchAll()
         do {
             try applyResultController.performFetch()
@@ -106,7 +107,7 @@ class AppliesViewModel: NSObject {
                 applyDataSource.apply(snapShot)
             }
         } catch {
-            
+            print(error.localizedDescription)
         }
     }
     func selectCountry(at indexPath: IndexPath) {
@@ -140,13 +141,29 @@ class AppliesViewModel: NSObject {
         let apply = applyDataSource.snapshot().itemIdentifiers[indexPath.row]
         appCoordinator?.push(scene: .apply(apply), sender: sender)
     }
+    func deleteApplies(indexPaths: [IndexPath]) {
+        var currentSnapshot = applyDataSource.snapshot()
+        let applies = currentSnapshot.itemIdentifiers.enumerated().filter { index, apply in
+            indexPaths.contains { indexPath in
+                indexPath.row == index
+            }
+        }.map { (index, apply) -> Apply in
+            do {
+                try applyService.delete(apply: apply)
+            } catch {
+                print(error.localizedDescription)
+            }
+            return apply
+        }
+        currentSnapshot.deleteItems(applies)
+        applyDataSource.apply(currentSnapshot)
     func addApply(sender: UIViewController) {
         appCoordinator?.push(scene: .newApply, sender: sender)
     }
+    
     // MARK: - ApplyResultControllerDelegate
     class ApplyResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
         let applyDataSource: UITableViewDiffableDataSource<Section, Apply>
-        
         init(applyDataSource: UITableViewDiffableDataSource<Section, Apply>) {
             self.applyDataSource = applyDataSource
         }
@@ -165,7 +182,6 @@ class AppliesViewModel: NSObject {
     }
     class CountryResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
         let countryDataSource: UICollectionViewDiffableDataSource<Section, Country>
-        
         init(countryDataSource: UICollectionViewDiffableDataSource<Section, Country>) {
             self.countryDataSource = countryDataSource
         }
@@ -199,5 +215,23 @@ class AppliesViewModel: NSObject {
             }
         }
         
+    }
+    class ApplyDataSource: UITableViewDiffableDataSource<Section, Apply> {
+        var applyService: ApplyServiceType!
+        override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
+        }
+        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete, let apply = itemIdentifier(for: indexPath) {
+                do {
+                    try applyService.delete(apply: apply)
+                    var snapShot = snapshot()
+                    snapShot.deleteItems([apply])
+                    self.apply(snapShot )
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
 }

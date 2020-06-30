@@ -66,5 +66,13 @@ struct ApplyService: ApplyServiceType {
     func save(applyItem: ApplyItem) {
         let apply = Apply(context: context)
         
+    func delete(apply: Apply) throws {
+        context.delete(apply)
+        do {
+        try context.save()
+        } catch {
+            throw ApplyServiceError.deleteError
+        }
     }
+    
 }

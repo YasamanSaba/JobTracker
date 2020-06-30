@@ -9,6 +9,7 @@
 import UIKit
 
 class InterviewTableViewCell: UITableViewCell {
+    static let reuseIdentifier = String(describing: InterviewTableViewCell.self)
 
     @IBOutlet weak var lblRole: UILabel!
     @IBOutlet weak var lblDate: UILabel!
@@ -23,5 +24,8 @@ class InterviewTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    func configure(role: String, date: String) {
+        self.lblRole.text = role
+        self.lblDate.text = date
+    }
 }

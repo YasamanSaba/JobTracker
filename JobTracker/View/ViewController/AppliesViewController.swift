@@ -22,6 +22,58 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
     // MARK: - Test -
     @IBAction func addCompany(_ sender: Any) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        let task = Task(context: context)
+        task.date = Date()
+        task.isDone = false
+        let calendar = Calendar.current
+        task.deadline = calendar.date(byAdding: .day, value: 4, to: Date())
+        task.title = "Teeeeest"
+        let city9 = City(context: context)
+        city9.name = "LA"
+        let country9 = Country(context: context)
+        country9.name = "US"
+        country9.flag = "🇺🇸"
+        country9.minSalary = 48000
+        country9.addToCity(city9)
+        let company9 = Company(context: context)
+        company9.title = "Apple"
+        company9.isFavorite = false
+        let apply9 = Apply(context: context)
+        apply9.date = Date()
+        apply9.statusEnum = .hr
+        apply9.jobLink = URL(string: "test")
+        city9.addToApply(apply9)
+        let resume9 = Resume(context: context)
+        resume9.version = "11.5"
+        resume9.addToApply(apply9)
+        company9.addToApply(apply9)
+        apply9.addToTask(task)
+        
+        let interview = Interview(context: context)
+        interview.date = Date()
+        interview.interviewerRoleEnum = .ceo
+        let city8 = City(context: context)
+        city8.name = "Tehran"
+        let country8 = Country(context: context)
+        country8.name = "Iran"
+        country8.flag = "🇮🇷"
+        country8.minSalary = 40000
+        country8.addToCity(city8)
+        let company8 = Company(context: context)
+        company8.title = "Digi Kala"
+        company8.isFavorite = true
+        let apply8 = Apply(context: context)
+        apply8.date = calendar.date(byAdding: .day, value: -4, to: Date())
+        apply8.statusEnum = .challenge
+        apply8.jobLink = URL(string: "google")
+        city8.addToApply(apply8)
+        let resume8 = Resume(context: context)
+        resume8.version = "8.4"
+        resume8.addToApply(apply8)
+        company8.addToApply(apply8)
+        apply8.addToInterview(interview)
+        
         let city = City(context: context)
         city.name = "Munich"
         let country = Country(context: context)
@@ -43,6 +95,7 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
         city.addToApply(apply)
         resume.addToApply(apply)
         company.addToApply(apply)
+        
         
         let barcelona = City(context: context)
         barcelona.name = "Barcelona"
@@ -88,6 +141,21 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
         
         try! context.save()
     }
+    @objc func editApplies() {
+        self.setEditing(true, animated: true)
+    }
+    @objc func doneEditing() {
+        self.setEditing(false, animated: true)
+    }
+    @objc func deleteSelectedItems() {
+        if let selectedRows = tableView.indexPathsForSelectedRows, selectedRows.count > 0 {
+            showDeleteAlert() { [weak self] decision in
+                if decision {
+                    self?.viewModel.deleteApplies(indexPaths: selectedRows)
+                }
+            }
+        }
+    }
     // MARK: - Properties
     static let badgeElementKind = "badge-element-kind"
     var viewModel: AppliesViewModel!
@@ -111,6 +179,14 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
         self.viewModel.configureApplyDataSource(for: self.tableView)
         self.viewModel.configureCountryDataSource(for: self.collectionView)
         configureSearchController()
+        createNonEditingBarButtons()
+    }
+    func createNonEditingBarButtons() {
+        let btnAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        let btnEdit = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editApplies))
+        let btnFilter = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3.decrease.circle"), style: .done, target: self, action: nil)
+        navigationItem.rightBarButtonItems = [btnAdd, btnEdit]
+        navigationItem.leftBarButtonItem = btnFilter
     }
     func configureLayout() -> UICollectionViewCompositionalLayout {
         let anchorEdges: NSDirectionalRectEdge = [.top, .trailing]
@@ -128,6 +204,33 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
         return UICollectionViewCompositionalLayout(section: section)
+    }
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        if isEditing {
+            tableView.allowsSelectionDuringEditing = true
+            tableView.setEditing(true, animated: true)
+            navigationItem.rightBarButtonItems = nil
+            let doneBarBut = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneEditing))
+            let trashBarBut = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteSelectedItems))
+            navigationItem.rightBarButtonItem = doneBarBut
+            navigationItem.leftBarButtonItem = trashBarBut
+        } else {
+            tableView.setEditing(false, animated: true)
+            createNonEditingBarButtons()
+        }
+    }
+    func showDeleteAlert(onCompletion: @escaping (Bool)-> Void) {
+        let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to delete?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            onCompletion(false)
+        }
+        let deleteAction = UIAlertAction(title: "Delete", style: .default) { _ in
+            onCompletion(true)
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 // MARK: - Extensions
@@ -148,8 +251,11 @@ extension AppliesViewController: UICollectionViewDelegate {
 }
 extension AppliesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.showApplyDetail(for: indexPath, sender: self)
-        tableView.deselectRow(at: indexPath, animated: true)
+        if !tableView.isEditing {
+            viewModel.showApplyDetail(for: indexPath, sender: self)
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
     }
 }
 // MARK: - UISearchResultsUpdating Delegate

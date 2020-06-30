@@ -74,6 +74,10 @@
 		F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219F4F5248E797100B7A3D5 /* Interview+CoreDataClass.swift */; };
 		F23F3052249DF28B00A92C49 /* ApplyServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23F3051249DF28B00A92C49 /* ApplyServiceType.swift */; };
 		F23F3054249DF35A00A92C49 /* ApplyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23F3053249DF35A00A92C49 /* ApplyService.swift */; };
+		F24633AA24A8A226004D1DE5 /* InterviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24633A924A8A226004D1DE5 /* InterviewService.swift */; };
+		F24633AC24A8A291004D1DE5 /* InterviewServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24633AB24A8A291004D1DE5 /* InterviewServiceType.swift */; };
+		F24633AE24A8C814004D1DE5 /* TaskServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24633AD24A8C814004D1DE5 /* TaskServiceType.swift */; };
+		F24633B024A8C89E004D1DE5 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24633AF24A8C89E004D1DE5 /* TaskService.swift */; };
 		F24A0DC924A470F600D38217 /* ApplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24A0DC824A470F600D38217 /* ApplyViewModel.swift */; };
 		F24C3D67249903B0004C16B9 /* CountryServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24C3D66249903B0004C16B9 /* CountryServiceType.swift */; };
 		F2A2D6E424A38FC200D25B35 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2D6E324A38FC100D25B35 /* UIButtonExtension.swift */; };
@@ -177,6 +181,10 @@
 		F219F4F7248E797100B7A3D5 /* Apply+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apply+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F23F3051249DF28B00A92C49 /* ApplyServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyServiceType.swift; sourceTree = "<group>"; };
 		F23F3053249DF35A00A92C49 /* ApplyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyService.swift; sourceTree = "<group>"; };
+		F24633A924A8A226004D1DE5 /* InterviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewService.swift; sourceTree = "<group>"; };
+		F24633AB24A8A291004D1DE5 /* InterviewServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewServiceType.swift; sourceTree = "<group>"; };
+		F24633AD24A8C814004D1DE5 /* TaskServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskServiceType.swift; sourceTree = "<group>"; };
+		F24633AF24A8C89E004D1DE5 /* TaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
 		F24A0DC824A470F600D38217 /* ApplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyViewModel.swift; sourceTree = "<group>"; };
 		F24C3D66249903B0004C16B9 /* CountryServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryServiceType.swift; sourceTree = "<group>"; };
 		F2A2D6E324A38FC100D25B35 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
@@ -265,6 +273,8 @@
 				70ADFFA82498EC1B00345379 /* TagServiceType.swift */,
 				F24C3D66249903B0004C16B9 /* CountryServiceType.swift */,
 				F23F3051249DF28B00A92C49 /* ApplyServiceType.swift */,
+				F24633AB24A8A291004D1DE5 /* InterviewServiceType.swift */,
+				F24633AD24A8C814004D1DE5 /* TaskServiceType.swift */,
 				702056AB24A87288002495E1 /* CityServiceType.swift */,
 				7051A56124AB17EB00B98C4B /* CompanyServiceType.swift */,
 			);
@@ -386,6 +396,8 @@
 				F2EAA8B32498E8BB00876FA9 /* CountryService.swift */,
 				70ADFFAA2498F9D400345379 /* TagService.swift */,
 				F23F3053249DF35A00A92C49 /* ApplyService.swift */,
+				F24633A924A8A226004D1DE5 /* InterviewService.swift */,
+				F24633AF24A8C89E004D1DE5 /* TaskService.swift */,
 				702056A924A87268002495E1 /* CityService.swift */,
 				7051A55F24AB16DF00B98C4B /* CompanyService.swift */,
 			);
@@ -635,6 +647,7 @@
 				7051A56024AB16DF00B98C4B /* CompanyService.swift in Sources */,
 				F2F9BE9224977ACD005C6C20 /* FlagCollectinViewCell.swift in Sources */,
 				7060EFFA2494E6CB00A229B8 /* ApplyViewController.swift in Sources */,
+				F24633AA24A8A226004D1DE5 /* InterviewService.swift in Sources */,
 				F2A2D6E424A38FC200D25B35 /* UIButtonExtension.swift in Sources */,
 				70483E7E249797C700612288 /* ChecklistItemTableViewCell.swift in Sources */,
 				709CDEE424A1E7C500A9DAE0 /* NotesViewModel.swift in Sources */,
@@ -658,12 +671,15 @@
 				7051A55E24AB0A7700B98C4B /* CompanyTableViewCell.swift in Sources */,
 				702056AA24A87268002495E1 /* CityService.swift in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
+				F24633AE24A8C814004D1DE5 /* TaskServiceType.swift in Sources */,
 				7043B02D24A0CEE500F760AA /* Scene.swift in Sources */,
 				F24C3D67249903B0004C16B9 /* CountryServiceType.swift in Sources */,
 				F2B147B024A0E53D00BD5A22 /* BadgeSupplementaryView.swift in Sources */,
 				F24A0DC924A470F600D38217 /* ApplyViewModel.swift in Sources */,
 				70483E82249799E700612288 /* TaskTableViewCell.swift in Sources */,
 				F2035577248BBBC600A9F9F8 /* SceneDelegate.swift in Sources */,
+				F24633B024A8C89E004D1DE5 /* TaskService.swift in Sources */,
+				F24633AC24A8A291004D1DE5 /* InterviewServiceType.swift in Sources */,
 				70483E8424979ACF00612288 /* ReminderTableViewCell.swift in Sources */,
 				F2EAA8B62498EBAC00876FA9 /* AppliesViewModel.swift in Sources */,
 				70ADFF9824989F7400345379 /* Reminderable.swift in Sources */,

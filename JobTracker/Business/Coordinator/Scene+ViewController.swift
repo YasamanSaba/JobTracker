@@ -60,7 +60,9 @@ extension Scene {
             let storyboard = UIStoryboard(name: "ApplyDetail", bundle: nil)
             let viewController = storyboard.instantiateViewController(identifier: ApplyViewController.reuseIdentifier) as ApplyViewController
             let applyService = ApplyService(context: context)
-            let viewModel = ApplyViewModel(service: applyService, apply: apply)
+            let interviewService = InterviewService(context: context)
+            let taskService = TaskService(context: context)
+            let viewModel = ApplyViewModel(applyService: applyService, interviewService: interviewService, apply: apply, taskService: taskService)
             viewController.viewModel = viewModel
             return viewController
         case .newApply:

@@ -8,10 +8,10 @@
         <relationship name="checkListItem" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CheckListItem" inverseName="apply" inverseEntity="CheckListItem"/>
         <relationship name="city" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="apply" inverseEntity="City"/>
         <relationship name="company" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="apply" inverseEntity="Company"/>
-        <relationship name="interview" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Interview" inverseName="apply" inverseEntity="Interview"/>
+        <relationship name="interview" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Interview" inverseName="apply" inverseEntity="Interview"/>
         <relationship name="resume" maxCount="1" deletionRule="Nullify" destinationEntity="Resume" inverseName="apply" inverseEntity="Resume"/>
         <relationship name="tag" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="apply" inverseEntity="Tag"/>
-        <relationship name="task" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="apply" inverseEntity="Task"/>
+        <relationship name="task" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="apply" inverseEntity="Task"/>
     </entity>
     <entity name="CheckListItem" representedClassName="CheckListItem" syncable="YES" codeGenerationType="class">
         <attribute name="isDone" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -38,7 +38,7 @@
     <entity name="Interview" representedClassName="Interview" syncable="YES" codeGenerationType="category">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
-        <attribute name="interviewerRole" attributeType="Integer 16" valueTransformerName="" usesScalarValueType="YES" customClassName=".InterviewerRole"/>
+        <attribute name="interviewerRole" attributeType="String" valueTransformerName="" customClassName=".InterviewerRole"/>
         <attribute name="interviewers" optional="YES" attributeType="String"/>
         <attribute name="link" optional="YES" attributeType="URI"/>
         <relationship name="apply" maxCount="1" deletionRule="Nullify" destinationEntity="Apply" inverseName="interview" inverseEntity="Apply"/>
