@@ -109,7 +109,7 @@ class CoreDataTests: XCTestCase {
     func test_Interview() {
         let interview = Interview(context: self.context)
         interview.date = Date()
-        interview.interviewerRole = 1
+        interview.interviewerRoleEnum = .ceo
         let city = City(context: self.context)
         city.name = "Barcelona"
         let country = Country(context: self.context)
@@ -285,7 +285,7 @@ class CoreDataTests: XCTestCase {
         city.addToApply(apply)
         let interview = Interview(context: self.context)
         interview.date = Date()
-        interview.interviewerRole = 10
+        interview.interviewerRoleEnum = .hr
         interview.interviewers = "Jackson"
         interview.addToReminder(reminder)
         apply.addToInterview(interview)
@@ -367,7 +367,7 @@ class CoreDataTests: XCTestCase {
         resume.addToApply(apply)
         let interview = Interview(context: self.context)
         interview.date = Date()
-        interview.interviewerRole = 10
+        interview.interviewerRoleEnum = .recruiter
         interview.interviewers = "Justin"
         interview.addToReminder(reminder)
         apply.addToInterview(interview)
@@ -522,7 +522,7 @@ class CoreDataTests: XCTestCase {
         let interview = Interview(context: self.context)
         interview.date = Date()
         interview.interviewers = "Alex"
-        interview.interviewerRole = 3
+        interview.interviewerRoleEnum = .tech
         interview.addToTag(tag)
         let city = City(context: self.context)
         city.name = "VA"
@@ -558,7 +558,7 @@ class CoreDataTests: XCTestCase {
         let interview = Interview(context: self.context)
         interview.date = Date()
         interview.interviewers = "Sofia"
-        interview.interviewerRole = 1
+        interview.interviewerRoleEnum = .tech
         interview.addToTag(tag)
         let city = City(context: self.context)
         city.name = "Germany"
