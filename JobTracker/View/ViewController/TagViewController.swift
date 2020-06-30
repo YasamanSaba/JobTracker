@@ -63,11 +63,6 @@ class TagViewController: UIViewController, ViewModelSupportedViewControllers {
         if selectedTags == nil {
             selectedTags = []
         }
-        if viewModel == nil {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let service = TagService(context: context)
-            viewModel = TagViewModel(service: service)
-        }
         viewModel.configureDatasource(for: tblTableView)
     }
     

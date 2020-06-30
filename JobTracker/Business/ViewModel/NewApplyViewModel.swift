@@ -12,14 +12,24 @@ import CoreData
 class NewApplyViewModel: NSObject {
     
     // MARK: - Properties
+    let appCoordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
+    let applyService: ApplyServiceType
     let countryService: CountryServiceType
     let cityService: CityServiceType
+    let tagService: TagServiceType
     var countryResultController: NSFetchedResultsController<Country>?
     var cityResultController: NSFetchedResultsController<City>?
+    var resumeResultController: NSFetchedResultsController<Resume>!
+    var tagDatasource: UICollectionViewDiffableDataSource<Int,Tag>!
     var countryPickerView: UIPickerView?
     var cityPickerView: UIPickerView?
     var countryNameSetter: ((String?) -> Void)?
     var cityNameSetter: ((String?) -> Void)?
+    var dateSetter: ((String?) -> Void)?
+    var companySetter: ((String?) -> Void)?
+    var selectedResume: Resume?
+    var states: [Status] = []
+    var selectedTags: [Tag] = []
     var selectedCountry: Country? {
         didSet {
             countryNameSetter?(selectedCountry?.name)
@@ -30,11 +40,25 @@ class NewApplyViewModel: NSObject {
             cityNameSetter?(selectedCity?.name)
         }
     }
+    var selectedDate: Date? {
+        didSet {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MMM-dd"
+            dateSetter?(dateFormatter.string(from: selectedDate ?? Date()))
+        }
+    }
+    var selectedComapy: Company? {
+        didSet {
+            companySetter?(selectedComapy?.title ?? "Unknown")
+        }
+    }
     
     // MARK: - Initializer
-    init(countryService: CountryServiceType, cityService: CityServiceType) {
+    init(countryService: CountryServiceType, cityService: CityServiceType, applyService: ApplyServiceType, tagService: TagServiceType) {
         self.countryService = countryService
         self.cityService = cityService
+        self.applyService = applyService
+        self.tagService = tagService
     }
     
     // MARK: - Functions
@@ -80,6 +104,11 @@ class NewApplyViewModel: NSObject {
             }
         }
     }
+    
+    func set(date: Date) {
+        selectedDate = date
+    }
+    
     func setCountryName(onChange: @escaping (String?) -> Void) {
         countryNameSetter = onChange
     }
@@ -87,6 +116,77 @@ class NewApplyViewModel: NSObject {
     func setCityName(onChange: @escaping (String?) -> Void) {
         cityNameSetter = onChange
     }
+    
+    func setDateText(onChange: @escaping (String?) -> Void) {
+        dateSetter = onChange
+    }
+    
+    func setCompanyText(onChange: @escaping (String?) -> Void) {
+        companySetter = onChange
+    }
+    
+    func configureResume(pickerView: UIPickerView) {
+        pickerView.accessibilityIdentifier = "ResumePickerView"
+        resumeResultController = applyService.getAllResumeVersion()
+        let resumeResultsControllerDelegate = ResumeResultsControllerDelegate()
+        resumeResultsControllerDelegate.resumePickerView = pickerView
+        resumeResultController.delegate = resumeResultsControllerDelegate
+        do {
+            try resumeResultController.performFetch()
+            pickerView.delegate = self
+            pickerView.dataSource = self
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func configureState(pickerView: UIPickerView) {
+        self.states = applyService.getAllState()
+        pickerView.accessibilityIdentifier = "StatePickerView"
+        pickerView.delegate = self
+        pickerView.dataSource = self
+    }
+    
+    func configureTags(collectionView: UICollectionView) {
+        tagDatasource = UICollectionViewDiffableDataSource<Int,Tag>(collectionView: collectionView) { (collectionView, indexPath, tag) -> UICollectionViewCell? in
+            guard let cell =
+            collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.reuseIdentifier, for: indexPath)
+                as? TagCollectionViewCell else {return nil}
+            cell.configure(tag: tag, onDelete: self.delete(tag:) )
+            return cell
+        }
+        var snapShot = NSDiffableDataSourceSnapshot<Int,Tag>()
+        snapShot.appendSections([1])
+        snapShot.appendItems(selectedTags)
+        tagDatasource.apply(snapShot)
+    }
+    
+    func delete(tag: Tag) {
+        if let index = selectedTags.firstIndex(of: tag) {
+            selectedTags.remove(at: index)
+            var snapShot = NSDiffableDataSourceSnapshot<Int,Tag>()
+            snapShot.appendSections([1])
+            snapShot.appendItems(selectedTags)
+            tagDatasource.apply(snapShot)
+        }
+    }
+    
+    func addTags(sender: UIViewController) {
+        appCoordinator?.present(scene: .tag({ [weak self] tags in
+            self?.selectedTags = tags
+            var snapShot = NSDiffableDataSourceSnapshot<Int,Tag>()
+            snapShot.appendSections([1])
+            snapShot.appendItems(tags)
+            self?.tagDatasource.apply(snapShot)
+        }), sender: sender)
+    }
+    
+    func chooseCompany(sender: UIViewController) {
+        appCoordinator?.present(scene: .company({ [weak self] company in
+            self?.selectedComapy = company
+        }), sender: sender)
+    }
+    
 }
 
 
@@ -108,6 +208,13 @@ extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
                 return objects.count
             }
             return 0
+        case "ResumePickerView":
+            if let objects = resumeResultController?.fetchedObjects {
+                return objects.count
+            }
+            return 0
+        case "StatePickerView":
+            return states.count
         default:
             return 0
         }
@@ -126,6 +233,13 @@ extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
                 return objects[row].name
             }
             return nil
+        case "ResumePickerView":
+            if let objects = resumeResultController?.fetchedObjects {
+                return objects[row].version
+            }
+            return nil
+        case "StatePickerView":
+            return states[row].rawValue
         default:
             return nil
         }
@@ -142,9 +256,15 @@ extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
             }
         case "CityPickerView":
             selectedCity = cityResultController?.fetchedObjects?[row]
+        case "ResumePickerView":
+            selectedResume = resumeResultController?.fetchedObjects?[row]
         default:
             return
         }
+    }
+    
+    func save(company:String, offerURL: String, salary: Int) throws {
+        
     }
 }
 
@@ -160,6 +280,13 @@ extension NewApplyViewModel {
         var cityPickerView: UIPickerView?
         func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
             self.cityPickerView?.reloadAllComponents()
+        }
+    }
+    
+    class ResumeResultsControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
+        var resumePickerView: UIPickerView?
+        func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+            self.resumePickerView?.reloadAllComponents()
         }
     }
 }

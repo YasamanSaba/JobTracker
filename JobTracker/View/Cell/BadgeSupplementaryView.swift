@@ -11,6 +11,7 @@ import UIKit
 final class BadgeSupplementaryView: UICollectionReusableView {
     static let reuseIdentifier = String(describing: BadgeSupplementaryView.self)
     
+    
     var label: UILabel = UILabel()
     override init(frame: CGRect) {
         super.init(frame: frame)

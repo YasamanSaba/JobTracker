@@ -14,6 +14,7 @@ enum Scene {
     case newApply
     case notes
     case note
-    case tag
+    case tag(([Tag]) -> Void)
     case reminder(Reminderable)
+    case company((Company) -> Void)
 }

@@ -15,13 +15,14 @@ enum TagViewModelError: Error {
 
 class TagViewModel: NSObject {
     
-    weak var delegate: TagViewModelDelegate?
     let service: TagServiceType
+    let onCompletion: ([Tag]) -> Void
     var dataSource: TagDataSource!
     var fetchedResultController: NSFetchedResultsController<Tag>!
     
-    init(service: TagServiceType) {
+    init(service: TagServiceType, onCompletion: @escaping ([Tag]) -> Void) {
         self.service = service
+        self.onCompletion = onCompletion
     }
     
     func configureDatasource(for tableView: UITableView) {
@@ -78,7 +79,7 @@ class TagViewModel: NSObject {
                 }
             }
         }
-        delegate?.selected(tags: result)
+        onCompletion(result)
     }
     
     class TagDataSource: UITableViewDiffableDataSource<Int,Tag> {
@@ -123,6 +124,3 @@ extension TagViewModel: NSFetchedResultsControllerDelegate {
 }
 
 
-protocol TagViewModelDelegate: class {
-    func selected(tags: [Tag])
-}

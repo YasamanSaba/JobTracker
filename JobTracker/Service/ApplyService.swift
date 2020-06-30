@@ -10,6 +10,18 @@ import UIKit
 import CoreData
 
 struct ApplyService: ApplyServiceType {
+    
+    struct ApplyItem {
+        let date: Date
+        let link: URL
+        let salary: Int
+        let state: Status
+        let city: City
+        let company: Company
+        let resume: Resume
+        let tags: [Tag]
+    }
+    
     // MARK: - Properties -
     let context: NSManagedObjectContext!
     // MARK: - Initializer -
@@ -49,5 +61,10 @@ struct ApplyService: ApplyServiceType {
         } catch {
             throw ApplyServiceError.saveResumeVersionError
         }
+    }
+    
+    func save(applyItem: ApplyItem) {
+        let apply = Apply(context: context)
+        
     }
 }

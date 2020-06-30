@@ -40,7 +40,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="lblTitle" destination="BvX-IX-Bbi" id="H76-vv-9Ya"/>
+                                            <outlet property="lblTitle" destination="BvX-IX-Bbi" id="1Xd-xC-NMi"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
