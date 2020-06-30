@@ -291,9 +291,13 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9M2-JO-pX9">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9M2-JO-pX9">
                                 <rect key="frame" x="156" y="52" width="20.5" height="17.5"/>
                                 <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="E8Z-z0-pyt" appends="YES" id="GLE-Ig-kib"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -347,6 +351,7 @@
                         <outlet property="btnCompanyName" destination="xWk-Tx-wjw" id="fDQ-dk-ZFh"/>
                         <outlet property="btnResume" destination="8d5-SS-Tgh" id="y5L-Js-LWG"/>
                         <outlet property="btnState" destination="LlX-UH-D3r" id="MbZ-Il-K1D"/>
+                        <outlet property="imgHeart" destination="9M2-JO-pX9" id="D8Y-t8-7S0"/>
                         <outlet property="lblLocation" destination="B3N-bG-ObQ" id="oeB-xp-ri4"/>
                         <outlet property="lblPassedTime" destination="7ZB-Lx-lbQ" id="RwI-IT-FKM"/>
                         <outlet property="tblInterview" destination="5RZ-J9-DqF" id="gq6-DT-Vdd"/>
@@ -354,6 +359,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhz-aw-Tq1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="E8Z-z0-pyt">
+                    <connections>
+                        <action selector="tapOnHeart:" destination="L30-Hf-gIh" id="Ik9-aO-Pco"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="586.95652173913049" y="1710.9375"/>
         </scene>

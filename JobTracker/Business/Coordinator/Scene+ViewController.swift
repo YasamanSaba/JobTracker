@@ -62,7 +62,8 @@ extension Scene {
             let applyService = ApplyService(context: context)
             let interviewService = InterviewService(context: context)
             let taskService = TaskService(context: context)
-            let viewModel = ApplyViewModel(applyService: applyService, interviewService: interviewService, apply: apply, taskService: taskService)
+            let companyService = CompanyService(context: context)
+            let viewModel = ApplyViewModel(applyService: applyService, interviewService: interviewService, apply: apply, taskService: taskService, companyService: companyService)
             viewController.viewModel = viewModel
             return viewController
         case .newApply:
