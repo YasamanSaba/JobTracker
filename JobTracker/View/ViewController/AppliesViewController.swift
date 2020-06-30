@@ -15,7 +15,7 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Actions
-    @IBAction func addApply(_ sender: Any) {
+    @objc func addApply() {
         viewModel.addApply(sender: self)
     }
     
@@ -182,7 +182,7 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
         createNonEditingBarButtons()
     }
     func createNonEditingBarButtons() {
-        let btnAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        let btnAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addApply))
         let btnEdit = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editApplies))
         let btnFilter = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3.decrease.circle"), style: .done, target: self, action: nil)
         navigationItem.rightBarButtonItems = [btnAdd, btnEdit]

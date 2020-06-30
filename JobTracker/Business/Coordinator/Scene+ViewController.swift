@@ -18,11 +18,11 @@ extension Scene {
         let coordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
         
         switch self {
-        case .tag:
+        case .tag(let onCompletion):
             let storyboard = UIStoryboard(name: "Tag", bundle: nil)
             let viewController = storyboard.instantiateViewController(identifier: TagViewController.reuseIdentifier) as TagViewController
             let service = TagService(context: context)
-            let viewModel = TagViewModel(service: service)
+            let viewModel = TagViewModel(service: service,onCompletion: onCompletion)
             viewController.viewModel = viewModel
             return viewController
         case .reminder(let reminderable):
@@ -70,7 +70,16 @@ extension Scene {
             let viewController = storyboard.instantiateViewController(identifier: NewApplyViewController.reuseIdentifier) as NewApplyViewController
             let countryService = CountryService(context: context)
             let cityService = CityService(context: context)
-            let viewModel = NewApplyViewModel(countryService: countryService, cityService: cityService)
+            let applyService = ApplyService(context: context)
+            let tagService = TagService(context: context)
+            let viewModel = NewApplyViewModel(countryService: countryService, cityService: cityService, applyService: applyService, tagService: tagService)
+            viewController.viewModel = viewModel
+            return viewController
+        case .company(let onComplete):
+            let storyboard = UIStoryboard(name: "Company", bundle: nil)
+            let viewController = storyboard.instantiateViewController(identifier: CompanyViewController.reuseIdentifier) as CompanyViewController
+            let companyService = CompanyService(context: context)
+            let viewModel = CompanyViewModel(companyService: companyService, onComplete: onComplete)
             viewController.viewModel = viewModel
             return viewController
         }

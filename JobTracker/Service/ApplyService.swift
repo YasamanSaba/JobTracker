@@ -10,6 +10,18 @@ import UIKit
 import CoreData
 
 struct ApplyService: ApplyServiceType {
+    
+    struct ApplyItem {
+        let date: Date
+        let link: URL
+        let salary: Int
+        let state: Status
+        let city: City
+        let company: Company
+        let resume: Resume
+        let tags: [Tag]
+    }
+    
     // MARK: - Properties -
     let context: NSManagedObjectContext!
     // MARK: - Initializer -
@@ -50,6 +62,24 @@ struct ApplyService: ApplyServiceType {
             throw ApplyServiceError.saveResumeVersionError
         }
     }
+    func save(applyItem: ApplyItem) throws {
+        let apply = Apply(context: context)
+        apply.date = applyItem.date
+        apply.jobLink = applyItem.link
+        apply.salaryExpectation = Int32(applyItem.salary)
+        apply.statusEnum = applyItem.state
+        apply.city = applyItem.city
+        apply.company = applyItem.company
+        apply.resume = applyItem.resume
+        applyItem.tags.forEach{ tag in
+            apply.addToTag(tag)
+        }
+        do {
+            try context.save()
+        } catch {
+            throw ApplyServiceError.saveApplyError
+        }
+    }
     func delete(apply: Apply) throws {
         context.delete(apply)
         do {
@@ -58,5 +88,4 @@ struct ApplyService: ApplyServiceType {
             throw ApplyServiceError.deleteError
         }
     }
-    
 }

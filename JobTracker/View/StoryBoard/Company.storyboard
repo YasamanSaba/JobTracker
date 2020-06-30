@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Company View Controller-->
+        <scene sceneID="1ne-3V-8sU">
+            <objects>
+                <viewController storyboardIdentifier="CompanyViewController" id="5ib-7F-O4v" customClass="CompanyViewController" customModule="JobTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m13-jX-xSm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a55-Ae-RkP">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Choose Company" id="I2g-OI-dDt">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="TjB-IN-F7a">
+                                            <connections>
+                                                <action selector="cancel:" destination="5ib-7F-O4v" id="hZM-ZN-clp"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="dQm-N9-Nqs">
+                                <rect key="frame" x="0.0" y="88" width="364" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elX-CN-83Z">
+                                <rect key="frame" x="374" y="93" width="30" height="46"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="addCompany:" destination="5ib-7F-O4v" eventType="touchUpInside" id="5ze-zx-OOc"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CGa-hC-L26">
+                                <rect key="frame" x="0.0" y="149" width="414" height="713"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompanyTableViewCell" id="k9l-Lq-8TA" customClass="CompanyTableViewCell" customModule="JobTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k9l-Lq-8TA" id="NMV-RE-9Yw">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maclean Moore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0P-81-54l">
+                                                    <rect key="frame" x="20" y="11.5" width="118" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQO-dV-GSo">
+                                                    <rect key="frame" x="397" y="15" width="7" height="14"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Number of applies:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nv9-7Y-Aii">
+                                                    <rect key="frame" x="292.5" y="15" width="99.5" height="14"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jQO-dV-GSo" firstAttribute="leading" secondItem="Nv9-7Y-Aii" secondAttribute="trailing" constant="5" id="0Ri-i7-rvR"/>
+                                                <constraint firstItem="g0P-81-54l" firstAttribute="leading" secondItem="NMV-RE-9Yw" secondAttribute="leadingMargin" id="5wW-hC-JMu"/>
+                                                <constraint firstItem="jQO-dV-GSo" firstAttribute="centerY" secondItem="NMV-RE-9Yw" secondAttribute="centerY" id="QMc-RT-Ntu"/>
+                                                <constraint firstItem="Nv9-7Y-Aii" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="g0P-81-54l" secondAttribute="trailing" constant="10" id="TvZ-If-fOM"/>
+                                                <constraint firstItem="Nv9-7Y-Aii" firstAttribute="centerY" secondItem="NMV-RE-9Yw" secondAttribute="centerY" id="ln2-1m-5Qy"/>
+                                                <constraint firstAttribute="trailing" secondItem="jQO-dV-GSo" secondAttribute="trailing" constant="10" id="p4r-f2-sTE"/>
+                                                <constraint firstItem="g0P-81-54l" firstAttribute="centerY" secondItem="NMV-RE-9Yw" secondAttribute="centerY" id="r6A-RE-8JM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblCompanyName" destination="g0P-81-54l" id="QXk-7e-d6j"/>
+                                            <outlet property="lblNumberOfApply" destination="jQO-dV-GSo" id="x3f-c8-N2y"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="CGa-hC-L26" firstAttribute="top" secondItem="dQm-N9-Nqs" secondAttribute="bottom" constant="5" id="7yJ-tm-RMh"/>
+                            <constraint firstItem="elX-CN-83Z" firstAttribute="centerY" secondItem="dQm-N9-Nqs" secondAttribute="centerY" id="Cwh-hB-Btq"/>
+                            <constraint firstItem="a55-Ae-RkP" firstAttribute="top" secondItem="eHt-kk-uYu" secondAttribute="top" id="FbV-A3-7ik"/>
+                            <constraint firstItem="dQm-N9-Nqs" firstAttribute="top" secondItem="a55-Ae-RkP" secondAttribute="bottom" id="HwO-qP-37D"/>
+                            <constraint firstItem="dQm-N9-Nqs" firstAttribute="leading" secondItem="eHt-kk-uYu" secondAttribute="leading" id="L3Q-bf-5dO"/>
+                            <constraint firstItem="eHt-kk-uYu" firstAttribute="bottom" secondItem="CGa-hC-L26" secondAttribute="bottom" id="Srz-3v-EyC"/>
+                            <constraint firstItem="CGa-hC-L26" firstAttribute="leading" secondItem="eHt-kk-uYu" secondAttribute="leading" id="Tod-in-HsC"/>
+                            <constraint firstItem="eHt-kk-uYu" firstAttribute="trailing" secondItem="CGa-hC-L26" secondAttribute="trailing" id="ZZW-6N-2L3"/>
+                            <constraint firstItem="a55-Ae-RkP" firstAttribute="trailing" secondItem="eHt-kk-uYu" secondAttribute="trailing" id="bDb-AY-9Vw"/>
+                            <constraint firstItem="elX-CN-83Z" firstAttribute="leading" secondItem="dQm-N9-Nqs" secondAttribute="trailing" constant="10" id="ddE-za-hc9"/>
+                            <constraint firstItem="a55-Ae-RkP" firstAttribute="leading" secondItem="eHt-kk-uYu" secondAttribute="leading" id="iWu-oa-SGN"/>
+                            <constraint firstItem="eHt-kk-uYu" firstAttribute="trailing" secondItem="elX-CN-83Z" secondAttribute="trailing" constant="10" id="mTg-YF-umc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eHt-kk-uYu"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnAddCompany" destination="elX-CN-83Z" id="TUP-4s-0Au"/>
+                        <outlet property="srbSearchBar" destination="dQm-N9-Nqs" id="Hgh-LS-F6l"/>
+                        <outlet property="tblCompanies" destination="CGa-hC-L26" id="dmh-mr-f8p"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nBL-N7-4ca" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121.73913043478262" y="54.910714285714285"/>
+        </scene>
+    </scenes>
+</document>

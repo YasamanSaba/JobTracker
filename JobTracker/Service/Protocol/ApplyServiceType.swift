@@ -13,6 +13,7 @@ enum ApplyServiceError: Error {
     case fetchError
     case saveApplyStateError
     case saveResumeVersionError
+    case saveApplyError
     case deleteError
 }
 protocol ApplyServiceType {
@@ -22,4 +23,5 @@ protocol ApplyServiceType {
     func save(apply: Apply, state: Status) throws
     func save(apply: Apply, resume: Resume) throws
     func delete(apply: Apply) throws
+    func save(applyItem: ApplyService.ApplyItem) throws
 }

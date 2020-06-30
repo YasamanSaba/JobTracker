@@ -35,6 +35,12 @@
 		70483E82249799E700612288 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E81249799E700612288 /* TaskTableViewCell.swift */; };
 		70483E8424979ACF00612288 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70483E8324979ACF00612288 /* ReminderTableViewCell.swift */; };
 		704866D324A777EF00FA80B5 /* NewApplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704866D224A777EF00FA80B5 /* NewApplyViewModel.swift */; };
+		7051A55824AB03EF00B98C4B /* Company.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7051A55724AB03EF00B98C4B /* Company.storyboard */; };
+		7051A55A24AB088C00B98C4B /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7051A55924AB088C00B98C4B /* CompanyViewController.swift */; };
+		7051A55C24AB08F100B98C4B /* CompanyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7051A55B24AB08F100B98C4B /* CompanyViewModel.swift */; };
+		7051A55E24AB0A7700B98C4B /* CompanyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7051A55D24AB0A7700B98C4B /* CompanyTableViewCell.swift */; };
+		7051A56024AB16DF00B98C4B /* CompanyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7051A55F24AB16DF00B98C4B /* CompanyService.swift */; };
+		7051A56224AB17EB00B98C4B /* CompanyServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7051A56124AB17EB00B98C4B /* CompanyServiceType.swift */; };
 		7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */; };
 		7060EFF32491288300A229B8 /* Apply+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219F4F7248E797100B7A3D5 /* Apply+CoreDataClass.swift */; };
 		7060EFF52494A32900A229B8 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060EFF42494A32900A229B8 /* TagViewController.swift */; };
@@ -130,6 +136,12 @@
 		70483E81249799E700612288 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		70483E8324979ACF00612288 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
 		704866D224A777EF00FA80B5 /* NewApplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewApplyViewModel.swift; sourceTree = "<group>"; };
+		7051A55724AB03EF00B98C4B /* Company.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Company.storyboard; sourceTree = "<group>"; };
+		7051A55924AB088C00B98C4B /* CompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
+		7051A55B24AB08F100B98C4B /* CompanyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewModel.swift; sourceTree = "<group>"; };
+		7051A55D24AB0A7700B98C4B /* CompanyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyTableViewCell.swift; sourceTree = "<group>"; };
+		7051A55F24AB16DF00B98C4B /* CompanyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyService.swift; sourceTree = "<group>"; };
+		7051A56124AB17EB00B98C4B /* CompanyServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyServiceType.swift; sourceTree = "<group>"; };
 		7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewApplyViewController.swift; sourceTree = "<group>"; };
 		7060EFF42494A32900A229B8 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		7060EFF72494A47500A229B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/JobTracker/View/StoryBoard/Base.lproj/Tag.storyboard; sourceTree = "<group>"; };
@@ -264,6 +276,7 @@
 				F24633AB24A8A291004D1DE5 /* InterviewServiceType.swift */,
 				F24633AD24A8C814004D1DE5 /* TaskServiceType.swift */,
 				702056AB24A87288002495E1 /* CityServiceType.swift */,
+				7051A56124AB17EB00B98C4B /* CompanyServiceType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -311,6 +324,7 @@
 				709CDEE724A20DB000A9DAE0 /* NoteViewModel.swift */,
 				F24A0DC824A470F600D38217 /* ApplyViewModel.swift */,
 				704866D224A777EF00FA80B5 /* NewApplyViewModel.swift */,
+				7051A55B24AB08F100B98C4B /* CompanyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -353,6 +367,7 @@
 				70EA24502490AE55007FD797 /* Apply.storyboard */,
 				F2035582248BBBD000A9F9F8 /* LaunchScreen.storyboard */,
 				709CDEE524A20C2D00A9DAE0 /* Main.storyboard */,
+				7051A55724AB03EF00B98C4B /* Company.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -368,6 +383,7 @@
 				70483E7B249795B100612288 /* ChecklistViewController.swift */,
 				70ADFFA02498B93600345379 /* ReminderViewController.swift */,
 				709CDEE124A1E66400A9DAE0 /* NotesViewController.swift */,
+				7051A55924AB088C00B98C4B /* CompanyViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -383,6 +399,7 @@
 				F24633A924A8A226004D1DE5 /* InterviewService.swift */,
 				F24633AF24A8C89E004D1DE5 /* TaskService.swift */,
 				702056A924A87268002495E1 /* CityService.swift */,
+				7051A55F24AB16DF00B98C4B /* CompanyService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -408,6 +425,7 @@
 				700F52FC249DF749000EBCD3 /* TagTableViewCell.swift */,
 				F2B147AF24A0E53D00BD5A22 /* BadgeSupplementaryView.swift */,
 				7009B1C124A33FD100B6437D /* TagCollectionViewCell.swift */,
+				7051A55D24AB0A7700B98C4B /* CompanyTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -590,6 +608,7 @@
 				7009B1CE24A383C300B6437D /* Interview.storyboard in Resources */,
 				7009B1C524A382FA00B6437D /* NewApply.storyboard in Resources */,
 				7009B1CA24A3835C00B6437D /* ApplyDetail.storyboard in Resources */,
+				7051A55824AB03EF00B98C4B /* Company.storyboard in Resources */,
 				7009B1C724A3832E00B6437D /* CheckList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -625,6 +644,7 @@
 				F23F3054249DF35A00A92C49 /* ApplyService.swift in Sources */,
 				F2EAA8B42498E8BB00876FA9 /* CountryService.swift in Sources */,
 				F2035575248BBBC600A9F9F8 /* AppDelegate.swift in Sources */,
+				7051A56024AB16DF00B98C4B /* CompanyService.swift in Sources */,
 				F2F9BE9224977ACD005C6C20 /* FlagCollectinViewCell.swift in Sources */,
 				7060EFFA2494E6CB00A229B8 /* ApplyViewController.swift in Sources */,
 				F24633AA24A8A226004D1DE5 /* InterviewService.swift in Sources */,
@@ -636,6 +656,7 @@
 				70483E77249651DC00612288 /* NoteViewController.swift in Sources */,
 				70483E80249799D600612288 /* InterviewTableViewCell.swift in Sources */,
 				70ADFF9A2498A08F00345379 /* ReminderViewModel.swift in Sources */,
+				7051A56224AB17EB00B98C4B /* CompanyServiceType.swift in Sources */,
 				F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */,
 				F2EAA8B82498F43E00876FA9 /* DataInitializer.swift in Sources */,
 				70ADFFA42498BD8800345379 /* ReminderServiceType.swift in Sources */,
@@ -647,6 +668,7 @@
 				704866D324A777EF00FA80B5 /* NewApplyViewModel.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
 				7009B1C224A33FD100B6437D /* TagCollectionViewCell.swift in Sources */,
+				7051A55E24AB0A7700B98C4B /* CompanyTableViewCell.swift in Sources */,
 				702056AA24A87268002495E1 /* CityService.swift in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
 				F24633AE24A8C814004D1DE5 /* TaskServiceType.swift in Sources */,
@@ -667,8 +689,10 @@
 				709CDEEB24A2113E00A9DAE0 /* CoordinatorSupportedViewModel.swift in Sources */,
 				700F52FD249DF749000EBCD3 /* TagTableViewCell.swift in Sources */,
 				70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */,
+				7051A55C24AB08F100B98C4B /* CompanyViewModel.swift in Sources */,
 				709CDEE224A1E66400A9DAE0 /* NotesViewController.swift in Sources */,
 				70ADFFA92498EC1B00345379 /* TagServiceType.swift in Sources */,
+				7051A55A24AB088C00B98C4B /* CompanyViewController.swift in Sources */,
 				F23F3052249DF28B00A92C49 /* ApplyServiceType.swift in Sources */,
 				7009B1C024A327D400B6437D /* BoxUIView.swift in Sources */,
 				70EA244F2490A8D1007FD797 /* ApplyTableViewCell.swift in Sources */,
