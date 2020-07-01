@@ -262,7 +262,10 @@ extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
             }
             return nil
         case "StatePickerView":
-            return states[row].rawValue
+            if row < states.count {
+                return states[row].rawValue
+            }
+            return nil
         default:
             return nil
         }
@@ -280,7 +283,9 @@ extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
         case "CityPickerView":
             selectedCity = cityResultController?.fetchedObjects?[row]
         case "ResumePickerView":
-            selectedResume = resumeResultController?.fetchedObjects?[row]
+            if let objects = resumeResultController.fetchedObjects, row < objects.count {
+                selectedResume = objects[row]
+            }
         case "StatePickerView":
             selectedStateIndex = row
         default:
