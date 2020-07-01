@@ -79,6 +79,8 @@ class CompanyViewModel: NSObject {
                 throw CompanyViewModelError.companyAlreadyExists
             case .addError:
                 throw CompanyViewModelError.addError
+            default:
+                throw CompanyViewModelError.unKnownError
             }
             
         } catch {

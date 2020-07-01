@@ -18,6 +18,7 @@ class ApplyViewModel: NSObject {
         let timeElapsed: String
         let state: String
         let resume: String
+        let isFavorite: Bool
     }
     enum Section {
         case main
@@ -26,6 +27,7 @@ class ApplyViewModel: NSObject {
     private let applyService: ApplyServiceType
     private let interviewService: InterviewServiceType
     private let taskService: TaskServiceType
+    private let companyService: CompanyServiceType
     private let apply: Apply
     var resumeResultController: NSFetchedResultsController<Resume>!
     var resumeResultControllerDelegate: ResumeResultControllerDelegate!
@@ -39,11 +41,12 @@ class ApplyViewModel: NSObject {
     weak var resumePickerView: UIPickerView?
     var states: [Status] = []
     // MARK: - Initializer -
-    init(applyService: ApplyServiceType,interviewService: InterviewServiceType, apply: Apply, taskService: TaskServiceType) {
+    init(applyService: ApplyServiceType,interviewService: InterviewServiceType, apply: Apply, taskService: TaskServiceType, companyService: CompanyServiceType) {
         self.applyService = applyService
         self.interviewService = interviewService
         self.taskService = taskService
         self.apply = apply
+        self.companyService = companyService
     }
     // MARK: - Functions -
     func configureResume(pickerView: UIPickerView) {
@@ -77,7 +80,7 @@ class ApplyViewModel: NSObject {
             components = calendar.dateComponents([.day], from: appliedTime, to: Date())
         }
         
-        return ApplyInfo(companyName: apply.company?.title ?? "Unknown", jobOfferURL: apply.jobLink ?? URL(string: "www.google.com")!, location: "\(apply.city?.country?.name ?? "Unknown"), \(apply.city?.name ?? "Unknown")", timeElapsed: "\(components?.day ?? 0 == 0 ? "TODAY" : "\(components!.day!) days ago")" ,state: apply.statusEnum?.rawValue ?? "Unknown", resume: apply.resume?.version ?? "Unknown")
+        return ApplyInfo(companyName: apply.company?.title ?? "Unknown", jobOfferURL: apply.jobLink ?? URL(string: "www.google.com")!, location: "\(apply.city?.country?.name ?? "Unknown"), \(apply.city?.name ?? "Unknown")", timeElapsed: "\(components?.day ?? 0 == 0 ? "TODAY" : "\(components!.day!) days ago")" ,state: apply.statusEnum?.rawValue ?? "Unknown", resume: apply.resume?.version ?? "Unknown", isFavorite: apply.company?.isFavorite ?? false)
     }
     func changeState() -> String {
         if let statePickerView = statePickerView {
@@ -171,6 +174,9 @@ class ApplyViewModel: NSObject {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    func setIsFavorite(_ value: Bool) {
+        try? companyService.setIsFavorite(for: apply, value)
     }
     // MARK: - InterviewResultControllerDelegate
     class InterviewResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {

@@ -22,6 +22,7 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     @IBOutlet weak var btnResume: PickerButton!
     @IBOutlet weak var tblInterview: UITableView!
     @IBOutlet weak var tblTask: UITableView!
+    @IBOutlet weak var imgHeart: UIImageView!
     // MARK: - Actions -
     @IBAction func btnResumeChange(_ sender: PickerButton) {
         sender.becomeFirstResponder()
@@ -39,6 +40,9 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
         sender.becomeFirstResponder()
         activateBlur()
     }
+    @IBAction func tapOnHeart(_ sender: Any) {
+        heartState.toggle()
+    }
     // MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +55,7 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
         configureSatetPickerView()
         configureResumePickerView()
         applyInfo = viewModel.getApplyInfo()
+        heartState = applyInfo!.isFavorite
         btnCompanyName.setTitle(applyInfo!.companyName, for: .normal)
         lblPassedTime.text = applyInfo!.timeElapsed
         lblLocation.text = applyInfo!.location
@@ -119,6 +124,16 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     @objc func resumeCancelClick() {
         btnResume.resignFirstResponder()
         deactiveBlur()
+    }
+    var heartState: Bool = false {
+        didSet {
+            if heartState {
+                imgHeart.image = UIImage(systemName: "heart.fill")
+            } else {
+                imgHeart.image = UIImage(systemName: "heart")
+            }
+            viewModel.setIsFavorite(heartState)
+        }
     }
 }
 extension ApplyViewController: UITableViewDelegate {

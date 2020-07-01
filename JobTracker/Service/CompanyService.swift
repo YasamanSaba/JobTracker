@@ -24,7 +24,6 @@ class CompanyService: CompanyServiceType {
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultsController
     }
-    
     func add(name: String) throws {
         let request: NSFetchRequest<Company> = Company.fetchRequest()
         let predicate = NSPredicate(format: "%K == [c] %@", #keyPath(Company.title),name)
@@ -43,5 +42,12 @@ class CompanyService: CompanyServiceType {
             throw error
         }
     }
-    
+    func setIsFavorite(for apply: Apply, _ value: Bool) throws{
+        apply.company?.isFavorite = value
+        do {
+            try context.save()
+        } catch {
+            throw CompanyServiceError.setFavoriteError
+        }
+    }
 }

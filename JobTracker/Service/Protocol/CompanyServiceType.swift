@@ -12,9 +12,11 @@ import CoreData
 enum CompanyServiceError: Error {
     case alreadyExists
     case addError
+    case setFavoriteError
 }
 
 protocol CompanyServiceType {
     func getAll() -> NSFetchedResultsController<Company>
     func add(name: String) throws
+    func setIsFavorite(for apply: Apply, _ value: Bool) throws
 }
