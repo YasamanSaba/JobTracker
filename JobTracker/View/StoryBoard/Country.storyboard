@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Country View Controller-->
+        <scene sceneID="ZvC-Em-Xbb">
+            <objects>
+                <viewController storyboardIdentifier="CountryViewController" id="8Ad-jL-Hco" customClass="CountryViewController" customModule="JobTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z8r-5Q-KB2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MWz-1a-Kwi" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
+                                <rect key="frame" x="10" y="98" width="394" height="65"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qNx-o8-FHU">
+                                        <rect key="frame" x="10" y="15.5" width="284" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Flag" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b1d-vM-B1s">
+                                        <rect key="frame" x="304" y="15.5" width="50" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="7dk-1y-wpy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gq-te-VzF">
+                                        <rect key="frame" x="364" y="12" width="20" height="41"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <state key="normal" image="plus.circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="add:" destination="8Ad-jL-Hco" eventType="touchUpInside" id="6Vd-Gf-amV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="qNx-o8-FHU" firstAttribute="leading" secondItem="MWz-1a-Kwi" secondAttribute="leading" constant="10" id="0EF-Wn-fjC"/>
+                                    <constraint firstItem="6gq-te-VzF" firstAttribute="leading" secondItem="b1d-vM-B1s" secondAttribute="trailing" constant="10" id="9m9-yw-A7S"/>
+                                    <constraint firstItem="b1d-vM-B1s" firstAttribute="centerY" secondItem="MWz-1a-Kwi" secondAttribute="centerY" id="MgR-DW-eiW"/>
+                                    <constraint firstItem="6gq-te-VzF" firstAttribute="centerY" secondItem="MWz-1a-Kwi" secondAttribute="centerY" id="Q0n-ed-bsE"/>
+                                    <constraint firstAttribute="trailing" secondItem="6gq-te-VzF" secondAttribute="trailing" constant="10" id="Qof-d1-OSp"/>
+                                    <constraint firstAttribute="height" constant="65" id="RBS-hJ-ldJ"/>
+                                    <constraint firstItem="qNx-o8-FHU" firstAttribute="centerY" secondItem="MWz-1a-Kwi" secondAttribute="centerY" id="iTr-9w-tOl"/>
+                                    <constraint firstItem="b1d-vM-B1s" firstAttribute="leading" secondItem="qNx-o8-FHU" secondAttribute="trailing" constant="10" id="zQR-MU-QYz"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GgN-A4-8Av">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Country" id="Wce-by-EAV">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="eMO-K3-vLL">
+                                            <connections>
+                                                <action selector="done:" destination="8Ad-jL-Hco" id="gxZ-S1-bP5"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e9L-We-mMQ">
+                                <rect key="frame" x="5" y="173" width="404" height="689"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xnj-15-5wo">
+                                    <size key="itemSize" width="200" height="44"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CountryCollectionViewCell" id="G0M-4n-shd" customClass="CountryCollectionViewCell" customModule="JobTracker" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="10" width="112.5" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kba-XI-FQZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="112.5" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇩🇪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vI2-r6-u4H">
+                                                    <rect key="frame" x="5" y="14.5" width="23" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" id="6if-NM-swD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Germany" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cm-NU-yOT">
+                                                    <rect key="frame" x="38" y="11.5" width="69.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vI2-r6-u4H" firstAttribute="centerY" secondItem="kba-XI-FQZ" secondAttribute="centerY" id="Cxc-AI-e0P"/>
+                                                <constraint firstItem="1cm-NU-yOT" firstAttribute="centerY" secondItem="kba-XI-FQZ" secondAttribute="centerY" id="EQM-pZ-DDQ"/>
+                                                <constraint firstItem="vI2-r6-u4H" firstAttribute="leading" secondItem="kba-XI-FQZ" secondAttribute="leading" constant="5" id="MAr-kj-bYp"/>
+                                                <constraint firstItem="1cm-NU-yOT" firstAttribute="leading" secondItem="vI2-r6-u4H" secondAttribute="trailing" constant="10" id="NJ1-zh-PEL"/>
+                                                <constraint firstAttribute="trailing" secondItem="1cm-NU-yOT" secondAttribute="trailing" constant="5" id="oS3-Zh-AWz"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="lblCountryName" destination="1cm-NU-yOT" id="UKA-ht-QAj"/>
+                                            <outlet property="lblFlag" destination="vI2-r6-u4H" id="dxl-rg-HBC"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="MWz-1a-Kwi" firstAttribute="leading" secondItem="Tjr-84-uQr" secondAttribute="leading" constant="10" id="2Lb-xs-3LC"/>
+                            <constraint firstItem="Tjr-84-uQr" firstAttribute="bottom" secondItem="e9L-We-mMQ" secondAttribute="bottom" id="EcB-LA-t0d"/>
+                            <constraint firstItem="Tjr-84-uQr" firstAttribute="trailing" secondItem="e9L-We-mMQ" secondAttribute="trailing" constant="5" id="S8o-hU-Aps"/>
+                            <constraint firstItem="Tjr-84-uQr" firstAttribute="trailing" secondItem="GgN-A4-8Av" secondAttribute="trailing" id="X8Z-eX-ndL"/>
+                            <constraint firstItem="MWz-1a-Kwi" firstAttribute="top" secondItem="GgN-A4-8Av" secondAttribute="bottom" constant="10" id="aTL-gg-ybf"/>
+                            <constraint firstItem="e9L-We-mMQ" firstAttribute="top" secondItem="MWz-1a-Kwi" secondAttribute="bottom" constant="10" id="aeo-Bs-m7h"/>
+                            <constraint firstItem="e9L-We-mMQ" firstAttribute="leading" secondItem="Tjr-84-uQr" secondAttribute="leading" constant="5" id="jEs-Im-rHa"/>
+                            <constraint firstItem="Tjr-84-uQr" firstAttribute="trailing" secondItem="MWz-1a-Kwi" secondAttribute="trailing" constant="10" id="rkq-v0-CVG"/>
+                            <constraint firstItem="GgN-A4-8Av" firstAttribute="leading" secondItem="z8r-5Q-KB2" secondAttribute="leading" id="s5U-2H-NE3"/>
+                            <constraint firstItem="GgN-A4-8Av" firstAttribute="top" secondItem="Tjr-84-uQr" secondAttribute="top" id="sRb-T8-WNI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Tjr-84-uQr"/>
+                    </view>
+                    <connections>
+                        <outlet property="colCountries" destination="e9L-We-mMQ" id="Ch1-01-k2E"/>
+                        <outlet property="txtCountryFlag" destination="b1d-vM-B1s" id="oBl-7v-PED"/>
+                        <outlet property="txtCountryName" destination="qNx-o8-FHU" id="QwU-cA-mVN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dty-g3-brN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="82.608695652173921" y="80.357142857142847"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
+    </resources>
+</document>

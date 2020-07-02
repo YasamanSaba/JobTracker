@@ -24,4 +24,29 @@ class CountryService: CountryServiceType {
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultsController
     }
+    
+    func add(name: String, flag: String) throws {
+        let request:NSFetchRequest<Country> = Country.fetchRequest()
+        let predicate = NSPredicate(format: "%K == [c] %@", #keyPath(Country.name), name)
+        request.predicate = predicate
+        
+        do {
+            let result = try context.fetch(request)
+            if result.count > 0 {
+                throw CountryServiceError.alreadyExists
+            }
+        } catch {
+            throw error
+        }
+        
+        let country = Country(context: context)
+        country.name = name
+        country.flag = flag
+        
+        do {
+            try context.save()
+        } catch {
+            throw CountryServiceError.addError
+        }
+    }
 }

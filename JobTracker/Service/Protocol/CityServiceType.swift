@@ -9,6 +9,13 @@
 import Foundation
 import CoreData
 
+enum CityServiceError: Error {
+    case fetchError
+    case addError
+    case alreadyExists
+}
+
 protocol CityServiceType {
     func fetchAll(in country: Country) -> NSFetchedResultsController<City>
+    func add(name: String, to country: Country) throws
 }
