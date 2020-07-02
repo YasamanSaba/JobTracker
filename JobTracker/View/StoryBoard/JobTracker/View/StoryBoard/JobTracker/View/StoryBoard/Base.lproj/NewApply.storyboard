@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IbK-hr-YdP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IbK-hr-YdP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -452,7 +452,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" id="rud-qg-m2w">
-                    <rect key="frame" x="0.0" y="0.0" width="378" height="231"/>
+                    <rect key="frame" x="0.0" y="0.0" width="378" height="300"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bk7-YN-h6Q">
@@ -461,29 +461,22 @@
                                 <constraint firstAttribute="height" constant="44" id="aMw-N7-jVe"/>
                             </constraints>
                             <items>
-                                <navigationItem title="Title" id="T8q-rr-jE2">
-                                    <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vTB-QQ-Ft8">
+                                <navigationItem title="Country" id="T8q-rr-jE2">
+                                    <barButtonItem key="leftBarButtonItem" systemItem="done" id="teD-mg-81Y">
                                         <connections>
-                                            <action selector="btnCountryViewCancel:" destination="IbK-hr-YdP" id="dNO-kg-Vrz"/>
+                                            <action selector="btnCountryViewDone:" destination="IbK-hr-YdP" id="Xcd-FL-Xtg"/>
                                         </connections>
                                     </barButtonItem>
-                                    <rightBarButtonItems>
-                                        <barButtonItem systemItem="done" id="teD-mg-81Y">
-                                            <connections>
-                                                <action selector="btnCountryViewDone:" destination="IbK-hr-YdP" id="Xcd-FL-Xtg"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem systemItem="add" id="cem-AC-huN">
-                                            <connections>
-                                                <action selector="btnCountryViewAdd:" destination="IbK-hr-YdP" id="1jC-40-fEj"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </rightBarButtonItems>
+                                    <barButtonItem key="rightBarButtonItem" systemItem="add" id="cem-AC-huN">
+                                        <connections>
+                                            <action selector="btnCountryViewAdd:" destination="IbK-hr-YdP" id="1jC-40-fEj"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLH-RO-YIE">
-                            <rect key="frame" x="0.0" y="44" width="378" height="187"/>
+                            <rect key="frame" x="0.0" y="44" width="378" height="256"/>
                         </pickerView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -498,7 +491,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" id="J3J-GQ-E3i">
-                    <rect key="frame" x="0.0" y="0.0" width="378" height="231"/>
+                    <rect key="frame" x="0.0" y="0.0" width="378" height="300"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZx-ui-epq">
@@ -507,29 +500,22 @@
                                 <constraint firstAttribute="height" constant="44" id="bVV-sG-bpw"/>
                             </constraints>
                             <items>
-                                <navigationItem title="Choose City" id="duK-Km-pze">
-                                    <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="41J-wp-X7v">
+                                <navigationItem title="City" id="duK-Km-pze">
+                                    <barButtonItem key="leftBarButtonItem" systemItem="done" id="a3b-Ak-m6J">
                                         <connections>
-                                            <action selector="btnCityViewCancel:" destination="IbK-hr-YdP" id="G2z-MP-cij"/>
+                                            <action selector="btnCityViewDone:" destination="IbK-hr-YdP" id="efG-Tq-JCY"/>
                                         </connections>
                                     </barButtonItem>
-                                    <rightBarButtonItems>
-                                        <barButtonItem systemItem="done" id="a3b-Ak-m6J">
-                                            <connections>
-                                                <action selector="btnCityViewDone:" destination="IbK-hr-YdP" id="efG-Tq-JCY"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem systemItem="add" id="df2-q4-Cdp">
-                                            <connections>
-                                                <action selector="btnCityViewAdd:" destination="IbK-hr-YdP" id="3vO-Wi-3x3"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </rightBarButtonItems>
+                                    <barButtonItem key="rightBarButtonItem" systemItem="add" id="df2-q4-Cdp">
+                                        <connections>
+                                            <action selector="btnCityViewAdd:" destination="IbK-hr-YdP" id="3vO-Wi-3x3"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sac-VS-8aa">
-                            <rect key="frame" x="0.0" y="44" width="378" height="187"/>
+                            <rect key="frame" x="0.0" y="44" width="378" height="256"/>
                         </pickerView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

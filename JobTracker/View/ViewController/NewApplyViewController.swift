@@ -64,7 +64,7 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
         txtCountry.resignFirstResponder()
     }
     @IBAction func btnCountryViewAdd(_ sender: Any) {
-        
+        viewModel.addContry(sender: self)
     }
     @IBAction func btnCityViewCancel(_ sender: Any) {
         txtCity.resignFirstResponder()
@@ -73,7 +73,7 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
         txtCity.resignFirstResponder()
     }
     @IBAction func btnCityViewAdd(_ sender: Any) {
-        
+        viewModel.addCity(sender: self)
     }
     
     @IBAction func tapOnHeart(_ sender: Any) {

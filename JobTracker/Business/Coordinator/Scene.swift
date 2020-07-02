@@ -18,4 +18,6 @@ enum Scene {
     case reminder(Reminderable)
     case company((Company) -> Void)
     case filter
+    case country
+    case city(Country)
 }

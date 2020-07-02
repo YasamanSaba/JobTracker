@@ -153,6 +153,16 @@ class NewApplyViewModel: NSObject {
         pickerView.dataSource = self
     }
     
+    func addContry(sender: UIViewController) {
+        appCoordinator?.present(scene: .country, sender: sender)
+    }
+    
+    func addCity(sender: UIViewController) {
+        if let selectedCountry = selectedCountry {
+            appCoordinator?.present(scene: .city(selectedCountry), sender: sender)
+        }
+    }
+    
     func configureTags(collectionView: UICollectionView) {
         tagDatasource = UICollectionViewDiffableDataSource<Int,Tag>(collectionView: collectionView) { (collectionView, indexPath, tag) -> UICollectionViewCell? in
             guard let cell =

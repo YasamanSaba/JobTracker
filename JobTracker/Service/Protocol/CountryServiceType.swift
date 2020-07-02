@@ -11,8 +11,11 @@ import CoreData
 
 enum CountryServiceError: Error {
     case fetchError
+    case addError
+    case alreadyExists
 }
 
 protocol CountryServiceType {
     func fetchAll() -> NSFetchedResultsController<Country>
+    func add(name: String, flag: String) throws
 }

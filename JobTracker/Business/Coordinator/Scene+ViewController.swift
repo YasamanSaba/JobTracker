@@ -90,6 +90,21 @@ extension Scene {
             let viewModel = FilterViewModel()
             viewController.viewModel = viewModel
             return viewController
+        case .country:
+            let storyboard = UIStoryboard(name: "Country", bundle: nil)
+            let viewController = storyboard.instantiateViewController(identifier: CountryViewController.reuseIdentifier) as CountryViewController
+            let countryService = CountryService(context: context)
+            let viewModel = CountryViewModel(countryService: countryService)
+            viewController.viewModel = viewModel
+            return viewController
+        case .city(let country):
+            let storyboard = UIStoryboard(name: "City", bundle: nil)
+            let viewController = storyboard.instantiateViewController(identifier: CityViewController.reuseIdentifier) as CityViewController
+            let cityService = CityService(context: context)
+            let viewModel = CityViewModel(country: country, cityService: cityService)
+            viewController.viewModel = viewModel
+            return viewController
+            
         }
     }
 }

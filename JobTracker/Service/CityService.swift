@@ -26,4 +26,29 @@ struct CityService: CityServiceType {
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultsController
     }
+    
+    func add(name: String, to country: Country) throws {
+        let request:NSFetchRequest<City> = City.fetchRequest()
+        let predicate = NSPredicate(format: "%K == %@", #keyPath(City.country), country)
+        request.predicate = predicate
+        
+        do {
+            let result = try context.fetch(request)
+            if result.count > 0 {
+                throw CityServiceError.alreadyExists
+            }
+        } catch {
+            throw error
+        }
+        
+        let city = City(context: context)
+        city.name = name
+        country.addToCity(city)
+        
+        do {
+            try context.save()
+        } catch {
+            throw CityServiceError.addError
+        }
+    }
 }

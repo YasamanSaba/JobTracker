@@ -47,6 +47,14 @@
 		7060EFF82494A47500A229B8 /* Tag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7060EFF62494A47500A229B8 /* Tag.storyboard */; };
 		7060EFFA2494E6CB00A229B8 /* ApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060EFF92494E6CB00A229B8 /* ApplyViewController.swift */; };
 		7060EFFD2496178300A229B8 /* Reminder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7060EFFB2496178300A229B8 /* Reminder.storyboard */; };
+		70773C4F24AC66A800097FFE /* Country.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70773C4E24AC66A800097FFE /* Country.storyboard */; };
+		70773C5124AC6D6D00097FFE /* CountryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70773C5024AC6D6D00097FFE /* CountryCollectionViewCell.swift */; };
+		70773C5324AC6EFB00097FFE /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70773C5224AC6EFB00097FFE /* CountryViewController.swift */; };
+		70773C5524AC71C200097FFE /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70773C5424AC71C200097FFE /* CountryViewModel.swift */; };
+		70773C5724ACBEEE00097FFE /* City.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70773C5624ACBEEE00097FFE /* City.storyboard */; };
+		70773C5924ACC14E00097FFE /* CityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70773C5824ACC14E00097FFE /* CityCollectionViewCell.swift */; };
+		70773C5B24ACC30300097FFE /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70773C5A24ACC30300097FFE /* CityViewController.swift */; };
+		70773C5D24ACCC4800097FFE /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70773C5C24ACCC4800097FFE /* CityViewModel.swift */; };
 		709CDEE024A1E62200A9DAE0 /* Note.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 709CDEDF24A1E62200A9DAE0 /* Note.storyboard */; };
 		709CDEE224A1E66400A9DAE0 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709CDEE124A1E66400A9DAE0 /* NotesViewController.swift */; };
 		709CDEE424A1E7C500A9DAE0 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709CDEE324A1E7C500A9DAE0 /* NotesViewModel.swift */; };
@@ -150,6 +158,14 @@
 		7060EFF72494A47500A229B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/JobTracker/View/StoryBoard/Base.lproj/Tag.storyboard; sourceTree = "<group>"; };
 		7060EFF92494E6CB00A229B8 /* ApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyViewController.swift; sourceTree = "<group>"; };
 		7060EFFC2496178300A229B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/JobTracker/View/StoryBoard/Base.lproj/Reminder.storyboard; sourceTree = "<group>"; };
+		70773C4E24AC66A800097FFE /* Country.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Country.storyboard; sourceTree = "<group>"; };
+		70773C5024AC6D6D00097FFE /* CountryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCollectionViewCell.swift; sourceTree = "<group>"; };
+		70773C5224AC6EFB00097FFE /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
+		70773C5424AC71C200097FFE /* CountryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryViewModel.swift; sourceTree = "<group>"; };
+		70773C5624ACBEEE00097FFE /* City.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = City.storyboard; sourceTree = "<group>"; };
+		70773C5824ACC14E00097FFE /* CityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCollectionViewCell.swift; sourceTree = "<group>"; };
+		70773C5A24ACC30300097FFE /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
+		70773C5C24ACCC4800097FFE /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		709CDEDF24A1E62200A9DAE0 /* Note.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Note.storyboard; sourceTree = "<group>"; };
 		709CDEE124A1E66400A9DAE0 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		709CDEE324A1E7C500A9DAE0 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
@@ -332,6 +348,8 @@
 				704866D224A777EF00FA80B5 /* NewApplyViewModel.swift */,
 				7051A55B24AB08F100B98C4B /* CompanyViewModel.swift */,
 				F29ABCF924ACC6470032D3E2 /* FilterViewModel.swift */,
+				70773C5424AC71C200097FFE /* CountryViewModel.swift */,
+				70773C5C24ACCC4800097FFE /* CityViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -376,6 +394,8 @@
 				709CDEE524A20C2D00A9DAE0 /* Main.storyboard */,
 				7051A55724AB03EF00B98C4B /* Company.storyboard */,
 				F29ABCF524ACA4B50032D3E2 /* Filter.storyboard */,
+				70773C4E24AC66A800097FFE /* Country.storyboard */,
+				70773C5624ACBEEE00097FFE /* City.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -393,6 +413,8 @@
 				709CDEE124A1E66400A9DAE0 /* NotesViewController.swift */,
 				7051A55924AB088C00B98C4B /* CompanyViewController.swift */,
 				F29ABCF724ACC1060032D3E2 /* FilterViewController.swift */,
+				70773C5224AC6EFB00097FFE /* CountryViewController.swift */,
+				70773C5A24ACC30300097FFE /* CityViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -435,6 +457,8 @@
 				F2B147AF24A0E53D00BD5A22 /* BadgeSupplementaryView.swift */,
 				7009B1C124A33FD100B6437D /* TagCollectionViewCell.swift */,
 				7051A55D24AB0A7700B98C4B /* CompanyTableViewCell.swift */,
+				70773C5024AC6D6D00097FFE /* CountryCollectionViewCell.swift */,
+				70773C5824ACC14E00097FFE /* CityCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -609,6 +633,7 @@
 				709CDEE624A20C2D00A9DAE0 /* Main.storyboard in Resources */,
 				709CDEE024A1E62200A9DAE0 /* Note.storyboard in Resources */,
 				F2035584248BBBD000A9F9F8 /* LaunchScreen.storyboard in Resources */,
+				70773C5724ACBEEE00097FFE /* City.storyboard in Resources */,
 				7009B1CC24A383A600B6437D /* Task.storyboard in Resources */,
 				70EA24522490AE55007FD797 /* Apply.storyboard in Resources */,
 				7060EFFD2496178300A229B8 /* Reminder.storyboard in Resources */,
@@ -618,6 +643,7 @@
 				7009B1CE24A383C300B6437D /* Interview.storyboard in Resources */,
 				7009B1C524A382FA00B6437D /* NewApply.storyboard in Resources */,
 				7009B1CA24A3835C00B6437D /* ApplyDetail.storyboard in Resources */,
+				70773C4F24AC66A800097FFE /* Country.storyboard in Resources */,
 				7051A55824AB03EF00B98C4B /* Company.storyboard in Resources */,
 				7009B1C724A3832E00B6437D /* CheckList.storyboard in Resources */,
 			);
@@ -661,6 +687,7 @@
 				F2A2D6E424A38FC200D25B35 /* UIButtonExtension.swift in Sources */,
 				70483E7E249797C700612288 /* ChecklistItemTableViewCell.swift in Sources */,
 				709CDEE424A1E7C500A9DAE0 /* NotesViewModel.swift in Sources */,
+				70773C5B24ACC30300097FFE /* CityViewController.swift in Sources */,
 				70ADFFA12498B93600345379 /* ReminderViewController.swift in Sources */,
 				7043B03424A0E4D500F760AA /* Tab.swift in Sources */,
 				70483E77249651DC00612288 /* NoteViewController.swift in Sources */,
@@ -683,16 +710,20 @@
 				7051A55E24AB0A7700B98C4B /* CompanyTableViewCell.swift in Sources */,
 				702056AA24A87268002495E1 /* CityService.swift in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
+				70773C5924ACC14E00097FFE /* CityCollectionViewCell.swift in Sources */,
 				F24633AE24A8C814004D1DE5 /* TaskServiceType.swift in Sources */,
 				7043B02D24A0CEE500F760AA /* Scene.swift in Sources */,
 				F24C3D67249903B0004C16B9 /* CountryServiceType.swift in Sources */,
 				F2B147B024A0E53D00BD5A22 /* BadgeSupplementaryView.swift in Sources */,
+				70773C5324AC6EFB00097FFE /* CountryViewController.swift in Sources */,
 				F24A0DC924A470F600D38217 /* ApplyViewModel.swift in Sources */,
 				70483E82249799E700612288 /* TaskTableViewCell.swift in Sources */,
+				70773C5524AC71C200097FFE /* CountryViewModel.swift in Sources */,
 				F2035577248BBBC600A9F9F8 /* SceneDelegate.swift in Sources */,
 				F24633B024A8C89E004D1DE5 /* TaskService.swift in Sources */,
 				F24633AC24A8A291004D1DE5 /* InterviewServiceType.swift in Sources */,
 				70483E8424979ACF00612288 /* ReminderTableViewCell.swift in Sources */,
+				70773C5D24ACCC4800097FFE /* CityViewModel.swift in Sources */,
 				F2EAA8B62498EBAC00876FA9 /* AppliesViewModel.swift in Sources */,
 				70ADFF9824989F7400345379 /* Reminderable.swift in Sources */,
 				7060EFF52494A32900A229B8 /* TagViewController.swift in Sources */,
@@ -704,6 +735,7 @@
 				7051A55C24AB08F100B98C4B /* CompanyViewModel.swift in Sources */,
 				709CDEE224A1E66400A9DAE0 /* NotesViewController.swift in Sources */,
 				70ADFFA92498EC1B00345379 /* TagServiceType.swift in Sources */,
+				70773C5124AC6D6D00097FFE /* CountryCollectionViewCell.swift in Sources */,
 				7051A55A24AB088C00B98C4B /* CompanyViewController.swift in Sources */,
 				F23F3052249DF28B00A92C49 /* ApplyServiceType.swift in Sources */,
 				7009B1C024A327D400B6437D /* BoxUIView.swift in Sources */,
