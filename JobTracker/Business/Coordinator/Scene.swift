@@ -17,4 +17,5 @@ enum Scene {
     case tag(([Tag]) -> Void)
     case reminder(Reminderable)
     case company((Company) -> Void)
+    case filter
 }

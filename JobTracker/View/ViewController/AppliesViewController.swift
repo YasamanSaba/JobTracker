@@ -156,6 +156,9 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
             }
         }
     }
+    @objc func filter() {
+        viewModel.filter(sender: self)
+    }
     // MARK: - Properties
     static let badgeElementKind = "badge-element-kind"
     var viewModel: AppliesViewModel!
@@ -184,7 +187,7 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
     func createNonEditingBarButtons() {
         let btnAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addApply))
         let btnEdit = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editApplies))
-        let btnFilter = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3.decrease.circle"), style: .done, target: self, action: nil)
+        let btnFilter = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3.decrease.circle"), style: .done, target: self, action: #selector(filter))
         navigationItem.rightBarButtonItems = [btnAdd, btnEdit]
         navigationItem.leftBarButtonItem = btnFilter
     }

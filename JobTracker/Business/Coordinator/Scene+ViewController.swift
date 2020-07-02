@@ -83,6 +83,13 @@ extension Scene {
             let viewModel = CompanyViewModel(companyService: companyService, onComplete: onComplete)
             viewController.viewModel = viewModel
             return viewController
+        case .filter:
+            let storyboard = UIStoryboard(name: "Filter", bundle: nil)
+            let viewController = storyboard.instantiateViewController(identifier: FilterViewController.reuseIdentifier) as FilterViewController
+            //let companyService = CompanyService(context: context)
+            let viewModel = FilterViewModel()
+            viewController.viewModel = viewModel
+            return viewController
         }
     }
 }

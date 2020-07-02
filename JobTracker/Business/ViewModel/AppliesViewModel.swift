@@ -161,6 +161,9 @@ class AppliesViewModel: NSObject {
     func addApply(sender: UIViewController) {
         appCoordinator?.push(scene: .newApply, sender: sender)
     }
+    func filter(sender: UIViewController) {
+        appCoordinator?.present(scene: .filter, sender: sender)
+    }
     // MARK: - ApplyResultControllerDelegate
     class ApplyResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
         let applyDataSource: UITableViewDiffableDataSource<Section, Apply>

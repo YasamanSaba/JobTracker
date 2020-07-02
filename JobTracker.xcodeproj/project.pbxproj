@@ -80,6 +80,9 @@
 		F24633B024A8C89E004D1DE5 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24633AF24A8C89E004D1DE5 /* TaskService.swift */; };
 		F24A0DC924A470F600D38217 /* ApplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24A0DC824A470F600D38217 /* ApplyViewModel.swift */; };
 		F24C3D67249903B0004C16B9 /* CountryServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24C3D66249903B0004C16B9 /* CountryServiceType.swift */; };
+		F29ABCF624ACA4B50032D3E2 /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ABCF524ACA4B50032D3E2 /* Filter.storyboard */; };
+		F29ABCF824ACC1060032D3E2 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ABCF724ACC1060032D3E2 /* FilterViewController.swift */; };
+		F29ABCFA24ACC6470032D3E2 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ABCF924ACC6470032D3E2 /* FilterViewModel.swift */; };
 		F2A2D6E424A38FC200D25B35 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2D6E324A38FC100D25B35 /* UIButtonExtension.swift */; };
 		F2B147B024A0E53D00BD5A22 /* BadgeSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B147AF24A0E53D00BD5A22 /* BadgeSupplementaryView.swift */; };
 		F2B6F2072490F6180088B0F7 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B6F2062490F6180088B0F7 /* CoreDataTests.swift */; };
@@ -187,6 +190,9 @@
 		F24633AF24A8C89E004D1DE5 /* TaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
 		F24A0DC824A470F600D38217 /* ApplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyViewModel.swift; sourceTree = "<group>"; };
 		F24C3D66249903B0004C16B9 /* CountryServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryServiceType.swift; sourceTree = "<group>"; };
+		F29ABCF524ACA4B50032D3E2 /* Filter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filter.storyboard; sourceTree = "<group>"; };
+		F29ABCF724ACC1060032D3E2 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		F29ABCF924ACC6470032D3E2 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		F2A2D6E324A38FC100D25B35 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		F2B147AF24A0E53D00BD5A22 /* BadgeSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeSupplementaryView.swift; sourceTree = "<group>"; };
 		F2B6F2062490F6180088B0F7 /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
@@ -325,6 +331,7 @@
 				F24A0DC824A470F600D38217 /* ApplyViewModel.swift */,
 				704866D224A777EF00FA80B5 /* NewApplyViewModel.swift */,
 				7051A55B24AB08F100B98C4B /* CompanyViewModel.swift */,
+				F29ABCF924ACC6470032D3E2 /* FilterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -368,6 +375,7 @@
 				F2035582248BBBD000A9F9F8 /* LaunchScreen.storyboard */,
 				709CDEE524A20C2D00A9DAE0 /* Main.storyboard */,
 				7051A55724AB03EF00B98C4B /* Company.storyboard */,
+				F29ABCF524ACA4B50032D3E2 /* Filter.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -384,6 +392,7 @@
 				70ADFFA02498B93600345379 /* ReminderViewController.swift */,
 				709CDEE124A1E66400A9DAE0 /* NotesViewController.swift */,
 				7051A55924AB088C00B98C4B /* CompanyViewController.swift */,
+				F29ABCF724ACC1060032D3E2 /* FilterViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -605,6 +614,7 @@
 				7060EFFD2496178300A229B8 /* Reminder.storyboard in Resources */,
 				F2035581248BBBD000A9F9F8 /* Assets.xcassets in Resources */,
 				7060EFF82494A47500A229B8 /* Tag.storyboard in Resources */,
+				F29ABCF624ACA4B50032D3E2 /* Filter.storyboard in Resources */,
 				7009B1CE24A383C300B6437D /* Interview.storyboard in Resources */,
 				7009B1C524A382FA00B6437D /* NewApply.storyboard in Resources */,
 				7009B1CA24A3835C00B6437D /* ApplyDetail.storyboard in Resources */,
@@ -655,6 +665,7 @@
 				7043B03424A0E4D500F760AA /* Tab.swift in Sources */,
 				70483E77249651DC00612288 /* NoteViewController.swift in Sources */,
 				70483E80249799D600612288 /* InterviewTableViewCell.swift in Sources */,
+				F29ABCF824ACC1060032D3E2 /* FilterViewController.swift in Sources */,
 				70ADFF9A2498A08F00345379 /* ReminderViewModel.swift in Sources */,
 				7051A56224AB17EB00B98C4B /* CompanyServiceType.swift in Sources */,
 				F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */,
@@ -667,6 +678,7 @@
 				7043B02F24A0D22000F760AA /* Scene+ViewController.swift in Sources */,
 				704866D324A777EF00FA80B5 /* NewApplyViewModel.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
+				F29ABCFA24ACC6470032D3E2 /* FilterViewModel.swift in Sources */,
 				7009B1C224A33FD100B6437D /* TagCollectionViewCell.swift in Sources */,
 				7051A55E24AB0A7700B98C4B /* CompanyTableViewCell.swift in Sources */,
 				702056AA24A87268002495E1 /* CityService.swift in Sources */,
