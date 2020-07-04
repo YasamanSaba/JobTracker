@@ -29,9 +29,6 @@ struct ApplyService: ApplyServiceType {
         self.context = context
     }
     // MARK: - Functions -
-    func getAllState() -> [Status] {
-        Status.allCases
-    }
     func getAllResumeVersion() -> NSFetchedResultsController<Resume> {
         let fetchRequest: NSFetchRequest<Resume> = Resume.fetchRequest()
         let sort = NSSortDescriptor(key: #keyPath(Resume.version), ascending: false)

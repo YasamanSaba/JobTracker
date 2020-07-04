@@ -14,6 +14,7 @@ class FilterViewController: UIViewController, ViewModelSupportedViewControllers 
     var hasInterview = false
     var hasTask = false
     var isCompanyFavorite = false
+    private var searchController = UISearchController(searchResultsController: nil)
     // MARK: - Outlet -
     @IBOutlet var mainTableView: UITableView!
     @IBOutlet weak var colFilteredTag: UICollectionView!
@@ -23,6 +24,8 @@ class FilterViewController: UIViewController, ViewModelSupportedViewControllers 
     @IBOutlet weak var tblCity: UITableView!
     @IBOutlet weak var srbCity: UISearchBar!
     @IBOutlet weak var pickStatus: UIPickerView!
+    @IBOutlet weak var srbState: UISearchBar!
+    @IBOutlet weak var tblState: UITableView!
     @IBOutlet weak var segmentView: UIView!
     @IBOutlet var viewCity: UIView!
     @IBOutlet var viewTag: UIView!
@@ -32,6 +35,7 @@ class FilterViewController: UIViewController, ViewModelSupportedViewControllers 
     @IBAction func activeFilter(_ sender: Any) {
     }
     @IBAction func cancelFilter(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func interviewChanged(_ sender: Any) {
         hasInterview.toggle()
@@ -70,6 +74,22 @@ class FilterViewController: UIViewController, ViewModelSupportedViewControllers 
     // MARK: - Functions -
     func setup() {
         configureSegmentViews()
+        viewModel.setupCityDataSource(for: tblCity)
+        viewModel.setupTagDataSource(for: tblTag)
+        viewModel.setupStateDataSource(for: tblState)
+        srbCity.searchTextField.addTarget(self, action: #selector(cityTextChanged), for: .allEditingEvents)
+        srbTag.searchTextField.addTarget(self, action: #selector(tagTextChanged), for: .allEditingEvents)
+        srbState.searchTextField.addTarget(self, action: #selector(stateTextChanged), for: .allEditingEvents)
+    }
+    
+    @objc func cityTextChanged() {
+        viewModel.filterCity(for: srbCity.searchTextField.text ?? "")
+    }
+    @objc func tagTextChanged() {
+        viewModel.filterTag(for: srbTag.searchTextField.text ?? "")
+    }
+    @objc func stateTextChanged() {
+        viewModel.filterState(for: srbState.searchTextField.text ?? "")
     }
     func configureSegmentViews() {
         segmentView.addSubview(viewCity)
@@ -97,9 +117,4 @@ class FilterViewController: UIViewController, ViewModelSupportedViewControllers 
         segFilter.selectedSegmentIndex = 0
     }
 }
-// MARK: - Extension -
-extension FilterViewController: UISearchBarDelegate {
-  func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-    
-  }
-}
+

@@ -63,7 +63,8 @@ extension Scene {
             let interviewService = InterviewService(context: context)
             let taskService = TaskService(context: context)
             let companyService = CompanyService(context: context)
-            let viewModel = ApplyViewModel(applyService: applyService, interviewService: interviewService, apply: apply, taskService: taskService, companyService: companyService)
+            let stateService = StateService(context: context)
+            let viewModel = ApplyViewModel(applyService: applyService, interviewService: interviewService, apply: apply, taskService: taskService, companyService: companyService, stateService: stateService)
             viewController.viewModel = viewModel
             return viewController
         case .newApply:
@@ -73,7 +74,8 @@ extension Scene {
             let cityService = CityService(context: context)
             let applyService = ApplyService(context: context)
             let tagService = TagService(context: context)
-            let viewModel = NewApplyViewModel(countryService: countryService, cityService: cityService, applyService: applyService, tagService: tagService)
+            let stateService = StateService(context: context)
+            let viewModel = NewApplyViewModel(countryService: countryService, cityService: cityService, applyService: applyService, tagService: tagService, stateService: stateService)
             viewController.viewModel = viewModel
             return viewController
         case .company(let onComplete):
@@ -83,11 +85,13 @@ extension Scene {
             let viewModel = CompanyViewModel(companyService: companyService, onComplete: onComplete)
             viewController.viewModel = viewModel
             return viewController
-        case .filter:
+        case .filter(let country):
             let storyboard = UIStoryboard(name: "Filter", bundle: nil)
             let viewController = storyboard.instantiateViewController(identifier: FilterViewController.reuseIdentifier) as FilterViewController
-            //let companyService = CompanyService(context: context)
-            let viewModel = FilterViewModel()
+            let tagService = TagService(context: context)
+            let cityService = CityService(context: context)
+            let stateService = StateService(context: context)
+            let viewModel = FilterViewModel(tagService: tagService, cityService: cityService, stateService: stateService, country: country)
             viewController.viewModel = viewModel
             return viewController
         case .country:

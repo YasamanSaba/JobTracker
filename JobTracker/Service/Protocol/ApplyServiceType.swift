@@ -17,7 +17,6 @@ enum ApplyServiceError: Error {
     case deleteError
 }
 protocol ApplyServiceType {
-    func getAllState() -> [Status]
     func getAllResumeVersion() -> NSFetchedResultsController<Resume>
     func fetchAll() -> NSFetchedResultsController<Apply>
     func save(apply: Apply, state: Status) throws

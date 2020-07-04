@@ -19,6 +19,7 @@ class NewApplyViewModel: NSObject {
     // MARK: - Properties
     let appCoordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
     let applyService: ApplyServiceType
+    let stateService: StateServiceType
     let countryService: CountryServiceType
     let cityService: CityServiceType
     let tagService: TagServiceType
@@ -60,11 +61,12 @@ class NewApplyViewModel: NSObject {
     }
     
     // MARK: - Initializer
-    init(countryService: CountryServiceType, cityService: CityServiceType, applyService: ApplyServiceType, tagService: TagServiceType) {
+    init(countryService: CountryServiceType, cityService: CityServiceType, applyService: ApplyServiceType, tagService: TagServiceType, stateService: StateServiceType) {
         self.countryService = countryService
         self.cityService = cityService
         self.applyService = applyService
         self.tagService = tagService
+        self.stateService = stateService
     }
     
     // MARK: - Functions
@@ -147,7 +149,7 @@ class NewApplyViewModel: NSObject {
     }
     
     func configureState(pickerView: UIPickerView) {
-        self.states = applyService.getAllState()
+        self.states = stateService.getAllState()
         pickerView.accessibilityIdentifier = "StatePickerView"
         pickerView.delegate = self
         pickerView.dataSource = self
