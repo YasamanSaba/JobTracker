@@ -43,7 +43,7 @@
                                             <constraint firstAttribute="width" constant="25" id="jbD-op-erV"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="zVZ-lO-7wM">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zVZ-lO-7wM">
                                         <rect key="frame" x="50" y="54" width="154.5" height="34"/>
                                         <accessibility key="accessibilityConfiguration" identifier="Country"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -52,7 +52,7 @@
                                             <outlet property="delegate" destination="IbK-hr-YdP" id="LZB-jP-eQR"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="4VY-uh-YAz">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4VY-uh-YAz">
                                         <rect key="frame" x="209.5" y="54" width="154.5" height="34"/>
                                         <accessibility key="accessibilityConfiguration" identifier="City"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -192,7 +192,7 @@
                                             <constraint firstAttribute="height" constant="45" id="Dt5-F1-ZHb"/>
                                         </constraints>
                                     </pickerView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apply Date" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="tH0-zN-rhl">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apply Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tH0-zN-rhl">
                                         <rect key="frame" x="50" y="126.5" width="314" height="34"/>
                                         <accessibility key="accessibilityConfiguration" identifier="ApplyDate"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -222,6 +222,9 @@
                                         <rect key="frame" x="339" y="81.5" width="30" height="46"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="addResume:" destination="IbK-hr-YdP" eventType="touchUpInside" id="KU6-7e-sIr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

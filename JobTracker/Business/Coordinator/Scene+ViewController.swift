@@ -97,6 +97,13 @@ extension Scene {
             let viewModel = CityViewModel(country: country, cityService: cityService)
             viewController.viewModel = viewModel
             return viewController
+        case .resume:
+            let storyboard = UIStoryboard(name: "Resume", bundle: nil)
+            let viewController = storyboard.instantiateViewController(identifier: ResumeViewController.reuseIdentifier) as ResumeViewController
+            let resumeService = ResumeService(context: context)
+            let viewModel = ResumeViewModel(resumeService: resumeService)
+            viewController.viewModel = viewModel
+            return viewController
             
         }
     }

@@ -26,6 +26,9 @@ class NewApplyViewModel: NSObject {
     var cityResultController: NSFetchedResultsController<City>?
     var resumeResultController: NSFetchedResultsController<Resume>!
     var tagDatasource: UICollectionViewDiffableDataSource<Int,Tag>!
+    var resumeControllerDelegate: ResumeResultsControllerDelegate?
+    var cityControllerDelegate: CityResultsControllerDelegate?
+    var countryControllerDelegate: CountryResultsControllerDelegate?
     var countryPickerView: UIPickerView?
     var cityPickerView: UIPickerView?
     var countryNameSetter: ((String?) -> Void)?
@@ -39,6 +42,7 @@ class NewApplyViewModel: NSObject {
     var selectedCountry: Country? {
         didSet {
             countryNameSetter?(selectedCountry?.name)
+            selectedCity = nil
         }
     }
     var selectedCity: City? {
@@ -75,6 +79,7 @@ class NewApplyViewModel: NSObject {
         let countryResultsControllerDelegate = CountryResultsControllerDelegate()
         countryResultsControllerDelegate.countryPickerView = pickerView
         countryResultController?.delegate = countryResultsControllerDelegate
+        self.countryControllerDelegate = countryResultsControllerDelegate
         pickerView.dataSource = self
         pickerView.delegate = self
         
@@ -97,6 +102,7 @@ class NewApplyViewModel: NSObject {
             let cityResultsControllerDelegate = CityResultsControllerDelegate()
             cityResultsControllerDelegate.cityPickerView = pickerView
             cityResultController?.delegate = cityResultsControllerDelegate
+            self.cityControllerDelegate = cityResultsControllerDelegate
             pickerView.dataSource = self
             pickerView.delegate = self
             do {
@@ -136,6 +142,7 @@ class NewApplyViewModel: NSObject {
         resumeResultController = applyService.getAllResumeVersion()
         let resumeResultsControllerDelegate = ResumeResultsControllerDelegate()
         resumeResultsControllerDelegate.resumePickerView = pickerView
+        self.resumeControllerDelegate = resumeResultsControllerDelegate
         resumeResultController.delegate = resumeResultsControllerDelegate
         do {
             try resumeResultController.performFetch()
@@ -203,6 +210,9 @@ class NewApplyViewModel: NSObject {
         }), sender: sender)
     }
     
+    func addResume(sender: UIViewController) {
+        appCoordinator?.present(scene: .resume, sender: sender)
+    }
     func save(link: String, salary: Int) throws {
         if let url = URL(string: link),
             let city = selectedCity,
@@ -310,6 +320,7 @@ extension NewApplyViewModel {
         var countryPickerView: UIPickerView?
         func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
             self.countryPickerView?.reloadAllComponents()
+            self.countryPickerView?.selectRow(0, inComponent: 0, animated: true)
         }
     }
     
@@ -317,6 +328,10 @@ extension NewApplyViewModel {
         var cityPickerView: UIPickerView?
         func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
             self.cityPickerView?.reloadAllComponents()
+            self.cityPickerView?.selectRow(0, inComponent: 0, animated: true)
+            if let cityPickerView = cityPickerView {
+                self.cityPickerView?.delegate?.pickerView?(cityPickerView, didSelectRow: 0, inComponent: 0)
+            }
         }
     }
     
@@ -324,6 +339,10 @@ extension NewApplyViewModel {
         var resumePickerView: UIPickerView?
         func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
             self.resumePickerView?.reloadAllComponents()
+            self.resumePickerView?.selectRow(0, inComponent: 0, animated: true)
+            if let resumePickerView = resumePickerView {
+                self.resumePickerView?.delegate?.pickerView?(resumePickerView, didSelectRow: 0, inComponent: 0)
+            }
         }
     }
 }

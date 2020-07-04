@@ -40,12 +40,16 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
         }
         do {
             try viewModel.save(link: url, salary: Int(salaryText)!)
-            self.dismiss(animated: true, completion: nil)
+            //self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(
         } catch let error as NewApplyViewModelError {
             showAlert(text: error.rawValue)
         } catch {
             print(error)
         }
+    }
+    @IBAction func addResume(_ sender: Any) {
+        viewModel.addResume(sender: self)
     }
     @IBAction func btnChooseCompany(_ sender: Any) {
         viewModel.chooseCompany(sender: self)
@@ -57,18 +61,14 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
         viewModel.set(date: pkvDate.date)
         txtApplyDate.resignFirstResponder()
     }
-    @IBAction func btnCountryViewCancel(_ sender: Any) {
-        txtCountry.resignFirstResponder()
-    }
+    
     @IBAction func btnCountryViewDone(_ sender: Any) {
         txtCountry.resignFirstResponder()
     }
     @IBAction func btnCountryViewAdd(_ sender: Any) {
         viewModel.addContry(sender: self)
     }
-    @IBAction func btnCityViewCancel(_ sender: Any) {
-        txtCity.resignFirstResponder()
-    }
+    
     @IBAction func btnCityViewDone(_ sender: Any) {
         txtCity.resignFirstResponder()
     }
@@ -134,7 +134,7 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
             self?.txtCountry.text = $0
         }
         viewModel.setCityName{ [weak self] in
-            self?.txtCity.text = $0
+            self?.txtCity.text = $0 ?? ""
         }
         viewModel.setDateText{ [weak self] in
             self?.txtApplyDate.text = $0

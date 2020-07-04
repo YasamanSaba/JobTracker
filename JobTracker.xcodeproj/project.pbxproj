@@ -70,6 +70,12 @@
 		70ADFFA92498EC1B00345379 /* TagServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFA82498EC1B00345379 /* TagServiceType.swift */; };
 		70ADFFAB2498F9D400345379 /* TagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFAA2498F9D400345379 /* TagService.swift */; };
 		70BE562E249F47AA0039D123 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BE562D249F47AA0039D123 /* UITextFieldExtension.swift */; };
+		70D30A4E24B053A0005D29B2 /* Resume.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70D30A4D24B053A0005D29B2 /* Resume.storyboard */; };
+		70D30A5024B057EE005D29B2 /* ResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D30A4F24B057EE005D29B2 /* ResumeViewController.swift */; };
+		70D30A5224B05A4F005D29B2 /* ResumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D30A5124B05A4F005D29B2 /* ResumeViewModel.swift */; };
+		70D30A5424B05EF0005D29B2 /* ResumeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D30A5324B05EF0005D29B2 /* ResumeService.swift */; };
+		70D30A5624B05F0B005D29B2 /* ResumeServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D30A5524B05F0B005D29B2 /* ResumeServiceType.swift */; };
+		70D30A5824B06FCC005D29B2 /* ResumeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D30A5724B06FCC005D29B2 /* ResumeTableViewCell.swift */; };
 		70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244B2490A745007FD797 /* AppliesViewController.swift */; };
 		70EA244F2490A8D1007FD797 /* ApplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244E2490A8D1007FD797 /* ApplyTableViewCell.swift */; };
 		70EA24522490AE55007FD797 /* Apply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70EA24502490AE55007FD797 /* Apply.storyboard */; };
@@ -178,6 +184,12 @@
 		70ADFFA82498EC1B00345379 /* TagServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagServiceType.swift; sourceTree = "<group>"; };
 		70ADFFAA2498F9D400345379 /* TagService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagService.swift; sourceTree = "<group>"; };
 		70BE562D249F47AA0039D123 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		70D30A4D24B053A0005D29B2 /* Resume.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Resume.storyboard; sourceTree = "<group>"; };
+		70D30A4F24B057EE005D29B2 /* ResumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewController.swift; sourceTree = "<group>"; };
+		70D30A5124B05A4F005D29B2 /* ResumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewModel.swift; sourceTree = "<group>"; };
+		70D30A5324B05EF0005D29B2 /* ResumeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeService.swift; sourceTree = "<group>"; };
+		70D30A5524B05F0B005D29B2 /* ResumeServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeServiceType.swift; sourceTree = "<group>"; };
+		70D30A5724B06FCC005D29B2 /* ResumeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTableViewCell.swift; sourceTree = "<group>"; };
 		70EA244B2490A745007FD797 /* AppliesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesViewController.swift; sourceTree = "<group>"; };
 		70EA244E2490A8D1007FD797 /* ApplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyTableViewCell.swift; sourceTree = "<group>"; };
 		70EA24512490AE55007FD797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/Base.lproj/Apply.storyboard; sourceTree = "<group>"; };
@@ -293,6 +305,7 @@
 				F24633AD24A8C814004D1DE5 /* TaskServiceType.swift */,
 				702056AB24A87288002495E1 /* CityServiceType.swift */,
 				7051A56124AB17EB00B98C4B /* CompanyServiceType.swift */,
+				70D30A5524B05F0B005D29B2 /* ResumeServiceType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -343,6 +356,7 @@
 				7051A55B24AB08F100B98C4B /* CompanyViewModel.swift */,
 				70773C5424AC71C200097FFE /* CountryViewModel.swift */,
 				70773C5C24ACCC4800097FFE /* CityViewModel.swift */,
+				70D30A5124B05A4F005D29B2 /* ResumeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -388,6 +402,7 @@
 				7051A55724AB03EF00B98C4B /* Company.storyboard */,
 				70773C4E24AC66A800097FFE /* Country.storyboard */,
 				70773C5624ACBEEE00097FFE /* City.storyboard */,
+				70D30A4D24B053A0005D29B2 /* Resume.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -406,6 +421,7 @@
 				7051A55924AB088C00B98C4B /* CompanyViewController.swift */,
 				70773C5224AC6EFB00097FFE /* CountryViewController.swift */,
 				70773C5A24ACC30300097FFE /* CityViewController.swift */,
+				70D30A4F24B057EE005D29B2 /* ResumeViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -422,6 +438,7 @@
 				F24633AF24A8C89E004D1DE5 /* TaskService.swift */,
 				702056A924A87268002495E1 /* CityService.swift */,
 				7051A55F24AB16DF00B98C4B /* CompanyService.swift */,
+				70D30A5324B05EF0005D29B2 /* ResumeService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -450,6 +467,7 @@
 				7051A55D24AB0A7700B98C4B /* CompanyTableViewCell.swift */,
 				70773C5024AC6D6D00097FFE /* CountryCollectionViewCell.swift */,
 				70773C5824ACC14E00097FFE /* CityCollectionViewCell.swift */,
+				70D30A5724B06FCC005D29B2 /* ResumeTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -630,6 +648,7 @@
 				7060EFFD2496178300A229B8 /* Reminder.storyboard in Resources */,
 				F2035581248BBBD000A9F9F8 /* Assets.xcassets in Resources */,
 				7060EFF82494A47500A229B8 /* Tag.storyboard in Resources */,
+				70D30A4E24B053A0005D29B2 /* Resume.storyboard in Resources */,
 				7009B1CE24A383C300B6437D /* Interview.storyboard in Resources */,
 				7009B1C524A382FA00B6437D /* NewApply.storyboard in Resources */,
 				7009B1CA24A3835C00B6437D /* ApplyDetail.storyboard in Resources */,
@@ -682,6 +701,7 @@
 				7043B03424A0E4D500F760AA /* Tab.swift in Sources */,
 				70483E77249651DC00612288 /* NoteViewController.swift in Sources */,
 				70483E80249799D600612288 /* InterviewTableViewCell.swift in Sources */,
+				70D30A5624B05F0B005D29B2 /* ResumeServiceType.swift in Sources */,
 				70ADFF9A2498A08F00345379 /* ReminderViewModel.swift in Sources */,
 				7051A56224AB17EB00B98C4B /* CompanyServiceType.swift in Sources */,
 				F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */,
@@ -690,8 +710,10 @@
 				7043B02924A0A40A00F760AA /* CoordinatorType.swift in Sources */,
 				70BE562E249F47AA0039D123 /* UITextFieldExtension.swift in Sources */,
 				70ADFFAB2498F9D400345379 /* TagService.swift in Sources */,
+				70D30A5824B06FCC005D29B2 /* ResumeTableViewCell.swift in Sources */,
 				709CDEE824A20DB000A9DAE0 /* NoteViewModel.swift in Sources */,
 				7043B02F24A0D22000F760AA /* Scene+ViewController.swift in Sources */,
+				70D30A5424B05EF0005D29B2 /* ResumeService.swift in Sources */,
 				704866D324A777EF00FA80B5 /* NewApplyViewModel.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
 				7009B1C224A33FD100B6437D /* TagCollectionViewCell.swift in Sources */,
@@ -707,6 +729,7 @@
 				F24A0DC924A470F600D38217 /* ApplyViewModel.swift in Sources */,
 				70483E82249799E700612288 /* TaskTableViewCell.swift in Sources */,
 				70773C5524AC71C200097FFE /* CountryViewModel.swift in Sources */,
+				70D30A5224B05A4F005D29B2 /* ResumeViewModel.swift in Sources */,
 				F2035577248BBBC600A9F9F8 /* SceneDelegate.swift in Sources */,
 				F24633B024A8C89E004D1DE5 /* TaskService.swift in Sources */,
 				F24633AC24A8A291004D1DE5 /* InterviewServiceType.swift in Sources */,
@@ -723,6 +746,7 @@
 				7051A55C24AB08F100B98C4B /* CompanyViewModel.swift in Sources */,
 				709CDEE224A1E66400A9DAE0 /* NotesViewController.swift in Sources */,
 				70ADFFA92498EC1B00345379 /* TagServiceType.swift in Sources */,
+				70D30A5024B057EE005D29B2 /* ResumeViewController.swift in Sources */,
 				70773C5124AC6D6D00097FFE /* CountryCollectionViewCell.swift in Sources */,
 				7051A55A24AB088C00B98C4B /* CompanyViewController.swift in Sources */,
 				F23F3052249DF28B00A92C49 /* ApplyServiceType.swift in Sources */,

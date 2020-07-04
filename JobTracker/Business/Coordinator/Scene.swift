@@ -19,4 +19,5 @@ enum Scene {
     case company((Company) -> Void)
     case country
     case city(Country)
+    case resume
 }

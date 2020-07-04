@@ -29,7 +29,7 @@ struct CityService: CityServiceType {
     
     func add(name: String, to country: Country) throws {
         let request:NSFetchRequest<City> = City.fetchRequest()
-        let predicate = NSPredicate(format: "%K == %@", #keyPath(City.country), country)
+        let predicate = NSPredicate(format: "%K == %@ AND %K == %@", #keyPath(City.name), name, #keyPath(City.country), country)
         request.predicate = predicate
         
         do {
