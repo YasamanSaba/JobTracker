@@ -39,9 +39,7 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
             return
         }
         do {
-            try viewModel.save(link: url, salary: Int(salaryText)!)
-            //self.dismiss(animated: true, completion: nil)
-            self.navigationController?.popViewController(
+            try viewModel.save(link: url, salary: Int(salaryText)!,sender: self)
         } catch let error as NewApplyViewModelError {
             showAlert(text: error.rawValue)
         } catch {

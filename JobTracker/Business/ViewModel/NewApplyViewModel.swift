@@ -213,7 +213,7 @@ class NewApplyViewModel: NSObject {
     func addResume(sender: UIViewController) {
         appCoordinator?.present(scene: .resume, sender: sender)
     }
-    func save(link: String, salary: Int) throws {
+    func save(link: String, salary: Int, sender: UIViewController) throws {
         if let url = URL(string: link),
             let city = selectedCity,
             let date = selectedDate,
@@ -223,6 +223,7 @@ class NewApplyViewModel: NSObject {
             let item = ApplyService.ApplyItem(date: date, link: url, salary: salary, state: states[selectedStateIndex], city: city, company: company, resume: resume, tags: selectedTags)
             do {
                 try applyService.save(applyItem: item)
+                sender.navigationController?.popViewController(animated: true)
             } catch {
                 throw NewApplyViewModelError.unKnownError
             }
