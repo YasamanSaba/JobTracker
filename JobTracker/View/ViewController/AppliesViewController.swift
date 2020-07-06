@@ -183,13 +183,23 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
         self.viewModel.configureCountryDataSource(for: self.collectionView)
         configureSearchController()
         createNonEditingBarButtons()
+        let btnFilter = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3.decrease.circle"), style: .done, target: self, action: #selector(filter))
+        navigationItem.leftBarButtonItem = btnFilter
+        viewModel.isFiltered() { [weak self] in
+            if $0 {
+                let btnResetFilter = UIBarButtonItem(title: "Reset Filters", style: .done, target: self, action: #selector(self?.resetFilters))
+                self?.navigationItem.leftBarButtonItem = btnResetFilter
+            } else {
+                let btnFilter = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3.decrease.circle"), style: .done, target: self, action: #selector(self?.filter))
+                self?.navigationItem.leftBarButtonItem = btnFilter
+            }
+        }
     }
     func createNonEditingBarButtons() {
         let btnAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addApply))
         let btnEdit = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editApplies))
-        let btnFilter = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3.decrease.circle"), style: .done, target: self, action: #selector(filter))
         navigationItem.rightBarButtonItems = [btnAdd, btnEdit]
-        navigationItem.leftBarButtonItem = btnFilter
+        
     }
     func configureLayout() -> UICollectionViewCompositionalLayout {
         let anchorEdges: NSDirectionalRectEdge = [.top, .trailing]
@@ -216,8 +226,7 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
             navigationItem.rightBarButtonItems = nil
             let doneBarBut = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneEditing))
             let trashBarBut = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteSelectedItems))
-            navigationItem.rightBarButtonItem = doneBarBut
-            navigationItem.leftBarButtonItem = trashBarBut
+            navigationItem.rightBarButtonItems = [doneBarBut,trashBarBut]
         } else {
             tableView.setEditing(false, animated: true)
             createNonEditingBarButtons()
@@ -234,6 +243,9 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
         alertController.addAction(cancelAction)
         alertController.addAction(deleteAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    @objc func resetFilters() {
+        viewModel.resetFilters()
     }
 }
 // MARK: - Extensions

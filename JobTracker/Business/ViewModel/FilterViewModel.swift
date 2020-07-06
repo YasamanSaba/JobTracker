@@ -123,7 +123,7 @@ class FilterViewModel {
                 if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CityCollectionViewCell.reuseIdentifier, for: indexPath) as? CityCollectionViewCell {
                     if let city = filter.city {
                         cell.configure(city: city) { [weak self] city in
-                            if let items = self?.filters.filter({ $0.city?.name == city.name }), items.count == 1, let index = self?.filters.firstIndex(of: items.first!) {
+                            if let items = self?.filters.filter({ $0.city == city }), items.count == 1, let index = self?.filters.firstIndex(of: items.first!) {
                                 self?.filters.remove(at: index)
                             }
                         }
@@ -134,7 +134,7 @@ class FilterViewModel {
                 if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StateCollectionViewCell.reuseIdentifier, for: indexPath) as? StateCollectionViewCell {
                     if let state = filter.state {
                         cell.configure(state: state) { [weak self] state in
-                            if let items = self?.filters.filter ({ $0.state?.rawValue == state.rawValue}), items.count == 1, let index = self?.filters.firstIndex(of: items.first!) {
+                            if let items = self?.filters.filter ({ $0.state == state}), items.count == 1, let index = self?.filters.firstIndex(of: items.first!) {
                                 self?.filters.remove(at: index)
                             }
                         }

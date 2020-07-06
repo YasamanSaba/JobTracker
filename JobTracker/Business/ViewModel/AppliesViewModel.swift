@@ -25,6 +25,7 @@ class AppliesViewModel: NSObject {
     let appCoordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
     var countryResultControllerDelegate: CountryResultControllerDelegate!
     var applyResultControllerDelegate: ApplyResultControllerDelegate!
+    var onFilterChanged: ((Bool) -> Void)?
     // MARK: - Initialization -
     init(countryService: CountryServiceType, applyService: ApplyServiceType) {
         self.countryService = countryService
@@ -168,7 +169,59 @@ class AppliesViewModel: NSObject {
         appCoordinator?.present(scene: .filter(selectedCountry,applyFilter(filters:hasInterview:hasTask:isCompanyFavorite:)), sender: sender)
     }
     func applyFilter(filters:[FilterViewModel.FilterObject], hasInterview:Bool, hasTask:Bool, isCompanyFavorite: Bool) {
+        let currentApplies = applyDataSource.snapshot().itemIdentifiers
+        var filteredCityApplies: [Apply] = []
+        var filteredStateApplies: [Apply] = []
+        var filteredTagApplies: [Apply] = []
+        var hasSelectedCity = false
+        var hasSelectedTag = false
+        var hasSelectedState = false
+
+        filters.forEach { filter in
+            switch filter.filterType {
+            case .city:
+                hasSelectedCity = true
+                filteredCityApplies.append(contentsOf: currentApplies.filter({$0.city == filter.city}))
+            case .state:
+                hasSelectedState = true
+                filteredStateApplies.append(contentsOf: currentApplies.filter({$0.statusEnum == filter.state}))
+            case .tag:
+                hasSelectedTag = true
+                filteredTagApplies.append(contentsOf: currentApplies.filter({$0.tag!.contains(filter.tag!)}))
+            }
+        }
+        var result = Set(currentApplies)
+        let filteredCityAppliesSet = Set(filteredCityApplies)
+        let filteredStateAppliesSet = Set(filteredStateApplies)
+        let filteredTagAppliesSet = Set(filteredTagApplies)
         
+        if hasSelectedCity {
+            result = result.intersection(filteredCityAppliesSet)
+        }
+        if hasSelectedState {
+            result = result.intersection(filteredStateAppliesSet)
+        }
+        if hasSelectedTag {
+            result = result.intersection(filteredTagAppliesSet)
+        }
+        
+        var snapShot = NSDiffableDataSourceSnapshot<Section,Apply>()
+        snapShot.appendSections([.main])
+        snapShot.appendItems(Array(result), toSection: .main)
+        applyDataSource.apply(snapShot)
+        onFilterChanged?(true)
+    }
+    func isFiltered(onChanged: @escaping (Bool) -> Void) {
+        self.onFilterChanged = onChanged
+    }
+    func resetFilters() {
+        if let objects = applyResultController.fetchedObjects {
+            var snapShot = NSDiffableDataSourceSnapshot<Section,Apply>()
+            snapShot.appendSections([.main])
+            snapShot.appendItems(objects, toSection: .main)
+            applyDataSource.apply(snapShot)
+            onFilterChanged?(false)
+        }
     }
     // MARK: - ApplyResultControllerDelegate
     class ApplyResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
