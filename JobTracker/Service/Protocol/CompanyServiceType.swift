@@ -17,6 +17,6 @@ enum CompanyServiceError: Error {
 
 protocol CompanyServiceType {
     func getAll() -> NSFetchedResultsController<Company>
-    func add(name: String) throws
+    func add(name: String, isFavorite: Bool) throws
     func setIsFavorite(for apply: Apply, _ value: Bool) throws
 }

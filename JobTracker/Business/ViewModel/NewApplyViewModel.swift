@@ -36,9 +36,14 @@ class NewApplyViewModel: NSObject {
     var cityNameSetter: ((String?) -> Void)?
     var dateSetter: ((String?) -> Void)?
     var companySetter: ((String?) -> Void)?
-    var selectedResume: Resume?
+    var resumeSetter: ((String?) -> Void)?
+    var stateSetter: ((String?) -> Void)?
     var states: [Status] = []
-    var selectedStateIndex: Int = 0
+    var selectedStateIndex: Int = 0 {
+        didSet {
+            stateSetter?(states.count > 0 ? states[selectedStateIndex].rawValue : "No state")
+        }
+    }
     var selectedTags: [Tag] = []
     var selectedCountry: Country? {
         didSet {
@@ -63,7 +68,11 @@ class NewApplyViewModel: NSObject {
             companySetter?(selectedComapy?.title ?? "Unknown")
         }
     }
-    
+    var selectedResume: Resume? {
+        didSet {
+            resumeSetter?(selectedResume?.version ?? "Unknown")
+        }
+    }
     // MARK: - Initializer
     init(countryService: CountryServiceType, cityService: CityServiceType, applyService: ApplyServiceType, tagService: TagServiceType, stateService: StateServiceType) {
         self.countryService = countryService
@@ -135,8 +144,16 @@ class NewApplyViewModel: NSObject {
         dateSetter = onChange
     }
     
+    func setStateText(onChange: @escaping (String?) -> Void) {
+        stateSetter = onChange
+    }
+    
     func setCompanyText(onChange: @escaping (String?) -> Void) {
         companySetter = onChange
+    }
+    
+    func setResumeText(onChange: @escaping (String?) -> Void) {
+        resumeSetter = onChange
     }
     
     func configureResume(pickerView: UIPickerView) {
@@ -150,6 +167,9 @@ class NewApplyViewModel: NSObject {
             try resumeResultController.performFetch()
             pickerView.delegate = self
             pickerView.dataSource = self
+            if let objects = resumeResultController.fetchedObjects {
+                selectedResume = objects[0]
+            }
         } catch {
             print(error.localizedDescription)
         }
@@ -160,6 +180,9 @@ class NewApplyViewModel: NSObject {
         pickerView.accessibilityIdentifier = "StatePickerView"
         pickerView.delegate = self
         pickerView.dataSource = self
+        if states.count > 0 {
+            selectedStateIndex = 0
+        }
     }
     
     func addContry(sender: UIViewController) {

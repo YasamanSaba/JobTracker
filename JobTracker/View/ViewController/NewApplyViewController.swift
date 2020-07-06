@@ -27,10 +27,14 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
     @IBOutlet weak var txtSalary: UITextField!
     @IBOutlet weak var txtCity: UITextField!
     @IBOutlet weak var txtCountry: UITextField!
+    @IBOutlet weak var txtState: UITextField!
+    @IBOutlet weak var txtResume: UITextField!
     @IBOutlet weak var vwDatePicker: UIView!
     @IBOutlet weak var vwCountryPicker: UIView!
     @IBOutlet weak var vwCityPicker: UIView!
-    @IBOutlet weak var imgHeart: UIImageView!
+    @IBOutlet weak var vwResumePicker: UIView!
+    @IBOutlet weak var vwState: UIView!
+    
     @IBOutlet weak var colTags: UICollectionView!
     // MARK: - Actions
     @IBAction func btnSave(_ sender: Any) {
@@ -59,7 +63,9 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
         viewModel.set(date: pkvDate.date)
         txtApplyDate.resignFirstResponder()
     }
-    
+    @IBAction func btnResumeDone(_ sender: Any) {
+        txtResume.resignFirstResponder()
+    }
     @IBAction func btnCountryViewDone(_ sender: Any) {
         txtCountry.resignFirstResponder()
     }
@@ -73,24 +79,15 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
     @IBAction func btnCityViewAdd(_ sender: Any) {
         viewModel.addCity(sender: self)
     }
-    
-    @IBAction func tapOnHeart(_ sender: Any) {
-        heartState.toggle()
+    @IBAction func btnStateDone(_ sender: Any) {
+        txtState.resignFirstResponder()
     }
     
     @IBAction func addTags(_ sender: Any) {
         viewModel.addTags(sender: self)
     }
     // MARK: - Properties
-    var heartState: Bool = false {
-        didSet {
-            if heartState {
-                imgHeart.image = UIImage(systemName: "heart.fill")
-            } else {
-                imgHeart.image = UIImage(systemName: "heart")
-            }
-        }
-    }
+
     var blurEffect: UIBlurEffect?
     var blurEffectView: UIVisualEffectView?
         
@@ -127,6 +124,8 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
         txtApplyDate.inputView = vwDatePicker
         txtCountry.inputView = vwCountryPicker
         txtCity.inputView = vwCityPicker
+        txtState.inputView = vwState
+        txtResume.inputView = vwResumePicker
         self.txtSalary.addDoneButton(title: "Done", target: self, selector: #selector(tapSalaryDone(sender:)))
         viewModel.setCountryName{ [weak self] in
             self?.txtCountry.text = $0
@@ -139,6 +138,12 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
         }
         viewModel.setCompanyText{ [weak self] in
             self?.btnCompany.setTitle($0, for: .normal)
+        }
+        viewModel.setResumeText{ [weak self] in
+            self?.txtResume.text = $0
+        }
+        viewModel.setStateText{ [weak self] in
+            self?.txtState.text = $0
         }
         viewModel.configureCountry(pickerView: pkvCountry)
         viewModel.configureCity(pickerView: pkvCity)
@@ -160,7 +165,9 @@ extension NewApplyViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.accessibilityIdentifier == "ApplyDate" ||
             textField.accessibilityIdentifier == "Country" ||
-            textField.accessibilityIdentifier == "City" {
+            textField.accessibilityIdentifier == "City" ||
+            textField.accessibilityIdentifier == "State" ||
+            textField.accessibilityIdentifier == "Resume" {
             activateBlur()
         }
     }

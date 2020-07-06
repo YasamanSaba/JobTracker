@@ -12,17 +12,26 @@ class CompanyViewController: UIViewController, ViewModelSupportedViewControllers
     
     // MARK: - Properties
     var viewModel: CompanyViewModel!
+    var heartState: Bool = false {
+        didSet {
+            if heartState {
+                imgHeart.image = UIImage(systemName: "heart.fill")
+            } else {
+                imgHeart.image = UIImage(systemName: "heart")
+            }
+        }
+    }
     
     // MARK: - Outlets
     @IBOutlet weak var tblCompanies: UITableView!
     @IBOutlet weak var srbSearchBar: UISearchBar!
     @IBOutlet weak var btnAddCompany: UIButton!
-    
+    @IBOutlet weak var imgHeart: UIImageView!
     // MARK: - Actions
     @IBAction func addCompany(_ sender: Any) {
         if let name = srbSearchBar.text {
             do {
-                try viewModel.add(name: name)
+                try viewModel.add(name: name,isFavorite: heartState)
             } catch let error as CompanyViewModelError {
                 showAlert(text: error.rawValue)
             } catch {
@@ -33,7 +42,9 @@ class CompanyViewController: UIViewController, ViewModelSupportedViewControllers
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+    @IBAction func tapOnHeart(_ sender: Any) {
+        heartState.toggle()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.configureCompany(tableView: tblCompanies)

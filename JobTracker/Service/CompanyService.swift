@@ -24,7 +24,7 @@ class CompanyService: CompanyServiceType {
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultsController
     }
-    func add(name: String) throws {
+    func add(name: String, isFavorite: Bool) throws {
         let request: NSFetchRequest<Company> = Company.fetchRequest()
         let predicate = NSPredicate(format: "%K == [c] %@", #keyPath(Company.title),name)
         request.predicate = predicate
@@ -36,7 +36,7 @@ class CompanyService: CompanyServiceType {
             }
             let company = Company(context: context)
             company.title = name
-            company.isFavorite = false
+            company.isFavorite = isFavorite
             try context.save()
         } catch {
             throw error

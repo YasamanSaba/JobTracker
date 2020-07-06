@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -28,7 +28,7 @@
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="dQm-N9-Nqs">
-                                <rect key="frame" x="0.0" y="88" width="364" height="56"/>
+                                <rect key="frame" x="0.0" y="88" width="324" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elX-CN-83Z">
@@ -86,6 +86,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bNL-B7-otZ">
+                                <rect key="frame" x="334" y="102.5" width="30" height="27.5"/>
+                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bNL-B7-otZ" secondAttribute="height" multiplier="1:1" id="Akb-2X-fHd"/>
+                                    <constraint firstAttribute="width" constant="30" id="tQ8-Qs-JB7"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="tHM-8H-jwY" appends="YES" id="k0H-Eg-ZS8"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -94,11 +106,13 @@
                             <constraint firstItem="a55-Ae-RkP" firstAttribute="top" secondItem="eHt-kk-uYu" secondAttribute="top" id="FbV-A3-7ik"/>
                             <constraint firstItem="dQm-N9-Nqs" firstAttribute="top" secondItem="a55-Ae-RkP" secondAttribute="bottom" id="HwO-qP-37D"/>
                             <constraint firstItem="dQm-N9-Nqs" firstAttribute="leading" secondItem="eHt-kk-uYu" secondAttribute="leading" id="L3Q-bf-5dO"/>
+                            <constraint firstItem="bNL-B7-otZ" firstAttribute="leading" secondItem="dQm-N9-Nqs" secondAttribute="trailing" constant="10" id="SoO-kw-E4Z"/>
                             <constraint firstItem="eHt-kk-uYu" firstAttribute="bottom" secondItem="CGa-hC-L26" secondAttribute="bottom" id="Srz-3v-EyC"/>
                             <constraint firstItem="CGa-hC-L26" firstAttribute="leading" secondItem="eHt-kk-uYu" secondAttribute="leading" id="Tod-in-HsC"/>
+                            <constraint firstItem="bNL-B7-otZ" firstAttribute="centerY" secondItem="dQm-N9-Nqs" secondAttribute="centerY" id="Xoy-yi-onU"/>
                             <constraint firstItem="eHt-kk-uYu" firstAttribute="trailing" secondItem="CGa-hC-L26" secondAttribute="trailing" id="ZZW-6N-2L3"/>
                             <constraint firstItem="a55-Ae-RkP" firstAttribute="trailing" secondItem="eHt-kk-uYu" secondAttribute="trailing" id="bDb-AY-9Vw"/>
-                            <constraint firstItem="elX-CN-83Z" firstAttribute="leading" secondItem="dQm-N9-Nqs" secondAttribute="trailing" constant="10" id="ddE-za-hc9"/>
+                            <constraint firstItem="elX-CN-83Z" firstAttribute="leading" secondItem="bNL-B7-otZ" secondAttribute="trailing" constant="10" id="fbx-aH-M2b"/>
                             <constraint firstItem="a55-Ae-RkP" firstAttribute="leading" secondItem="eHt-kk-uYu" secondAttribute="leading" id="iWu-oa-SGN"/>
                             <constraint firstItem="eHt-kk-uYu" firstAttribute="trailing" secondItem="elX-CN-83Z" secondAttribute="trailing" constant="10" id="mTg-YF-umc"/>
                         </constraints>
@@ -106,13 +120,22 @@
                     </view>
                     <connections>
                         <outlet property="btnAddCompany" destination="elX-CN-83Z" id="TUP-4s-0Au"/>
+                        <outlet property="imgHeart" destination="bNL-B7-otZ" id="Tvz-fC-Olm"/>
                         <outlet property="srbSearchBar" destination="dQm-N9-Nqs" id="Hgh-LS-F6l"/>
                         <outlet property="tblCompanies" destination="CGa-hC-L26" id="dmh-mr-f8p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nBL-N7-4ca" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tHM-8H-jwY">
+                    <connections>
+                        <action selector="tapOnHeart:" destination="5ib-7F-O4v" id="Xwr-SO-jac"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="121.73913043478262" y="54.910714285714285"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="heart" catalog="system" width="128" height="109"/>
+    </resources>
 </document>
