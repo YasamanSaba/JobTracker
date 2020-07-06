@@ -70,9 +70,9 @@ class CompanyViewModel: NSObject {
         
     }
     
-    func add(name: String) throws {
+    func add(name: String, isFavorite: Bool) throws {
         do {
-            try companyService.add(name: name)
+            try companyService.add(name: name, isFavorite: isFavorite)
         } catch let error as CompanyServiceError {
             switch error {
             case .alreadyExists:
