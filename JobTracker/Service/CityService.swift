@@ -16,6 +16,13 @@ struct CityService: CityServiceType {
     init(context: NSManagedObjectContext) {
         self.context = context
     }
+    func fetchAll() -> NSFetchedResultsController<City> {
+        let fetchRequest: NSFetchRequest<City> = City.fetchRequest()
+        let sort = NSSortDescriptor(key: #keyPath(City.name), ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        let fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchResultController
+    }
     
     func fetchAll(in country: Country) -> NSFetchedResultsController<City> {
         let fetchRequest: NSFetchRequest<City> = City.fetchRequest()
@@ -26,7 +33,6 @@ struct CityService: CityServiceType {
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultsController
     }
-    
     func add(name: String, to country: Country) throws {
         let request:NSFetchRequest<City> = City.fetchRequest()
         let predicate = NSPredicate(format: "%K == %@ AND %K == %@", #keyPath(City.name), name, #keyPath(City.country), country)

@@ -49,4 +49,15 @@ class CountryService: CountryServiceType {
             throw CountryServiceError.addError
         }
     }
+    func getWorld() throws -> Country {
+        let request: NSFetchRequest<Country> = Country.fetchRequest()
+        let predicate = NSPredicate(format: "%K == %@", #keyPath(Country.name), "World")
+        request.predicate = predicate
+        do {
+            let result = try context.fetch(request)
+            return result.first!
+        } catch {
+            throw error
+        }
+    }
 }

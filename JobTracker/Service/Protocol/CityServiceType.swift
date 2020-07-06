@@ -16,6 +16,7 @@ enum CityServiceError: Error {
 }
 
 protocol CityServiceType {
+    func fetchAll() -> NSFetchedResultsController<City>
     func fetchAll(in country: Country) -> NSFetchedResultsController<City>
     func add(name: String, to country: Country) throws
 }

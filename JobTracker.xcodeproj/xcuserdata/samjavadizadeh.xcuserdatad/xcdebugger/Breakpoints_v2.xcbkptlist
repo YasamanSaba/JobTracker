@@ -108,8 +108,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "342"
             endingLineNumber = "342"
-            landmarkName = "controllerDidChangeContent(_:)"
-            landmarkType = "7">
+            landmarkName = "ResumeResultsControllerDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -140,8 +140,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "296"
             endingLineNumber = "296"
-            landmarkName = "pickerView(_:didSelectRow:inComponent:)"
-            landmarkType = "7">
+            landmarkName = "NewApplyViewModel"
+            landmarkType = "21">
             <Locations>
                <Location
                   uuid = "B832FD9A-8C5B-49EA-B0E1-6C9EB28C0B5A - a2e2ecfc3e91042"

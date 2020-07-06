@@ -18,4 +18,5 @@ enum CountryServiceError: Error {
 protocol CountryServiceType {
     func fetchAll() -> NSFetchedResultsController<Country>
     func add(name: String, flag: String) throws
+    func getWorld() throws -> Country
 }

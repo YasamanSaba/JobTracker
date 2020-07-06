@@ -25,6 +25,7 @@ class ApplyViewModel: NSObject {
     }
     // MARK: - Properties -
     private let applyService: ApplyServiceType
+    private let stateService: StateServiceType
     private let interviewService: InterviewServiceType
     private let taskService: TaskServiceType
     private let companyService: CompanyServiceType
@@ -41,12 +42,13 @@ class ApplyViewModel: NSObject {
     weak var resumePickerView: UIPickerView?
     var states: [Status] = []
     // MARK: - Initializer -
-    init(applyService: ApplyServiceType,interviewService: InterviewServiceType, apply: Apply, taskService: TaskServiceType, companyService: CompanyServiceType) {
+    init(applyService: ApplyServiceType,interviewService: InterviewServiceType, apply: Apply, taskService: TaskServiceType, companyService: CompanyServiceType, stateService: StateServiceType) {
         self.applyService = applyService
         self.interviewService = interviewService
         self.taskService = taskService
         self.apply = apply
         self.companyService = companyService
+        self.stateService = stateService
     }
     // MARK: - Functions -
     func configureResume(pickerView: UIPickerView) {
@@ -66,7 +68,7 @@ class ApplyViewModel: NSObject {
         }
     }
     func configureState(pickerView: UIPickerView) {
-        self.states = applyService.getAllState()
+        self.states = stateService.getAllState()
         self.statePickerView = pickerView
         pickerView.accessibilityIdentifier = "StatePickerView"
         pickerView.delegate = self

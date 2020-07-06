@@ -20,7 +20,8 @@ class AppliesViewModel: NSObject {
     var countryResultController: NSFetchedResultsController<Country>!
     var countryDataSource: UICollectionViewDiffableDataSource<Section, Country>!
     var applyDataSource: ApplyDataSource!
-    var selectedCountryName = "World"
+    var selectedCountry: Country!
+    let world: Country
     let appCoordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
     var countryResultControllerDelegate: CountryResultControllerDelegate!
     var applyResultControllerDelegate: ApplyResultControllerDelegate!
@@ -28,6 +29,8 @@ class AppliesViewModel: NSObject {
     init(countryService: CountryServiceType, applyService: ApplyServiceType) {
         self.countryService = countryService
         self.applyService = applyService
+        world = try! countryService.getWorld()
+        selectedCountry = world
     }
     // MARK: - Functions -
     func configureCountryDataSource(for collectionView: UICollectionView) {
@@ -113,23 +116,23 @@ class AppliesViewModel: NSObject {
     func selectCountry(at indexPath: IndexPath) {
         guard let country = countryDataSource.itemIdentifier(for: indexPath) else { return }
         if let objects = applyResultController.fetchedObjects {
-            selectedCountryName = country.name ?? "World"
+            selectedCountry = country
             let filteredObjects = objects.filter { apply in
                 apply.city?.country?.name == country.name
             }
             var snapShot = NSDiffableDataSourceSnapshot<Section, Apply>()
             snapShot.appendSections([.main])
-            snapShot.appendItems(country.name == "World" ? objects : filteredObjects, toSection: .main)
+            snapShot.appendItems(country.name == world.name ? objects : filteredObjects, toSection: .main)
             applyDataSource.apply(snapShot)
         }
     }
     func filterCompanies(for query: String) {
         if let objects = applyResultController.fetchedObjects {
             let filteredObjects = objects.filter { apply in
-                return (apply.company?.title?.lowercased().contains(query.lowercased()) ?? false) && ( selectedCountryName == "World" ? true : apply.city?.country?.name == selectedCountryName)
+                return (apply.company?.title?.lowercased().contains(query.lowercased()) ?? false) && ( selectedCountry.name == world.name ? true : apply.city?.country?.name == selectedCountry.name)
             }
             let filteredJustByCountries = objects.filter { apply in
-                selectedCountryName == "World" ? true : apply.city?.country?.name == selectedCountryName
+                selectedCountry.name == world.name ? true : apply.city?.country?.name == selectedCountry.name
             }
             var snapShot = NSDiffableDataSourceSnapshot<Section, Apply>()
             snapShot.appendSections([.main])
@@ -160,6 +163,9 @@ class AppliesViewModel: NSObject {
     }
     func addApply(sender: UIViewController) {
         appCoordinator?.push(scene: .newApply, sender: sender)
+    }
+    func filter(sender: UIViewController) {
+        appCoordinator?.present(scene: .filter(selectedCountry), sender: sender)
     }
     // MARK: - ApplyResultControllerDelegate
     class ApplyResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
