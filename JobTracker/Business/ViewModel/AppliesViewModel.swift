@@ -165,7 +165,10 @@ class AppliesViewModel: NSObject {
         appCoordinator?.push(scene: .newApply, sender: sender)
     }
     func filter(sender: UIViewController) {
-        appCoordinator?.present(scene: .filter(selectedCountry), sender: sender)
+        appCoordinator?.present(scene: .filter(selectedCountry,applyFilter(filters:hasInterview:hasTask:isCompanyFavorite:)), sender: sender)
+    }
+    func applyFilter(filters:[FilterViewModel.FilterObject], hasInterview:Bool, hasTask:Bool, isCompanyFavorite: Bool) {
+        
     }
     // MARK: - ApplyResultControllerDelegate
     class ApplyResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {

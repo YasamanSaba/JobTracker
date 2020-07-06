@@ -17,7 +17,7 @@ enum Scene {
     case tag(([Tag]) -> Void)
     case reminder(Reminderable)
     case company((Company) -> Void)
-    case filter(Country)
+    case filter(Country, ([FilterViewModel.FilterObject], Bool, Bool, Bool) -> Void)
     case country
     case city(Country)
     case resume
