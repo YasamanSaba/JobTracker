@@ -167,7 +167,7 @@ class NewApplyViewModel: NSObject {
             try resumeResultController.performFetch()
             pickerView.delegate = self
             pickerView.dataSource = self
-            if let objects = resumeResultController.fetchedObjects {
+            if let objects = resumeResultController.fetchedObjects, objects.count > 0 {
                 selectedResume = objects[0]
             }
         } catch {
