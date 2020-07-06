@@ -85,13 +85,13 @@ extension Scene {
             let viewModel = CompanyViewModel(companyService: companyService, onComplete: onComplete)
             viewController.viewModel = viewModel
             return viewController
-        case .filter(let country):
+        case .filter(let country, let onCompletion):
             let storyboard = UIStoryboard(name: "Filter", bundle: nil)
             let viewController = storyboard.instantiateViewController(identifier: FilterViewController.reuseIdentifier) as FilterViewController
             let tagService = TagService(context: context)
             let cityService = CityService(context: context)
             let stateService = StateService(context: context)
-            let viewModel = FilterViewModel(tagService: tagService, cityService: cityService, stateService: stateService, country: country)
+            let viewModel = FilterViewModel(tagService: tagService, cityService: cityService, stateService: stateService, country: country, onCompletion: onCompletion)
             viewController.viewModel = viewModel
             return viewController
         case .country:

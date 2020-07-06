@@ -9,11 +9,15 @@
 import UIKit
 
 @IBDesignable class StateCollectionViewCell: UICollectionViewCell {
-    
+    // MARK: - Properties -
     static let reuseIdentifier = String(describing: StateCollectionViewCell.self)
-    
+    var stateObject: Status!
+    var onDelete: ((Status) -> Void)!
+    var tapGesture: UITapGestureRecognizer!
+    // MARK: - Outlet -
+    @IBOutlet weak var imgBin: UIImageView!
     @IBOutlet weak var lblStateName: UILabel!
-    
+    // MARK: - IBInspectable -
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
@@ -22,7 +26,6 @@ import UIKit
             layer.cornerRadius = newValue
         }
     }
-    
     @IBInspectable var borderColor: UIColor? {
         get {
             if let color = layer.borderColor {
@@ -38,7 +41,6 @@ import UIKit
             }
         }
     }
-    
     @IBInspectable var borderWidth: CGFloat {
         get {
             return layer.borderWidth
@@ -47,7 +49,6 @@ import UIKit
             layer.borderWidth = newValue
         }
     }
-    
     @IBInspectable var shadowRadius: CGFloat {
         get {
             return layer.shadowRadius
@@ -56,7 +57,6 @@ import UIKit
             layer.shadowRadius = newValue
         }
     }
-    
     @IBInspectable var shadowOpacity: Float {
         get {
             return layer.shadowOpacity
@@ -65,7 +65,6 @@ import UIKit
             layer.shadowOpacity = newValue
         }
     }
-    
     @IBInspectable var shadowOffset: CGSize {
         get {
             return layer.shadowOffset
@@ -74,7 +73,6 @@ import UIKit
             layer.shadowOffset = newValue
         }
     }
-    
     @IBInspectable var shadowColor: UIColor? {
         get {
             if let color = layer.shadowColor {
@@ -90,8 +88,15 @@ import UIKit
             }
         }
     }
-    
-    func configure(state: Status) {
+    // MARK: - Functions
+    func configure(state: Status, onDelete: @escaping ((Status) -> Void)) {
+        self.stateObject = state
         self.lblStateName.text = state.rawValue
+        self.onDelete = onDelete
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnDelete(_:)))
+        imgBin.addGestureRecognizer(tapGesture)
+    }
+    @objc func tapOnDelete(_ sender: Any) {
+        onDelete(stateObject)
     }
 }

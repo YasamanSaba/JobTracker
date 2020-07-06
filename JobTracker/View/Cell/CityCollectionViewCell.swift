@@ -11,11 +11,24 @@ import UIKit
 @IBDesignable class CityCollectionViewCell: UICollectionViewCell {
     
     static let reuseIdentifier = String(describing: CityCollectionViewCell.self)
-    
+    var cityObject: City!
+    var onDelete: ((City) -> Void)?
+    var tapGesture: UITapGestureRecognizer!
     @IBOutlet weak var lblCityName: UILabel!
+    @IBOutlet weak var imgBin: UIImageView!
     
-    func configure(city: City) {
+    @objc func tapOnDelete(_ sender: Any) {
+        onDelete?(cityObject)
+    }
+    
+    func configure(city: City, onDelete: ((City) -> Void)? = nil) {
+        cityObject = city
         lblCityName.text = city.name
+        if onDelete != nil {
+            self.onDelete = onDelete
+            tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnDelete(_:)))
+            imgBin.addGestureRecognizer(tapGesture)
+        }
     }
     
     @IBInspectable var cornerRadius: CGFloat {
