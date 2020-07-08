@@ -19,16 +19,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "73BA3680-1A93-4F1A-9623-7B20934DE9DE"
+            uuid = "80908BB9-A209-4D92-813B-0F8A67E8A51A"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "JobTracker/Business/ViewModel/AppliesViewModel.swift"
+            filePath = "JobTracker/Business/ViewModel/FilterViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "applyFilter(filters:hasInterview:hasTask:isCompanyFavorite:)"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "setupFilterObjectDataSource(for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -173,10 +173,12 @@ class AppliesViewModel: NSObject {
         var filteredCityApplies: [Apply] = []
         var filteredStateApplies: [Apply] = []
         var filteredTagApplies: [Apply] = []
+        var filteredDateApplies: [Apply] = []
         var hasSelectedCity = false
         var hasSelectedTag = false
         var hasSelectedState = false
-
+        var hasSelectedDate = false
+        
         filters.forEach { filter in
             switch filter.filterType {
             case .city:
@@ -188,12 +190,24 @@ class AppliesViewModel: NSObject {
             case .tag:
                 hasSelectedTag = true
                 filteredTagApplies.append(contentsOf: currentApplies.filter({$0.tag!.contains(filter.tag!)}))
+            case .date:
+                hasSelectedDate = true
+                if let from = filter.date?.from, filter.date?.to == nil {
+                filteredDateApplies.append(contentsOf: currentApplies.filter({$0.date! >= from}))
+                }
+                if let to = filter.date?.to, filter.date?.from == nil {
+                    filteredDateApplies.append(contentsOf: currentApplies.filter({$0.date! <= to}))
+                }
+                if let from = filter.date?.from, let to = filter.date?.to {
+                    filteredDateApplies.append(contentsOf: currentApplies.filter({from <= $0.date! && $0.date! > to}))
+                }
             }
         }
         var result = Set(currentApplies)
         let filteredCityAppliesSet = Set(filteredCityApplies)
         let filteredStateAppliesSet = Set(filteredStateApplies)
         let filteredTagAppliesSet = Set(filteredTagApplies)
+        let filteredDateAppliesSet = Set(filteredDateApplies)
         
         if hasSelectedCity {
             result = result.intersection(filteredCityAppliesSet)
@@ -204,7 +218,41 @@ class AppliesViewModel: NSObject {
         if hasSelectedTag {
             result = result.intersection(filteredTagAppliesSet)
         }
-        
+        if hasSelectedDate {
+            result = result.intersection(filteredDateAppliesSet)
+        }
+        let today = Calendar.current.startOfDay(for: Date())
+        if hasInterview {
+            result = result.filter{ apply in
+                guard let interviews = apply.interview else {return false}
+                var hasFutureInterview = false
+                interviews.forEach{ item in
+                    if let interview = item as? Interview {
+                        if interview.date! >= today {
+                            hasFutureInterview = true
+                        }
+                    }
+                }
+                return hasFutureInterview
+            }
+        }
+        if hasTask {
+            result = result.filter { apply in
+                guard let tasks = apply.task else { return false }
+                var hasFutureTask = false
+                tasks.forEach { task in
+                    if let task = task as? Task {
+                        if task.deadline! >= today && !task.isDone {
+                            hasFutureTask = true
+                        }
+                    }
+                }
+                return hasFutureTask
+            }
+        }
+        if isCompanyFavorite {
+            result = result.filter({$0.company?.isFavorite == true})
+        }
         var snapShot = NSDiffableDataSourceSnapshot<Section,Apply>()
         snapShot.appendSections([.main])
         snapShot.appendItems(Array(result), toSection: .main)
