@@ -24,11 +24,13 @@ class ApplyViewModel: NSObject {
         case main
     }
     // MARK: - Properties -
+    let appCoordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
     private let applyService: ApplyServiceType
     private let stateService: StateServiceType
     private let interviewService: InterviewServiceType
     private let taskService: TaskServiceType
     private let companyService: CompanyServiceType
+    private let tagService: TagServiceType
     private let apply: Apply
     var resumeResultController: NSFetchedResultsController<Resume>!
     var resumeResultControllerDelegate: ResumeResultControllerDelegate!
@@ -38,17 +40,20 @@ class ApplyViewModel: NSObject {
     var taskResultController: NSFetchedResultsController<Task>!
     var taskDataSource: TaskDataSource!
     var taskResultControllerDelegate: TaskResultControllerDelegate!
+    var tagDataSource: UICollectionViewDiffableDataSource<Section, Tag>!
+    var tagResultController: NSFetchedResultsController<Tag>!
     weak var statePickerView: UIPickerView?
     weak var resumePickerView: UIPickerView?
     var states: [Status] = []
     // MARK: - Initializer -
-    init(applyService: ApplyServiceType,interviewService: InterviewServiceType, apply: Apply, taskService: TaskServiceType, companyService: CompanyServiceType, stateService: StateServiceType) {
+    init(applyService: ApplyServiceType,interviewService: InterviewServiceType, apply: Apply, taskService: TaskServiceType, companyService: CompanyServiceType, stateService: StateServiceType, tagService: TagServiceType) {
         self.applyService = applyService
         self.interviewService = interviewService
         self.taskService = taskService
         self.apply = apply
         self.companyService = companyService
         self.stateService = stateService
+        self.tagService = tagService
     }
     // MARK: - Functions -
     func configureResume(pickerView: UIPickerView) {
@@ -74,6 +79,42 @@ class ApplyViewModel: NSObject {
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.selectRow(states.firstIndex(of: apply.statusEnum ?? Status.hr) ?? 0, inComponent: 0, animated: true)
+    }
+    func configureTag(collectionView: UICollectionView) {
+        tagDataSource = UICollectionViewDiffableDataSource<Section,Tag>(collectionView: collectionView) { [weak self] (collectionView, indexPath, tag) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.reuseIdentifier, for: indexPath) as? TagCollectionViewCell, let self = self else {return nil}
+            cell.configure(tag: tag) { [weak self] in
+                guard let self = self else {return}
+                try? self.applyService.delete(tag: $0, from: self.apply)
+                if let tagSet = self.apply.tag {
+                    var snapShot = NSDiffableDataSourceSnapshot<Section,Tag>()
+                    snapShot.appendSections([.main])
+                    snapShot.appendItems(Array(tagSet.map{$0 as! Tag}), toSection: .main)
+                    self.tagDataSource.apply(snapShot)
+                }
+            }
+            return cell
+        }
+        if let tagSet = apply.tag {
+            var snapShot = NSDiffableDataSourceSnapshot<Section,Tag>()
+            snapShot.appendSections([.main])
+            snapShot.appendItems(Array(tagSet.map{$0 as! Tag}), toSection: .main)
+            tagDataSource.apply(snapShot)
+        }
+    }
+    
+    func addTags(sender: UIViewController) {
+        appCoordinator?.present(scene: .tag({ [weak self] tags in
+            guard let self = self else {return}
+            try? self.applyService.deleteTags(from: self.apply)
+            try? self.applyService.add(tags: tags, to: self.apply)
+            if let tagSet = self.apply.tag {
+                       var snapShot = NSDiffableDataSourceSnapshot<Section,Tag>()
+                       snapShot.appendSections([.main])
+                       snapShot.appendItems(Array(tagSet.map{$0 as! Tag}), toSection: .main)
+                self.tagDataSource.apply(snapShot)
+                   }
+        }, apply.tag == nil ? [] : Array(apply.tag!.map{$0 as! Tag})), sender: sender)
     }
     func getApplyInfo() -> ApplyInfo {
         var components: DateComponents? = nil

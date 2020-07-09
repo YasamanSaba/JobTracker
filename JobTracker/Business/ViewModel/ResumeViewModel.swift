@@ -34,7 +34,7 @@ class ResumeViewModel: NSObject {
         resumeDataSource = ResumeDataSourece(tableView: tableView) {tableView,indexPath,resume -> UITableViewCell? in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ResumeTableViewCell.reuseIdentifier) as? ResumeTableViewCell else { return nil }
             
-            cell.configure(version: resume.version ?? "Unkown" , applyCount: String(resume.apply?.count ?? 0))
+            cell.configure(version: resume.version ?? "Unkown" , applyCount: String(resume.apply?.count ?? 0), hasLink: resume.linkToGit != nil)
             return cell
         }
         resumeFetchedResultsController = resumeService.getAll()
@@ -52,15 +52,20 @@ class ResumeViewModel: NSObject {
         }
     }
     
-    func add(urlString: String) throws {
-        guard let validURL = URL(string: urlString) else { throw ResumeViewModelError.notValidURL}
+    func add(urlString: String?) throws {
         let versionString = selectedVersion.map{String($0)}.joined(separator: ".")
         do {
-            try resumeService.add(version: versionString, url: validURL)
+            try resumeService.add(version: versionString, url: urlString == nil ? nil : URL(string: urlString!))
         } catch ResumeServiceError.alreadyExists {
             throw ResumeViewModelError.alreadyExists
         } catch {
             throw ResumeViewModelError.unKnownError
+        }
+    }
+    
+    func openURL(at indexPath: IndexPath) {
+        if let item = resumeDataSource?.snapshot().itemIdentifiers[indexPath.row], let url = item.linkToGit {
+            UIApplication.shared.open(url)
         }
     }
     

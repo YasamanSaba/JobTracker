@@ -23,4 +23,7 @@ protocol ApplyServiceType {
     func save(apply: Apply, resume: Resume) throws
     func delete(apply: Apply) throws
     func save(applyItem: ApplyService.ApplyItem) throws
+    func add(tags: [Tag], to apply: Apply) throws
+    func deleteTags(from apply: Apply) throws
+    func delete(tag: Tag, from apply: Apply) throws
 }

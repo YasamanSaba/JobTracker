@@ -14,9 +14,11 @@ class ResumeTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var lblVersion: UILabel!
     @IBOutlet private weak var lblNumberOfApplies: UILabel!
+    @IBOutlet private weak var imgLink: UIImageView!
     
-    func configure(version: String, applyCount: String) {
+    func configure(version: String, applyCount: String, hasLink: Bool) {
         lblVersion.text = version
         lblNumberOfApplies.text = applyCount
+        imgLink.isHidden = !hasLink
     }
 }

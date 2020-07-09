@@ -85,4 +85,39 @@ struct ApplyService: ApplyServiceType {
             throw ApplyServiceError.deleteError
         }
     }
+    func delete(tag: Tag, from apply: Apply) throws {
+        if let tagSet = apply.tag {
+            var tags = Array(tagSet.map{$0 as! Tag})
+            if let index = tags.firstIndex(of: tag) {
+                tags.remove(at: index)
+                apply.tag = NSSet(array: tags)
+                do {
+                    try context.save()
+                } catch {
+                    throw ApplyServiceError.saveApplyError
+                }
+            }
+        }
+    }
+    
+    func deleteTags(from apply: Apply) throws {
+        apply.tag = nil
+        do {
+            try context.save()
+        } catch {
+            throw ApplyServiceError.saveApplyError
+        }
+    }
+    
+    func add(tags: [Tag], to apply: Apply) throws {
+        tags.forEach{
+            apply.addToTag($0)
+        }
+        do {
+            try context.save()
+        } catch {
+            throw ApplyServiceError.saveApplyError
+        }
+    }
+    
 }

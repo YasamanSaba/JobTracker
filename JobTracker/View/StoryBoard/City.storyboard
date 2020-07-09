@@ -31,14 +31,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzd-Mi-eYD" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
                                 <rect key="frame" x="10" y="98" width="394" height="100"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TEp-Y4-pFu">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TEp-Y4-pFu">
                                         <rect key="frame" x="10" y="56" width="329" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJT-w8-rw9">
-                                        <rect key="frame" x="349" y="62" width="40" height="22"/>
+                                        <rect key="frame" x="349" y="53" width="40" height="40"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" secondItem="xJT-w8-rw9" secondAttribute="height" multiplier="1:1" id="0Th-He-CmD"/>
                                             <constraint firstAttribute="width" constant="40" id="lM3-Tu-CkY"/>
                                         </constraints>
                                         <state key="normal" image="plus.circle" catalog="system"/>

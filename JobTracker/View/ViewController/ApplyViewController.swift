@@ -23,6 +23,7 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     @IBOutlet weak var tblInterview: UITableView!
     @IBOutlet weak var tblTask: UITableView!
     @IBOutlet weak var imgHeart: UIImageView!
+    @IBOutlet weak var colTags: UICollectionView!
     // MARK: - Actions -
     @IBAction func btnResumeChange(_ sender: PickerButton) {
         sender.becomeFirstResponder()
@@ -39,6 +40,9 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     @IBAction func btnStateChange(_ sender: PickerButton) {
         sender.becomeFirstResponder()
         activateBlur()
+    }
+    @IBAction func btnAddTags(_ sender: Any) {
+        viewModel.addTags(sender: self)
     }
     @IBAction func tapOnHeart(_ sender: Any) {
         heartState.toggle()
@@ -63,6 +67,7 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
         btnResume.setTitle(applyInfo!.resume, for: .normal)
         viewModel.configureInterviewDataSource(for: tblInterview)
         viewModel.configureTaskDataSource(for: tblTask)
+        viewModel.configureTag(collectionView: colTags)
     }
     fileprivate func activateBlur() {
         let blurEffect = UIBlurEffect(style: .light)

@@ -14,9 +14,15 @@ class CompanyTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var lblCompanyName: UILabel!
     @IBOutlet private weak var lblNumberOfApply: UILabel!
+    @IBOutlet private weak var imgHeart: UIImageView!
 
-    func configure(name: String, numberOfApplies: Int) {
+    func configure(name: String, numberOfApplies: Int, isFavorite: Bool) {
         lblCompanyName.text = name
         lblNumberOfApply.text = String(numberOfApplies)
+        if isFavorite {
+            imgHeart.image = UIImage(systemName: "heart.fill")
+        } else {
+            imgHeart.image = nil
+        }
     }
 }

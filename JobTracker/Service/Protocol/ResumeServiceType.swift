@@ -16,5 +16,5 @@ enum ResumeServiceError: Error {
 
 protocol ResumeServiceType {
     func getAll() -> NSFetchedResultsController<Resume>
-    func add(version: String, url: URL) throws
+    func add(version: String, url: URL?) throws
 }

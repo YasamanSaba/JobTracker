@@ -19,10 +19,39 @@ class TagViewModel: NSObject {
     let onCompletion: ([Tag]) -> Void
     var dataSource: TagDataSource!
     var fetchedResultController: NSFetchedResultsController<Tag>!
+    var selectedTagsDataSource: UICollectionViewDiffableDataSource<Int,Tag>!
+    var selectedTags: [Tag] {
+        didSet {
+            var snapShot = NSDiffableDataSourceSnapshot<Int,Tag>()
+            snapShot.appendSections([1])
+            snapShot.appendItems(selectedTags, toSection: 1)
+            selectedTagsDataSource.apply(snapShot)
+        }
+    }
     
-    init(service: TagServiceType, onCompletion: @escaping ([Tag]) -> Void) {
+    init(service: TagServiceType, onCompletion: @escaping ([Tag]) -> Void, initialTags: [Tag]? = nil) {
         self.service = service
         self.onCompletion = onCompletion
+        self.selectedTags = initialTags ?? []
+    }
+    
+    func configureSelectedTags(collectionView: UICollectionView) {
+        selectedTagsDataSource = UICollectionViewDiffableDataSource<Int,Tag>(collectionView: collectionView) { (collectionView, indexPath, tag) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.reuseIdentifier, for: indexPath) as? TagCollectionViewCell else { return nil}
+            
+            cell.configure(tag: tag) { [weak self] in
+                guard let self = self else { return }
+                if let index = self.selectedTags.firstIndex(of: $0) {
+                    self.selectedTags.remove(at: index)
+                }
+            }
+            return cell
+        }
+        
+        var snapShot = NSDiffableDataSourceSnapshot<Int,Tag>()
+        snapShot.appendSections([1])
+        snapShot.appendItems(selectedTags, toSection: 1)
+        selectedTagsDataSource.apply(snapShot)
     }
     
     func configureDatasource(for tableView: UITableView) {
@@ -32,6 +61,7 @@ class TagViewModel: NSObject {
             cell.lblTitle.text = item.title
             return cell
         }
+        tableView.delegate = self
         dataSource.service = self.service
         do
         {
@@ -69,17 +99,8 @@ class TagViewModel: NSObject {
         }
     }
     
-    func save(tags: [String]) {
-        guard tags.count > 0 else { return }
-        var result: [Tag] = []
-        if let objects = fetchedResultController.fetchedObjects {
-            tags.forEach{ text in
-                if let tag = objects.filter({$0.title == text}).first{
-                    result.append(tag)
-                }
-            }
-        }
-        onCompletion(result)
+    func save() {
+        onCompletion(selectedTags)
     }
     
     class TagDataSource: UITableViewDiffableDataSource<Int,Tag> {
@@ -123,4 +144,13 @@ extension TagViewModel: NSFetchedResultsControllerDelegate {
     }
 }
 
-
+extension TagViewModel: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let tag = dataSource.snapshot().itemIdentifiers[indexPath.row]
+        let index = selectedTags.firstIndex(of: tag)
+        if index == nil {
+            selectedTags.append(tag)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}

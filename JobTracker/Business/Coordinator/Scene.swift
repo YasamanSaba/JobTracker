@@ -14,7 +14,7 @@ enum Scene {
     case newApply
     case notes
     case note
-    case tag(([Tag]) -> Void)
+    case tag(([Tag]) -> Void,[Tag]?)
     case reminder(Reminderable)
     case company((Company) -> Void)
     case filter(Country, ([FilterViewModel.FilterObject], Bool, Bool, Bool) -> Void)
