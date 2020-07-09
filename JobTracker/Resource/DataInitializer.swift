@@ -66,6 +66,121 @@ struct DataInitializer {
         england.addToCity(london)
         england.addToCity(manchester)
         
+        let barcelona = City(context: context)
+        barcelona.name = "Barcelona"
+        spain.addToCity(barcelona)
+        
+        
+        // Temporary
+        let date = Date()
+        var components = DateComponents()
+        components.setValue(-2, for: .month)
+        let interview = Interview(context: context)
+        interview.date = Date()
+        interview.interviewerRoleEnum = .ceo
+        let company = Company(context: context)
+        company.title = "eFly"
+        company.isFavorite = true
+        let apply = Apply(context: context)
+        apply.date = Calendar.current.date(byAdding: components, to: date)
+        apply.statusEnum = .challenge
+        apply.jobLink = URL(string: "google")
+        berlin.addToApply(apply)
+        let resume = Resume(context: context)
+        resume.version = "1.4.5"
+        resume.addToApply(apply)
+        company.addToApply(apply)
+        apply.addToInterview(interview)
+        
+        let interview2 = Interview(context: context)
+        let date2 = Date()
+        var components2 = DateComponents()
+        components2.setValue(-3, for: .month)
+        let expirationDate2 = Calendar.current.date(byAdding: components2, to: date2)
+        interview2.date = expirationDate2
+        interview2.interviewerRoleEnum = .recruiter
+        let company2 = Company(context: context)
+        company2.title = "eGym"
+        company2.isFavorite = false
+        let apply2 = Apply(context: context)
+        components2.setValue(-7, for: .day)
+        apply2.date = Calendar.current.date(byAdding: components2, to: Date())
+        apply2.statusEnum = .contract
+        apply2.jobLink = URL(string: "google")
+        london.addToApply(apply2)
+        let resume2 = Resume(context: context)
+        resume2.version = "3.5.1"
+        resume2.addToApply(apply2)
+        company2.addToApply(apply2)
+        apply2.addToInterview(interview2)
+        
+        let interview3 = Interview(context: context)
+        let date3 = Date()
+        var components3 = DateComponents()
+        components3.setValue(-8, for: .month)
+        let expirationDate3 = Calendar.current.date(byAdding: components3, to: date3)
+        interview3.date = expirationDate3
+        interview3.interviewerRoleEnum = .tech
+        let company3 = Company(context: context)
+        company3.title = "Starbox"
+        company3.isFavorite = true
+        let apply3 = Apply(context: context)
+        apply3.date = Calendar.current.date(byAdding: components3, to: date3)
+        apply3.statusEnum = .rejected
+        apply3.jobLink = URL(string: "google")
+        barcelona.addToApply(apply3)
+        let resume3 = Resume(context: context)
+        resume3.version = "2.8.6"
+        resume3.addToApply(apply3)
+        company3.addToApply(apply3)
+        apply3.addToInterview(interview3)
+        
+        let task = Task(context: context)
+        task.date = Date()
+        task.isDone = false
+        task.deadline = Date()
+        task.title = "Teeest"
+        let date4 = Date()
+        var components4 = DateComponents()
+        components4.setValue(8, for: .month)
+        let company4 = Company(context: context)
+        company4.title = "Apple"
+        company4.isFavorite = true
+        let apply4 = Apply(context: context)
+        apply4.date = Calendar.current.date(byAdding: components4, to: date4)
+        apply4.statusEnum = .hr
+        apply4.jobLink = URL(string: "test")
+        munich.addToApply(apply4)
+        let resume4 = Resume(context: context)
+        resume4.version = "1.5.3"
+        resume4.addToApply(apply4)
+        company4.addToApply(apply4)
+        apply4.addToTask(task)
+        
+        let task5 = Task(context: context)
+        let date5 = Date()
+        var components5 = DateComponents()
+        components5.setValue(3, for: .day)
+        task5.date = Calendar.current.date(byAdding: components5, to: date5)
+        task5.isDone = false
+        var components6 = DateComponents()
+        components6.setValue(-4, for: .day)
+        task5.deadline = Calendar.current.date(byAdding: components6, to: date5)
+        task5.title = "Restaurant"
+        let company5 = Company(context: context)
+        company5.title = "Polo"
+        company5.isFavorite = false
+        let apply5 = Apply(context: context)
+        apply5.date = Date()
+        apply5.statusEnum = .inSite
+        apply5.jobLink = URL(string: "test")
+        manchester.addToApply(apply5)
+        let resume5 = Resume(context: context)
+        resume5.version = "9.5.1"
+        resume5.addToApply(apply5)
+        company5.addToApply(apply5)
+        apply5.addToTask(task5)
+        
         do {
             try context.save()
             UserDefaults.standard.set(true, forKey: "FirstTime")

@@ -97,6 +97,7 @@
 		F24633B024A8C89E004D1DE5 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24633AF24A8C89E004D1DE5 /* TaskService.swift */; };
 		F24A0DC924A470F600D38217 /* ApplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24A0DC824A470F600D38217 /* ApplyViewModel.swift */; };
 		F24C3D67249903B0004C16B9 /* CountryServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24C3D66249903B0004C16B9 /* CountryServiceType.swift */; };
+		F25891CF24B4646300298C41 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25891CE24B4646300298C41 /* DateCollectionViewCell.swift */; };
 		F29ABCF624ACA4B50032D3E2 /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ABCF524ACA4B50032D3E2 /* Filter.storyboard */; };
 		F29ABCF824ACC1060032D3E2 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ABCF724ACC1060032D3E2 /* FilterViewController.swift */; };
 		F29ABCFA24ACC6470032D3E2 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ABCF924ACC6470032D3E2 /* FilterViewModel.swift */; };
@@ -224,6 +225,7 @@
 		F24633AF24A8C89E004D1DE5 /* TaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
 		F24A0DC824A470F600D38217 /* ApplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyViewModel.swift; sourceTree = "<group>"; };
 		F24C3D66249903B0004C16B9 /* CountryServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryServiceType.swift; sourceTree = "<group>"; };
+		F25891CE24B4646300298C41 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		F29ABCF524ACA4B50032D3E2 /* Filter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filter.storyboard; sourceTree = "<group>"; };
 		F29ABCF724ACC1060032D3E2 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		F29ABCF924ACC6470032D3E2 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 				70773C5824ACC14E00097FFE /* CityCollectionViewCell.swift */,
 				70D30A5724B06FCC005D29B2 /* ResumeTableViewCell.swift */,
 				F220D96D24ADC0F00085DCED /* StateCollectionViewCell.swift */,
+				F25891CE24B4646300298C41 /* DateCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -760,6 +763,7 @@
 				70483E8424979ACF00612288 /* ReminderTableViewCell.swift in Sources */,
 				70773C5D24ACCC4800097FFE /* CityViewModel.swift in Sources */,
 				F2EAA8B62498EBAC00876FA9 /* AppliesViewModel.swift in Sources */,
+				F25891CF24B4646300298C41 /* DateCollectionViewCell.swift in Sources */,
 				70ADFF9824989F7400345379 /* Reminderable.swift in Sources */,
 				7060EFF52494A32900A229B8 /* TagViewController.swift in Sources */,
 				70483E7A249761D200612288 /* UITextViewExtension.swift in Sources */,

@@ -9,21 +9,40 @@
 import UIKit
 import CoreData
 
+enum FilterViewModelError: String, Error {
+    case dateFilterAlreadySelected = "One date filter already exists."
+    case dateFilterBothNil = "Both from and to date can't be empty."
+}
+
 class FilterViewModel {
     // MARK: - Nested Types -
     enum Section {
         case main
     }
     struct FilterObject: Hashable {
+        struct DateFilter: Hashable {
+            var from: Date? = nil
+            var to: Date? = nil
+            init(from: Date?, to: Date?) {
+                if let from = from {
+                    self.from = Calendar.current.startOfDay(for: from)
+                }
+                if let to = to, let dayAfterTo = Calendar.current.date(byAdding: .day, value: 1, to: to) {
+                    self.to = Calendar.current.startOfDay(for: dayAfterTo)
+                }
+            }
+        }
         enum FilterType {
             case city
             case tag
             case state
+            case date
         }
         let filterType: FilterType
         var city: City?
         var tag: Tag?
         var state: Status?
+        var date: DateFilter?
     }
     // MARK: - Properties -
     let tagService: TagServiceType
@@ -47,8 +66,29 @@ class FilterViewModel {
     }
     var hasFutureInterview: Bool = false
     var hasTask: Bool = false
+    var isDateFilterSelected: Bool = false
     var isCompanyFavorite: Bool = false
     let onCompletion: ([FilterObject], Bool, Bool, Bool) -> Void
+    var selectedFromDate: Date? = nil {
+        didSet {
+            if selectedFromDate == nil {
+                fromDateTextSetter?("")
+            } else {
+                fromDateTextSetter?(dateFormatter(for: selectedFromDate!))
+            }
+        }
+    }
+    var selectedToDate: Date? = nil {
+        didSet {
+            if selectedToDate == nil {
+                toDateTextSetter?("")
+            } else {
+                toDateTextSetter?(dateFormatter(for: selectedToDate!))
+            }
+        }
+    }
+    var fromDateTextSetter: ((String) -> Void)?
+    var toDateTextSetter: ((String) -> Void)?
     // MARK: - Initializer
     init(tagService: TagServiceType, cityService: CityServiceType, stateService: StateServiceType, country: Country, onCompletion: @escaping ([FilterObject], Bool, Bool, Bool) -> Void) {
         self.tagService = tagService
@@ -58,6 +98,13 @@ class FilterViewModel {
         self.onCompletion = onCompletion
     }
     // MARK: - Functions -
+    func date( isFromDate: Bool, setter: @escaping (String) -> Void) {
+        if isFromDate {
+            fromDateTextSetter = setter
+        } else {
+            toDateTextSetter = setter
+        }
+    }
     func setupTagDataSource(for tableView: UITableView) {
         tagDataSource = UITableViewDiffableDataSource<Section, Tag>(tableView: tableView) { (tableView, indexPath, tag) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "TagCell", for: indexPath)
@@ -152,6 +199,20 @@ class FilterViewModel {
                         return cell
                     }
                 }
+            case .date:
+                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DateCollectionViewCell.reuseIdentifier, for: indexPath) as? DateCollectionViewCell {
+                    if let dateFilter = filter.date {
+                        cell.configure(date: dateFilter) { [weak self] in
+                            if let item = self?.filters.filter({$0.filterType == .date}).first, let index = self?.filters.firstIndex(of: item) {
+                                self?.filters.remove(at: index)
+                                self?.isDateFilterSelected = false
+                                self?.selectedFromDate = nil
+                                self?.selectedToDate = nil
+                            }
+                        }
+                        return cell
+                    }
+                }
             }
             return nil
         }
@@ -220,6 +281,16 @@ class FilterViewModel {
             }
         }
     }
+    func addDate() throws {
+        guard !isDateFilterSelected else {throw FilterViewModelError.dateFilterAlreadySelected}
+        if selectedFromDate == nil && selectedToDate == nil {
+            throw FilterViewModelError.dateFilterBothNil
+        }
+        isDateFilterSelected = true
+        let dateFilter = FilterObject.DateFilter(from: selectedFromDate, to: selectedToDate)
+        let filter = FilterObject(filterType: .date, city: nil, tag: nil, state: nil, date: dateFilter)
+        filters.append(filter)
+    }
     func set(futureInterview: Bool) {
         hasFutureInterview = futureInterview
     }
@@ -229,7 +300,19 @@ class FilterViewModel {
     func set(companyFavorite: Bool) {
         isCompanyFavorite = companyFavorite
     }
+    private func dateFormatter(for date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MMM-dd"
+        return dateFormatter.string(from: date)
+    }
     func done() {
         onCompletion(filters, hasFutureInterview, hasTask, isCompanyFavorite)
+    }
+    func set(date: Date, isFromDate: Bool) {
+        if isFromDate {
+            self.selectedFromDate = date
+        } else {
+            self.selectedToDate = date
+        }
     }
 }

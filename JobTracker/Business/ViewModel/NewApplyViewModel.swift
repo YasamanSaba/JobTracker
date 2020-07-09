@@ -184,17 +184,14 @@ class NewApplyViewModel: NSObject {
             selectedStateIndex = 0
         }
     }
-    
     func addContry(sender: UIViewController) {
         appCoordinator?.present(scene: .country, sender: sender)
     }
-    
     func addCity(sender: UIViewController) {
         if let selectedCountry = selectedCountry {
             appCoordinator?.present(scene: .city(selectedCountry), sender: sender)
         }
     }
-    
     func configureTags(collectionView: UICollectionView) {
         tagDatasource = UICollectionViewDiffableDataSource<Int,Tag>(collectionView: collectionView) { (collectionView, indexPath, tag) -> UICollectionViewCell? in
             guard let cell =
@@ -208,7 +205,6 @@ class NewApplyViewModel: NSObject {
         snapShot.appendItems(selectedTags)
         tagDatasource.apply(snapShot)
     }
-    
     func delete(tag: Tag) {
         if let index = selectedTags.firstIndex(of: tag) {
             selectedTags.remove(at: index)
@@ -218,7 +214,6 @@ class NewApplyViewModel: NSObject {
             tagDatasource.apply(snapShot)
         }
     }
-    
     func addTags(sender: UIViewController) {
         appCoordinator?.present(scene: .tag({ [weak self] tags in
             self?.selectedTags = tags
@@ -228,13 +223,11 @@ class NewApplyViewModel: NSObject {
             self?.tagDatasource.apply(snapShot)
         },selectedTags), sender: sender)
     }
-    
     func chooseCompany(sender: UIViewController) {
         appCoordinator?.present(scene: .company({ [weak self] company in
             self?.selectedComapy = company
         }), sender: sender)
     }
-    
     func addResume(sender: UIViewController) {
         appCoordinator?.present(scene: .resume, sender: sender)
     }
