@@ -32,5 +32,68 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D299C165-DC3D-4168-B6EA-ADC1BBCA02AF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JobTracker/Business/ViewModel/AppliesViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
+            landmarkName = "apply(_:animatingDifferences:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D299C165-DC3D-4168-B6EA-ADC1BBCA02AF - 34a3c6c2f2a6d391"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 1 of JobTracker.AppliesViewModel.ApplyDataSource.apply(_: UIKit.NSDiffableDataSourceSnapshot&lt;JobTracker.AppliesViewModel.Section, JobTracker.Apply&gt;, animatingDifferences: Swift.Bool, completion: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "JobTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yasamanfarahanisaba/Documents/Projects/JobTracker/JobTracker/Business/ViewModel/AppliesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "344"
+                  endingLineNumber = "344"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "D299C165-DC3D-4168-B6EA-ADC1BBCA02AF - b3e309d8595b6590"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 2 of JobTracker.AppliesViewModel.ApplyDataSource.apply(_: UIKit.NSDiffableDataSourceSnapshot&lt;JobTracker.AppliesViewModel.Section, JobTracker.Apply&gt;, animatingDifferences: Swift.Bool, completion: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "JobTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yasamanfarahanisaba/Documents/Projects/JobTracker/JobTracker/Business/ViewModel/AppliesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "344"
+                  endingLineNumber = "344"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "D299C165-DC3D-4168-B6EA-ADC1BBCA02AF - 18b7b88cdfa52b55"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JobTracker.AppliesViewModel.ApplyDataSource.apply(_: UIKit.NSDiffableDataSourceSnapshot&lt;JobTracker.AppliesViewModel.Section, JobTracker.Apply&gt;, animatingDifferences: Swift.Bool, completion: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "JobTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yasamanfarahanisaba/Documents/Projects/JobTracker/JobTracker/Business/ViewModel/AppliesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "345"
+                  endingLineNumber = "345"
+                  offsetFromSymbolStart = "192">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

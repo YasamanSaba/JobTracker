@@ -17,13 +17,13 @@ class AppliesViewModel: NSObject {
     let countryService: CountryServiceType!
     let applyService: ApplyServiceType!
     var applyResultController: NSFetchedResultsController<Apply>!
-    var countryResultController: NSFetchedResultsController<Country>!
-    var countryDataSource: UICollectionViewDiffableDataSource<Section, Country>!
+    //var countryResultController: NSFetchedResultsController<Country>!
+    var countryDataSource: UICollectionViewDiffableDataSource<Section, Country>?
     var applyDataSource: ApplyDataSource!
     var selectedCountry: Country!
     let world: Country
     let appCoordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
-    var countryResultControllerDelegate: CountryResultControllerDelegate!
+    //var countryResultControllerDelegate: CountryResultControllerDelegate!
     var applyResultControllerDelegate: ApplyResultControllerDelegate!
     var onFilterChanged: ((Bool) -> Void)?
     // MARK: - Initialization -
@@ -41,8 +41,8 @@ class AppliesViewModel: NSObject {
             cell.lblFlag.text = item.flag
             return cell
         }
-        countryResultController = countryService.fetchAll()
-        countryDataSource.supplementaryViewProvider = { [weak self] (
+        //countryResultController = countryService.fetchAll()
+        countryDataSource?.supplementaryViewProvider = { [weak self] (
             collectionView: UICollectionView,
             kind: String,
             indexPath: IndexPath) -> UICollectionReusableView? in
@@ -52,8 +52,8 @@ class AppliesViewModel: NSObject {
                     return nil
             }
             if let currentApplyObjects = self.applyResultController.fetchedObjects {
-                let currentCountrySnapshot = self.countryDataSource.snapshot()
-                let countryName = currentCountrySnapshot.itemIdentifiers(inSection: .main)[indexPath.row].name
+                let currentCountrySnapshot = self.countryDataSource?.snapshot()
+                let countryName = currentCountrySnapshot?.itemIdentifiers(inSection: .main)[indexPath.row].name
                 let countryCount = currentApplyObjects.filter{ $0.city?.country?.name == countryName }.count
                 let count = countryName == "World" ? currentApplyObjects.count : countryCount
                 badgeView.label.text = "\(count)"
@@ -62,6 +62,8 @@ class AppliesViewModel: NSObject {
             }
             return badgeView
         }
+        updateCountryDataSource()
+        /*
         do {
             try countryResultController.performFetch()
             countryResultControllerDelegate = CountryResultControllerDelegate(countryDataSource: countryDataSource)
@@ -90,7 +92,18 @@ class AppliesViewModel: NSObject {
             }
         } catch {
             print(error.localizedDescription)
+        }*/
+    }
+    func updateCountryDataSource() {
+        let currentApplySnapshot = applyDataSource.snapshot()
+        var snapShot = NSDiffableDataSourceSnapshot<Section, Country>()
+        snapShot.appendSections([.main])
+        var countries = currentApplySnapshot.itemIdentifiers.map {$0.city!.country!}
+        if let world = try? countryService.getWorld() {
+            countries.insert(world, at: 0)
         }
+        snapShot.appendItems(countries, toSection: .main)
+        countryDataSource?.apply(snapShot)
     }
     func configureApplyDataSource(for tableView: UITableView) {
         applyDataSource = ApplyDataSource(tableView: tableView) { (tableView, indexPath, apply) -> UITableViewCell? in
@@ -99,6 +112,7 @@ class AppliesViewModel: NSObject {
             return cell
         }
         applyDataSource.applyService = applyService
+        applyDataSource.countryUpdater = updateCountryDataSource
         applyResultController = applyService.fetchAll()
         do {
             try applyResultController.performFetch()
@@ -115,7 +129,7 @@ class AppliesViewModel: NSObject {
         }
     }
     func selectCountry(at indexPath: IndexPath) {
-        guard let country = countryDataSource.itemIdentifier(for: indexPath) else { return }
+        guard let country = countryDataSource?.itemIdentifier(for: indexPath) else { return }
         if let objects = applyResultController.fetchedObjects {
             selectedCountry = country
             let filteredObjects = objects.filter { apply in
@@ -169,6 +183,7 @@ class AppliesViewModel: NSObject {
         appCoordinator?.present(scene: .filter(selectedCountry,applyFilter(filters:hasInterview:hasTask:isCompanyFavorite:)), sender: sender)
     }
     func applyFilter(filters:[FilterViewModel.FilterObject], hasInterview:Bool, hasTask:Bool, isCompanyFavorite: Bool) {
+        guard filters.count > 0 else {return}
         let currentApplies = applyDataSource.snapshot().itemIdentifiers
         var filteredCityApplies: [Apply] = []
         var filteredStateApplies: [Apply] = []
@@ -199,7 +214,7 @@ class AppliesViewModel: NSObject {
                     filteredDateApplies.append(contentsOf: currentApplies.filter({$0.date! <= to}))
                 }
                 if let from = filter.date?.from, let to = filter.date?.to {
-                    filteredDateApplies.append(contentsOf: currentApplies.filter({from <= $0.date! && $0.date! > to}))
+                    filteredDateApplies.append(contentsOf: currentApplies.filter({from <= $0.date! && to > $0.date!}))
                 }
             }
         }
@@ -290,6 +305,7 @@ class AppliesViewModel: NSObject {
             applyDataSource.apply(diff)
         }
     }
+    /*
     class CountryResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
         let countryDataSource: UICollectionViewDiffableDataSource<Section, Country>
         init(countryDataSource: UICollectionViewDiffableDataSource<Section, Country>) {
@@ -326,8 +342,14 @@ class AppliesViewModel: NSObject {
         }
         
     }
+    */
     class ApplyDataSource: UITableViewDiffableDataSource<Section, Apply> {
         var applyService: ApplyServiceType!
+        var countryUpdater: (() -> Void)!
+        override func apply(_ snapshot: NSDiffableDataSourceSnapshot<AppliesViewModel.Section, Apply>, animatingDifferences: Bool = true, completion: (() -> Void)? = nil) {
+            super.apply(snapshot, animatingDifferences: animatingDifferences, completion: completion)
+            countryUpdater()
+        }
         override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
             return true
         }

@@ -43,8 +43,8 @@ struct DataInitializer {
         belgium.name = "Belgium"
         belgium.flag = "🇧🇪"
         let england = Country(context: context)
-        england.name = "England"
-        england.flag = "🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+        england.name = "UK"
+        england.flag = "🇬🇧"
         let luxembourg = Country(context: context)
         luxembourg.name = "Luxembourg"
         luxembourg.flag = "🇱🇺"
@@ -70,6 +70,13 @@ struct DataInitializer {
         barcelona.name = "Barcelona"
         spain.addToCity(barcelona)
         
+        let vienna = City(context: context)
+        vienna.name = "Vienna"
+        austria.addToCity(vienna)
+        
+        let brussels = City(context: context)
+        brussels.name = "Brussels"
+        belgium.addToCity(brussels)
         
         // Temporary
         let date = Date()
@@ -79,13 +86,13 @@ struct DataInitializer {
         interview.date = Date()
         interview.interviewerRoleEnum = .ceo
         let company = Company(context: context)
-        company.title = "eFly"
+        company.title = "Fly"
         company.isFavorite = true
         let apply = Apply(context: context)
         apply.date = Calendar.current.date(byAdding: components, to: date)
         apply.statusEnum = .challenge
         apply.jobLink = URL(string: "google")
-        berlin.addToApply(apply)
+        brussels.addToApply(apply)
         let resume = Resume(context: context)
         resume.version = "1.4.5"
         resume.addToApply(apply)
@@ -107,7 +114,7 @@ struct DataInitializer {
         apply2.date = Calendar.current.date(byAdding: components2, to: Date())
         apply2.statusEnum = .contract
         apply2.jobLink = URL(string: "google")
-        london.addToApply(apply2)
+        vienna.addToApply(apply2)
         let resume2 = Resume(context: context)
         resume2.version = "3.5.1"
         resume2.addToApply(apply2)
