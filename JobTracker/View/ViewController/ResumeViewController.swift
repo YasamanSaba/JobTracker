@@ -24,17 +24,14 @@ class ResumeViewController: UIViewController, ViewModelSupportedViewControllers 
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func add(_ sender: Any) {
-        if let urlString = txtURL.text, urlString.count > 0 {
-            do {
-                try viewModel.add(urlString: urlString)
-            } catch let error as ResumeViewModelError {
-                showAlert(text: error.rawValue)
-            } catch {
-                print(error)
-            }
-        }else {
-            showAlert(text: "Please fill URL field.")
+        do {
+            try viewModel.add(urlString: txtURL.text)
+        } catch let error as ResumeViewModelError {
+            showAlert(text: error.rawValue)
+        } catch {
+            print(error)
         }
+        
     }
 
     override func viewDidLoad() {
@@ -48,5 +45,12 @@ class ResumeViewController: UIViewController, ViewModelSupportedViewControllers 
         let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(alertAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension ResumeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.openURL(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

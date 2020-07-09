@@ -253,28 +253,38 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
+                                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bin.xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qiD-tP-465">
+                                                            <rect key="frame" x="282" y="8.5" width="30" height="17.5"/>
+                                                            <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <gestureRecognizers/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="a2l-m5-2eX"/>
+                                                                <constraint firstAttribute="width" constant="30" id="tKa-qt-BPU"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tag.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eVL-jI-jeL">
+                                                            <rect key="frame" x="5" y="5.5" width="25" height="24"/>
+                                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="Oom-XE-hdG"/>
+                                                                <constraint firstAttribute="width" secondItem="eVL-jI-jeL" secondAttribute="height" multiplier="1:1" id="euJ-dM-DUB"/>
+                                                            </constraints>
+                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Core Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqY-vS-cwB">
-                                                            <rect key="frame" x="15" y="7" width="77" height="21"/>
+                                                            <rect key="frame" x="35" y="7" width="77" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bin.xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qiD-tP-465">
-                                                            <rect key="frame" x="292" y="8.5" width="20" height="17.5"/>
-                                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <gestureRecognizers/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="20" id="a2l-m5-2eX"/>
-                                                                <constraint firstAttribute="width" constant="20" id="tKa-qt-BPU"/>
-                                                            </constraints>
-                                                        </imageView>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="LqY-vS-cwB" firstAttribute="leading" secondItem="eVL-jI-jeL" secondAttribute="trailing" constant="5" id="0Zp-NX-9c9"/>
                                                         <constraint firstItem="qiD-tP-465" firstAttribute="centerY" secondItem="gKH-dc-bcI" secondAttribute="centerY" id="2XX-JM-2TC"/>
                                                         <constraint firstItem="qiD-tP-465" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LqY-vS-cwB" secondAttribute="trailing" constant="10" id="8UC-7N-VWS"/>
+                                                        <constraint firstItem="eVL-jI-jeL" firstAttribute="centerY" secondItem="gKH-dc-bcI" secondAttribute="centerY" id="Ae6-4b-5FL"/>
                                                         <constraint firstAttribute="trailing" secondItem="qiD-tP-465" secondAttribute="trailing" constant="8" id="cI6-ag-bZr"/>
                                                         <constraint firstItem="LqY-vS-cwB" firstAttribute="centerY" secondItem="gKH-dc-bcI" secondAttribute="centerY" id="du5-eA-pjM"/>
-                                                        <constraint firstItem="LqY-vS-cwB" firstAttribute="leading" secondItem="gKH-dc-bcI" secondAttribute="leading" constant="15" id="zMx-QK-IhV"/>
+                                                        <constraint firstItem="eVL-jI-jeL" firstAttribute="leading" secondItem="gKH-dc-bcI" secondAttribute="leading" constant="5" id="ovh-dr-bUA"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
                                                 <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -286,7 +296,7 @@
                                                         <color key="value" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="0.0"/>
+                                                        <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
@@ -580,5 +590,6 @@
         <image name="flag" catalog="system" width="128" height="121"/>
         <image name="link" catalog="system" width="128" height="116"/>
         <image name="mappin.circle" catalog="system" width="128" height="121"/>
+        <image name="tag.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>

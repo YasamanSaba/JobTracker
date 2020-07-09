@@ -11,6 +11,7 @@ import CoreData
 
 enum CompanyViewModelError:String, Error {
     case companyAlreadyExists = "Company with same name already exists."
+    case companyNameIsEmpty = "Company name can't be empty."
     case addError = "Can not add. please try again later."
     case unKnownError = "Please try again later."
 }
@@ -32,7 +33,7 @@ class CompanyViewModel: NSObject {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CompanyTableViewCell.reuseIdentifier) as? CompanyTableViewCell else {
                 return nil
             }
-            cell.configure(name: company.title ?? "Unknown", numberOfApplies: company.apply?.count ?? 0)
+            cell.configure(name: company.title ?? "Unknown", numberOfApplies: company.apply?.count ?? 0, isFavorite: company.isFavorite)
             return cell
         }
         
@@ -71,6 +72,9 @@ class CompanyViewModel: NSObject {
     }
     
     func add(name: String, isFavorite: Bool) throws {
+        guard !name.isEmpty, !name.trimmingCharacters(in: .whitespaces).isEmpty else {
+            throw CompanyViewModelError.companyNameIsEmpty
+        }
         do {
             try companyService.add(name: name, isFavorite: isFavorite)
         } catch let error as CompanyServiceError {

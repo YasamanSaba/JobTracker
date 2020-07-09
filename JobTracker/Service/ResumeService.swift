@@ -25,7 +25,7 @@ class ResumeService: ResumeServiceType {
         return controller
     }
     
-    func add(version: String, url: URL) throws {
+    func add(version: String, url: URL?) throws {
         let request:NSFetchRequest<Resume> = Resume.fetchRequest()
         let predicate = NSPredicate(format: "%K == %@", #keyPath(Resume.version), version)
         request.predicate = predicate

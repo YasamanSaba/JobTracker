@@ -12,19 +12,11 @@ class TagViewController: UIViewController, ViewModelSupportedViewControllers {
     
     // MARK: - Properties
     var viewModel: TagViewModel!
-    var selectedTags: [String]! {
-        didSet{
-            let hashTags = selectedTags.map{tag in
-                return "#" + tag
-            }
-            txtTag.text = hashTags.joined(separator: " ")
-        }
-    }
     
     // MARK: - Outlets
     @IBOutlet weak var srbSearchBar: UISearchBar!
     @IBOutlet weak var tblTableView: UITableView!
-    @IBOutlet weak var txtTag: UITextView!
+    @IBOutlet weak var colTags: UICollectionView!
     @IBOutlet weak var btnAdd: UIButton!
     
     
@@ -34,7 +26,7 @@ class TagViewController: UIViewController, ViewModelSupportedViewControllers {
     }
     
     @IBAction func btnSave(_ sender: Any) {
-        viewModel.save(tags: selectedTags ?? [])
+        viewModel.save()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -58,36 +50,15 @@ class TagViewController: UIViewController, ViewModelSupportedViewControllers {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        tblTableView.delegate = self
         self.srbSearchBar.searchTextField.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
-        if selectedTags == nil {
-            selectedTags = []
-        }
         viewModel.configureDatasource(for: tblTableView)
+        viewModel.configureSelectedTags(collectionView: colTags)
     }
     
     @objc func tapDone(sender: Any) {
         self.view.endEditing(true)
     }
     
-}
-
-extension TagViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? TagTableViewCell {
-            if let tag = cell.lblTitle.text {
-                if selectedTags.contains(tag) {
-                    let index = selectedTags.firstIndex(of: tag)
-                    if let intIndex = index {
-                        selectedTags.remove(at: intIndex)
-                    }
-                } else {
-                    selectedTags.append(tag)
-                }
-            }
-        }
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
 }
 
 extension TagViewController: UISearchBarDelegate {

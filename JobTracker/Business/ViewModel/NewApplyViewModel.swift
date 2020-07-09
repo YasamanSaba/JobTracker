@@ -221,7 +221,7 @@ class NewApplyViewModel: NSObject {
             snapShot.appendSections([1])
             snapShot.appendItems(tags)
             self?.tagDatasource.apply(snapShot)
-        }), sender: sender)
+        },selectedTags), sender: sender)
     }
     func chooseCompany(sender: UIViewController) {
         appCoordinator?.present(scene: .company({ [weak self] company in

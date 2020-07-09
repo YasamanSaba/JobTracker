@@ -27,9 +27,10 @@ class CompanyViewController: UIViewController, ViewModelSupportedViewControllers
     @IBOutlet weak var srbSearchBar: UISearchBar!
     @IBOutlet weak var btnAddCompany: UIButton!
     @IBOutlet weak var imgHeart: UIImageView!
+    @IBOutlet weak var txtCompanyName: UITextField!
     // MARK: - Actions
     @IBAction func addCompany(_ sender: Any) {
-        if let name = srbSearchBar.text {
+        if let name = txtCompanyName.text {
             do {
                 try viewModel.add(name: name,isFavorite: heartState)
             } catch let error as CompanyViewModelError {
