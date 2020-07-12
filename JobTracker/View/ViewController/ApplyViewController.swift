@@ -36,6 +36,7 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     @IBAction func btnAddInterview(_ sender: Any) {
     }
     @IBAction func btnAddTask(_ sender: Any) {
+        viewModel.addTask(sender: self)
     }
     @IBAction func btnStateChange(_ sender: PickerButton) {
         sender.becomeFirstResponder()

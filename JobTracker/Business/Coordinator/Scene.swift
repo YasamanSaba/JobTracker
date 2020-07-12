@@ -21,4 +21,5 @@ enum Scene {
     case country
     case city(Country)
     case resume
+    case task
 }
