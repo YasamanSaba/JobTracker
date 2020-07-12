@@ -22,4 +22,5 @@ enum Scene {
     case city(Country)
     case resume
     case interview
+    case task
 }

@@ -9,18 +9,15 @@
 import UIKit
 
 class ReminderTableViewCell: UITableViewCell {
+    
+    static let reuseIdentifier = String(describing: ReminderTableViewCell.self)
 
     @IBOutlet weak var lblDateTime: UILabel!
     @IBOutlet weak var lblMessage: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func configure(message: String, date: String) {
+        lblMessage.text = message
+        lblDateTime.text = date
     }
 
 }

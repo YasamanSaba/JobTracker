@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Reminderable {
+protocol Reminderable: CVarArg {
     func addToReminder(_ value: Reminder)
 }
 

@@ -39,4 +39,24 @@ class ReminderService: ReminderServiceType{
             throw ReminderServiceError.deleteError
         }
     }
+    
+    func fetchAll(for reminderable: Reminderable) throws -> NSFetchedResultsController<Reminder> {
+        let request: NSFetchRequest<Reminder> = Reminder.fetchRequest()
+        var key: String?
+        switch reminderable {
+        case is Interview:
+            key = #keyPath(Reminder.interview)
+        case is Task:
+            key = #keyPath(Reminder.task)
+        default:
+            key = nil
+        }
+        if key == nil { throw ReminderServiceError.fetchError}
+        let predicate = NSPredicate(format: " %K == %@ ", key!, reminderable)
+        request.predicate = predicate
+        let sort = NSSortDescriptor(key: #keyPath(Reminder.date), ascending: true)
+        request.sortDescriptors = [sort]
+        let controller = NSFetchedResultsController<Reminder>(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        return controller
+    }
 }

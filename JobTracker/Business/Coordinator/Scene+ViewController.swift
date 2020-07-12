@@ -124,6 +124,12 @@ extension Scene {
             let viewModel = InterviewViewModel(interviewService: interviewService, tagService: tagService)
             viewController.viewModel = viewModel
             return viewController
+        case .task:
+            let storyboard = UIStoryboard(name: "Task", bundle: nil)
+            let viewController = storyboard.instantiateViewController(identifier: TaskViewController.reuseIdentifier) as TaskViewController
+            //let viewModel = TaskViewModel()
+            //viewController.viewModel = viewModel
+            return viewController
         }
     }
 }

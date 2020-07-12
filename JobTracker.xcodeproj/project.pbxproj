@@ -69,6 +69,8 @@
 		70ADFFA72498D3C300345379 /* ReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFA62498D3C300345379 /* ReminderTests.swift */; };
 		70ADFFA92498EC1B00345379 /* TagServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFA82498EC1B00345379 /* TagServiceType.swift */; };
 		70ADFFAB2498F9D400345379 /* TagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ADFFAA2498F9D400345379 /* TagService.swift */; };
+		70BC371724B995BF00E0680A /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC371624B995BF00E0680A /* TaskViewController.swift */; };
+		70BC371924B9965300E0680A /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC371824B9965300E0680A /* TaskViewModel.swift */; };
 		70BE562E249F47AA0039D123 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BE562D249F47AA0039D123 /* UITextFieldExtension.swift */; };
 		70D30A4E24B053A0005D29B2 /* Resume.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70D30A4D24B053A0005D29B2 /* Resume.storyboard */; };
 		70D30A5024B057EE005D29B2 /* ResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D30A4F24B057EE005D29B2 /* ResumeViewController.swift */; };
@@ -192,6 +194,8 @@
 		70ADFFA62498D3C300345379 /* ReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTests.swift; sourceTree = "<group>"; };
 		70ADFFA82498EC1B00345379 /* TagServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagServiceType.swift; sourceTree = "<group>"; };
 		70ADFFAA2498F9D400345379 /* TagService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagService.swift; sourceTree = "<group>"; };
+		70BC371624B995BF00E0680A /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		70BC371824B9965300E0680A /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		70BE562D249F47AA0039D123 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		70D30A4D24B053A0005D29B2 /* Resume.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Resume.storyboard; sourceTree = "<group>"; };
 		70D30A4F24B057EE005D29B2 /* ResumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewController.swift; sourceTree = "<group>"; };
@@ -378,6 +382,7 @@
 				70773C5C24ACCC4800097FFE /* CityViewModel.swift */,
 				70D30A5124B05A4F005D29B2 /* ResumeViewModel.swift */,
 				F293DDCB24B9A39200326E5A /* InterviewViewModel.swift */,
+				70BC371824B9965300E0680A /* TaskViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -446,6 +451,7 @@
 				70773C5A24ACC30300097FFE /* CityViewController.swift */,
 				70D30A4F24B057EE005D29B2 /* ResumeViewController.swift */,
 				F293DDC924B99B8300326E5A /* InterviewViewController.swift */,
+				70BC371624B995BF00E0680A /* TaskViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -723,6 +729,7 @@
 				F220D97224ADC6B60085DCED /* StateService.swift in Sources */,
 				F24633AA24A8A226004D1DE5 /* InterviewService.swift in Sources */,
 				F2A2D6E424A38FC200D25B35 /* UIButtonExtension.swift in Sources */,
+				70BC371924B9965300E0680A /* TaskViewModel.swift in Sources */,
 				70483E7E249797C700612288 /* ChecklistItemTableViewCell.swift in Sources */,
 				709CDEE424A1E7C500A9DAE0 /* NotesViewModel.swift in Sources */,
 				70773C5B24ACC30300097FFE /* CityViewController.swift in Sources */,
@@ -745,6 +752,7 @@
 				709CDEE824A20DB000A9DAE0 /* NoteViewModel.swift in Sources */,
 				7043B02F24A0D22000F760AA /* Scene+ViewController.swift in Sources */,
 				70D30A5424B05EF0005D29B2 /* ResumeService.swift in Sources */,
+				70BC371724B995BF00E0680A /* TaskViewController.swift in Sources */,
 				704866D324A777EF00FA80B5 /* NewApplyViewModel.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
 				F29ABCFA24ACC6470032D3E2 /* FilterViewModel.swift in Sources */,

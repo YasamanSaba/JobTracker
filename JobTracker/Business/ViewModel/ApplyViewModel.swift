@@ -56,6 +56,10 @@ class ApplyViewModel: NSObject {
         self.tagService = tagService
     }
     // MARK: - Functions -
+    func addTask(sender: Any) {
+        appCoordinator?.push(scene: .task, sender: sender)
+    }
+    
     func configureResume(pickerView: UIPickerView) {
         pickerView.accessibilityIdentifier = "ResumePickerView"
         resumeResultController = applyService.getAllResumeVersion()
