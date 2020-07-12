@@ -60,7 +60,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMS-YN-cRW">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="vTN-e4-bW6">
+                                    <navigationItem title="Tag" id="vTN-e4-bW6">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Up2-Qv-Obp">
                                             <connections>
                                                 <action selector="btnCancel:" destination="tck-Ha-jOm" id="Auu-HZ-BXZ"/>

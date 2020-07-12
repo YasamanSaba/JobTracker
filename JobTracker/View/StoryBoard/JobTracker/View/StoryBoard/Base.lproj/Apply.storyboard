@@ -251,42 +251,6 @@
             </objects>
             <point key="canvasLocation" x="-385" y="989"/>
         </scene>
-        <!--Tag-->
-        <scene sceneID="cEm-5V-wbH">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Tag" id="kdu-vm-7nD" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="kJD-Pr-QnY"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SxK-HX-Jqo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1595" y="2143"/>
-        </scene>
-        <!--Reminder-->
-        <scene sceneID="pL7-dd-Kg5">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Reminder" id="2Kz-6R-HQx" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="V1c-F9-72Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2285" y="2506"/>
-        </scene>
-        <!--CheckList-->
-        <scene sceneID="ahs-Vu-FRV">
-            <objects>
-                <viewControllerPlaceholder storyboardName="CheckList" id="xrS-RM-6zp" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="gn1-w1-vXP"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nAG-AL-VPb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1258.4000000000001" y="2582.5123152709361"/>
-        </scene>
-        <!--UIViewController-DZp-6O-936-->
-        <scene sceneID="U1n-Wk-V1p">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="UIViewController-DZp-6O-936" storyboardName="Interview" referencedIdentifier="UIViewController-DZp-6O-936" id="iKN-gV-2sa" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hJQ-py-6xm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2250" y="1711"/>
-        </scene>
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>

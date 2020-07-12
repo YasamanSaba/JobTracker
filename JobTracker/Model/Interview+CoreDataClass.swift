@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-enum InterviewerRole: String {
+enum InterviewerRole: String, CaseIterable {
     case hr = "HR"
     case recruiter = "Recruiter"
     case tech = "Technical"

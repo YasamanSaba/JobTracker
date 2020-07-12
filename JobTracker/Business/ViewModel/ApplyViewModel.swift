@@ -102,7 +102,6 @@ class ApplyViewModel: NSObject {
             tagDataSource.apply(snapShot)
         }
     }
-    
     func addTags(sender: UIViewController) {
         appCoordinator?.present(scene: .tag({ [weak self] tags in
             guard let self = self else {return}
@@ -220,6 +219,9 @@ class ApplyViewModel: NSObject {
     }
     func setIsFavorite(_ value: Bool) {
         try? companyService.setIsFavorite(for: apply, value)
+    }
+    func addInterview(sender: UIViewController) {
+        appCoordinator?.push(scene: .interview, sender: sender)
     }
     // MARK: - InterviewResultControllerDelegate
     class InterviewResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {

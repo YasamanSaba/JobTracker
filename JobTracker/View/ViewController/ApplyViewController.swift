@@ -34,6 +34,7 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
         UIApplication.shared.open(applyInfo.jobOfferURL)
     }
     @IBAction func btnAddInterview(_ sender: Any) {
+        viewModel.addInterview(sender: self)
     }
     @IBAction func btnAddTask(_ sender: Any) {
     }

@@ -104,7 +104,6 @@ class NewApplyViewModel: NSObject {
             print(error)
         }
     }
-    
     func configureCity(pickerView: UIPickerView) {
         pickerView.accessibilityIdentifier = "CityPickerView"
         cityPickerView = pickerView
@@ -127,35 +126,27 @@ class NewApplyViewModel: NSObject {
             }
         }
     }
-    
     func set(date: Date) {
         selectedDate = date
     }
-    
     func setCountryName(onChange: @escaping (String?) -> Void) {
         countryNameSetter = onChange
     }
-    
     func setCityName(onChange: @escaping (String?) -> Void) {
         cityNameSetter = onChange
     }
-    
     func setDateText(onChange: @escaping (String?) -> Void) {
         dateSetter = onChange
     }
-    
     func setStateText(onChange: @escaping (String?) -> Void) {
         stateSetter = onChange
     }
-    
     func setCompanyText(onChange: @escaping (String?) -> Void) {
         companySetter = onChange
     }
-    
     func setResumeText(onChange: @escaping (String?) -> Void) {
         resumeSetter = onChange
     }
-    
     func configureResume(pickerView: UIPickerView) {
         pickerView.accessibilityIdentifier = "ResumePickerView"
         resumeResultController = applyService.getAllResumeVersion()
@@ -174,7 +165,6 @@ class NewApplyViewModel: NSObject {
             print(error.localizedDescription)
         }
     }
-    
     func configureState(pickerView: UIPickerView) {
         self.states = stateService.getAllState()
         pickerView.accessibilityIdentifier = "StatePickerView"

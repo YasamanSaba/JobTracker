@@ -17,4 +17,5 @@ enum InterviewServiceError: Error {
 protocol InterviewServiceType {
     func fetch(apply: Apply) -> NSFetchedResultsController<Interview>
     func delete(interview: Interview) throws
+    func getAllRoles() -> [InterviewerRole]
 }

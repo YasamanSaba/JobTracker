@@ -98,6 +98,8 @@
 		F24A0DC924A470F600D38217 /* ApplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24A0DC824A470F600D38217 /* ApplyViewModel.swift */; };
 		F24C3D67249903B0004C16B9 /* CountryServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24C3D66249903B0004C16B9 /* CountryServiceType.swift */; };
 		F25891CF24B4646300298C41 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25891CE24B4646300298C41 /* DateCollectionViewCell.swift */; };
+		F293DDCA24B99B8300326E5A /* InterviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F293DDC924B99B8300326E5A /* InterviewViewController.swift */; };
+		F293DDCC24B9A39200326E5A /* InterviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F293DDCB24B9A39200326E5A /* InterviewViewModel.swift */; };
 		F29ABCF624ACA4B50032D3E2 /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ABCF524ACA4B50032D3E2 /* Filter.storyboard */; };
 		F29ABCF824ACC1060032D3E2 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ABCF724ACC1060032D3E2 /* FilterViewController.swift */; };
 		F29ABCFA24ACC6470032D3E2 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ABCF924ACC6470032D3E2 /* FilterViewModel.swift */; };
@@ -226,6 +228,8 @@
 		F24A0DC824A470F600D38217 /* ApplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyViewModel.swift; sourceTree = "<group>"; };
 		F24C3D66249903B0004C16B9 /* CountryServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryServiceType.swift; sourceTree = "<group>"; };
 		F25891CE24B4646300298C41 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
+		F293DDC924B99B8300326E5A /* InterviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewViewController.swift; sourceTree = "<group>"; };
+		F293DDCB24B9A39200326E5A /* InterviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewViewModel.swift; sourceTree = "<group>"; };
 		F29ABCF524ACA4B50032D3E2 /* Filter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filter.storyboard; sourceTree = "<group>"; };
 		F29ABCF724ACC1060032D3E2 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		F29ABCF924ACC6470032D3E2 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
@@ -373,6 +377,7 @@
 				70773C5424AC71C200097FFE /* CountryViewModel.swift */,
 				70773C5C24ACCC4800097FFE /* CityViewModel.swift */,
 				70D30A5124B05A4F005D29B2 /* ResumeViewModel.swift */,
+				F293DDCB24B9A39200326E5A /* InterviewViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -440,6 +445,7 @@
 				70773C5224AC6EFB00097FFE /* CountryViewController.swift */,
 				70773C5A24ACC30300097FFE /* CityViewController.swift */,
 				70D30A4F24B057EE005D29B2 /* ResumeViewController.swift */,
+				F293DDC924B99B8300326E5A /* InterviewViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -729,6 +735,7 @@
 				70ADFF9A2498A08F00345379 /* ReminderViewModel.swift in Sources */,
 				7051A56224AB17EB00B98C4B /* CompanyServiceType.swift in Sources */,
 				F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */,
+				F293DDCC24B9A39200326E5A /* InterviewViewModel.swift in Sources */,
 				F2EAA8B82498F43E00876FA9 /* DataInitializer.swift in Sources */,
 				70ADFFA42498BD8800345379 /* ReminderServiceType.swift in Sources */,
 				7043B02924A0A40A00F760AA /* CoordinatorType.swift in Sources */,
@@ -769,6 +776,7 @@
 				70483E7A249761D200612288 /* UITextViewExtension.swift in Sources */,
 				700F52FB249DF4B2000EBCD3 /* TagViewModel.swift in Sources */,
 				709CDEEB24A2113E00A9DAE0 /* CoordinatorSupportedViewModel.swift in Sources */,
+				F293DDCA24B99B8300326E5A /* InterviewViewController.swift in Sources */,
 				700F52FD249DF749000EBCD3 /* TagTableViewCell.swift in Sources */,
 				70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */,
 				7051A55C24AB08F100B98C4B /* CompanyViewModel.swift in Sources */,

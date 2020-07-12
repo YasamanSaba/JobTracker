@@ -98,7 +98,8 @@ class AppliesViewModel: NSObject {
         let currentApplySnapshot = applyDataSource.snapshot()
         var snapShot = NSDiffableDataSourceSnapshot<Section, Country>()
         snapShot.appendSections([.main])
-        var countries = currentApplySnapshot.itemIdentifiers.map {$0.city!.country!}
+        let countriesSet = Set(currentApplySnapshot.itemIdentifiers.map {$0.city!.country!})
+        var countries = Array(countriesSet)
         if let world = try? countryService.getWorld() {
             countries.insert(world, at: 0)
         }

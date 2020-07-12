@@ -33,4 +33,7 @@ struct InterviewService: InterviewServiceType {
             throw InterviewServiceError.deleteError
         }
     }
+    func getAllRoles() -> [InterviewerRole] {
+        InterviewerRole.allCases
+    }
 }
