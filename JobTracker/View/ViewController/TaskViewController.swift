@@ -24,6 +24,8 @@ class TaskViewController: UIViewController, ViewModelSupportedViewControllers {
     @IBOutlet weak var vwDeadlinePicker: UIView!
     @IBOutlet weak var vwAssignDatePicker: UIView!
     @IBOutlet weak var swIsFinished: UISwitch!
+    @IBOutlet weak var dtpAssignDate: UIDatePicker!
+    @IBOutlet weak var dtpDeadline: UIDatePicker!
     
     @IBAction func switchChanged(_ sender: UISwitch) {
         if sender.isOn {
@@ -32,7 +34,14 @@ class TaskViewController: UIViewController, ViewModelSupportedViewControllers {
             enableControlls()
         }
     }
-    
+    @IBAction func assingDateDone(_ sender: Any) {
+        viewModel.setAssign(date: dtpAssignDate.date)
+        txtAssignDate.resignFirstResponder()
+    }
+    @IBAction func deadlineDone(_ sender: Any) {
+        viewModel.setDeadline(date: dtpDeadline.date)
+        txtDeadlineDate.resignFirstResponder()
+    }
     private func enableControlls() {
         self.view.subviews.forEach{$0.isUserInteractionEnabled = true}
     }
@@ -65,7 +74,12 @@ class TaskViewController: UIViewController, ViewModelSupportedViewControllers {
         let titleAndURL = viewModel.getCurrentTitleAndURL()
         txtTitle.text = titleAndURL.0
         txtLink.text = titleAndURL.1
-        
+        viewModel.assignDateText { [weak self] in
+            self?.txtAssignDate.text = $0
+        }
+        viewModel.deadlineText { [weak self] in
+            self?.txtDeadlineDate.text = $0
+        }
     }
 
     @objc func save() {

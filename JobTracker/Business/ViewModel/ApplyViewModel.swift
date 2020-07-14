@@ -57,7 +57,7 @@ class ApplyViewModel: NSObject {
     }
     // MARK: - Functions -
     func addTask(sender: Any) {
-        appCoordinator?.push(scene: .task, sender: sender)
+        appCoordinator?.push(scene: .task(apply), sender: sender)
     }
     
     func configureResume(pickerView: UIPickerView) {
@@ -106,6 +106,11 @@ class ApplyViewModel: NSObject {
             tagDataSource.apply(snapShot)
         }
     }
+    
+    func checklist(sender: UIViewController) {
+        appCoordinator?.present(scene: .checklist(apply), sender: sender)
+    }
+    
     func addTags(sender: UIViewController) {
         appCoordinator?.present(scene: .tag({ [weak self] tags in
             guard let self = self else {return}

@@ -247,6 +247,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Lxt-lf-8bu"/>
                     <connections>
+                        <outlet property="dtpAssignDate" destination="JuX-QY-RvO" id="i4O-oO-GSj"/>
+                        <outlet property="dtpDeadline" destination="mpO-eG-lcI" id="gax-Pu-C2P"/>
                         <outlet property="swIsFinished" destination="joH-9i-t1z" id="ixN-nM-57o"/>
                         <outlet property="tblReminder" destination="LXx-qi-tsi" id="lXL-1p-A68"/>
                         <outlet property="txtAssignDate" destination="Fd4-6Z-213" id="9RZ-6x-UUj"/>
@@ -266,7 +268,11 @@
                             <rect key="frame" x="0.0" y="0.0" width="378" height="44"/>
                             <items>
                                 <navigationItem title="Assign Date" id="b98-qd-lQg">
-                                    <barButtonItem key="rightBarButtonItem" systemItem="done" id="AIA-Ni-f92"/>
+                                    <barButtonItem key="rightBarButtonItem" systemItem="done" id="AIA-Ni-f92">
+                                        <connections>
+                                            <action selector="assingDateDone:" destination="31L-Sv-rjV" id="gGf-03-Wxh"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
@@ -293,7 +299,11 @@
                             <rect key="frame" x="0.0" y="0.0" width="378" height="44"/>
                             <items>
                                 <navigationItem title="Deadline" id="H0a-d9-R1U">
-                                    <barButtonItem key="rightBarButtonItem" systemItem="done" id="GrL-j2-las"/>
+                                    <barButtonItem key="rightBarButtonItem" systemItem="done" id="GrL-j2-las">
+                                        <connections>
+                                            <action selector="deadlineDone:" destination="31L-Sv-rjV" id="Okb-ff-Taf"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>

@@ -49,6 +49,7 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     @IBAction func tapOnHeart(_ sender: Any) {
         heartState.toggle()
     }
+    
     // MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +57,8 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     }
     // MARK: - Functions -
     func setUp() {
-        tblInterview.delegate = self
-        tblTask.delegate = self
+        let barButton = UIBarButtonItem(image: UIImage(systemName: "list.number"), style: .done, target: self, action: #selector(btnChecklist))
+        navigationItem.rightBarButtonItem = barButton
         configureSatetPickerView()
         configureResumePickerView()
         applyInfo = viewModel.getApplyInfo()
@@ -131,6 +132,9 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     @objc func resumeCancelClick() {
         btnResume.resignFirstResponder()
         deactiveBlur()
+    }
+    @objc func btnChecklist() {
+        viewModel.checklist(sender: self)
     }
     var heartState: Bool = false {
         didSet {
