@@ -116,11 +116,19 @@ extension Scene {
             let viewModel = ResumeViewModel(resumeService: resumeService)
             viewController.viewModel = viewModel
             return viewController
-        case .task:
+        case .task(let apply):
             let storyboard = UIStoryboard(name: "Task", bundle: nil)
             let viewController = storyboard.instantiateViewController(identifier: TaskViewController.reuseIdentifier) as TaskViewController
-            //let viewModel = TaskViewModel()
-            //viewController.viewModel = viewModel
+            let reminderService = ReminderService(context: context)
+            let viewModel = TaskViewModel(apply: apply, task: nil, reminderService: reminderService)
+            viewController.viewModel = viewModel
+            return viewController
+        case .checklist(let apply):
+            let storyboard = UIStoryboard(name: "CheckList", bundle: nil)
+            let viewController = storyboard.instantiateViewController(identifier: ChecklistViewController.reuseIdentifier) as ChecklistViewController
+            let checklistService = ChecklistService(context: context)
+            let viewModel = ChecklistViewModel(apply: apply, checklistService: checklistService)
+            viewController.viewModel = viewModel
             return viewController
         }
     }
