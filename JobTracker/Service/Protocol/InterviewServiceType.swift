@@ -12,10 +12,14 @@ import CoreData
 enum InterviewServiceError: Error {
     case fetchError
     case deleteError
+    case updateError
+    case saveInterviewError
 }
 
 protocol InterviewServiceType {
     func fetch(apply: Apply) -> NSFetchedResultsController<Interview>
     func delete(interview: Interview) throws
     func getAllRoles() -> [InterviewerRole]
+    func update(interview: Interview, date: Date?, link: URL?, interviewer: String?, role:InterviewerRole?, desc: String?, tags: [Tag]?) throws
+    func save(date: Date, link: URL?, interviewer: String?, role:InterviewerRole, desc: String?, tags: [Tag], for apply: Apply) throws -> Interview
 }

@@ -52,4 +52,13 @@ struct TagService: TagServiceType {
             throw TagServiceError.deleteError
         }
     }
+    func fetchAll(for interview: Interview) -> NSFetchedResultsController<Tag> {
+        let request: NSFetchRequest<Tag> = Tag.fetchRequest()
+        let predicate = NSPredicate(format: "%K == %@", #keyPath(Tag.interview),interview)
+        request.predicate = predicate
+        let sort = NSSortDescriptor(key: #keyPath(Tag.title), ascending: true)
+        request.sortDescriptors = [sort]
+        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        return controller
+    }
 }

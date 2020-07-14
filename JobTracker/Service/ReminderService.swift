@@ -10,13 +10,13 @@ import UIKit
 import CoreData
 
 class ReminderService: ReminderServiceType{
-    
+    // MARK: - Properties -
     let context: NSManagedObjectContext!
-    
+    // MARK: - Initializer -
     init(context: NSManagedObjectContext) {
         self.context = context
     }
-    
+    // MARK: - Functions -
     func add(date: Date, message: String, notificationID: String) throws -> Reminder {
         let reminder = Reminder(context: context)
         reminder.date = date
@@ -29,7 +29,6 @@ class ReminderService: ReminderServiceType{
             throw ReminderServiceError.saveError
         }
     }
-    
     func delete(reminder: Reminder) throws {
         context.delete(reminder)
         do {
@@ -39,7 +38,6 @@ class ReminderService: ReminderServiceType{
             throw ReminderServiceError.deleteError
         }
     }
-    
     func fetchAll(for reminderable: Reminderable) throws -> NSFetchedResultsController<Reminder> {
         let request: NSFetchRequest<Reminder> = Reminder.fetchRequest()
         var key: String?
@@ -54,7 +52,7 @@ class ReminderService: ReminderServiceType{
         if key == nil { throw ReminderServiceError.fetchError}
         let predicate = NSPredicate(format: " %K == %@ ", key!, reminderable)
         request.predicate = predicate
-        let sort = NSSortDescriptor(key: #keyPath(Reminder.date), ascending: true)
+        let sort = NSSortDescriptor(key: #keyPath(Reminder.date), ascending: false)
         request.sortDescriptors = [sort]
         let controller = NSFetchedResultsController<Reminder>(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         return controller

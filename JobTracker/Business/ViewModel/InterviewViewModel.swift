@@ -9,11 +9,53 @@
 import UIKit
 import CoreData
 
+enum InterviewViewModelError: String ,Error {
+    case unKnown = "Please try again later."
+}
+
 class InterviewViewModel: NSObject {
+    // MARK: - Nested types
+    class ReminderDataSource: UITableViewDiffableDataSource<Int, Reminder>, NSFetchedResultsControllerDelegate {
+        func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
+            var newSnapshot = NSDiffableDataSourceSnapshot<Int, Reminder>()
+            snapshot.sectionIdentifiers.forEach { _ in
+                newSnapshot.appendSections([1])
+                let items = snapshot.itemIdentifiers.map { (objectId: Any) -> Reminder in
+                    controller.managedObjectContext.object(with: objectId as! NSManagedObjectID) as! Reminder
+                }
+                newSnapshot.appendItems(items, toSection: 1)
+            }
+            self.apply(newSnapshot)
+        }
+    }
+    struct InitialValues {
+        let link: String?
+        let interviewrName: String?
+        let desc: String?
+    }
     // MARK: - Properties -
+    private var dateTextSetter: ((String) -> Void)?
+    private var interviewDate: Date? {
+        didSet {
+            guard let interviewDate = interviewDate else {return}
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM d, h:mm a"
+            dateTextSetter?(dateFormatter.string(from: interviewDate))
+        }
+    }
+    let apply: Apply
+    var isEditingMode: Bool = false
+    var interview: Interview? {
+        didSet {
+            if interview != nil {
+                isEditingMode = true
+            }
+        }
+    }
     let appCoordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
     let interviewService: InterviewServiceType
     let tagService: TagServiceType
+    let reminderService: ReminderServiceType
     var roleTextSetter: ((String) -> ())?
     var selectedRole: InterviewerRole? {
         didSet {
@@ -31,21 +73,20 @@ class InterviewViewModel: NSObject {
         }
     }
     var tagDatasource: UICollectionViewDiffableDataSource<Int,Tag>!
+    var reminderDataSource: ReminderDataSource!
+    var reminderResultsController: NSFetchedResultsController<Reminder>!
     // MARK: - Initializer -
-    init(interviewService: InterviewServiceType, tagService: TagServiceType) {
+    init(interviewService: InterviewServiceType, tagService: TagServiceType, interview: Interview?, reminderService: ReminderServiceType, apply: Apply) {
+        self.apply = apply
         self.interviewService = interviewService
         self.tagService = tagService
-    }
-    // MARK: - Functions -
-    private var dateTextSetter: ((String) -> Void)?
-    private var interviewDate: Date? {
-        didSet {
-            guard let interviewDate = interviewDate else {return}
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMM d, h:mm a"
-            dateTextSetter?(dateFormatter.string(from: interviewDate))
+        self.interview = interview
+        self.reminderService = reminderService
+        if interview != nil {
+            isEditingMode = true
         }
     }
+    // MARK: - Functions -
     func set(date: Date) {
         interviewDate = date
     }
@@ -73,19 +114,52 @@ class InterviewViewModel: NSObject {
             }
             return cell
         }
-        var snapShot = NSDiffableDataSourceSnapshot<Int,Tag>()
-        snapShot.appendSections([1])
-        snapShot.appendItems(selectedTags)
-        tagDatasource.apply(snapShot)
+        if isEditingMode, let tags = interview!.tag {
+            selectedTags = Array(tags.map{$0 as! Tag})
+        }
+    }
+    fileprivate func reminderSnapShot() {
+        if isEditingMode {
+            do {
+                reminderResultsController = try reminderService.fetchAll(for: interview!)
+                reminderResultsController?.delegate = reminderDataSource
+                try reminderResultsController?.performFetch()
+                if let objects = reminderResultsController?.fetchedObjects {
+                    var snapShot = NSDiffableDataSourceSnapshot<Int,Reminder>()
+                    snapShot.appendSections([1])
+                    snapShot.appendItems(objects, toSection: 1)
+                    reminderDataSource?.apply(snapShot)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func configureReminder(tableView: UITableView) {
+        reminderDataSource = ReminderDataSource(tableView: tableView) {
+            (tableView, indexPath, reminder) -> UITableViewCell? in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ReminderTableViewCell.reuseIdentifier) as? ReminderTableViewCell, let date = reminder.date else {return nil}
+            cell.configure(message: reminder.desc ?? "", date: DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .medium))
+            return cell
+        }
+        reminderSnapShot()
     }
     func addTags(sender: UIViewController) {
+        if isEditingMode{
+            appCoordinator?.present(scene: .tag({ [weak self] tags in
+                guard let self = self else { return}
+                try? self.interviewService.update(interview: self.interview!, date: nil, link: nil, interviewer: nil, role: nil, desc: nil, tags: tags)
+                self.selectedTags = tags
+                }, tagDatasource.snapshot().itemIdentifiers), sender: sender)
+        } else {
         appCoordinator?.present(scene: .tag({ [weak self] tags in
             self?.selectedTags = tags
-            var snapShot = NSDiffableDataSourceSnapshot<Int,Tag>()
-            snapShot.appendSections([1])
-            snapShot.appendItems(tags)
-            self?.tagDatasource.apply(snapShot)
             },selectedTags), sender: sender)
+        }
+    }
+    func addReminder(sender: UIViewController) {
+        appCoordinator?.present(scene: .reminder(interview!), sender: sender)
     }
     func delete(tag: Tag) {
         if let index = selectedTags.firstIndex(of: tag) {
@@ -94,6 +168,41 @@ class InterviewViewModel: NSObject {
             snapShot.appendSections([1])
             snapShot.appendItems(selectedTags)
             tagDatasource.apply(snapShot)
+        }
+    }
+    func getInitialValue() -> InitialValues? {
+        if isEditingMode {
+            interviewDate = interview!.date
+            selectedRole = interview!.interviewerRoleEnum
+            return InitialValues(link: interview?.link?.absoluteString, interviewrName: interview?.interviewers, desc: interview?.desc)
+        }
+        return nil
+    }
+    func open(url: String) {
+        if url.hasPrefix("https://") || url.hasPrefix("http://"), let myURL = URL(string: url) {
+            UIApplication.shared.open(myURL)
+        } else {
+            let correctedURL = "http://\(url)"
+            if let myURL = URL(string: correctedURL) {
+                UIApplication.shared.open(myURL)
+            }
+        }
+    }
+    func save(link: String?, interviewer: String?, desc: String?) throws {
+        if isEditingMode {
+            do {
+                try interviewService.update(interview: interview!, date: interviewDate, link: link == nil ? nil : URL(string: link!), interviewer: interviewer, role: selectedRole, desc: desc, tags: selectedTags)
+            } catch {
+                throw InterviewViewModelError.unKnown
+            }
+        } else {
+            guard let date = interviewDate, let role = selectedRole else {return}
+            do {
+                interview = try interviewService.save(date: date, link: link == nil ? nil : URL(string: link!), interviewer: interviewer, role: role, desc: desc, tags: selectedTags, for: apply)
+                reminderSnapShot()
+            } catch {
+                throw InterviewViewModelError.unKnown
+            }
         }
     }
 }

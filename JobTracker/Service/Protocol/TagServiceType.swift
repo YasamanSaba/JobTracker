@@ -20,4 +20,5 @@ protocol TagServiceType {
     func fetchAll() -> NSFetchedResultsController<Tag>
     func add(tag: String) throws
     func delete(tag: Tag) throws
+    func fetchAll(for interview: Interview) -> NSFetchedResultsController<Tag>
 }

@@ -10,14 +10,15 @@ import Foundation
 import UserNotifications
 
 struct ReminderViewModel {
+    // MARK: - Properties -
     let subject: Reminderable
     let service: ReminderServiceType
-    
+    // MARK: - Initializer -
     init(subject: Reminderable, service: ReminderServiceType) {
         self.subject = subject
         self.service = service
     }
-    
+    // MARK: - Functions -
     func setReminder(date: Date, message: String, success: @escaping (Bool)-> Void) {
         let calendar = Calendar(identifier: .gregorian)
         let components = calendar.dateComponents([.year,.day,.month,.hour,.minute,.second], from: date)

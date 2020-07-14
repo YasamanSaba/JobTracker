@@ -225,7 +225,11 @@ class ApplyViewModel: NSObject {
         try? companyService.setIsFavorite(for: apply, value)
     }
     func addInterview(sender: UIViewController) {
-        appCoordinator?.push(scene: .interview, sender: sender)
+        appCoordinator?.push(scene: .interview(apply,nil), sender: sender)
+    }
+    func selectInterview(at indexPath: IndexPath, sender: UIViewController) {
+        let interview = interviewDataSource.snapshot().itemIdentifiers[indexPath.row]
+        appCoordinator?.push(scene: .interview(apply, interview), sender: sender)
     }
     // MARK: - InterviewResultControllerDelegate
     class InterviewResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {

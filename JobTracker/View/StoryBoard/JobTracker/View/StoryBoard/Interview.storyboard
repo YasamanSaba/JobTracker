@@ -30,7 +30,7 @@
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Link of Interview" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CAx-pY-ewa">
-                                        <rect key="frame" x="40" y="57" width="344" height="34"/>
+                                        <rect key="frame" x="40" y="57" width="269" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="done" textContentType="url"/>
                                         <connections>
@@ -42,7 +42,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interviewr name: e.g. Sam" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7n4-Ta-cfp">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interviewer name: e.g. Sam" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7n4-Ta-cfp">
                                         <rect key="frame" x="40" y="101" width="344" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="name"/>
@@ -198,14 +198,18 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ciT-Gx-kS8" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ciT-Gx-kS8" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
                                         <rect key="frame" x="10" y="523" width="374" height="265"/>
                                         <subviews>
                                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQp-dU-z9V">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                                 <items>
                                                     <navigationItem title="Reminder" id="qKk-7r-fHQ">
-                                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kWY-Ka-3qH"/>
+                                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kWY-Ka-3qH">
+                                                            <connections>
+                                                                <action selector="btnAddReminder:" destination="dQV-n1-PhO" id="ENz-eG-r4v"/>
+                                                            </connections>
+                                                        </barButtonItem>
                                                     </navigationItem>
                                                 </items>
                                             </navigationBar>
@@ -213,7 +217,7 @@
                                                 <rect key="frame" x="0.0" y="44" width="374" height="221"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fL4-6Z-BPY" customClass="ReminderTableViewCell" customModule="JobTracker" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReminderTableViewCell" id="fL4-6Z-BPY" customClass="ReminderTableViewCell" customModule="JobTracker" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="374" height="40.5"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fL4-6Z-BPY" id="bYR-mH-wpA">
@@ -284,6 +288,13 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YG-fC-vJ0">
+                                        <rect key="frame" x="314" y="59" width="70" height="30"/>
+                                        <state key="normal" title="Open URL"/>
+                                        <connections>
+                                            <action selector="btnOpenURL:" destination="dQV-n1-PhO" eventType="touchUpInside" id="tr3-BY-ryJ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -299,6 +310,7 @@
                                     <constraint firstItem="yAl-HA-5Y3" firstAttribute="leading" secondItem="6Ui-d4-CM4" secondAttribute="leading" id="GQM-vG-oXK"/>
                                     <constraint firstItem="Zbu-zK-Rdx" firstAttribute="centerY" secondItem="xx2-ty-UA9" secondAttribute="centerY" id="J79-fE-GHR"/>
                                     <constraint firstItem="CAx-pY-ewa" firstAttribute="top" secondItem="qwT-tm-yPh" secondAttribute="bottom" constant="10" id="OWh-TU-RjH"/>
+                                    <constraint firstItem="1YG-fC-vJ0" firstAttribute="leading" secondItem="CAx-pY-ewa" secondAttribute="trailing" constant="5" id="Obv-fZ-09D"/>
                                     <constraint firstItem="7n4-Ta-cfp" firstAttribute="top" secondItem="CAx-pY-ewa" secondAttribute="bottom" constant="10" id="PHb-uU-GjJ"/>
                                     <constraint firstItem="Zbu-zK-Rdx" firstAttribute="top" secondItem="7n4-Ta-cfp" secondAttribute="bottom" constant="10" id="Q53-yP-tIA"/>
                                     <constraint firstItem="xx2-ty-UA9" firstAttribute="leading" secondItem="6Ui-d4-CM4" secondAttribute="leading" id="T17-SF-NgP"/>
@@ -313,13 +325,14 @@
                                     <constraint firstItem="9SH-O9-Gi3" firstAttribute="leading" secondItem="6Ui-d4-CM4" secondAttribute="leading" id="cKl-qb-UdR"/>
                                     <constraint firstItem="9SH-O9-Gi3" firstAttribute="centerY" secondItem="qf1-ix-Vig" secondAttribute="centerY" id="dgu-Yi-UTz"/>
                                     <constraint firstItem="qwT-tm-yPh" firstAttribute="centerY" secondItem="6Ui-d4-CM4" secondAttribute="centerY" id="fJl-AM-X1B"/>
-                                    <constraint firstItem="CAx-pY-ewa" firstAttribute="trailing" secondItem="qwT-tm-yPh" secondAttribute="trailing" id="gMV-4v-d41"/>
                                     <constraint firstItem="Zbu-zK-Rdx" firstAttribute="trailing" secondItem="qwT-tm-yPh" secondAttribute="trailing" id="lIm-6Z-sbP"/>
                                     <constraint firstItem="qf1-ix-Vig" firstAttribute="top" secondItem="Zbu-zK-Rdx" secondAttribute="bottom" constant="10" id="n3b-36-o6z"/>
                                     <constraint firstItem="ciT-Gx-kS8" firstAttribute="top" secondItem="Wbi-0Z-cmP" secondAttribute="bottom" constant="15" id="nQx-69-0Jw"/>
                                     <constraint firstAttribute="trailing" secondItem="ciT-Gx-kS8" secondAttribute="trailing" constant="10" id="rMM-zp-y1F"/>
+                                    <constraint firstItem="1YG-fC-vJ0" firstAttribute="trailing" secondItem="qwT-tm-yPh" secondAttribute="trailing" id="sRc-CY-PVc"/>
                                     <constraint firstItem="7n4-Ta-cfp" firstAttribute="leading" secondItem="qwT-tm-yPh" secondAttribute="leading" id="ulq-bU-C5R"/>
                                     <constraint firstItem="Wbi-0Z-cmP" firstAttribute="top" secondItem="qf1-ix-Vig" secondAttribute="bottom" constant="20" id="wz5-y8-bd6"/>
+                                    <constraint firstItem="1YG-fC-vJ0" firstAttribute="centerY" secondItem="CAx-pY-ewa" secondAttribute="centerY" id="xJb-qS-K7q"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -350,6 +363,7 @@
                         <outlet property="txtInterviewLink" destination="CAx-pY-ewa" id="WhA-Jx-qCI"/>
                         <outlet property="txtInterviewerName" destination="7n4-Ta-cfp" id="chD-Pp-q8m"/>
                         <outlet property="txtInterviewerRole" destination="Zbu-zK-Rdx" id="y6n-CX-Nnx"/>
+                        <outlet property="vwReminder" destination="ciT-Gx-kS8" id="fCv-P9-Gap"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdY-za-yTt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

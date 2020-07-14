@@ -145,6 +145,9 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
 }
 extension ApplyViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView === tblInterview {
+            viewModel.selectInterview(at: indexPath, sender: self)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

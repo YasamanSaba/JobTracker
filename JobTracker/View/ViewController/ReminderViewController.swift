@@ -9,7 +9,7 @@
 import UIKit
 
 class ReminderViewController: UIViewController, ViewModelSupportedViewControllers {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var txtMessage: UITextField!
     @IBOutlet weak var dpkDate: UIDatePicker!
@@ -19,7 +19,9 @@ class ReminderViewController: UIViewController, ViewModelSupportedViewController
         viewModel.setReminder(date: dpkDate.date, message: txtMessage.text ?? "") { [weak self] success in
             guard let self = self else { return }
             if success {
-                self.dismiss(animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
             } else {
                 let alertController = UIAlertController(title: "Error", message: "Your reminder haven't set. try again later", preferredStyle: .alert)
                 let alertAction = UIAlertAction(title: "OK", style: .default) { _ in
@@ -41,7 +43,7 @@ class ReminderViewController: UIViewController, ViewModelSupportedViewController
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
-
+    
 }

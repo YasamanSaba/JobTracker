@@ -35,15 +35,15 @@
                                 <rect key="frame" x="0.0" y="347.5" width="414" height="134.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskTableViewCell" id="jUs-Na-See" customClass="TaskTableViewCell" customModule="JobTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskTableViewCell" id="jUs-Na-See" customClass="TaskTableViewCell" customModule="JobTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jUs-Na-See" id="Su5-6j-ajx">
-                                            <rect key="frame" x="0.0" y="0.0" width="370" height="30"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="2" translatesAutoresizingMaskIntoConstraints="NO" id="XrT-E2-1g4">
-                                                    <rect key="frame" x="30" y="8" width="86" height="14.5"/>
+                                                    <rect key="frame" x="30" y="8" width="96" height="14.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -56,14 +56,14 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="84Y-D7-xZW">
-                                                    <rect key="frame" x="136" y="6" width="20" height="17.5"/>
+                                                    <rect key="frame" x="131" y="6" width="20" height="17.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="89f-PY-yOJ"/>
                                                         <constraint firstAttribute="height" constant="20" id="xHI-EX-XLj"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-06-14 (2 days left)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="2" translatesAutoresizingMaskIntoConstraints="NO" id="auu-eP-0H4">
-                                                    <rect key="frame" x="161" y="8" width="141" height="14.5"/>
+                                                    <rect key="frame" x="156" y="8" width="141" height="14.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -76,9 +76,10 @@
                                                 <constraint firstItem="WEa-dV-wrQ" firstAttribute="centerY" secondItem="Su5-6j-ajx" secondAttribute="centerY" id="QLE-Xe-bfP"/>
                                                 <constraint firstItem="auu-eP-0H4" firstAttribute="centerY" secondItem="Su5-6j-ajx" secondAttribute="centerY" id="Vsb-Y5-H9Y"/>
                                                 <constraint firstItem="WEa-dV-wrQ" firstAttribute="leading" secondItem="Su5-6j-ajx" secondAttribute="leading" constant="5" id="eRb-QH-aJP"/>
+                                                <constraint firstItem="XrT-E2-1g4" firstAttribute="width" secondItem="Su5-6j-ajx" secondAttribute="width" multiplier="1/4" id="idu-af-BHU"/>
                                                 <constraint firstItem="XrT-E2-1g4" firstAttribute="leading" secondItem="WEa-dV-wrQ" secondAttribute="trailing" constant="5" id="nYF-yV-P7P"/>
-                                                <constraint firstItem="84Y-D7-xZW" firstAttribute="leading" secondItem="XrT-E2-1g4" secondAttribute="trailing" constant="20" id="qIb-zM-HmN"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="auu-eP-0H4" secondAttribute="trailing" constant="10" id="usW-ol-Mdy"/>
+                                                <constraint firstItem="84Y-D7-xZW" firstAttribute="leading" secondItem="XrT-E2-1g4" secondAttribute="trailing" constant="5" id="qIb-zM-HmN"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="auu-eP-0H4" secondAttribute="trailing" constant="5" id="usW-ol-Mdy"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -92,11 +93,11 @@
                                 <rect key="frame" x="0.0" y="164.5" width="414" height="134"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InterviewTableViewCell" id="hVm-Bv-b66" customClass="InterviewTableViewCell" customModule="JobTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InterviewTableViewCell" id="hVm-Bv-b66" customClass="InterviewTableViewCell" customModule="JobTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hVm-Bv-b66" id="w8H-sf-AXc">
-                                            <rect key="frame" x="0.0" y="0.0" width="370" height="30"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qub-iE-lxQ">
@@ -107,20 +108,20 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0Tm-JS-vKy">
-                                                    <rect key="frame" x="72" y="6" width="20" height="17.5"/>
+                                                    <rect key="frame" x="136" y="6" width="20" height="17.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="6td-eb-IhG"/>
                                                         <constraint firstAttribute="width" constant="20" id="Tf8-57-I1V"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="2" translatesAutoresizingMaskIntoConstraints="NO" id="uEy-mx-9to">
-                                                    <rect key="frame" x="35" y="8" width="17" height="14.5"/>
+                                                    <rect key="frame" x="35" y="8" width="96" height="14.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-06-14 (2 days left)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="3" translatesAutoresizingMaskIntoConstraints="NO" id="fRH-gs-YhC">
-                                                    <rect key="frame" x="97" y="8" width="141" height="14.5"/>
+                                                    <rect key="frame" x="161" y="8" width="141" height="14.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -129,13 +130,14 @@
                                             <constraints>
                                                 <constraint firstItem="uEy-mx-9to" firstAttribute="centerY" secondItem="w8H-sf-AXc" secondAttribute="centerY" id="0jI-yX-rUM"/>
                                                 <constraint firstItem="0Tm-JS-vKy" firstAttribute="centerY" secondItem="w8H-sf-AXc" secondAttribute="centerY" id="1qo-OF-7Sn"/>
-                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="fRH-gs-YhC" secondAttribute="trailing" constant="10" id="CWo-8X-QBO"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="fRH-gs-YhC" secondAttribute="trailing" constant="5" id="CWo-8X-QBO"/>
                                                 <constraint firstItem="qub-iE-lxQ" firstAttribute="leading" secondItem="w8H-sf-AXc" secondAttribute="leading" constant="5" id="Lb7-mk-D10"/>
                                                 <constraint firstItem="qub-iE-lxQ" firstAttribute="centerY" secondItem="w8H-sf-AXc" secondAttribute="centerY" id="NYH-Tg-Rj8"/>
+                                                <constraint firstItem="uEy-mx-9to" firstAttribute="width" secondItem="w8H-sf-AXc" secondAttribute="width" multiplier="1/4" id="fXO-jY-g6H"/>
                                                 <constraint firstItem="fRH-gs-YhC" firstAttribute="centerY" secondItem="w8H-sf-AXc" secondAttribute="centerY" id="ojf-Xe-bMN"/>
                                                 <constraint firstItem="uEy-mx-9to" firstAttribute="leading" secondItem="qub-iE-lxQ" secondAttribute="trailing" constant="10" id="x05-VZ-Bbs"/>
                                                 <constraint firstItem="fRH-gs-YhC" firstAttribute="leading" secondItem="0Tm-JS-vKy" secondAttribute="trailing" constant="5" id="y7W-7J-5V0"/>
-                                                <constraint firstItem="0Tm-JS-vKy" firstAttribute="leading" secondItem="uEy-mx-9to" secondAttribute="trailing" constant="20" id="yuf-dp-axJ"/>
+                                                <constraint firstItem="0Tm-JS-vKy" firstAttribute="leading" secondItem="uEy-mx-9to" secondAttribute="trailing" constant="5" id="yuf-dp-axJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

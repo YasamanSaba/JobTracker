@@ -106,6 +106,12 @@ struct DataInitializer {
         let expirationDate2 = Calendar.current.date(byAdding: components2, to: date2)
         interview2.date = expirationDate2
         interview2.interviewerRoleEnum = .recruiter
+        interview2.link = URL(string: "google.com")
+        interview2.interviewers = "Sam va bacheha"
+        interview2.desc = "salam khobi bache joon"
+        let tag = Tag(context: context)
+        tag.title = "Ahmaq"
+        interview2.addToTag(tag)
         let company2 = Company(context: context)
         company2.title = "eGym"
         company2.isFavorite = false

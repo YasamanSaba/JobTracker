@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2CM-vX-DpW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2CM-vX-DpW">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -15,24 +15,47 @@
                         <viewControllerLayoutGuide type="bottom" id="sai-90-InX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ljo-hF-q9A">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1KG-No-QP8">
-                                <rect key="frame" x="16" y="54" width="343" height="34"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hxm-V4-eHl" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
+                                <rect key="frame" x="10" y="298.5" width="394" height="299"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="gA2-7S-oZy">
+                                        <rect key="frame" x="0.0" y="54" width="394" height="235"/>
+                                    </datePicker>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reminder Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1KG-No-QP8">
+                                        <rect key="frame" x="10" y="10" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="H4X-3D-O7M"/>
+                                    <constraint firstAttribute="bottom" secondItem="gA2-7S-oZy" secondAttribute="bottom" constant="10" id="FSb-a9-ni8"/>
+                                    <constraint firstItem="1KG-No-QP8" firstAttribute="top" secondItem="hxm-V4-eHl" secondAttribute="top" constant="10" id="QXU-bv-YId"/>
+                                    <constraint firstAttribute="trailing" secondItem="1KG-No-QP8" secondAttribute="trailing" constant="10" id="TAc-jV-RKy"/>
+                                    <constraint firstItem="gA2-7S-oZy" firstAttribute="top" secondItem="1KG-No-QP8" secondAttribute="bottom" constant="10" id="Voj-e0-Ou2"/>
+                                    <constraint firstItem="1KG-No-QP8" firstAttribute="leading" secondItem="hxm-V4-eHl" secondAttribute="leading" constant="10" id="YGd-Qh-9Ws"/>
+                                    <constraint firstAttribute="trailing" secondItem="gA2-7S-oZy" secondAttribute="trailing" id="kbL-hJ-PGM"/>
+                                    <constraint firstItem="gA2-7S-oZy" firstAttribute="leading" secondItem="hxm-V4-eHl" secondAttribute="leading" id="tox-Ab-g5w"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="gA2-7S-oZy">
-                                <rect key="frame" x="0.0" y="88" width="375" height="312"/>
-                            </datePicker>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ke0-NL-1do">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="oG1-He-xKp">
+                                    <navigationItem title="Add Reminder" id="oG1-He-xKp">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NfD-gS-wV1">
                                             <connections>
                                                 <action selector="btnCancel:" destination="2CM-vX-DpW" id="hhw-Ca-5eq"/>
@@ -49,19 +72,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="sai-90-InX" firstAttribute="top" secondItem="gA2-7S-oZy" secondAttribute="bottom" id="0mR-K9-Cw4"/>
+                            <constraint firstItem="hxm-V4-eHl" firstAttribute="centerX" secondItem="Ljo-hF-q9A" secondAttribute="centerX" id="0dD-xu-6Yq"/>
+                            <constraint firstItem="hxm-V4-eHl" firstAttribute="trailing" secondItem="Ljo-hF-q9A" secondAttribute="trailingMargin" constant="10" id="896-uE-osO"/>
                             <constraint firstItem="ke0-NL-1do" firstAttribute="top" secondItem="Ljo-hF-q9A" secondAttribute="top" id="I6R-y1-fwe"/>
                             <constraint firstAttribute="trailing" secondItem="ke0-NL-1do" secondAttribute="trailing" id="Jp2-wQ-cJ8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="1KG-No-QP8" secondAttribute="trailing" id="MB6-VE-Olf"/>
-                            <constraint firstAttribute="trailing" secondItem="gA2-7S-oZy" secondAttribute="trailing" id="SG7-dP-Zsa"/>
-                            <constraint firstItem="gA2-7S-oZy" firstAttribute="top" secondItem="1KG-No-QP8" secondAttribute="bottom" id="UHN-ZJ-hQM"/>
-                            <constraint firstItem="1KG-No-QP8" firstAttribute="leading" secondItem="Ljo-hF-q9A" secondAttribute="leadingMargin" id="Wrw-VE-bpE"/>
+                            <constraint firstItem="hxm-V4-eHl" firstAttribute="height" secondItem="Ljo-hF-q9A" secondAttribute="height" multiplier="1/3" id="XQF-YB-Zj4"/>
+                            <constraint firstItem="hxm-V4-eHl" firstAttribute="centerY" secondItem="Ljo-hF-q9A" secondAttribute="centerY" id="ZK4-Qp-6zA"/>
+                            <constraint firstItem="hxm-V4-eHl" firstAttribute="leading" secondItem="Ljo-hF-q9A" secondAttribute="leading" constant="10" id="eIc-Wz-Wct"/>
                             <constraint firstItem="ke0-NL-1do" firstAttribute="leading" secondItem="Ljo-hF-q9A" secondAttribute="leading" id="gW5-Q3-nif"/>
-                            <constraint firstItem="1KG-No-QP8" firstAttribute="top" secondItem="ke0-NL-1do" secondAttribute="bottom" constant="10" id="xeZ-Lr-4Pk"/>
-                            <constraint firstItem="gA2-7S-oZy" firstAttribute="leading" secondItem="Ljo-hF-q9A" secondAttribute="leading" id="zin-mN-oMG"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="375" height="400"/>
                     <connections>
                         <outlet property="dpkDate" destination="gA2-7S-oZy" id="NGW-Sy-SgU"/>
                         <outlet property="txtMessage" destination="1KG-No-QP8" id="AqB-ic-xZ9"/>
@@ -69,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgl-V1-Iop" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1620" y="2568"/>
+            <point key="canvasLocation" x="1619.5652173913045" y="2567.4107142857142"/>
         </scene>
     </scenes>
 </document>

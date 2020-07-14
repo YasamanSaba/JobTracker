@@ -116,12 +116,13 @@ extension Scene {
             let viewModel = ResumeViewModel(resumeService: resumeService)
             viewController.viewModel = viewModel
             return viewController
-        case .interview:
+        case .interview(let apply, let interview):
             let storyboard = UIStoryboard(name: "Interview", bundle: nil)
             let viewController = storyboard.instantiateViewController(identifier: InterviewViewController.reuseIdentifier) as InterviewViewController
             let interviewService = InterviewService(context: context)
             let tagService = TagService(context: context)
-            let viewModel = InterviewViewModel(interviewService: interviewService, tagService: tagService)
+            let reminderService = ReminderService(context: context)
+            let viewModel = InterviewViewModel(interviewService: interviewService, tagService: tagService, interview: interview, reminderService: reminderService, apply: apply)
             viewController.viewModel = viewModel
             return viewController
         case .task:

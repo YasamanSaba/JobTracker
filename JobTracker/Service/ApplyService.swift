@@ -38,7 +38,7 @@ struct ApplyService: ApplyServiceType {
     }
     func fetchAll() -> NSFetchedResultsController<Apply> {
         let fetchRequest: NSFetchRequest<Apply> = Apply.fetchRequest()
-        let sort = NSSortDescriptor(key: #keyPath(Apply.date), ascending: true)
+        let sort = NSSortDescriptor(key: #keyPath(Apply.date), ascending: false)
         fetchRequest.sortDescriptors = [sort]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultsController
@@ -99,7 +99,6 @@ struct ApplyService: ApplyServiceType {
             }
         }
     }
-    
     func deleteTags(from apply: Apply) throws {
         apply.tag = nil
         do {
@@ -108,7 +107,6 @@ struct ApplyService: ApplyServiceType {
             throw ApplyServiceError.saveApplyError
         }
     }
-    
     func add(tags: [Tag], to apply: Apply) throws {
         tags.forEach{
             apply.addToTag($0)
@@ -119,5 +117,4 @@ struct ApplyService: ApplyServiceType {
             throw ApplyServiceError.saveApplyError
         }
     }
-    
 }
