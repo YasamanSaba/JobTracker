@@ -33,4 +33,34 @@ struct TaskService: TaskServiceType {
             throw TaskServiceError.deleteError
         }
     }
+    
+    func add(title: String,date: Date, deadline: Date, isDone: Bool, link: URL?, for apply: Apply) throws -> Task {
+        let task = Task(context: context)
+        task.title = title
+        task.date = date
+        task.deadline = deadline
+        task.isDone = isDone
+        task.linkToGit = link
+        apply.addToTask(task)
+        do {
+            try context.save()
+            return task
+        } catch {
+            throw TaskServiceError.saveError
+        }
+    }
+    func update(task: Task, title: String,date: Date, deadline: Date, isDone: Bool, link: URL?, for apply: Apply) throws {
+        task.title = title
+        task.date = date
+        task.deadline = deadline
+        task.isDone = isDone
+        task.linkToGit = link
+        apply.addToTask(task)
+        do {
+            try context.save()
+        } catch {
+            throw TaskServiceError.saveError
+        }
+    }
+    
 }

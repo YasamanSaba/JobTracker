@@ -135,6 +135,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7091919A24BEEF45000006A1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		700712CB24BD769E00D3B721 /* ChecklistServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistServiceType.swift; sourceTree = "<group>"; };
 		700712CD24BD76BD00D3B721 /* ChecklistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistService.swift; sourceTree = "<group>"; };
@@ -589,6 +602,7 @@
 				F203556D248BBBC600A9F9F8 /* Sources */,
 				F203556E248BBBC600A9F9F8 /* Frameworks */,
 				F203556F248BBBC600A9F9F8 /* Resources */,
+				7091919A24BEEF45000006A1 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -641,7 +655,7 @@
 		F2035569248BBBC600A9F9F8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Dream Catcher";
 				TargetAttributes = {
@@ -1017,6 +1031,7 @@
 		F203559F248BBBD100A9F9F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = JobTracker/JobTracker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1038,6 +1053,7 @@
 		F20355A0248BBBD100A9F9F8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = JobTracker/JobTracker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";

@@ -57,7 +57,7 @@ class ApplyViewModel: NSObject {
     }
     // MARK: - Functions -
     func addTask(sender: Any) {
-        appCoordinator?.push(scene: .task(apply), sender: sender)
+        appCoordinator?.push(scene: .task(apply,nil), sender: sender)
     }
     
     func configureResume(pickerView: UIPickerView) {
@@ -235,6 +235,10 @@ class ApplyViewModel: NSObject {
     func selectInterview(at indexPath: IndexPath, sender: UIViewController) {
         let interview = interviewDataSource.snapshot().itemIdentifiers[indexPath.row]
         appCoordinator?.push(scene: .interview(apply, interview), sender: sender)
+    }
+    func selectTask(at indexPath: IndexPath, sender: UIViewController) {
+        let task = taskDataSource.snapshot().itemIdentifiers[indexPath.row]
+        appCoordinator?.push(scene: .task(apply,task), sender: sender)
     }
     // MARK: - InterviewResultControllerDelegate
     class InterviewResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
