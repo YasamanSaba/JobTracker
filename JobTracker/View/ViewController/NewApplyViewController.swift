@@ -120,7 +120,7 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        pkvDate.maximumDate = Date()
         txtApplyDate.inputView = vwDatePicker
         txtCountry.inputView = vwCountryPicker
         txtCity.inputView = vwCityPicker
@@ -150,6 +150,10 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
         viewModel.configureResume(pickerView: pkvResume)
         viewModel.configureState(pickerView: pkvStatus)
         viewModel.configureTags(collectionView: colTags)
+        if let initialValue = viewModel.getInitialValue() {
+            txtJobURL.text = initialValue.jobURL
+            txtSalary.text = initialValue.salary
+        }
     }
     
     

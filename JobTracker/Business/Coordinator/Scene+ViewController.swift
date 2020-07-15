@@ -68,7 +68,7 @@ extension Scene {
             let viewModel = ApplyViewModel(applyService: applyService, interviewService: interviewService, apply: apply, taskService: taskService, companyService: companyService, stateService: stateService, tagService: tagService)
             viewController.viewModel = viewModel
             return viewController
-        case .newApply:
+        case .newApply(let apply):
             let storyboard = UIStoryboard(name: "NewApply", bundle: nil)
             let viewController = storyboard.instantiateViewController(identifier: NewApplyViewController.reuseIdentifier) as NewApplyViewController
             let countryService = CountryService(context: context)
@@ -76,7 +76,7 @@ extension Scene {
             let applyService = ApplyService(context: context)
             let tagService = TagService(context: context)
             let stateService = StateService(context: context)
-            let viewModel = NewApplyViewModel(countryService: countryService, cityService: cityService, applyService: applyService, tagService: tagService, stateService: stateService)
+            let viewModel = NewApplyViewModel(countryService: countryService, cityService: cityService, applyService: applyService, tagService: tagService, stateService: stateService, apply: apply)
             viewController.viewModel = viewModel
             return viewController
         case .company(let onComplete):
@@ -125,7 +125,6 @@ extension Scene {
             let viewModel = InterviewViewModel(interviewService: interviewService, tagService: tagService, interview: interview, reminderService: reminderService, apply: apply)
             viewController.viewModel = viewModel
             return viewController
-        case .task:
         case .task(let apply):
             let storyboard = UIStoryboard(name: "Task", bundle: nil)
             let viewController = storyboard.instantiateViewController(identifier: TaskViewController.reuseIdentifier) as TaskViewController

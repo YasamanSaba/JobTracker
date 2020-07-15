@@ -59,7 +59,6 @@ class ApplyViewModel: NSObject {
     func addTask(sender: Any) {
         appCoordinator?.push(scene: .task(apply), sender: sender)
     }
-    
     func configureResume(pickerView: UIPickerView) {
         pickerView.accessibilityIdentifier = "ResumePickerView"
         resumeResultController = applyService.getAllResumeVersion()
@@ -106,9 +105,11 @@ class ApplyViewModel: NSObject {
             tagDataSource.apply(snapShot)
         }
     }
-    
     func checklist(sender: UIViewController) {
         appCoordinator?.present(scene: .checklist(apply), sender: sender)
+    }
+    func editApply(sender: UIViewController) {
+        appCoordinator?.push(scene: .newApply(apply), sender: sender)
     }
     
     func addTags(sender: UIViewController) {
@@ -125,13 +126,7 @@ class ApplyViewModel: NSObject {
         }, apply.tag == nil ? [] : Array(apply.tag!.map{$0 as! Tag})), sender: sender)
     }
     func getApplyInfo() -> ApplyInfo {
-        var components: DateComponents? = nil
-        if let appliedTime = apply.date {
-            let calendar = Calendar.current
-            components = calendar.dateComponents([.day], from: appliedTime, to: Date())
-        }
-        
-        return ApplyInfo(companyName: apply.company?.title ?? "Unknown", jobOfferURL: apply.jobLink ?? URL(string: "www.google.com")!, location: "\(apply.city?.country?.name ?? "Unknown"), \(apply.city?.name ?? "Unknown")", timeElapsed: "\(components?.day ?? 0 == 0 ? "TODAY" : "\(components!.day!) days ago")" ,state: apply.statusEnum?.rawValue ?? "Unknown", resume: apply.resume?.version ?? "Unknown", isFavorite: apply.company?.isFavorite ?? false)
+        return ApplyInfo(companyName: apply.company?.title ?? "Unknown", jobOfferURL: apply.jobLink ?? URL(string: "www.google.com")!, location: "\(apply.city?.country?.name ?? "Unknown"), \(apply.city?.name ?? "Unknown")", timeElapsed: MyDateFormatter.shared.passedTime(from: apply.date!) ,state: apply.statusEnum?.rawValue ?? "Unknown", resume: apply.resume?.version ?? "Unknown", isFavorite: apply.company?.isFavorite ?? false)
     }
     func changeState() -> String {
         if let statePickerView = statePickerView {
@@ -163,7 +158,9 @@ class ApplyViewModel: NSObject {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: InterviewTableViewCell.reuseIdentifier, for: indexPath) as? InterviewTableViewCell else { return nil }
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
-            let calendar = Calendar.current
+            var date = dateFormatter.string(from: interview.date!)
+            date = date + " " + MyDateFormatter.shared.remainTime(to: interview.date!)
+            /*let calendar = Calendar.current
             let components = calendar.dateComponents([.day], from: Date(), to: interview.date!)
             var date = dateFormatter.string(from: interview.date!)
             if let days = components.day, days >= 0 {
@@ -172,7 +169,7 @@ class ApplyViewModel: NSObject {
                 } else {
                     date = date + " (\(days) days left)"
                 }
-            }
+            }*/
             cell.configure(role: interview.interviewerRoleEnum?.rawValue ?? "Unknown", date: date)
             return cell
         }

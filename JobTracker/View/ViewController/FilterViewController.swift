@@ -10,6 +10,7 @@ import UIKit
 
 class FilterViewController: UIViewController, ViewModelSupportedViewControllers {
     // MARK: - Properties -
+    private var searchController = UISearchController(searchResultsController: nil)
     var viewModel: FilterViewModel!
     var hasInterview = false {
         didSet {
@@ -26,8 +27,9 @@ class FilterViewController: UIViewController, ViewModelSupportedViewControllers 
             viewModel.set(companyFavorite: isCompanyFavorite)
         }
     }
-    private var searchController = UISearchController(searchResultsController: nil)
     var datePicker: UIDatePicker!
+    var blurEffect: UIBlurEffect?
+    var blurEffectView: UIVisualEffectView?
     // MARK: - Outlet -
     @IBOutlet weak var colFilter: UICollectionView!
     @IBOutlet weak var tblTag: UITableView!
@@ -44,7 +46,7 @@ class FilterViewController: UIViewController, ViewModelSupportedViewControllers 
     @IBOutlet weak var txtFromDate: UITextField!
     @IBOutlet weak var txtToDate: UITextField!
     @IBOutlet weak var segFilter: UISegmentedControl!
-    // MARK: - Action -
+    // MARK: - IBAction -
     @IBAction func done(_ sender: Any) {
         viewModel.done()
         self.dismiss(animated: true, completion: nil)
@@ -104,12 +106,6 @@ class FilterViewController: UIViewController, ViewModelSupportedViewControllers 
         setup()
     }
     // MARK: - Functions -
-    func showAlert(text: String) {
-        let alertController = UIAlertController(title: "Warning!", message: text, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(alertAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
     func setup() {
         configureSegmentViews()
         colFilter.collectionViewLayout = configureLayout()
@@ -127,6 +123,25 @@ class FilterViewController: UIViewController, ViewModelSupportedViewControllers 
         viewModel.date(isFromDate: false) { [weak self] in
             self?.txtToDate.text = $0
         }
+    }
+    func activateBlur() {
+        blurEffect = UIBlurEffect(style: .light)
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView?.alpha = 0.95
+        blurEffectView?.frame = view.bounds
+        blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        if let blurEffectView = blurEffectView {
+            self.view.addSubview(blurEffectView)
+        }
+    }
+    func deactiveBlur() {
+        self.blurEffectView?.removeFromSuperview()
+    }
+    func showAlert(text: String) {
+        let alertController = UIAlertController(title: "Warning!", message: text, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(alertAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     func configureTextBoxDatePicker() {
         datePicker = UIDatePicker()
@@ -234,5 +249,13 @@ extension FilterViewController: UITableViewDelegate {
             return
         }
         
+    }
+}
+extension FilterViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activateBlur()
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        deactiveBlur()
     }
 }

@@ -58,7 +58,8 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     // MARK: - Functions -
     func setUp() {
         let barButton = UIBarButtonItem(image: UIImage(systemName: "list.number"), style: .done, target: self, action: #selector(btnChecklist))
-        navigationItem.rightBarButtonItem = barButton
+        let editButton = UIBarButtonItem(image: UIImage(systemName: "pencil"), style: .done, target: self, action: #selector(btnEditApply))
+        navigationItem.rightBarButtonItems = [barButton, editButton]
         configureSatetPickerView()
         configureResumePickerView()
         applyInfo = viewModel.getApplyInfo()
@@ -136,6 +137,9 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     @objc func btnChecklist() {
         viewModel.checklist(sender: self)
     }
+    @objc func btnEditApply() {
+        viewModel.editApply(sender: self)
+    }
     var heartState: Bool = false {
         didSet {
             if heartState {
@@ -147,6 +151,7 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
         }
     }
 }
+// MARK: - Extensions -
 extension ApplyViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView === tblInterview {

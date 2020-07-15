@@ -13,7 +13,7 @@ struct ApplyService: ApplyServiceType {
     
     struct ApplyItem {
         let date: Date
-        let link: URL
+        let link: URL?
         let salary: Int
         let state: Status
         let city: City
@@ -115,6 +115,40 @@ struct ApplyService: ApplyServiceType {
             try context.save()
         } catch {
             throw ApplyServiceError.saveApplyError
+        }
+    }
+    func update(apply: Apply, company: Company?, city: City?, country: Country?, link: URL?, salary: Int32?, state: Status?, resume: Resume?, date: Date?, tags: [Tag]?) throws {
+        if let company = company {
+        apply.company = company
+        }
+        if let city = city {
+        apply.city = city
+        }
+        if let country = country {
+        apply.city?.country = country
+        }
+        if let link = link {
+         apply.jobLink = link
+        }
+        if let salary = salary {
+        apply.salaryExpectation = salary
+        }
+        if let state = state {
+        apply.statusEnum = state
+        }
+        if let resume = resume {
+        apply.resume = resume
+        }
+        if let date = date {
+        apply.date = date
+        }
+        if let tags = tags {
+            apply.tag = Set(tags) as NSSet
+        }
+        do {
+            try context.save()
+        } catch {
+            throw ApplyServiceError.updateApplyError
         }
     }
 }

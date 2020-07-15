@@ -43,7 +43,7 @@ class ReminderViewController: UIViewController, ViewModelSupportedViewController
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        dpkDate.minimumDate = Date()
     }
     
 }

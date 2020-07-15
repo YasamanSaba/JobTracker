@@ -112,6 +112,7 @@
 		F2B147B024A0E53D00BD5A22 /* BadgeSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B147AF24A0E53D00BD5A22 /* BadgeSupplementaryView.swift */; };
 		F2B6F2072490F6180088B0F7 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B6F2062490F6180088B0F7 /* CoreDataTests.swift */; };
 		F2B6F2092490F88F0088B0F7 /* InMemoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B6F2082490F88F0088B0F7 /* InMemoryStore.swift */; };
+		F2CD065724BEDE8300921DA7 /* MyDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CD065624BEDE8300921DA7 /* MyDateFormatter.swift */; };
 		F2EAA8B42498E8BB00876FA9 /* CountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EAA8B32498E8BB00876FA9 /* CountryService.swift */; };
 		F2EAA8B62498EBAC00876FA9 /* AppliesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EAA8B52498EBAC00876FA9 /* AppliesViewModel.swift */; };
 		F2EAA8B82498F43E00876FA9 /* DataInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EAA8B72498F43E00876FA9 /* DataInitializer.swift */; };
@@ -248,6 +249,7 @@
 		F2B147AF24A0E53D00BD5A22 /* BadgeSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeSupplementaryView.swift; sourceTree = "<group>"; };
 		F2B6F2062490F6180088B0F7 /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		F2B6F2082490F88F0088B0F7 /* InMemoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryStore.swift; sourceTree = "<group>"; };
+		F2CD065624BEDE8300921DA7 /* MyDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDateFormatter.swift; sourceTree = "<group>"; };
 		F2EAA8B12498DCE900876FA9 /* CountryServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryServiceType.swift; sourceTree = "<group>"; };
 		F2EAA8B32498E8BB00876FA9 /* CountryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryService.swift; sourceTree = "<group>"; };
 		F2EAA8B52498EBAC00876FA9 /* AppliesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesViewModel.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				70D30A5324B05EF0005D29B2 /* ResumeService.swift */,
 				F220D97124ADC6B60085DCED /* StateService.swift */,
 				700712CD24BD76BD00D3B721 /* ChecklistService.swift */,
+				F2CD065624BEDE8300921DA7 /* MyDateFormatter.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 				70D30A5824B06FCC005D29B2 /* ResumeTableViewCell.swift in Sources */,
 				709CDEE824A20DB000A9DAE0 /* NoteViewModel.swift in Sources */,
 				7043B02F24A0D22000F760AA /* Scene+ViewController.swift in Sources */,
+				F2CD065724BEDE8300921DA7 /* MyDateFormatter.swift in Sources */,
 				70D30A5424B05EF0005D29B2 /* ResumeService.swift in Sources */,
 				70BC371724B995BF00E0680A /* TaskViewController.swift in Sources */,
 				704866D324A777EF00FA80B5 /* NewApplyViewModel.swift in Sources */,
@@ -1018,7 +1022,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = JobTracker/JobTracker.entitlements;
+				CODE_SIGN_ENTITLEMENTS = JobTracker/Resource/JobTracker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N9VZPP2C5Z;
@@ -1039,7 +1043,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = JobTracker/JobTracker.entitlements;
+				CODE_SIGN_ENTITLEMENTS = JobTracker/Resource/JobTracker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N9VZPP2C5Z;

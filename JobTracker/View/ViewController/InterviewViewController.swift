@@ -77,7 +77,6 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
             navigationItem.rightBarButtonItem = nextBtn
         }
     }
-    
     func configureTextBoxDatePicker() {
         datePicker = UIDatePicker()
         datePicker.datePickerMode = .dateAndTime
@@ -157,6 +156,7 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
         alertController.addAction(alertAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
     @objc func nextButton() {
         do {
             try viewModel.save(link: txtInterviewLink.text, interviewer: txtInterviewerName.text, desc: txtDescription.text)
@@ -189,5 +189,10 @@ extension InterviewViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+extension InterviewViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

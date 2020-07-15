@@ -15,9 +15,15 @@ enum NewApplyViewModelError: String, Error {
 }
 
 class NewApplyViewModel: NSObject {
+    // MARK: Nested Type
+    struct InitialValues {
+        let jobURL: String?
+        let salary: String?
+    }
     
     // MARK: - Properties
     let appCoordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
+    let apply: Apply?
     let applyService: ApplyServiceType
     let stateService: StateServiceType
     let countryService: CountryServiceType
@@ -73,13 +79,18 @@ class NewApplyViewModel: NSObject {
             resumeSetter?(selectedResume?.version ?? "Unknown")
         }
     }
+    var isEditingMode: Bool = false
     // MARK: - Initializer
-    init(countryService: CountryServiceType, cityService: CityServiceType, applyService: ApplyServiceType, tagService: TagServiceType, stateService: StateServiceType) {
+    init(countryService: CountryServiceType, cityService: CityServiceType, applyService: ApplyServiceType, tagService: TagServiceType, stateService: StateServiceType, apply: Apply?) {
         self.countryService = countryService
         self.cityService = cityService
         self.applyService = applyService
         self.tagService = tagService
         self.stateService = stateService
+        self.apply = apply
+        if apply != nil {
+            isEditingMode = true
+        }
     }
     
     // MARK: - Functions
@@ -221,17 +232,21 @@ class NewApplyViewModel: NSObject {
     func addResume(sender: UIViewController) {
         appCoordinator?.present(scene: .resume, sender: sender)
     }
-    func save(link: String, salary: Int, sender: UIViewController) throws {
-        if let url = URL(string: link),
-            let city = selectedCity,
+    func save(link: String?, salary: Int?, sender: UIViewController) throws {
+        if let city = selectedCity,
             let date = selectedDate,
             let company = selectedComapy,
             let resume = selectedResume
         {
-            let item = ApplyService.ApplyItem(date: date, link: url, salary: salary, state: states[selectedStateIndex], city: city, company: company, resume: resume, tags: selectedTags)
+            let url = link == nil ? nil : URL(string: link!)
+            let item = ApplyService.ApplyItem(date: date, link: url, salary: salary ?? 0, state: states[selectedStateIndex], city: city, company: company, resume: resume, tags: selectedTags)
             do {
+                if isEditingMode {
+                    try applyService.update(apply: apply!, company: company, city: city, country: city.country, link: url, salary: Int32(salary ?? 0), state: states[selectedStateIndex], resume: resume, date: date, tags: selectedTags)
+                } else {
                 try applyService.save(applyItem: item)
                 sender.navigationController?.popViewController(animated: true)
+                }
             } catch {
                 throw NewApplyViewModelError.unKnownError
             }
@@ -239,9 +254,18 @@ class NewApplyViewModel: NSObject {
             throw NewApplyViewModelError.inCompleteDataToSave
         }
     }
+    func getInitialValue() -> InitialValues? {
+        guard isEditingMode, let apply = apply else { return nil }
+        selectedCountry = apply.city?.country
+        selectedCity = apply.city
+        selectedTags = apply.tag != nil ? apply.tag!.allObjects.map{$0 as! Tag} : []
+        selectedDate = apply.date
+        selectedComapy = apply.company
+        selectedResume = apply.resume
+        selectedStateIndex = states.firstIndex(of: apply.statusEnum!)!
+        return InitialValues(jobURL: apply.jobLink?.absoluteString, salary: apply.salaryExpectation == 0 ? nil : String(apply.salaryExpectation))
+    }
 }
-
-
 // MARK: - Extensions
 extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -323,7 +347,6 @@ extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
 }
-
 extension NewApplyViewModel {
     class CountryResultsControllerDelegate: NSObject, NSFetchedResultsControllerDelegate{
         var countryPickerView: UIPickerView?

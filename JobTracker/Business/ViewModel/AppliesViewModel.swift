@@ -63,36 +63,6 @@ class AppliesViewModel: NSObject {
             return badgeView
         }
         updateCountryDataSource()
-        /*
-        do {
-            try countryResultController.performFetch()
-            countryResultControllerDelegate = CountryResultControllerDelegate(countryDataSource: countryDataSource)
-            countryResultController.delegate = countryResultControllerDelegate
-            if let objects = countryResultController.fetchedObjects {
-                let sortedObjects = objects.sorted { country1 , country2 in
-                    if country1.name == "World" {
-                        return true
-                    }
-                    var count1 = 0
-                    var count2 = 0
-                    country1.city?.forEach{ city in
-                        let city = city as! City
-                        count1 = city.apply?.count ?? 0
-                    }
-                    country2.city?.forEach{ city in
-                        let city = city as! City
-                        count2 = city.apply?.count ?? 0
-                    }
-                    return count1 > count2
-                }
-                var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Country>()
-                initialSnapshot.appendSections([.main])
-                initialSnapshot.appendItems(sortedObjects, toSection: .main)
-                countryDataSource.apply(initialSnapshot)
-            }
-        } catch {
-            print(error.localizedDescription)
-        }*/
     }
     func updateCountryDataSource() {
         let currentApplySnapshot = applyDataSource.snapshot()
@@ -178,7 +148,7 @@ class AppliesViewModel: NSObject {
         applyDataSource.apply(currentSnapshot)
     }
     func addApply(sender: UIViewController) {
-        appCoordinator?.push(scene: .newApply, sender: sender)
+        appCoordinator?.push(scene: .newApply(nil), sender: sender)
     }
     func filter(sender: UIViewController) {
         appCoordinator?.present(scene: .filter(selectedCountry,applyFilter(filters:hasInterview:hasTask:isCompanyFavorite:)), sender: sender)
@@ -306,44 +276,6 @@ class AppliesViewModel: NSObject {
             applyDataSource.apply(diff)
         }
     }
-    /*
-    class CountryResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
-        let countryDataSource: UICollectionViewDiffableDataSource<Section, Country>
-        init(countryDataSource: UICollectionViewDiffableDataSource<Section, Country>) {
-            self.countryDataSource = countryDataSource
-        }
-        
-        func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
-            var diff = NSDiffableDataSourceSnapshot<Section, Country>()
-            snapshot.sectionIdentifiers.forEach { _ in
-                diff.appendSections([.main])
-                let items = snapshot.itemIdentifiers.map { (objectId: Any) -> Country in
-                    let oid = objectId as! NSManagedObjectID
-                    return controller.managedObjectContext.object(with: oid) as! Country
-                }
-                let sortedObjects = items.sorted { country1 , country2 in
-                    if country1.name == "World" {
-                        return true
-                    }
-                    var count1 = 0
-                    var count2 = 0
-                    country1.city?.forEach{ city in
-                        let city = city as! City
-                        count1 = city.apply?.count ?? 0
-                    }
-                    country2.city?.forEach{ city in
-                        let city = city as! City
-                        count2 = city.apply?.count ?? 0
-                    }
-                    return count1 > count2
-                }
-                diff.appendItems(sortedObjects, toSection: .main)
-                countryDataSource.apply(diff)
-            }
-        }
-        
-    }
-    */
     class ApplyDataSource: UITableViewDiffableDataSource<Section, Apply> {
         var applyService: ApplyServiceType!
         var countryUpdater: (() -> Void)!

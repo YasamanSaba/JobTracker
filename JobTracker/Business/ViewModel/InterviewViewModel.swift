@@ -16,6 +16,7 @@ enum InterviewViewModelError: String ,Error {
 class InterviewViewModel: NSObject {
     // MARK: - Nested types
     class ReminderDataSource: UITableViewDiffableDataSource<Int, Reminder>, NSFetchedResultsControllerDelegate {
+        var reminderService: ReminderServiceType?
         func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
             var newSnapshot = NSDiffableDataSourceSnapshot<Int, Reminder>()
             snapshot.sectionIdentifiers.forEach { _ in
@@ -27,7 +28,18 @@ class InterviewViewModel: NSObject {
             }
             self.apply(newSnapshot)
         }
+        override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            true
+        }
+        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                if let reminder = itemIdentifier(for: indexPath) {
+                    try? reminderService?.delete(reminder: reminder)
+                }
+            }
+        }
     }
+
     struct InitialValues {
         let link: String?
         let interviewrName: String?
@@ -135,7 +147,6 @@ class InterviewViewModel: NSObject {
             }
         }
     }
-    
     func configureReminder(tableView: UITableView) {
         reminderDataSource = ReminderDataSource(tableView: tableView) {
             (tableView, indexPath, reminder) -> UITableViewCell? in
@@ -143,6 +154,7 @@ class InterviewViewModel: NSObject {
             cell.configure(message: reminder.desc ?? "", date: DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .medium))
             return cell
         }
+        reminderDataSource.reminderService = reminderService
         reminderSnapShot()
     }
     func addTags(sender: UIViewController) {

@@ -11,7 +11,7 @@ import Foundation
 enum Scene {
     case applies
     case apply(Apply)
-    case newApply
+    case newApply(Apply?)
     case notes
     case note
     case tag(([Tag]) -> Void,[Tag]?)
@@ -24,3 +24,4 @@ enum Scene {
     case interview(Apply,Interview?)
     case task(Apply)
     case checklist(Apply)
+}
