@@ -126,7 +126,6 @@ extension Scene {
             viewController.viewModel = viewModel
             return viewController
         case .task(let apply, let task):
-        case .task(let apply):
             let storyboard = UIStoryboard(name: "Task", bundle: nil)
             let viewController = storyboard.instantiateViewController(identifier: TaskViewController.reuseIdentifier) as TaskViewController
             let reminderService = ReminderService(context: context)
