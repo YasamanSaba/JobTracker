@@ -10,12 +10,15 @@ import UIKit
 
 class TaskViewController: UIViewController, ViewModelSupportedViewControllers {
     
+    // MARK: - Properties
     var viewModel: TaskViewModel!
     var assingDatePicker: UIDatePicker!
     var deadlinePicker: UIDatePicker!
-    var blurEffect: UIBlurEffect?
     var blurEffectView: UIVisualEffectView?
+    var bottomEffectView: UIVisualEffectView?
+    var mainEffectView: UIVisualEffectView?
     
+    // MARK: - Outlets
     @IBOutlet weak var txtTitle: UITextField!
     @IBOutlet weak var txtAssignDate: UITextField!
     @IBOutlet weak var txtDeadlineDate: UITextField!
@@ -26,12 +29,15 @@ class TaskViewController: UIViewController, ViewModelSupportedViewControllers {
     @IBOutlet weak var swIsFinished: UISwitch!
     @IBOutlet weak var dtpAssignDate: UIDatePicker!
     @IBOutlet weak var dtpDeadline: UIDatePicker!
+    @IBOutlet weak var vwReminder: UIView!
+    @IBOutlet weak var vwSwitch: UIView!
     
+    // MARK: - Actions
     @IBAction func switchChanged(_ sender: UISwitch) {
         if sender.isOn {
-          disableControlls()
+          
         } else {
-            enableControlls()
+            
         }
     }
     @IBAction func assingDateDone(_ sender: Any) {
@@ -42,15 +48,18 @@ class TaskViewController: UIViewController, ViewModelSupportedViewControllers {
         viewModel.setDeadline(date: dtpDeadline.date)
         txtDeadlineDate.resignFirstResponder()
     }
-    private func enableControlls() {
-        self.view.subviews.forEach{$0.isUserInteractionEnabled = true}
+    @IBAction func addReminder(_ sender: Any) {
+        viewModel.addReminder(sender: self)
     }
-    private func disableControlls() {
-        self.view.subviews.forEach{$0.isUserInteractionEnabled = false}
+    @IBAction func openLink(_ sender: Any) {
+        if let link = txtLink.text {
+            viewModel.open(url: link)
+        }
     }
     
+    // MARK: - Functions
     fileprivate func activateBlur() {
-        blurEffect = UIBlurEffect(style: .light)
+        let blurEffect = UIBlurEffect(style: .light)
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView?.alpha = 0.95
         blurEffectView?.frame = view.bounds
@@ -59,31 +68,128 @@ class TaskViewController: UIViewController, ViewModelSupportedViewControllers {
             self.view.addSubview(blurEffectView)
         }
     }
-    
     fileprivate func deactiveBlur() {
         self.blurEffectView?.removeFromSuperview()
     }
+    func showAlert(text: String) {
+        let alertController = UIAlertController(title: "Warning!", message: text, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(alertAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    fileprivate func createSaveButton() {
+        let btnSave = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+        navigationItem.rightBarButtonItem = btnSave
+    }
+    func setOnMainBlur() {
+        let blurEffect = UIBlurEffect(style: .light)
+        mainEffectView = UIVisualEffectView(effect: blurEffect)
+        mainEffectView!.alpha = 0.75
+        mainEffectView!.backgroundColor = .systemGray5
+        mainEffectView!.translatesAutoresizingMaskIntoConstraints = false
+        mainEffectView!.layer.cornerRadius = 5
+        let label = UILabel()
+        label.text = "You can add your reminder(s) below"
+        label.font = UIFont.preferredFont(forTextStyle: .headline, compatibleWith: .none)
+        let imageView = UIImageView(image: UIImage(systemName: "arrow.down.circle"))
+        imageView.tintColor = .systemGray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(mainEffectView!)
+        mainEffectView!.contentView.addSubview(label)
+        mainEffectView!.contentView.addSubview(imageView)
+        NSLayoutConstraint.activate([
+            mainEffectView!.topAnchor.constraint(equalTo: vwSwitch.topAnchor),
+            mainEffectView!.leadingAnchor.constraint(equalTo: tblReminder.leadingAnchor),
+            mainEffectView!.trailingAnchor.constraint(equalTo: txtTitle.trailingAnchor),
+            mainEffectView!.bottomAnchor.constraint(equalTo: txtLink.bottomAnchor),
+            mainEffectView!.centerXAnchor.constraint(equalTo: label.centerXAnchor),
+            mainEffectView!.centerYAnchor.constraint(equalTo: label.centerYAnchor),
+            label.bottomAnchor.constraint(greaterThanOrEqualTo: imageView.topAnchor, constant: -10),
+            imageView.bottomAnchor.constraint(equalTo: mainEffectView!.bottomAnchor, constant: -10),
+            imageView.centerXAnchor.constraint(equalTo: mainEffectView!.centerXAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: 40),
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1)
+        ])
+        imageView.transform = .init(translationX: 0, y: -200)
+        UIView.animate(withDuration:2,
+        delay: 0,
+        usingSpringWithDamping: 0.5,
+        initialSpringVelocity: 0.2,
+        options: [.curveEaseOut],
+        animations: {
+               imageView.transform = .identity
+               }, completion: nil)
+    }
+    
+    // MARK: - OBJC Functions
+    @objc func save() {
+        guard let title = txtTitle.text, !title.trimmingCharacters(in: .whitespaces).isEmpty else {
+            showAlert(text: "Please fill title.")
+            return
+        }
+        do {
+            try viewModel.save(title: title, isDone: swIsFinished.isOn, link: txtLink.text ?? "")
+            if let navigationController = navigationController {
+                navigationController.popViewController(animated: true)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        } catch let error as TaskViewModelError{
+            showAlert(text: error.rawValue)
+        } catch {
+            print(error)
+        }
+    }
+    @objc func nextButton() {
+        guard let title = txtTitle.text, !title.trimmingCharacters(in: .whitespaces).isEmpty else {
+            showAlert(text: "Please fill title.")
+            return
+        }
+        do {
+            try viewModel.next(title: title, isDone: swIsFinished.isOn, link: txtLink.text ?? "")
+            bottomEffectView?.removeFromSuperview()
+            createSaveButton()
+            setOnMainBlur()
+            txtTitle.resignFirstResponder()
+            txtLink.resignFirstResponder()
+        } catch let error as TaskViewModelError{
+            showAlert(text: error.rawValue)
+        } catch {
+            print(error)
+        }
+    }
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let saveItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
-        navigationItem.rightBarButtonItem = saveItem
+        createSaveButton()
         navigationItem.title = "Task"
         
+        viewModel.configureReminder(tableView: tblReminder)
         txtAssignDate.inputView = vwAssignDatePicker
         txtDeadlineDate.inputView = vwDeadlinePicker
         let titleAndURL = viewModel.getCurrentTitleAndURL()
         txtTitle.text = titleAndURL.0
         txtLink.text = titleAndURL.1
+        
+        if titleAndURL.0 == nil {
+            let blurEffect = UIBlurEffect(style: .light)
+            bottomEffectView = UIVisualEffectView(effect: blurEffect)
+            bottomEffectView!.alpha = 0.75
+            bottomEffectView!.backgroundColor = .systemGray5
+            bottomEffectView!.frame = self.vwReminder.bounds
+            bottomEffectView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            self.vwReminder.addSubview(bottomEffectView!)
+            let nextBtn = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(nextButton))
+            navigationItem.rightBarButtonItem = nextBtn
+        }
         viewModel.assignDateText { [weak self] in
             self?.txtAssignDate.text = $0
         }
         viewModel.deadlineText { [weak self] in
             self?.txtDeadlineDate.text = $0
         }
-    }
-
-    @objc func save() {
-        
     }
 }
 
@@ -101,5 +207,10 @@ extension TaskViewController: UITextFieldDelegate {
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         deactiveBlur()
+    }
+}
+extension TaskViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

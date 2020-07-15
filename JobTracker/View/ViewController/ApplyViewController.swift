@@ -157,6 +157,9 @@ extension ApplyViewController: UITableViewDelegate {
         if tableView === tblInterview {
             viewModel.selectInterview(at: indexPath, sender: self)
         }
+        if tableView === tblTask {
+            viewModel.selectTask(at: indexPath, sender: self)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

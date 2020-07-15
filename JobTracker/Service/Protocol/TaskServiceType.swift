@@ -12,9 +12,12 @@ import CoreData
 enum TaskServiceError: Error {
     case fetchError
     case deleteError
+    case saveError
 }
 
 protocol TaskServiceType {
     func fetch(apply: Apply) -> NSFetchedResultsController<Task>
     func delete(task: Task) throws
+    func add(title: String,date: Date, deadline: Date, isDone: Bool, link: URL?, for apply: Apply) throws -> Task
+    func update(task: Task, title: String,date: Date, deadline: Date, isDone: Bool, link: URL?, for apply: Apply) throws
 }
