@@ -16,7 +16,7 @@ enum ReminderServiceError: Error {
 }
 
 protocol ReminderServiceType {
-    func add(date: Date, message: String, notificationID: String) throws -> Reminder
+    func add(date: Date, message: String, notificationID: String, for reminderable: Reminderable) throws
     func delete(reminder: Reminder) throws
     func fetchAll(for reminderable: Reminderable) throws -> NSFetchedResultsController<Reminder>
 }

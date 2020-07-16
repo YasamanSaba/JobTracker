@@ -17,14 +17,14 @@ class ReminderService: ReminderServiceType{
         self.context = context
     }
     // MARK: - Functions -
-    func add(date: Date, message: String, notificationID: String) throws -> Reminder {
+    func add(date: Date, message: String, notificationID: String, for reminderable: Reminderable) throws {
         let reminder = Reminder(context: context)
         reminder.date = date
         reminder.desc = message
         reminder.notificationID = notificationID
+        reminderable.addToReminder(reminder)
         do {
             try context.save()
-            return reminder
         } catch {
             throw ReminderServiceError.saveError
         }
