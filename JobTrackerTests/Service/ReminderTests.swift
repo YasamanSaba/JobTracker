@@ -14,11 +14,13 @@ class ReminderTests: XCTestCase {
     
     var service: ReminderServiceType!
     var context: NSManagedObjectContext!
+    var interview: Interview!
 
     override func setUpWithError() throws {
         let inMemoryStore = InMemoryStore()
         context = inMemoryStore.persistentContainer.viewContext
         service = ReminderService(context: context)
+        interview = Interview(context: context)
     }
 
     override func tearDownWithError() throws {
@@ -30,7 +32,7 @@ class ReminderTests: XCTestCase {
         let message = "just for test"
         let notificationID = UUID().uuidString
         
-        XCTAssertNoThrow(try service.add(date: date, message: message, notificationID: notificationID))
+        XCTAssertNoThrow(try service.add(date: date, message: message, notificationID: notificationID, for: interview))
     }
     
     func test_Add_Reminder_Insertion_In_Coredata() {
@@ -39,7 +41,7 @@ class ReminderTests: XCTestCase {
         let notificationID = UUID().uuidString
         
         var storedReminder: Reminder? = nil
-        XCTAssertNoThrow(storedReminder = try service.add(date: date, message: message, notificationID: notificationID))
+        XCTAssertNoThrow(storedReminder = try service.add(date: date, message: message, notificationID: notificationID, for: interview))
         XCTAssertNotNil(storedReminder)
         XCTAssertEqual(storedReminder?.date, date)
         XCTAssertEqual(storedReminder?.desc, message)
@@ -52,7 +54,7 @@ class ReminderTests: XCTestCase {
         let notificationID = UUID().uuidString
         
         var storedReminder: Reminder? = nil
-        XCTAssertNoThrow(storedReminder = try service.add(date: date, message: message, notificationID: notificationID))
+        XCTAssertNoThrow(storedReminder = try service.add(date: date, message: message, notificationID: notificationID, for: interview))
         
         let request: NSFetchRequest<Reminder> = Reminder.fetchRequest()
         var result: [Reminder] = []
