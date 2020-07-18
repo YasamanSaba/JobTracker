@@ -31,18 +31,18 @@ class ApplyTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    func configure(apply: Apply) {
+    func configure(apply: AppliesViewModel.ApplyItem) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MMM-dd"
         lblApplyDate.text = dateFormatter.string(from: apply.date!)
-        lblCountryFlag.text = apply.city?.country?.flag
-        lblCompanyName.text = apply.company?.title
-        lblNumberOfInterviews.text = String(apply.interview?.count ?? 0)
-        lblNumberOfTasks.text = String(apply.task?.count ?? 0)
-        let doneItems = apply.checkListItem?.filter { ($0 as! CheckListItem).isDone }.count ?? 0
-        let allItems = apply.checkListItem?.count ?? 0
+        lblCountryFlag.text = apply.apply.city?.country?.flag
+        lblCompanyName.text = apply.apply.company?.title
+        lblNumberOfInterviews.text = String(apply.apply.interview?.count ?? 0)
+        lblNumberOfTasks.text = String(apply.apply.task?.count ?? 0)
+        let doneItems = apply.apply.checkListItem?.filter { ($0 as! CheckListItem).isDone }.count ?? 0
+        let allItems = apply.apply.checkListItem?.count ?? 0
         lblCheckListStatus.text = "\(doneItems)/\(allItems)"
-        switch apply.statusEnum {
+        switch apply.apply.statusEnum {
         case .ceo:
             lblApplyStatus.text = "CEO"
             lblApplyStatus.tintColor = .systemGreen
@@ -67,6 +67,6 @@ class ApplyTableViewCell: UITableViewCell {
         case .none:
             print("Unexpected status")
         }
-        imgIsFavorite.isHidden = !(apply.company?.isFavorite ?? false)
+        imgIsFavorite.isHidden = !(apply.apply.company?.isFavorite ?? false)
     }
 }
