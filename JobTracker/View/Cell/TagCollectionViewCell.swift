@@ -12,22 +12,24 @@ import UIKit
     
     static let reuseIdentifier = String(describing: TagCollectionViewCell.self)
     var tagObject: Tag!
-    var onDelete: ((Tag) -> Void)!
+    var onDelete: ((Tag) -> Void)?
     var tapGesture: UITapGestureRecognizer!
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var imgTrash: UIImageView!
     
     @objc func tapOnDelete(_ sender: Any) {
-        onDelete(tagObject)
+        onDelete?(tagObject)
     }
     
-    func configure(tag: Tag, onDelete: @escaping (Tag) -> Void) {
+    func configure(tag: Tag, onDelete: ((Tag) -> Void)? = nil) {
         self.tagObject = tag
         lblTitle.text = tag.title
         self.onDelete = onDelete
-        tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnDelete(_:)))
-        imgTrash.addGestureRecognizer(tapGesture)
+        if onDelete != nil {
+            tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnDelete(_:)))
+            imgTrash.addGestureRecognizer(tapGesture)
+        }
     }
     
     @IBInspectable var cornerRadius: CGFloat {

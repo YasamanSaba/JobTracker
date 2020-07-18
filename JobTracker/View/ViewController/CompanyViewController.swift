@@ -80,3 +80,9 @@ extension CompanyViewController: UITableViewDelegate {
         self.dismiss(animated: true, completion: nil)
     }
 }
+extension CompanyViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}

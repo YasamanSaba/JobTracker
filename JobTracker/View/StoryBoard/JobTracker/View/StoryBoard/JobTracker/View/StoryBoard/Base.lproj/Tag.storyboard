@@ -81,7 +81,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="140"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pAx-jO-hL8">
-                                            <size key="itemSize" width="150" height="30"/>
+                                            <size key="itemSize" width="150" height="25"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -95,24 +95,22 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Core Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxc-T0-ah0">
-                                                            <rect key="frame" x="30" y="5.5" width="73" height="19.5"/>
+                                                            <rect key="frame" x="34" y="5.5" width="73" height="19.5"/>
                                                             <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                             <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bin.xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ydi-gw-XAo">
-                                                            <rect key="frame" x="120" y="3.5" width="25" height="22.5"/>
+                                                            <rect key="frame" x="121" y="4" width="24" height="21.5"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="25" id="Eul-XQ-yUA"/>
                                                                 <constraint firstAttribute="width" secondItem="Ydi-gw-XAo" secondAttribute="height" multiplier="1:1" id="UEs-VI-xBo"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tag.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SAx-32-vKf">
-                                                            <rect key="frame" x="5" y="5.5" width="20" height="19"/>
+                                                            <rect key="frame" x="5" y="3.5" width="24" height="23"/>
                                                             <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="20" id="brH-Eb-5uU"/>
                                                                 <constraint firstAttribute="width" secondItem="SAx-32-vKf" secondAttribute="height" multiplier="1:1" id="zbw-3d-fdY"/>
                                                             </constraints>
                                                         </imageView>
@@ -123,7 +121,9 @@
                                                         <constraint firstItem="Ydi-gw-XAo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uxc-T0-ah0" secondAttribute="trailing" constant="5" id="8QL-JF-3WG"/>
                                                         <constraint firstItem="uxc-T0-ah0" firstAttribute="leading" secondItem="SAx-32-vKf" secondAttribute="trailing" constant="5" id="IP6-6f-5sc"/>
                                                         <constraint firstItem="Ydi-gw-XAo" firstAttribute="centerY" secondItem="cX5-iH-1Aj" secondAttribute="centerY" id="QlZ-Me-00i"/>
+                                                        <constraint firstItem="SAx-32-vKf" firstAttribute="height" secondItem="cX5-iH-1Aj" secondAttribute="height" multiplier="0.8" id="YgI-qA-1oZ"/>
                                                         <constraint firstAttribute="trailing" secondItem="Ydi-gw-XAo" secondAttribute="trailing" constant="5" id="kpW-5o-QeD"/>
+                                                        <constraint firstItem="Ydi-gw-XAo" firstAttribute="height" secondItem="cX5-iH-1Aj" secondAttribute="height" multiplier="0.8" id="mzk-f7-em0"/>
                                                         <constraint firstItem="SAx-32-vKf" firstAttribute="leading" secondItem="cX5-iH-1Aj" secondAttribute="leading" constant="5" id="p6l-7E-W9Y"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>

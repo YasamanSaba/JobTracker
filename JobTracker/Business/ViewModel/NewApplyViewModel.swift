@@ -50,7 +50,14 @@ class NewApplyViewModel: NSObject {
             stateSetter?(states.count > 0 ? states[selectedStateIndex].rawValue : "No state")
         }
     }
-    var selectedTags: [Tag] = []
+    var selectedTags: [Tag] = [] {
+        didSet {
+            var snapShot = NSDiffableDataSourceSnapshot<Int,Tag>()
+            snapShot.appendSections([1])
+            snapShot.appendItems(selectedTags)
+            tagDatasource.apply(snapShot)
+        }
+    }
     var selectedCountry: Country? {
         didSet {
             countryNameSetter?(selectedCountry?.name)

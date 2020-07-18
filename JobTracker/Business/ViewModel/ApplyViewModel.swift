@@ -86,16 +86,7 @@ class ApplyViewModel: NSObject {
     func configureTag(collectionView: UICollectionView) {
         tagDataSource = UICollectionViewDiffableDataSource<Section,Tag>(collectionView: collectionView) { [weak self] (collectionView, indexPath, tag) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.reuseIdentifier, for: indexPath) as? TagCollectionViewCell, let self = self else {return nil}
-            cell.configure(tag: tag) { [weak self] in
-                guard let self = self else {return}
-                try? self.applyService.delete(tag: $0, from: self.apply)
-                if let tagSet = self.apply.tag {
-                    var snapShot = NSDiffableDataSourceSnapshot<Section,Tag>()
-                    snapShot.appendSections([.main])
-                    snapShot.appendItems(Array(tagSet.map{$0 as! Tag}), toSection: .main)
-                    self.tagDataSource.apply(snapShot)
-                }
-            }
+            cell.configure(tag: tag)
             return cell
         }
         if let tagSet = apply.tag {
@@ -111,7 +102,6 @@ class ApplyViewModel: NSObject {
     func editApply(sender: UIViewController) {
         appCoordinator?.push(scene: .newApply(apply), sender: sender)
     }
-    
     func addTags(sender: UIViewController) {
         appCoordinator?.present(scene: .tag({ [weak self] tags in
             guard let self = self else {return}
@@ -128,31 +118,6 @@ class ApplyViewModel: NSObject {
     func getApplyInfo() -> ApplyInfo {
         return ApplyInfo(companyName: apply.company?.title ?? "Unknown", jobOfferURL: apply.jobLink ?? URL(string: "www.google.com")!, location: "\(apply.city?.country?.name ?? "Unknown"), \(apply.city?.name ?? "Unknown")", timeElapsed: MyDateFormatter.shared.passedTime(from: apply.date!) ,state: apply.statusEnum?.rawValue ?? "Unknown", resume: apply.resume?.version ?? "Unknown", isFavorite: apply.company?.isFavorite ?? false)
     }
-    func changeState() -> String {
-        if let statePickerView = statePickerView {
-            let selectedRow = statePickerView.selectedRow(inComponent: 0)
-            do {
-                try applyService.save(apply: apply, state: states[selectedRow])
-                return states[selectedRow].rawValue
-            } catch {
-                print(error)
-            }
-        }
-        return ""
-    }
-    func changeResumeVersion() -> String {
-        if let resumePickerView = resumePickerView {
-            let selectedRow = resumePickerView.selectedRow(inComponent: 0)
-            do {
-                let resume = resumeResultController.object(at: IndexPath(row: selectedRow, section: 0))
-                try applyService.save(apply: apply, resume: resume)
-                return resume.version ?? ""
-            } catch {
-                print(error)
-            }
-        }
-        return ""
-    }
     func configureInterviewDataSource(for tableView: UITableView) {
         interviewDataSource = InterviewDataSource(tableView: tableView) { (tableView, indexPath, interview) -> UITableViewCell? in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: InterviewTableViewCell.reuseIdentifier, for: indexPath) as? InterviewTableViewCell else { return nil }
@@ -160,16 +125,6 @@ class ApplyViewModel: NSObject {
             dateFormatter.dateFormat = "yyyy-MM-dd"
             var date = dateFormatter.string(from: interview.date!)
             date = date + " " + MyDateFormatter.shared.remainTime(to: interview.date!)
-            /*let calendar = Calendar.current
-            let components = calendar.dateComponents([.day], from: Date(), to: interview.date!)
-            var date = dateFormatter.string(from: interview.date!)
-            if let days = components.day, days >= 0 {
-                if days == 0 {
-                    date = date + " (TODAY)"
-                } else {
-                    date = date + " (\(days) days left)"
-                }
-            }*/
             cell.configure(role: interview.interviewerRoleEnum?.rawValue ?? "Unknown", date: date)
             return cell
         }
@@ -236,6 +191,30 @@ class ApplyViewModel: NSObject {
     func selectTask(at indexPath: IndexPath, sender: UIViewController) {
         let task = taskDataSource.snapshot().itemIdentifiers[indexPath.row]
         appCoordinator?.push(scene: .task(apply,task), sender: sender)
+    }
+    func openResumeLink() {
+        if let url = apply.resume?.linkToGit?.absoluteString {
+            if url.hasPrefix("https://") || url.hasPrefix("http://"), let myURL = URL(string: url) {
+                UIApplication.shared.open(myURL)
+            } else {
+                let correctedURL = "http://\(url)"
+                if let myURL = URL(string: correctedURL) {
+                    UIApplication.shared.open(myURL)
+                }
+            }
+        }
+    }
+    func openApplyLink() {
+        if let url = apply.jobLink?.absoluteString {
+            if url.hasPrefix("https://") || url.hasPrefix("http://"), let myURL = URL(string: url) {
+                UIApplication.shared.open(myURL)
+            } else {
+                let correctedURL = "http://\(url)"
+                if let myURL = URL(string: correctedURL) {
+                    UIApplication.shared.open(myURL)
+                }
+            }
+        }
     }
     // MARK: - InterviewResultControllerDelegate
     class InterviewResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {

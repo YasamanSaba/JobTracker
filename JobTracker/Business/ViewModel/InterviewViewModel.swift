@@ -11,6 +11,7 @@ import CoreData
 
 enum InterviewViewModelError: String ,Error {
     case unKnown = "Please try again later."
+    case saveInterviewError = "Please select your interview date"
 }
 
 class InterviewViewModel: NSObject {
@@ -39,7 +40,6 @@ class InterviewViewModel: NSObject {
             }
         }
     }
-
     struct InitialValues {
         let link: String?
         let interviewrName: String?
@@ -208,7 +208,9 @@ class InterviewViewModel: NSObject {
                 throw InterviewViewModelError.unKnown
             }
         } else {
-            guard let date = interviewDate, let role = selectedRole else {return}
+            guard let date = interviewDate, let role = selectedRole else {
+                throw InterviewViewModelError.saveInterviewError
+            }
             do {
                 interview = try interviewService.save(date: date, link: link == nil ? nil : URL(string: link!), interviewer: interviewer, role: role, desc: desc, tags: selectedTags, for: apply)
                 reminderSnapShot()

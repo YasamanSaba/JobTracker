@@ -15,16 +15,22 @@ class ReminderTests: XCTestCase {
     var service: ReminderServiceType!
     var context: NSManagedObjectContext!
     var interview: Interview!
+    var apply: Apply!
 
     override func setUpWithError() throws {
         let inMemoryStore = InMemoryStore()
         context = inMemoryStore.persistentContainer.viewContext
         service = ReminderService(context: context)
         interview = Interview(context: context)
+        interview.interviewerRoleEnum = .ceo
+        apply = Apply(context: context)
+        apply.addToInterview(interview)
     }
 
     override func tearDownWithError() throws {
         service = nil
+        interview = nil
+        apply = nil
     }
     
     func test_Add_Reminder_NoThrow() {

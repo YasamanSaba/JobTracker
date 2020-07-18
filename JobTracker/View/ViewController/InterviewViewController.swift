@@ -14,6 +14,7 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
     var datePicker: UIDatePicker!
     var rolePickerView: UIPickerView!
     var blurEffectView: UIVisualEffectView?
+    var blurEffectViewInterviewDate: UIVisualEffectView?
     // MARK: - IBOutlet -
     @IBOutlet weak var txtInterviewDate: UITextField!
     @IBOutlet weak var txtInterviewLink: UITextField!
@@ -37,7 +38,7 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
     }
     // MARK: - Life Cycle -
     fileprivate func createSaveButton() {
-        let btnSave = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: nil)
+        let btnSave = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveInterview))
         navigationItem.rightBarButtonItem = btnSave
     }
     
@@ -76,6 +77,19 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
             let nextBtn = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(nextButton))
             navigationItem.rightBarButtonItem = nextBtn
         }
+    }
+    func activateBlur() {
+        let blurEffect = UIBlurEffect(style: .light)
+        blurEffectViewInterviewDate = UIVisualEffectView(effect: blurEffect)
+        blurEffectViewInterviewDate?.alpha = 0.95
+        blurEffectViewInterviewDate?.frame = view.bounds
+        blurEffectViewInterviewDate?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        if let blurEffectView = blurEffectViewInterviewDate {
+            self.view.addSubview(blurEffectView)
+        }
+    }
+    func deactiveBlur() {
+        self.blurEffectViewInterviewDate?.removeFromSuperview()
     }
     func configureTextBoxDatePicker() {
         datePicker = UIDatePicker()
@@ -183,12 +197,34 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
     @objc func doneDatePicker() {
         txtInterviewerRole.resignFirstResponder()
     }
+    @objc func saveInterview() {
+        do {
+            try viewModel.save(link: txtInterviewLink.text, interviewer: txtInterviewerName.text, desc: txtDescription.text)
+            if let navigationController = navigationController {
+                navigationController.popViewController(animated: true)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        } catch let error as InterviewViewModelError{
+            showAlert(text: error.rawValue)
+        } catch {
+            print(error)
+        }
+    }
 }
 // MARK: - Extension -
 extension InterviewViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.accessibilityIdentifier == "InterviewDate" {
+            activateBlur()
+        }
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        deactiveBlur()
     }
 }
 extension InterviewViewController: UITableViewDelegate {
