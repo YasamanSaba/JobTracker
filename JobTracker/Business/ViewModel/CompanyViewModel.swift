@@ -17,11 +17,23 @@ enum CompanyViewModelError:String, Error {
 }
 
 class CompanyViewModel: NSObject {
-    
+    // MARK: - NestedType -
+    class CompanyDataSource: UITableViewDiffableDataSource<Int, Company> {
+        var companyService: CompanyServiceType?
+        override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            true
+        }
+        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete, let company = itemIdentifier(for: indexPath) {
+                try? companyService?.delete(company: company)
+            }
+        }
+    }
+    // MARK: - Properties -
     let companyService: CompanyServiceType
     let onComplete: (Company) -> Void
     var companyResultsController: NSFetchedResultsController<Company>!
-    var companyDataSource: UITableViewDiffableDataSource<Int,Company>!
+    var companyDataSource: CompanyDataSource!
     
     init(companyService: CompanyServiceType, onComplete: @escaping (Company) -> Void) {
         self.companyService = companyService
@@ -29,14 +41,14 @@ class CompanyViewModel: NSObject {
     }
     
     func configureCompany(tableView: UITableView) {
-        companyDataSource = UITableViewDiffableDataSource<Int,Company>(tableView: tableView) { (tableView, indexPath, company) -> UITableViewCell? in
+        companyDataSource = CompanyDataSource(tableView: tableView) { (tableView, indexPath, company) -> UITableViewCell? in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CompanyTableViewCell.reuseIdentifier) as? CompanyTableViewCell else {
                 return nil
             }
             cell.configure(name: company.title ?? "Unknown", numberOfApplies: company.apply?.count ?? 0, isFavorite: company.isFavorite)
             return cell
         }
-        
+        companyDataSource.companyService = companyService
         companyResultsController = companyService.getAll()
         do {
             try companyResultsController.performFetch()

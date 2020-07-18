@@ -45,6 +45,9 @@ struct TagService: TagServiceType {
     }
     
     func delete(tag: Tag) throws {
+        if tag.apply?.count ?? 0 > 0 || tag.interview?.count ?? 0 > 0 {
+            throw TagServiceError.tagHasOtherRelation
+        }
         context.delete(tag)
         do {
             try context.save()

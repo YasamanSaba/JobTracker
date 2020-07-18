@@ -110,7 +110,7 @@ struct DataInitializer {
         interview2.interviewers = "Sam va bacheha"
         interview2.desc = "salam khobi bache joon"
         let tag = Tag(context: context)
-        tag.title = "Ahmaq"
+        tag.title = "Swift"
         interview2.addToTag(tag)
         let company2 = Company(context: context)
         company2.title = "eGym"

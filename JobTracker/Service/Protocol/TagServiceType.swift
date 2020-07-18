@@ -14,6 +14,7 @@ enum TagServiceError: Error {
     case existingTag
     case addError
     case deleteError
+    case tagHasOtherRelation
 }
 
 protocol TagServiceType {

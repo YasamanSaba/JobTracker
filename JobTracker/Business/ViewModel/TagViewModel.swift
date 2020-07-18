@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 
-enum TagViewModelError: Error {
+enum TagViewModelError: String, Error {
     case alreadyExists
+    case cannotDelete = "This tag is used in other objects"
 }
 
 class TagViewModel: NSObject {

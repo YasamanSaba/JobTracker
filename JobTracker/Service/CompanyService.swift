@@ -16,7 +16,6 @@ class CompanyService: CompanyServiceType {
     init(context: NSManagedObjectContext) {
         self.context = context
     }
-     
     func getAll() -> NSFetchedResultsController<Company> {
         let fetchRequest: NSFetchRequest<Company> = Company.fetchRequest()
         let sort = NSSortDescriptor(key: #keyPath(Company.title), ascending: true)
@@ -48,6 +47,17 @@ class CompanyService: CompanyServiceType {
             try context.save()
         } catch {
             throw CompanyServiceError.setFavoriteError
+        }
+    }
+    func delete(company: Company) throws {
+        if company.apply?.count ?? 0 > 0 {
+            throw CompanyServiceError.companyHasRelation
+        }
+        context.delete(company)
+        do {
+            try context.save()
+        } catch {
+            throw CompanyServiceError.deleteError
         }
     }
 }

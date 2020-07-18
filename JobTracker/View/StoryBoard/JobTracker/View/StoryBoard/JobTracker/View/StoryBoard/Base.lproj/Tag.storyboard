@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d3u-dG-b8y">
-                                <rect key="frame" x="0.0" y="301" width="414" height="561"/>
+                                <rect key="frame" x="0.0" y="306" width="414" height="556"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TagTableViewCell" id="AJk-aP-Erc" customClass="TagTableViewCell" customModule="JobTracker" customModuleProvider="target">
@@ -193,7 +193,7 @@
                             <constraint firstItem="d3u-dG-b8y" firstAttribute="bottom" secondItem="8KY-86-CAd" secondAttribute="bottom" id="STg-Qk-5ey"/>
                             <constraint firstItem="9qw-MQ-i6n" firstAttribute="leading" secondItem="8KY-86-CAd" secondAttribute="leading" id="ccH-ce-3C4"/>
                             <constraint firstItem="fMS-YN-cRW" firstAttribute="top" secondItem="8KY-86-CAd" secondAttribute="top" id="f1n-mR-k4O"/>
-                            <constraint firstItem="d3u-dG-b8y" firstAttribute="top" secondItem="Z1Q-uZ-SlQ" secondAttribute="bottom" constant="5" id="upN-Br-Ws5"/>
+                            <constraint firstItem="d3u-dG-b8y" firstAttribute="top" secondItem="Z1Q-uZ-SlQ" secondAttribute="bottom" constant="10" id="upN-Br-Ws5"/>
                             <constraint firstItem="fMS-YN-cRW" firstAttribute="leading" secondItem="8KY-86-CAd" secondAttribute="leading" id="xp3-Do-cbj"/>
                             <constraint firstItem="fMS-YN-cRW" firstAttribute="trailing" secondItem="8KY-86-CAd" secondAttribute="trailing" id="yPS-Ft-qr5"/>
                         </constraints>
