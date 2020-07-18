@@ -44,6 +44,7 @@ class ReminderViewController: UIViewController, ViewModelSupportedViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         dpkDate.minimumDate = Date()
+        viewModel.getPermision()
     }
     
 }
