@@ -163,9 +163,13 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
     static let badgeElementKind = "badge-element-kind"
     var viewModel: AppliesViewModel!
     private var searchController = UISearchController(searchResultsController: nil)
+    var refreshControl = UIRefreshControl()
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(tableViewRefresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
         // Temporary
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let countryService = CountryService(context: context)
@@ -174,6 +178,10 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
         setUpView()
     }
     // MARK: - Functions
+    @objc func tableViewRefresh() {
+        viewModel.configureApplyDataSource(for: tableView)
+        refreshControl.endRefreshing()
+    }
     private func setUpView() {
         collectionView.delegate = self
         tableView.delegate = self
