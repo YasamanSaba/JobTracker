@@ -57,6 +57,9 @@
 		70773C5924ACC14E00097FFE /* CityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70773C5824ACC14E00097FFE /* CityCollectionViewCell.swift */; };
 		70773C5B24ACC30300097FFE /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70773C5A24ACC30300097FFE /* CityViewController.swift */; };
 		70773C5D24ACCC4800097FFE /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70773C5C24ACCC4800097FFE /* CityViewModel.swift */; };
+		709191BC24C2D682000006A1 /* NoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709191BB24C2D682000006A1 /* NoteService.swift */; };
+		709191BE24C2D79B000006A1 /* NoteServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709191BD24C2D79B000006A1 /* NoteServiceType.swift */; };
+		709191C024C2DBB0000006A1 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709191BF24C2DBB0000006A1 /* NoteTableViewCell.swift */; };
 		70966A9724BC44140072C23E /* ChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70966A9624BC44140072C23E /* ChecklistViewModel.swift */; };
 		709CDEE024A1E62200A9DAE0 /* Note.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 709CDEDF24A1E62200A9DAE0 /* Note.storyboard */; };
 		709CDEE224A1E66400A9DAE0 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709CDEE124A1E66400A9DAE0 /* NotesViewController.swift */; };
@@ -199,6 +202,9 @@
 		70773C5824ACC14E00097FFE /* CityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCollectionViewCell.swift; sourceTree = "<group>"; };
 		70773C5A24ACC30300097FFE /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 		70773C5C24ACCC4800097FFE /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
+		709191BB24C2D682000006A1 /* NoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteService.swift; sourceTree = "<group>"; };
+		709191BD24C2D79B000006A1 /* NoteServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteServiceType.swift; sourceTree = "<group>"; };
+		709191BF24C2DBB0000006A1 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		70966A9624BC44140072C23E /* ChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewModel.swift; sourceTree = "<group>"; };
 		709CDEDF24A1E62200A9DAE0 /* Note.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Note.storyboard; sourceTree = "<group>"; };
 		709CDEE124A1E66400A9DAE0 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
@@ -351,6 +357,7 @@
 				70D30A5524B05F0B005D29B2 /* ResumeServiceType.swift */,
 				F220D96F24ADC6540085DCED /* StateServiceType.swift */,
 				700712CB24BD769E00D3B721 /* ChecklistServiceType.swift */,
+				709191BD24C2D79B000006A1 /* NoteServiceType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -495,6 +502,7 @@
 				F220D97124ADC6B60085DCED /* StateService.swift */,
 				700712CD24BD76BD00D3B721 /* ChecklistService.swift */,
 				F2CD065624BEDE8300921DA7 /* MyDateFormatter.swift */,
+				709191BB24C2D682000006A1 /* NoteService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -526,6 +534,7 @@
 				70D30A5724B06FCC005D29B2 /* ResumeTableViewCell.swift */,
 				F220D96D24ADC0F00085DCED /* StateCollectionViewCell.swift */,
 				F25891CE24B4646300298C41 /* DateCollectionViewCell.swift */,
+				709191BF24C2DBB0000006A1 /* NoteTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -762,6 +771,7 @@
 				70773C5B24ACC30300097FFE /* CityViewController.swift in Sources */,
 				70ADFFA12498B93600345379 /* ReminderViewController.swift in Sources */,
 				7043B03424A0E4D500F760AA /* Tab.swift in Sources */,
+				709191C024C2DBB0000006A1 /* NoteTableViewCell.swift in Sources */,
 				70483E77249651DC00612288 /* NoteViewController.swift in Sources */,
 				70483E80249799D600612288 /* InterviewTableViewCell.swift in Sources */,
 				70D30A5624B05F0B005D29B2 /* ResumeServiceType.swift in Sources */,
@@ -803,9 +813,11 @@
 				70D30A5224B05A4F005D29B2 /* ResumeViewModel.swift in Sources */,
 				F2035577248BBBC600A9F9F8 /* SceneDelegate.swift in Sources */,
 				F24633B024A8C89E004D1DE5 /* TaskService.swift in Sources */,
+				709191BE24C2D79B000006A1 /* NoteServiceType.swift in Sources */,
 				F24633AC24A8A291004D1DE5 /* InterviewServiceType.swift in Sources */,
 				70483E8424979ACF00612288 /* ReminderTableViewCell.swift in Sources */,
 				70773C5D24ACCC4800097FFE /* CityViewModel.swift in Sources */,
+				709191BC24C2D682000006A1 /* NoteService.swift in Sources */,
 				F2EAA8B62498EBAC00876FA9 /* AppliesViewModel.swift in Sources */,
 				F25891CF24B4646300298C41 /* DateCollectionViewCell.swift in Sources */,
 				70ADFF9824989F7400345379 /* Reminderable.swift in Sources */,
