@@ -45,16 +45,17 @@ extension Scene {
         case .notes:
             let storyboard = UIStoryboard(name: "Note", bundle: nil)
             let viewController = storyboard.instantiateViewController(identifier: NotesViewController.reuseIdentifier) as NotesViewController
-            let viewModel = NotesViewModel(coordinator: coordinator)
+            let noteService = NoteService(context: context)
+            let viewModel = NotesViewModel(noteService: noteService)
             viewController.viewModel = viewModel
             let navController = UINavigationController(rootViewController: viewController)
             return navController
-        case .note:
+        case .note(let note):
             let storyboard = UIStoryboard(name: "Note", bundle: nil)
             let viewController = storyboard.instantiateViewController(identifier: NoteViewController.reuseIdentifier) as NoteViewController
-            //let viewModel = NoteViewModel()
-            //viewController.viewModel = viewModel
-
+            let noteService = NoteService(context: context)
+            let viewModel = NoteViewModel(note: note, noteService: noteService)
+            viewController.viewModel = viewModel
             return viewController
         case .apply(let apply):
             let storyboard = UIStoryboard(name: "ApplyDetail", bundle: nil)

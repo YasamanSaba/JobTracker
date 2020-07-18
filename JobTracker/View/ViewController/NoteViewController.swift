@@ -16,65 +16,111 @@ class NoteViewController: UIViewController, ViewModelSupportedViewControllers {
     // MARK: - Outlets
     @IBOutlet weak var txtTitle: UITextView!
     @IBOutlet weak var txtDesc: UITextView!
+    @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var constDescBottom: NSLayoutConstraint!
     
     // MARK: - Properties
     var keyboardYSize: CGFloat = 0
     var lastCursorY: CGFloat = 0
-    
+    var normalBottomConstant: CGFloat = 0
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        normalBottomConstant = constDescBottom.constant
+        toolBar.largeContentTitle = "Note"
         
         self.txtDesc.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         self.txtTitle.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        if let initialValues = viewModel.getInitialValues() {
+            txtTitle.text =  initialValues.title
+            txtDesc.text = initialValues.body
+            editMode(on: false)
+        } else {
+            editMode(on: true)
+        }
     }
     
     // MARK: - Methods
+    func editMode(on: Bool) {
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        let flxButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        if on {
+            let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+            toolBar.setItems([doneButton,flxButton,saveButton], animated: true)
+            txtTitle.isEditable = true
+            txtTitle.isSelectable = true
+            txtTitle.backgroundColor = .systemBackground
+            txtDesc.isEditable = true
+            txtDesc.isSelectable = true
+            txtDesc.backgroundColor = .systemBackground
+        } else {
+            let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(edit))
+            toolBar.setItems([doneButton,flxButton,editButton], animated: true)
+            txtTitle.isEditable = false
+            txtTitle.isSelectable = false
+            txtTitle.backgroundColor = .systemGray5
+            txtDesc.isEditable = false
+            txtDesc.isSelectable = false
+            txtDesc.backgroundColor = .systemGray5
+        }
+    }
+    func showAlert(text: String) {
+        let alertController = UIAlertController(title: "Warning!", message: text, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(alertAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func done() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func save() {
+        guard let title = txtTitle.text, !title.trimmingCharacters(in: .whitespaces).isEmpty else {
+            showAlert(text: "Please fill title")
+            return
+        }
+        do {
+            try viewModel.save(title: title, body: txtDesc.text ?? "")
+            if let navigationController = navigationController {
+                navigationController.popViewController(animated: true)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        } catch let error as NoteViewModelError {
+            showAlert(text: error.rawValue)
+        } catch {
+            print(error)
+        }
+        
+    }
+    @objc func edit() {
+        editMode(on: true)
+    }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if txtDesc.isFirstResponder {
             if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
                 keyboardYSize = keyboardSize.height
+                UIView.animate(withDuration: 0.5) { [weak self] in
+                    guard let self = self else { return }
+                    self.constDescBottom.constant = self.normalBottomConstant + self.keyboardYSize
+                }
             }
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            guard let self = self else { return }
+            self.constDescBottom.constant = self.normalBottomConstant
         }
     }
     
     @objc func tapDone(sender: Any) {
         self.view.endEditing(true)
     }
-}
-
-// MARK: - UITextViewDelegate
-extension NoteViewController: UITextViewDelegate {
-    
-    func textViewDidChange(_ textView: UITextView) {
-        
-        if let selectedRange = textView.selectedTextRange
-        {
-            let caretRect = textView.caretRect(for: selectedRange.end)
-            let windowRect = textView.convert(caretRect, to: self.view)
-            
-            let distance = windowRect.origin.y + 18 - (view.bounds.height - keyboardYSize)
-            
-            if windowRect.origin.y >= self.lastCursorY {
-                if distance >= 0 &&  self.view.frame.origin.y > -(keyboardYSize - 70) {
-                    self.view.frame.origin.y -= 18
-                    self.lastCursorY = windowRect.origin.y
-                }
-            } else if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y += 18
-                self.lastCursorY = windowRect.origin.y
-            }
-        }
-        
-    }
-    
 }

@@ -195,32 +195,79 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9EB03134-260E-4DD4-A6BE-BC4EEBB1507F"
+            uuid = "5FF2C4FB-FF8D-4DB0-B7E0-76ECF605F389"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "JobTracker/Business/ViewModel/ReminderViewModel.swift"
+            filePath = "JobTracker/Business/ViewModel/AppliesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "setReminder(date:message:success:)"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "updateCountryDataSource()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5FF2C4FB-FF8D-4DB0-B7E0-76ECF605F389 - 90f7e502615a5919"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JobTracker.AppliesViewModel.updateCountryDataSource() -&gt; ()"
+                  moduleName = "JobTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samjavadizadeh/Documents/Projects/JobTracker/JobTracker/Business/ViewModel/AppliesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "1105">
+               </Location>
+               <Location
+                  uuid = "5FF2C4FB-FF8D-4DB0-B7E0-76ECF605F389 - 75b96fda54d348e5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (JobTracker.Country) -&gt; JobTracker.AppliesViewModel.CountryItem in JobTracker.AppliesViewModel.updateCountryDataSource() -&gt; ()"
+                  moduleName = "JobTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samjavadizadeh/Documents/Projects/JobTracker/JobTracker/Business/ViewModel/AppliesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "5FF2C4FB-FF8D-4DB0-B7E0-76ECF605F389 - 94b684aaa80e14f8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (JobTracker.AppliesViewModel.CountryItem, JobTracker.AppliesViewModel.CountryItem) -&gt; Swift.Bool in JobTracker.AppliesViewModel.updateCountryDataSource() -&gt; ()"
+                  moduleName = "JobTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samjavadizadeh/Documents/Projects/JobTracker/JobTracker/Business/ViewModel/AppliesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "85">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E8F90E32-5DE7-47EB-9F87-5BE640F2AD89"
+            uuid = "5C2665AC-049E-43E3-A94D-FEB34E84BEE6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "JobTracker/Business/ViewModel/ReminderViewModel.swift"
+            filePath = "JobTracker/Business/ViewModel/AppliesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "setReminder(date:message:success:)"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "updateCountryDataSource()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

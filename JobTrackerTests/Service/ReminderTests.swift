@@ -20,7 +20,28 @@ class ReminderTests: XCTestCase {
         let inMemoryStore = InMemoryStore()
         context = inMemoryStore.persistentContainer.viewContext
         service = ReminderService(context: context)
-        interview = Interview(context: context)
+        interview = Interview(context: self.context)
+        interview.date = Date()
+        interview.interviewerRoleEnum = .ceo
+        let city = City(context: self.context)
+        city.name = "Barcelona"
+        let country = Country(context: self.context)
+        country.name = "Spain"
+        country.minSalary = 40000
+        country.addToCity(city)
+        let company = Company(context: self.context)
+        company.title = "eFly"
+        company.isFavorite = true
+        let apply = Apply(context: self.context)
+        apply.date = Date()
+        apply.statusEnum = .challenge
+        apply.jobLink = URL(string: "google")
+        city.addToApply(apply)
+        let resume = Resume(context: self.context)
+        resume.version = "1.4"
+        resume.addToApply(apply)
+        company.addToApply(apply)
+        apply.addToInterview(interview)
     }
 
     override func tearDownWithError() throws {

@@ -93,6 +93,7 @@ class AppliesViewModel: NSObject {
     func updateCountryDataSource() {
         let currentApplySnapshot = applyDataSource.snapshot()
         var snapShot = NSDiffableDataSourceSnapshot<Section, CountryItem>()
+        countryDataSource?.apply(snapShot)
         snapShot.appendSections([.main])
         let countriesSet = Set(currentApplySnapshot.itemIdentifiers.map{$0.apply.city!.country!})
         var countries = Array(countriesSet.map{ CountryItem($0) }).sorted(by: {$0.name! < $1.name!})

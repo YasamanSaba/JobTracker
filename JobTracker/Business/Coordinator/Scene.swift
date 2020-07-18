@@ -13,7 +13,7 @@ enum Scene {
     case apply(Apply)
     case newApply(Apply?)
     case notes
-    case note
+    case note(Note?)
     case tag(([Tag]) -> Void,[Tag]?)
     case reminder(Reminderable)
     case company((Company) -> Void)
