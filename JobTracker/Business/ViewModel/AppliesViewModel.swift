@@ -106,7 +106,7 @@ class AppliesViewModel: NSObject {
     func configureApplyDataSource(for tableView: UITableView) {
         applyDataSource = ApplyDataSource(tableView: tableView) { (tableView, indexPath, apply) -> UITableViewCell? in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ApplyTableViewCell.reuseIdentifier, for: indexPath) as? ApplyTableViewCell else { return nil }
-            cell.configure(apply: apply.apply)
+            cell.configure(apply: apply)
             return cell
         }
         applyDataSource.applyService = applyService
