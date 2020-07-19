@@ -9,13 +9,9 @@
 import UIKit
 import CoreData
 
-enum TagViewModelError: String, Error {
-    case alreadyExists
-    case cannotDelete = "This tag is used in other objects"
-}
-
-class TagViewModel: NSObject {
-    
+class TagViewModel: NSObject, CoordinatorSupportedViewModel {
+    weak var delegate: TagViewModelDelegate?
+    var coordinator: CoordinatorType!
     let service: TagServiceType
     let onCompletion: ([Tag]) -> Void
     var dataSource: TagDataSource!
@@ -63,6 +59,7 @@ class TagViewModel: NSObject {
             return cell
         }
         tableView.delegate = self
+        dataSource.superDelegate = delegate
         dataSource.service = self.service
         do
         {
@@ -80,11 +77,11 @@ class TagViewModel: NSObject {
         }
     }
     
-    func addNew(tag: String) throws {
+    func addNew(tag: String) {
         do {
             try service.add(tag: tag)
         } catch TagServiceError.existingTag{
-            throw TagViewModelError.alreadyExists
+            delegate?.error(text: "Tag already exists")
         } catch {
             print(error)
         }
@@ -106,23 +103,20 @@ class TagViewModel: NSObject {
     
     class TagDataSource: UITableViewDiffableDataSource<Int,Tag> {
         var service: TagServiceType!
-        
+        weak var superDelegate: TagViewModelDelegate?
         // MARK: editing support
-        
         override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
             return true
         }
-        
         override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
             if editingStyle == .delete {
                 if let identifierToDelete = itemIdentifier(for: indexPath) {
                     do {
                         try service.delete(tag: identifierToDelete)
-                        var snapshot = self.snapshot()
-                        snapshot.deleteItems([identifierToDelete])
-                        apply(snapshot)
+                    } catch TagServiceError.tagHasOtherRelation {
+                        superDelegate?.error(text: "You have used it in other place")
                     } catch {
-                        print(error)
+                        print(error.localizedDescription)
                     }
                 }
             }

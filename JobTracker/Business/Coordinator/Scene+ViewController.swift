@@ -24,6 +24,8 @@ extension Scene {
             let service = TagService(context: context)
             let viewModel = TagViewModel(service: service,onCompletion: onCompletion,initialTags: tags)
             viewController.viewModel = viewModel
+            viewModel.delegate = viewController
+            viewModel.coordinator = coordinator
             return viewController
         case .reminder(let reminderable):
             let storyboard = UIStoryboard(name: "Reminder", bundle: nil)
@@ -39,7 +41,8 @@ extension Scene {
             let applyService = ApplyService(context: context)
             let viewModel = AppliesViewModel(countryService: countryService, applyService: applyService)
             viewController.viewModel = viewModel
-            
+            viewModel.delegate = viewController
+            viewModel.coordinator = coordinator
             let navController = UINavigationController(rootViewController: viewController)
             return navController
         case .notes:
@@ -68,6 +71,8 @@ extension Scene {
             let tagService = TagService(context: context)
             let viewModel = ApplyViewModel(applyService: applyService, interviewService: interviewService, apply: apply, taskService: taskService, companyService: companyService, stateService: stateService, tagService: tagService)
             viewController.viewModel = viewModel
+            viewModel.delegate = viewController
+            viewModel.coordinator = coordinator
             return viewController
         case .newApply(let apply):
             let storyboard = UIStoryboard(name: "NewApply", bundle: nil)
@@ -86,6 +91,8 @@ extension Scene {
             let companyService = CompanyService(context: context)
             let viewModel = CompanyViewModel(companyService: companyService, onComplete: onComplete)
             viewController.viewModel = viewModel
+            viewModel.delegate = viewController
+            viewModel.coordinator = coordinator
             return viewController
         case .filter(let country, let onCompletion):
             let storyboard = UIStoryboard(name: "Filter", bundle: nil)

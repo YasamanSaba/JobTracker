@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ApplyViewModel: NSObject {
+class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     // MARK: - Define nested types -
     struct ApplyInfo {
         let companyName: String
@@ -24,7 +24,8 @@ class ApplyViewModel: NSObject {
         case main
     }
     // MARK: - Properties -
-    let appCoordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
+    weak var delegate: ApplyViewModelDelegate?
+    var coordinator: CoordinatorType!
     private let applyService: ApplyServiceType
     private let stateService: StateServiceType
     private let interviewService: InterviewServiceType
@@ -57,7 +58,7 @@ class ApplyViewModel: NSObject {
     }
     // MARK: - Functions -
     func addTask(sender: Any) {
-        appCoordinator?.push(scene: .task(apply,nil), sender: sender)
+        coordinator.push(scene: .task(apply,nil), sender: sender)
     }
     func configureResume(pickerView: UIPickerView) {
         pickerView.accessibilityIdentifier = "ResumePickerView"
@@ -84,8 +85,8 @@ class ApplyViewModel: NSObject {
         pickerView.selectRow(states.firstIndex(of: apply.statusEnum ?? Status.hr) ?? 0, inComponent: 0, animated: true)
     }
     func configureTag(collectionView: UICollectionView) {
-        tagDataSource = UICollectionViewDiffableDataSource<Section,Tag>(collectionView: collectionView) { [weak self] (collectionView, indexPath, tag) -> UICollectionViewCell? in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.reuseIdentifier, for: indexPath) as? TagCollectionViewCell, let self = self else {return nil}
+        tagDataSource = UICollectionViewDiffableDataSource<Section,Tag>(collectionView: collectionView) { (collectionView, indexPath, tag) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.reuseIdentifier, for: indexPath) as? TagCollectionViewCell else {return nil}
             cell.configure(tag: tag)
             return cell
         }
@@ -97,13 +98,13 @@ class ApplyViewModel: NSObject {
         }
     }
     func checklist(sender: UIViewController) {
-        appCoordinator?.present(scene: .checklist(apply), sender: sender)
+        coordinator.present(scene: .checklist(apply), sender: sender)
     }
     func editApply(sender: UIViewController) {
-        appCoordinator?.push(scene: .newApply(apply), sender: sender)
+        coordinator.push(scene: .newApply(apply), sender: sender)
     }
     func addTags(sender: UIViewController) {
-        appCoordinator?.present(scene: .tag({ [weak self] tags in
+        coordinator.present(scene: .tag({ [weak self] tags in
             guard let self = self else {return}
             try? self.applyService.deleteTags(from: self.apply)
             try? self.applyService.add(tags: tags, to: self.apply)
@@ -182,15 +183,15 @@ class ApplyViewModel: NSObject {
         try? companyService.setIsFavorite(for: apply, value)
     }
     func addInterview(sender: UIViewController) {
-        appCoordinator?.push(scene: .interview(apply,nil), sender: sender)
+        coordinator.push(scene: .interview(apply,nil), sender: sender)
     }
     func selectInterview(at indexPath: IndexPath, sender: UIViewController) {
         let interview = interviewDataSource.snapshot().itemIdentifiers[indexPath.row]
-        appCoordinator?.push(scene: .interview(apply, interview), sender: sender)
+        coordinator.push(scene: .interview(apply, interview), sender: sender)
     }
     func selectTask(at indexPath: IndexPath, sender: UIViewController) {
         let task = taskDataSource.snapshot().itemIdentifiers[indexPath.row]
-        appCoordinator?.push(scene: .task(apply,task), sender: sender)
+        coordinator.push(scene: .task(apply,task), sender: sender)
     }
     func openResumeLink() {
         if let url = apply.resume?.linkToGit?.absoluteString {

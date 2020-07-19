@@ -31,13 +31,7 @@ class CompanyViewController: UIViewController, ViewModelSupportedViewControllers
     // MARK: - Actions
     @IBAction func addCompany(_ sender: Any) {
         if let name = txtCompanyName.text {
-            do {
-                try viewModel.add(name: name,isFavorite: heartState)
-            } catch let error as CompanyViewModelError {
-                showAlert(text: error.rawValue)
-            } catch {
-                print(error)
-            }
+            viewModel.add(name: name,isFavorite: heartState)
         }
     }
     @IBAction func cancel(_ sender: Any) {
@@ -52,16 +46,7 @@ class CompanyViewController: UIViewController, ViewModelSupportedViewControllers
         tblCompanies.delegate = self
         srbSearchBar.delegate = self
     }
-    
-    func showAlert(text: String) {
-        let alertController = UIAlertController(title: "Warning!", message: text, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(alertAction)
-        self.show(alertController, sender: self)
-    }
-
 }
-
 extension CompanyViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
@@ -73,7 +58,6 @@ extension CompanyViewController: UISearchBarDelegate {
         }
     }
 }
-
 extension CompanyViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.select(at: indexPath)
@@ -85,4 +69,7 @@ extension CompanyViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+}
+extension CompanyViewController: CompanyViewModelDelegate {
+
 }

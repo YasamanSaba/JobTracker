@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AppliesViewModel: NSObject {
+class AppliesViewModel: NSObject, CoordinatorSupportedViewModel {
     enum Section {
         case main
     }
@@ -40,6 +40,8 @@ class AppliesViewModel: NSObject {
         }
     }
     // MARK: - Properties -
+    weak var delegate: AppliesViewModelDelegate?
+    var coordinator: CoordinatorType!
     let countryService: CountryServiceType!
     let applyService: ApplyServiceType!
     var applyResultController: NSFetchedResultsController<Apply>!
@@ -48,7 +50,6 @@ class AppliesViewModel: NSObject {
     var applyDataSource: ApplyDataSource!
     var selectedCountry: Country!
     let world: Country
-    let appCoordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
     //var countryResultControllerDelegate: CountryResultControllerDelegate!
     var applyResultControllerDelegate: ApplyResultControllerDelegate!
     var onFilterChanged: ((Bool) -> Void)?
@@ -67,7 +68,6 @@ class AppliesViewModel: NSObject {
             cell.lblFlag.text = item.flag
             return cell
         }
-        //countryResultController = countryService.fetchAll()
         countryDataSource?.supplementaryViewProvider = { [weak self] (
             collectionView: UICollectionView,
             kind: String,
@@ -158,7 +158,7 @@ class AppliesViewModel: NSObject {
     }
     func showApplyDetail(for indexPath: IndexPath, sender: UIViewController) {
         let apply = applyDataSource.snapshot().itemIdentifiers[indexPath.row]
-        appCoordinator?.push(scene: .apply(apply.apply), sender: sender)
+        coordinator.push(scene: .apply(apply.apply), sender: sender)
     }
     func deleteApplies(indexPaths: [IndexPath]) {
         var currentSnapshot = applyDataSource.snapshot()
@@ -178,10 +178,10 @@ class AppliesViewModel: NSObject {
         applyDataSource.apply(currentSnapshot)
     }
     func addApply(sender: UIViewController) {
-        appCoordinator?.push(scene: .newApply(nil), sender: sender)
+        coordinator.push(scene: .newApply(nil), sender: sender)
     }
     func filter(sender: UIViewController) {
-        appCoordinator?.present(scene: .filter(selectedCountry,applyFilter(filters:hasInterview:hasTask:isCompanyFavorite:)), sender: sender)
+        coordinator.present(scene: .filter(selectedCountry,applyFilter(filters:hasInterview:hasTask:isCompanyFavorite:)), sender: sender)
     }
     func applyFilter(filters:[FilterViewModel.FilterObject], hasInterview:Bool, hasTask:Bool, isCompanyFavorite: Bool) {
         guard filters.count > 0 else {return}

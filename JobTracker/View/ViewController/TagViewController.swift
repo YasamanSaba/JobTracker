@@ -32,18 +32,7 @@ class TagViewController: UIViewController, ViewModelSupportedViewControllers {
     
     @IBAction func btnAdd(_ sender: Any) {
         if let title = srbSearchBar.text {
-            do {
-                try viewModel.addNew(tag: title)
-            } catch TagViewModelError.alreadyExists {
-                let alertController = UIAlertController(title: "Can't add", message: "This tag already exists.", preferredStyle: .alert)
-                let alertAction = UIAlertAction(title: "OK", style: .default) { _ in
-                    alertController.dismiss(animated: true, completion: nil)
-                }
-                alertController.addAction(alertAction)
-                self.show(alertController, sender: self)
-            } catch {
-                print(error)
-            }
+            viewModel.addNew(tag: title)
         }
     }
     
@@ -54,7 +43,7 @@ class TagViewController: UIViewController, ViewModelSupportedViewControllers {
         viewModel.configureDatasource(for: tblTableView)
         viewModel.configureSelectedTags(collectionView: colTags)
     }
-    
+    // MARK: - Functions -
     @objc func tapDone(sender: Any) {
         self.view.endEditing(true)
     }
@@ -70,4 +59,6 @@ extension TagViewController: UISearchBarDelegate {
             btnAdd.isEnabled = false
         }
     }
+}
+extension TagViewController: TagViewModelDelegate {
 }

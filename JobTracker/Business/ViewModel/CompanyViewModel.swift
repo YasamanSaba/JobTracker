@@ -9,23 +9,25 @@
 import UIKit
 import CoreData
 
-enum CompanyViewModelError:String, Error {
-    case companyAlreadyExists = "Company with same name already exists."
-    case companyNameIsEmpty = "Company name can't be empty."
-    case addError = "Can not add. please try again later."
-    case unKnownError = "Please try again later."
-}
-
-class CompanyViewModel: NSObject {
+class CompanyViewModel: NSObject, CoordinatorSupportedViewModel {
+    var coordinator: CoordinatorType!
+    
     // MARK: - NestedType -
     class CompanyDataSource: UITableViewDiffableDataSource<Int, Company> {
         var companyService: CompanyServiceType?
+        var superDelegate: CompanyViewModelDelegate?
         override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
             true
         }
         override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
             if editingStyle == .delete, let company = itemIdentifier(for: indexPath) {
-                try? companyService?.delete(company: company)
+                do {
+                    try companyService?.delete(company: company)
+                } catch CompanyServiceError.companyHasRelation {
+                    superDelegate?.error(text: "You have apply in this company")
+                } catch {
+                    print(error.localizedDescription)
+                }
             }
         }
     }
@@ -34,6 +36,7 @@ class CompanyViewModel: NSObject {
     let onComplete: (Company) -> Void
     var companyResultsController: NSFetchedResultsController<Company>!
     var companyDataSource: CompanyDataSource!
+    weak var delegate: CompanyViewModelDelegate?
     
     init(companyService: CompanyServiceType, onComplete: @escaping (Company) -> Void) {
         self.companyService = companyService
@@ -49,6 +52,7 @@ class CompanyViewModel: NSObject {
             return cell
         }
         companyDataSource.companyService = companyService
+        companyDataSource.superDelegate = delegate
         companyResultsController = companyService.getAll()
         do {
             try companyResultsController.performFetch()
@@ -79,28 +83,29 @@ class CompanyViewModel: NSObject {
         onComplete(company)
     }
     
-    func delete(at indexPath: IndexPath) {
-        
-    }
-    
-    func add(name: String, isFavorite: Bool) throws {
+    func add(name: String, isFavorite: Bool) {
         guard !name.isEmpty, !name.trimmingCharacters(in: .whitespaces).isEmpty else {
-            throw CompanyViewModelError.companyNameIsEmpty
+            delegate?.error(text: "Company name cannot be empty")
+            return
         }
         do {
             try companyService.add(name: name, isFavorite: isFavorite)
         } catch let error as CompanyServiceError {
             switch error {
             case .alreadyExists:
-                throw CompanyViewModelError.companyAlreadyExists
+                delegate?.error(text: "Company name already exists")
+                return
             case .addError:
-                throw CompanyViewModelError.addError
+                delegate?.error(text: "Try again later")
+                return
             default:
-                throw CompanyViewModelError.unKnownError
+                delegate?.error(text: "Try again later")
+                return
             }
             
         } catch {
-            throw CompanyViewModelError.unKnownError
+            delegate?.error(text: "Try again later")
+            return
         }
     }
 }
