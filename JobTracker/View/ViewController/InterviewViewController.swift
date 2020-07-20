@@ -37,36 +37,20 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
         viewModel.open(url: url)
     }
     // MARK: - Life Cycle -
-    fileprivate func createSaveButton() {
-        let btnSave = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveInterview))
-        navigationItem.rightBarButtonItem = btnSave
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createSaveButton()
         setup()
+        viewModel.start(pickerView: rolePickerView, collectionView: colTag, tableView: tblReminder)
     }
-    // MARK: - Functions -
-    func setup() {
+    // MARK: - Functions
+    private func setup() {
         configureTextBoxDatePicker()
-        viewModel.dateText { [weak self] in
-            self?.txtInterviewDate.text = $0
-        }
-        viewModel.roleText { [weak self] in
-            self?.txtInterviewerRole.text = $0
-        }
         configureTextBoxInterviewerRole()
-        viewModel.configureRole(pickerView: rolePickerView)
-        viewModel.configureTags(collectionView: colTag)
-        viewModel.configureReminder(tableView: tblReminder)
         txtInterviewDate.tintColor = .clear
         txtInterviewerRole.tintColor = .clear
-        if let initialValue = viewModel.getInitialValue() {
-            txtInterviewLink.text = initialValue.link
-            txtInterviewerName.text = initialValue.interviewrName
-            txtDescription.text = initialValue.desc
-        } else {
+        if !viewModel.isEditingMode {
             let blurEffect = UIBlurEffect(style: .light)
             blurEffectView = UIVisualEffectView(effect: blurEffect)
             blurEffectView!.alpha = 0.75
@@ -78,7 +62,7 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
             navigationItem.rightBarButtonItem = nextBtn
         }
     }
-    func activateBlur() {
+    private func activateBlur() {
         let blurEffect = UIBlurEffect(style: .light)
         blurEffectViewInterviewDate = UIVisualEffectView(effect: blurEffect)
         blurEffectViewInterviewDate?.alpha = 0.95
@@ -88,10 +72,10 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
             self.view.addSubview(blurEffectView)
         }
     }
-    func deactiveBlur() {
+    private func deactiveBlur() {
         self.blurEffectViewInterviewDate?.removeFromSuperview()
     }
-    func configureTextBoxDatePicker() {
+    private func configureTextBoxDatePicker() {
         datePicker = UIDatePicker()
         datePicker.datePickerMode = .dateAndTime
 
@@ -111,7 +95,7 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
         self.txtInterviewDate.inputView = datePicker
         self.txtInterviewDate.inputAccessoryView = toolBar
     }
-    func configureTextBoxInterviewerRole() {
+    private func configureTextBoxInterviewerRole() {
         rolePickerView = UIPickerView()
         
         let toolBar = UIToolbar()
@@ -125,7 +109,7 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
         txtInterviewerRole.inputView = rolePickerView
         txtInterviewerRole.inputAccessoryView = toolBar
     }
-    func setOnMainBlur() {
+    private func setOnMainBlur() {
         let blurEffect = UIBlurEffect(style: .light)
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView!.alpha = 0.75
@@ -164,26 +148,26 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
                imageView.transform = .identity
                }, completion: nil)
     }
-    func showAlert(text: String) {
+    private func showAlert(text: String) {
         let alertController = UIAlertController(title: "Warning!", message: text, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(alertAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    private func createSaveButton() {
+        let btnSave = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveInterview))
+        navigationItem.rightBarButtonItem = btnSave
+    }
     
+    // MARK: - OBJC Functions
     @objc func nextButton() {
-        do {
-            try viewModel.save(link: txtInterviewLink.text, interviewer: txtInterviewerName.text, desc: txtDescription.text)
+        if viewModel.save(link: txtInterviewLink.text, interviewer: txtInterviewerName.text, desc: txtDescription.text) {
             blurEffectView?.removeFromSuperview()
             createSaveButton()
             setOnMainBlur()
             txtDescription.resignFirstResponder()
             txtInterviewerName.resignFirstResponder()
             txtInterviewLink.resignFirstResponder()
-        } catch let error as InterviewViewModelError{
-            showAlert(text: error.rawValue)
-        } catch {
-            print(error)
         }
     }
     @objc func cancelDatePicker() {
@@ -198,17 +182,12 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
         txtInterviewerRole.resignFirstResponder()
     }
     @objc func saveInterview() {
-        do {
-            try viewModel.save(link: txtInterviewLink.text, interviewer: txtInterviewerName.text, desc: txtDescription.text)
+        if viewModel.save(link: txtInterviewLink.text, interviewer: txtInterviewerName.text, desc: txtDescription.text) {
             if let navigationController = navigationController {
                 navigationController.popViewController(animated: true)
             } else {
                 self.dismiss(animated: true, completion: nil)
             }
-        } catch let error as InterviewViewModelError{
-            showAlert(text: error.rawValue)
-        } catch {
-            print(error)
         }
     }
 }
@@ -230,5 +209,26 @@ extension InterviewViewController: UITextFieldDelegate {
 extension InterviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+extension InterviewViewController: InterviewViewModelDelegate {
+    func link(text: String) {
+        txtInterviewLink.text = text
+    }
+    
+    func interviewer(text: String) {
+        txtInterviewerName.text = text
+    }
+    
+    func desc(text: String) {
+        txtDescription.text = text
+    }
+    
+    func role(text: String) {
+        txtInterviewerRole.text = text
+    }
+    
+    func date(text: String) {
+        txtInterviewDate.text = text
     }
 }

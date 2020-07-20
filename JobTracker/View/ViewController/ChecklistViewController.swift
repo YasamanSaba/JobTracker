@@ -17,7 +17,7 @@ class ChecklistViewController: UIViewController, ViewModelSupportedViewControlle
     
     @IBAction func addChecklistItem(_ sender: Any) {
         if let title = txtChecklistItem.text {
-            try? viewModel.add(title: title)
+            viewModel.add(title: title)
         }
     }
     @IBAction func done(_ sender: Any) {
@@ -26,14 +26,18 @@ class ChecklistViewController: UIViewController, ViewModelSupportedViewControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.configure(tableView: tableView)
+        viewModel.start(tableView: tableView)
     }
 
 }
 
 extension ChecklistViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        try? viewModel.selectItem(at: indexPath, tableView: tableView)
+        viewModel.selectItem(at: indexPath, tableView: tableView)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+}
+
+extension ChecklistViewController: ChecklistViewModelDelegate {
+    
 }

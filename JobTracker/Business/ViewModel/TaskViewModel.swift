@@ -9,23 +9,11 @@
 import UIKit
 import CoreData
 
-enum TaskViewModelError: String, Error {
-    case inCompletedInput = "Please fill all the necessary fields."
-    case unknown = "Please try again later."
-}
-
-class TaskViewModel: NSObject {
+class TaskViewModel: NSObject, CoordinatorSupportedViewModel {
     
-    struct InitialValues {
-        let title: String
-        let assignDate: Date
-        let deadline: Date
-        let link: String?
-        let isFinished: Bool
-    }
-    
-    private let appCoordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
-    private var isEditingMode: Bool = false
+    var coordinator: CoordinatorType!
+    var delegate: TaskViewModelDelegate?
+    var isEditingMode: Bool = false
     private let apply: Apply
     private var task: Task? {
         didSet {
@@ -46,23 +34,22 @@ class TaskViewModel: NSObject {
             reminderDataSource?.apply(snapShot)
         }
     }
-    private var assignDateTextSetter: ((String) -> Void)?
-    private var deadlineTextSetter: ((String) -> Void)?
     private var selectedAssignDate: Date? {
         didSet {
             guard let selectedAssignDate = selectedAssignDate else{ return }
             let dateString = DateFormatter.localizedString(from: selectedAssignDate, dateStyle: .full, timeStyle: .none)
-            assignDateTextSetter?(dateString)
+            delegate?.assignDate(text: dateString)
         }
     }
     private var selectedDeadline: Date? {
         didSet {
             guard let selectedDeadline = selectedDeadline else{ return }
             let dateString = DateFormatter.localizedString(from: selectedDeadline, dateStyle: .full, timeStyle: .none)
-            deadlineTextSetter?(dateString)
+            delegate?.deadline(text: dateString)
         }
     }
     
+    // MARK: Initializer
     init(apply: Apply, task: Task?,taskService: TaskServiceType, reminderService: ReminderServiceType) {
         self.apply = apply
         self.task = task
@@ -73,7 +60,8 @@ class TaskViewModel: NSObject {
         self.reminderService = reminderService
     }
     
-    fileprivate func createFirstSnapshot() {
+    // MARK: Private Functions
+    private func createFirstSnapshot() {
         if isEditingMode {
             do {
                 reminderResultsController = try reminderService.fetchAll(for: task!)
@@ -90,8 +78,7 @@ class TaskViewModel: NSObject {
             }
         }
     }
-    
-    func configureReminder(tableView: UITableView) {
+    private func configureReminder(tableView: UITableView) {
         reminderDataSource = TaskDataSource(tableView: tableView) {
             (tableView, indexPath, reminder) -> UITableViewCell? in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ReminderTableViewCell.reuseIdentifier) as? ReminderTableViewCell, let date = reminder.date else {
@@ -104,19 +91,15 @@ class TaskViewModel: NSObject {
         reminderDataSource?.reminderService = reminderService
         createFirstSnapshot()
     }
-    func getCurrentTitleAndURL() -> (String?,String?) {
-        return (task?.title , task?.linkToGit?.absoluteString)
-    }
-    func assignDateText(setter: @escaping (String) -> Void) {
-        assignDateTextSetter = setter
-        if isEditingMode {
-            selectedAssignDate = task!.date!
-        }
-    }
-    func deadlineText(setter: @escaping (String) -> Void) {
-        deadlineTextSetter = setter
+    
+    // MARK: Public API
+    func start(tableView: UITableView) {
+        configureReminder(tableView: tableView)
         if isEditingMode {
             selectedDeadline = task!.deadline!
+            selectedAssignDate = task!.date!
+            delegate?.title(task!.title ?? "")
+            delegate?.link(task!.linkToGit?.absoluteString ?? "")
         }
     }
     func setAssign(date: Date) {
@@ -125,36 +108,42 @@ class TaskViewModel: NSObject {
     func setDeadline(date: Date) {
         selectedDeadline = date
     }
-    func next(title: String, isDone: Bool, link: String?) throws {
+    func next(title: String, isDone: Bool, link: String?) -> Bool {
         guard let aDate = selectedAssignDate, let dDate = selectedDeadline else {
-            throw TaskViewModelError.inCompletedInput
+            delegate?.error(text: "Please fill all the necessary fields")
+            return false
         }
         do {
             let url = link == nil ? nil : URL(string: link!)
             let task = try taskService.add(title: title, date: aDate, deadline: dDate, isDone: isDone, link: url, for: apply)
             self.task = task
             createFirstSnapshot()
+            return true
         } catch _ as TaskServiceError {
-            throw TaskViewModelError.unknown
+            delegate?.error(text: "Try again later")
         } catch {
-            throw error
+            delegate?.error(text: "Try again later")
         }
+        return false
     }
-    func save(title: String, isDone: Bool, link: String?) throws {
+    func save(title: String, isDone: Bool, link: String?) -> Bool {
         guard let task = task, let aDate = selectedAssignDate, let dDate = selectedDeadline else {
-            throw TaskViewModelError.inCompletedInput
+            delegate?.error(text: "Please fill all the necessary fields")
+            return false
         }
         do {
             let url = link == nil ? nil : URL(string: link!)
             try taskService.update(task: task, title: title, date: aDate, deadline: dDate, isDone: isDone, link: url, for: apply)
+            return true
         } catch _ as TaskServiceError {
-            throw TaskViewModelError.unknown
+            delegate?.error(text: "Try again later")
         } catch {
-            throw error
+            delegate?.error(text: "Try again later")
         }
+        return false
     }
     func addReminder(sender: UIViewController) {
-        appCoordinator?.present(scene: .reminder(task!), sender: sender)
+        coordinator.present(scene: .reminder(task!), sender: sender)
     }
     func open(url: String) {
         if url.hasPrefix("https://") || url.hasPrefix("http://"), let myURL = URL(string: url) {
@@ -167,9 +156,10 @@ class TaskViewModel: NSObject {
         }
     }
     
+    // MARK: Nested Types
     class TaskDataSource: UITableViewDiffableDataSource<Int,Reminder>, NSFetchedResultsControllerDelegate {
         var reminderService: ReminderServiceType?
-        
+        var superDelegate: TaskViewModelDelegate?
         override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
             return true
         }
@@ -177,13 +167,14 @@ class TaskViewModel: NSObject {
         override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
             if editingStyle == .delete {
                 if let identifierToDelete = itemIdentifier(for: indexPath) {
-                    do {
-                        try reminderService?.delete(reminder: identifierToDelete)
-                        var snapshot = self.snapshot()
-                        snapshot.deleteItems([identifierToDelete])
-                        apply(snapshot)
-                    } catch {
-                        print(error)
+                    superDelegate?.deleteConfirmation { [weak self] in
+                        if $0 {
+                            do {
+                                try self?.reminderService?.delete(reminder: identifierToDelete)
+                            } catch {
+                                self?.superDelegate?.error(text: "Please try again later")
+                            }
+                        }
                     }
                 }
             }
@@ -201,6 +192,5 @@ class TaskViewModel: NSObject {
             self.apply(newSnapshot)
         }
     }
-    
 }
 

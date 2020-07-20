@@ -15,16 +15,29 @@ protocol CoordinatorSupportedViewModel {
 }
 
 protocol ViewModelDelegate: class {
-    func error(text: String)
+    func error(text:String)
+    func deleteConfirmation(onComplete: @escaping (Bool) -> Void)
 }
 extension ViewModelDelegate where Self: UIViewController {
     func showAlert(text: String) {
         let alertController = UIAlertController(title: "Warning!", message: text, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(alertAction)
-        self.show(alertController, sender: self)
+        self.present(alertController, animated: true, completion: nil)
     }
     func error(text:String) {
         showAlert(text: text)
+    }
+    func deleteConfirmation(onComplete: @escaping (Bool) -> Void) {
+        let alertController = UIAlertController(title: "Warning!", message: "Are you sure to delete?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            onComplete(true)
+        }
+        let noAction = UIAlertAction(title: "No", style: .default) { _ in
+            onComplete(false)
+        }
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        self.show(alertController, sender: self)
     }
 }

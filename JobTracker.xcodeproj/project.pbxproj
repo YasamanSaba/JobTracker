@@ -84,6 +84,10 @@
 		70D30A5424B05EF0005D29B2 /* ResumeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D30A5324B05EF0005D29B2 /* ResumeService.swift */; };
 		70D30A5624B05F0B005D29B2 /* ResumeServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D30A5524B05F0B005D29B2 /* ResumeServiceType.swift */; };
 		70D30A5824B06FCC005D29B2 /* ResumeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D30A5724B06FCC005D29B2 /* ResumeTableViewCell.swift */; };
+		70D32BB224C431A3001E87A7 /* ChecklistViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D32BB124C431A3001E87A7 /* ChecklistViewModelDelegate.swift */; };
+		70D32BB424C43934001E87A7 /* TaskViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D32BB324C43934001E87A7 /* TaskViewModelDelegate.swift */; };
+		70D32BB624C46BE4001E87A7 /* InterviewViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D32BB524C46BE4001E87A7 /* InterviewViewModelDelegate.swift */; };
+		70D32BB824C5651E001E87A7 /* ResumeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D32BB724C5651E001E87A7 /* ResumeViewModelDelegate.swift */; };
 		70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244B2490A745007FD797 /* AppliesViewController.swift */; };
 		70EA244F2490A8D1007FD797 /* ApplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244E2490A8D1007FD797 /* ApplyTableViewCell.swift */; };
 		70EA24522490AE55007FD797 /* Apply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70EA24502490AE55007FD797 /* Apply.storyboard */; };
@@ -233,6 +237,10 @@
 		70D30A5324B05EF0005D29B2 /* ResumeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeService.swift; sourceTree = "<group>"; };
 		70D30A5524B05F0B005D29B2 /* ResumeServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeServiceType.swift; sourceTree = "<group>"; };
 		70D30A5724B06FCC005D29B2 /* ResumeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTableViewCell.swift; sourceTree = "<group>"; };
+		70D32BB124C431A3001E87A7 /* ChecklistViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewModelDelegate.swift; sourceTree = "<group>"; };
+		70D32BB324C43934001E87A7 /* TaskViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModelDelegate.swift; sourceTree = "<group>"; };
+		70D32BB524C46BE4001E87A7 /* InterviewViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewViewModelDelegate.swift; sourceTree = "<group>"; };
+		70D32BB724C5651E001E87A7 /* ResumeViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewModelDelegate.swift; sourceTree = "<group>"; };
 		70EA244B2490A745007FD797 /* AppliesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesViewController.swift; sourceTree = "<group>"; };
 		70EA244E2490A8D1007FD797 /* ApplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyTableViewCell.swift; sourceTree = "<group>"; };
 		70EA24512490AE55007FD797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/Base.lproj/Apply.storyboard; sourceTree = "<group>"; };
@@ -343,6 +351,10 @@
 				F23EFE1324C416F500894B8B /* AppliesViewModelDelegate.swift */,
 				F23EFE1524C4187300894B8B /* TagViewModelDelegate.swift */,
 				F23EFE1724C420AE00894B8B /* ApplyViewModelDelegate.swift */,
+				70D32BB124C431A3001E87A7 /* ChecklistViewModelDelegate.swift */,
+				70D32BB324C43934001E87A7 /* TaskViewModelDelegate.swift */,
+				70D32BB524C46BE4001E87A7 /* InterviewViewModelDelegate.swift */,
+				70D32BB724C5651E001E87A7 /* ResumeViewModelDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -778,6 +790,7 @@
 				700712CC24BD769E00D3B721 /* ChecklistServiceType.swift in Sources */,
 				F23EFE1624C4187300894B8B /* TagViewModelDelegate.swift in Sources */,
 				F2A2D6E424A38FC200D25B35 /* UIButtonExtension.swift in Sources */,
+				70D32BB624C46BE4001E87A7 /* InterviewViewModelDelegate.swift in Sources */,
 				70BC371924B9965300E0680A /* TaskViewModel.swift in Sources */,
 				70483E7E249797C700612288 /* ChecklistItemTableViewCell.swift in Sources */,
 				709CDEE424A1E7C500A9DAE0 /* NotesViewModel.swift in Sources */,
@@ -808,8 +821,10 @@
 				70BC371724B995BF00E0680A /* TaskViewController.swift in Sources */,
 				704866D324A777EF00FA80B5 /* NewApplyViewModel.swift in Sources */,
 				F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */,
+				70D32BB424C43934001E87A7 /* TaskViewModelDelegate.swift in Sources */,
 				F29ABCFA24ACC6470032D3E2 /* FilterViewModel.swift in Sources */,
 				7009B1C224A33FD100B6437D /* TagCollectionViewCell.swift in Sources */,
+				70D32BB824C5651E001E87A7 /* ResumeViewModelDelegate.swift in Sources */,
 				7051A55E24AB0A7700B98C4B /* CompanyTableViewCell.swift in Sources */,
 				702056AA24A87268002495E1 /* CityService.swift in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
@@ -843,6 +858,7 @@
 				F293DDCA24B99B8300326E5A /* InterviewViewController.swift in Sources */,
 				700F52FD249DF749000EBCD3 /* TagTableViewCell.swift in Sources */,
 				70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */,
+				70D32BB224C431A3001E87A7 /* ChecklistViewModelDelegate.swift in Sources */,
 				7051A55C24AB08F100B98C4B /* CompanyViewModel.swift in Sources */,
 				709CDEE224A1E66400A9DAE0 /* NotesViewController.swift in Sources */,
 				700712CE24BD76BD00D3B721 /* ChecklistService.swift in Sources */,

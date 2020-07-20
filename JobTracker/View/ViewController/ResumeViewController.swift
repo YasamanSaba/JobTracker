@@ -18,33 +18,17 @@ class ResumeViewController: UIViewController, ViewModelSupportedViewControllers 
     @IBOutlet weak var pkvVersion: UIPickerView!
     @IBOutlet weak var txtURL: UITextField!
     
-    
     // MARK: - Actions
     @IBAction func done(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func add(_ sender: Any) {
-        do {
-            try viewModel.add(urlString: txtURL.text)
-        } catch let error as ResumeViewModelError {
-            showAlert(text: error.rawValue)
-        } catch {
-            print(error)
-        }
-        
+        viewModel.add(urlString: txtURL.text)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.configureVersion(pickerView: pkvVersion)
-        viewModel.configure(tableView: tblResumes)
-    }
-
-    func showAlert(text: String) {
-        let alertController = UIAlertController(title: "Warning!", message: text, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(alertAction)
-        self.present(alertController, animated: true, completion: nil)
+        viewModel.start(tableView: tblResumes, pickerView: pkvVersion)
     }
 }
 
@@ -53,4 +37,7 @@ extension ResumeViewController: UITableViewDelegate {
         viewModel.openURL(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+}
+extension ResumeViewController: ResumeViewModelDelegate {
+    
 }

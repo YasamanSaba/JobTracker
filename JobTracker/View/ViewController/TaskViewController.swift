@@ -58,7 +58,7 @@ class TaskViewController: UIViewController, ViewModelSupportedViewControllers {
     }
     
     // MARK: - Functions
-    fileprivate func activateBlur() {
+    private func activateBlur() {
         let blurEffect = UIBlurEffect(style: .light)
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView?.alpha = 0.95
@@ -68,7 +68,7 @@ class TaskViewController: UIViewController, ViewModelSupportedViewControllers {
             self.view.addSubview(blurEffectView)
         }
     }
-    fileprivate func deactiveBlur() {
+    private func deactiveBlur() {
         self.blurEffectView?.removeFromSuperview()
     }
     func showAlert(text: String) {
@@ -125,38 +125,28 @@ class TaskViewController: UIViewController, ViewModelSupportedViewControllers {
     // MARK: - OBJC Functions
     @objc func save() {
         guard let title = txtTitle.text, !title.trimmingCharacters(in: .whitespaces).isEmpty else {
-            showAlert(text: "Please fill title.")
+            showAlert(text: "Please fill title")
             return
         }
-        do {
-            try viewModel.save(title: title, isDone: swIsFinished.isOn, link: txtLink.text ?? "")
+        if viewModel.save(title: title, isDone: swIsFinished.isOn, link: txtLink.text ?? "") {
             if let navigationController = navigationController {
                 navigationController.popViewController(animated: true)
             } else {
                 self.dismiss(animated: true, completion: nil)
             }
-        } catch let error as TaskViewModelError{
-            showAlert(text: error.rawValue)
-        } catch {
-            print(error)
         }
     }
     @objc func nextButton() {
         guard let title = txtTitle.text, !title.trimmingCharacters(in: .whitespaces).isEmpty else {
-            showAlert(text: "Please fill title.")
+            showAlert(text: "Please fill title")
             return
         }
-        do {
-            try viewModel.next(title: title, isDone: swIsFinished.isOn, link: txtLink.text ?? "")
+        if viewModel.next(title: title, isDone: swIsFinished.isOn, link: txtLink.text ?? "") {
             bottomEffectView?.removeFromSuperview()
             createSaveButton()
             setOnMainBlur()
             txtTitle.resignFirstResponder()
             txtLink.resignFirstResponder()
-        } catch let error as TaskViewModelError{
-            showAlert(text: error.rawValue)
-        } catch {
-            print(error)
         }
     }
     
@@ -165,15 +155,10 @@ class TaskViewController: UIViewController, ViewModelSupportedViewControllers {
         super.viewDidLoad()
         createSaveButton()
         navigationItem.title = "Task"
-        
-        viewModel.configureReminder(tableView: tblReminder)
         txtAssignDate.inputView = vwAssignDatePicker
         txtDeadlineDate.inputView = vwDeadlinePicker
-        let titleAndURL = viewModel.getCurrentTitleAndURL()
-        txtTitle.text = titleAndURL.0
-        txtLink.text = titleAndURL.1
         
-        if titleAndURL.0 == nil {
+        if !viewModel.isEditingMode {
             let blurEffect = UIBlurEffect(style: .light)
             bottomEffectView = UIVisualEffectView(effect: blurEffect)
             bottomEffectView!.alpha = 0.75
@@ -184,12 +169,7 @@ class TaskViewController: UIViewController, ViewModelSupportedViewControllers {
             let nextBtn = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(nextButton))
             navigationItem.rightBarButtonItem = nextBtn
         }
-        viewModel.assignDateText { [weak self] in
-            self?.txtAssignDate.text = $0
-        }
-        viewModel.deadlineText { [weak self] in
-            self?.txtDeadlineDate.text = $0
-        }
+        viewModel.start(tableView: tblReminder)
     }
 }
 
@@ -213,4 +193,22 @@ extension TaskViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+}
+extension TaskViewController: TaskViewModelDelegate {
+    func deadline(text: String) {
+        txtDeadlineDate.text = text
+    }
+    
+    func assignDate(text: String) {
+        txtAssignDate.text = text
+    }
+    
+    func title(_ text: String) {
+        txtTitle.text = text
+    }
+    
+    func link(_ text: String) {
+        txtLink.text = text
+    }
+
 }
