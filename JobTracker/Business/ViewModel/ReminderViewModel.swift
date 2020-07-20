@@ -9,8 +9,10 @@
 import Foundation
 import UserNotifications
 
-struct ReminderViewModel {
+struct ReminderViewModel: CoordinatorSupportedViewModel {
     // MARK: - Properties -
+    weak var delegate: ReminderViewModelDelegate?
+    var coordinator: CoordinatorType!
     let subject: Reminderable
     let service: ReminderServiceType
     // MARK: - Initializer -

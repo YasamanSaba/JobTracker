@@ -101,6 +101,10 @@
 		F23EFE1424C416F500894B8B /* AppliesViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23EFE1324C416F500894B8B /* AppliesViewModelDelegate.swift */; };
 		F23EFE1624C4187300894B8B /* TagViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23EFE1524C4187300894B8B /* TagViewModelDelegate.swift */; };
 		F23EFE1824C420AE00894B8B /* ApplyViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23EFE1724C420AE00894B8B /* ApplyViewModelDelegate.swift */; };
+		F23EFE1A24C4619D00894B8B /* ReminderViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23EFE1924C4619D00894B8B /* ReminderViewModelDelegate.swift */; };
+		F23EFE1C24C464AB00894B8B /* NotesViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23EFE1B24C464AB00894B8B /* NotesViewModelDelegate.swift */; };
+		F23EFE1E24C4666000894B8B /* NoteViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23EFE1D24C4666000894B8B /* NoteViewModelDelegate.swift */; };
+		F23EFE2024C4697D00894B8B /* NewApplyViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23EFE1F24C4697D00894B8B /* NewApplyViewModelDelegate.swift */; };
 		F23F3052249DF28B00A92C49 /* ApplyServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23F3051249DF28B00A92C49 /* ApplyServiceType.swift */; };
 		F23F3054249DF35A00A92C49 /* ApplyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23F3053249DF35A00A92C49 /* ApplyService.swift */; };
 		F24633AA24A8A226004D1DE5 /* InterviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24633A924A8A226004D1DE5 /* InterviewService.swift */; };
@@ -123,6 +127,9 @@
 		F2EAA8B42498E8BB00876FA9 /* CountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EAA8B32498E8BB00876FA9 /* CountryService.swift */; };
 		F2EAA8B62498EBAC00876FA9 /* AppliesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EAA8B52498EBAC00876FA9 /* AppliesViewModel.swift */; };
 		F2EAA8B82498F43E00876FA9 /* DataInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EAA8B72498F43E00876FA9 /* DataInitializer.swift */; };
+		F2EC7AA324C5629B003BAEAF /* FilterViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC7AA224C5629B003BAEAF /* FilterViewModelDelegate.swift */; };
+		F2EC7AA524C5655B003BAEAF /* CountryViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC7AA424C5655B003BAEAF /* CountryViewModelDelegate.swift */; };
+		F2EC7AA724C56822003BAEAF /* CityViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC7AA624C56822003BAEAF /* CityViewModelDelegate.swift */; };
 		F2F9BE9224977ACD005C6C20 /* FlagCollectinViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F9BE9124977ACD005C6C20 /* FlagCollectinViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -257,6 +264,10 @@
 		F23EFE1324C416F500894B8B /* AppliesViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesViewModelDelegate.swift; sourceTree = "<group>"; };
 		F23EFE1524C4187300894B8B /* TagViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModelDelegate.swift; sourceTree = "<group>"; };
 		F23EFE1724C420AE00894B8B /* ApplyViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyViewModelDelegate.swift; sourceTree = "<group>"; };
+		F23EFE1924C4619D00894B8B /* ReminderViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModelDelegate.swift; sourceTree = "<group>"; };
+		F23EFE1B24C464AB00894B8B /* NotesViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModelDelegate.swift; sourceTree = "<group>"; };
+		F23EFE1D24C4666000894B8B /* NoteViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModelDelegate.swift; sourceTree = "<group>"; };
+		F23EFE1F24C4697D00894B8B /* NewApplyViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewApplyViewModelDelegate.swift; sourceTree = "<group>"; };
 		F23F3051249DF28B00A92C49 /* ApplyServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyServiceType.swift; sourceTree = "<group>"; };
 		F23F3053249DF35A00A92C49 /* ApplyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyService.swift; sourceTree = "<group>"; };
 		F24633A924A8A226004D1DE5 /* InterviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewService.swift; sourceTree = "<group>"; };
@@ -280,6 +291,9 @@
 		F2EAA8B32498E8BB00876FA9 /* CountryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryService.swift; sourceTree = "<group>"; };
 		F2EAA8B52498EBAC00876FA9 /* AppliesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesViewModel.swift; sourceTree = "<group>"; };
 		F2EAA8B72498F43E00876FA9 /* DataInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInitializer.swift; sourceTree = "<group>"; };
+		F2EC7AA224C5629B003BAEAF /* FilterViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModelDelegate.swift; sourceTree = "<group>"; };
+		F2EC7AA424C5655B003BAEAF /* CountryViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewModelDelegate.swift; sourceTree = "<group>"; };
+		F2EC7AA624C56822003BAEAF /* CityViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModelDelegate.swift; sourceTree = "<group>"; };
 		F2F9BE9124977ACD005C6C20 /* FlagCollectinViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagCollectinViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -339,10 +353,17 @@
 			isa = PBXGroup;
 			children = (
 				709CDEEA24A2113E00A9DAE0 /* CoordinatorSupportedViewModel.swift */,
-				F23EFE1124C40ED400894B8B /* CompanyViewModelDelegate.swift */,
-				F23EFE1324C416F500894B8B /* AppliesViewModelDelegate.swift */,
+				F23EFE1924C4619D00894B8B /* ReminderViewModelDelegate.swift */,
 				F23EFE1524C4187300894B8B /* TagViewModelDelegate.swift */,
+				F23EFE1324C416F500894B8B /* AppliesViewModelDelegate.swift */,
+				F23EFE1B24C464AB00894B8B /* NotesViewModelDelegate.swift */,
+				F23EFE1D24C4666000894B8B /* NoteViewModelDelegate.swift */,
 				F23EFE1724C420AE00894B8B /* ApplyViewModelDelegate.swift */,
+				F23EFE1124C40ED400894B8B /* CompanyViewModelDelegate.swift */,
+				F23EFE1F24C4697D00894B8B /* NewApplyViewModelDelegate.swift */,
+				F2EC7AA224C5629B003BAEAF /* FilterViewModelDelegate.swift */,
+				F2EC7AA424C5655B003BAEAF /* CountryViewModelDelegate.swift */,
+				F2EC7AA624C56822003BAEAF /* CityViewModelDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -763,11 +784,14 @@
 				7060EFEF2490C88400A229B8 /* NewApplyViewController.swift in Sources */,
 				70ADFF9C2498A61800345379 /* ReminderService.swift in Sources */,
 				702056AC24A87288002495E1 /* CityServiceType.swift in Sources */,
+				F23EFE1A24C4619D00894B8B /* ReminderViewModelDelegate.swift in Sources */,
 				7043B03224A0D3CF00F760AA /* ViewModelSupportedViewControllers.swift in Sources */,
 				70483E7C249795B100612288 /* ChecklistViewController.swift in Sources */,
 				7060EFF32491288300A229B8 /* Apply+CoreDataClass.swift in Sources */,
+				F23EFE1C24C464AB00894B8B /* NotesViewModelDelegate.swift in Sources */,
 				7043B02B24A0A42F00F760AA /* AppCoordinator.swift in Sources */,
 				F23F3054249DF35A00A92C49 /* ApplyService.swift in Sources */,
+				F23EFE1E24C4666000894B8B /* NoteViewModelDelegate.swift in Sources */,
 				F2EAA8B42498E8BB00876FA9 /* CountryService.swift in Sources */,
 				F2035575248BBBC600A9F9F8 /* AppDelegate.swift in Sources */,
 				7051A56024AB16DF00B98C4B /* CompanyService.swift in Sources */,
@@ -798,6 +822,7 @@
 				F2EAA8B82498F43E00876FA9 /* DataInitializer.swift in Sources */,
 				70ADFFA42498BD8800345379 /* ReminderServiceType.swift in Sources */,
 				7043B02924A0A40A00F760AA /* CoordinatorType.swift in Sources */,
+				F2EC7AA724C56822003BAEAF /* CityViewModelDelegate.swift in Sources */,
 				70BE562E249F47AA0039D123 /* UITextFieldExtension.swift in Sources */,
 				70ADFFAB2498F9D400345379 /* TagService.swift in Sources */,
 				70D30A5824B06FCC005D29B2 /* ResumeTableViewCell.swift in Sources */,
@@ -813,6 +838,7 @@
 				7051A55E24AB0A7700B98C4B /* CompanyTableViewCell.swift in Sources */,
 				702056AA24A87268002495E1 /* CityService.swift in Sources */,
 				F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */,
+				F2EC7AA524C5655B003BAEAF /* CountryViewModelDelegate.swift in Sources */,
 				70773C5924ACC14E00097FFE /* CityCollectionViewCell.swift in Sources */,
 				F24633AE24A8C814004D1DE5 /* TaskServiceType.swift in Sources */,
 				7043B02D24A0CEE500F760AA /* Scene.swift in Sources */,
@@ -820,6 +846,7 @@
 				F2B147B024A0E53D00BD5A22 /* BadgeSupplementaryView.swift in Sources */,
 				F220D97024ADC6540085DCED /* StateServiceType.swift in Sources */,
 				70773C5324AC6EFB00097FFE /* CountryViewController.swift in Sources */,
+				F23EFE2024C4697D00894B8B /* NewApplyViewModelDelegate.swift in Sources */,
 				F24A0DC924A470F600D38217 /* ApplyViewModel.swift in Sources */,
 				70483E82249799E700612288 /* TaskTableViewCell.swift in Sources */,
 				F23EFE1824C420AE00894B8B /* ApplyViewModelDelegate.swift in Sources */,
@@ -852,6 +879,7 @@
 				7051A55A24AB088C00B98C4B /* CompanyViewController.swift in Sources */,
 				F23F3052249DF28B00A92C49 /* ApplyServiceType.swift in Sources */,
 				7009B1C024A327D400B6437D /* BoxUIView.swift in Sources */,
+				F2EC7AA324C5629B003BAEAF /* FilterViewModelDelegate.swift in Sources */,
 				F23EFE1424C416F500894B8B /* AppliesViewModelDelegate.swift in Sources */,
 				70EA244F2490A8D1007FD797 /* ApplyTableViewCell.swift in Sources */,
 			);

@@ -28,4 +28,5 @@ protocol ApplyServiceType {
     func deleteTags(from apply: Apply) throws
     func delete(tag: Tag, from apply: Apply) throws
     func update(apply: Apply, company: Company?, city: City?, country: Country?, link: URL?, salary: Int32?, state: Status?, resume: Resume?, date: Date?, tags: [Tag]?) throws
+    func fetch(apply: Apply) -> NSFetchedResultsController<Apply>
 }

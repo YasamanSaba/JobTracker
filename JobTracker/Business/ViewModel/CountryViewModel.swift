@@ -9,12 +9,9 @@
 import UIKit
 import CoreData
 
-enum CountryViewModelError: String, Error {
-    case alreadyExists = "This country already exists."
-}
-
-class CountryViewModel: NSObject {
-    
+class CountryViewModel: NSObject, CoordinatorSupportedViewModel {
+    weak var delegate: CountryViewModelDelegate?
+    var coordinator: CoordinatorType!
     let countryService: CountryServiceType
     var countryResultsController: NSFetchedResultsController<Country>?
     var countryDataSource: UICollectionViewDiffableDataSource<Int,Country>?
@@ -45,13 +42,11 @@ class CountryViewModel: NSObject {
         }
     }
     
-    func add(name:String, flag: String) throws {
+    func add(name:String, flag: String) {
         do {
             try countryService.add(name: name, flag: flag)
-        } catch CountryServiceError.alreadyExists {
-            throw CountryViewModelError.alreadyExists
         } catch {
-            throw error
+            delegate?.error(text: "This country already exists.")
         }
     }
     

@@ -9,12 +9,7 @@
 import UIKit
 import CoreData
 
-enum FilterViewModelError: String, Error {
-    case dateFilterAlreadySelected = "One date filter already exists."
-    case dateFilterBothNil = "Both from and to date can't be empty."
-}
-
-class FilterViewModel {
+class FilterViewModel: CoordinatorSupportedViewModel {
     // MARK: - Nested Types -
     enum Section {
         case main
@@ -45,6 +40,8 @@ class FilterViewModel {
         var date: DateFilter?
     }
     // MARK: - Properties -
+    weak var delegate: FilterViewModelDelegate?
+    var coordinator: CoordinatorType!
     let tagService: TagServiceType
     var tagDataSource: UITableViewDiffableDataSource<Section, Tag>?
     var tagResultController: NSFetchedResultsController<Tag>?
@@ -281,10 +278,14 @@ class FilterViewModel {
             }
         }
     }
-    func addDate() throws {
-        guard !isDateFilterSelected else {throw FilterViewModelError.dateFilterAlreadySelected}
+    func addDate() {
+        guard !isDateFilterSelected else {
+            delegate?.error(text: "One date filter already exists.")
+            return
+        }
         if selectedFromDate == nil && selectedToDate == nil {
-            throw FilterViewModelError.dateFilterBothNil
+            delegate?.error(text: "Both from and to date can't be empty.")
+            return
         }
         isDateFilterSelected = true
         let dateFilter = FilterObject.DateFilter(from: selectedFromDate, to: selectedToDate)

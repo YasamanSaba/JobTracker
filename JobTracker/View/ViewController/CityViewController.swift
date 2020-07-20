@@ -22,13 +22,7 @@ class CityViewController: UIViewController, ViewModelSupportedViewControllers {
     // MARK: - Actions
     @IBAction func add(_ sender: Any) {
         if let cityName = txtCity.text {
-            do {
-                try viewModel.add(name:cityName)
-            } catch let error as CityViewModelError {
-                showAlert(text: error.rawValue)
-            } catch {
-                print(error)
-            }
+            viewModel.add(name:cityName)
         }
         txtCity.text = ""
     }
@@ -49,11 +43,13 @@ class CityViewController: UIViewController, ViewModelSupportedViewControllers {
     @objc func onTxtCountryChanged() {
         viewModel.filter(by: txtCity.text ?? "")
     }
-    
+    /*
     func showAlert(text: String) {
            let alertController = UIAlertController(title: "Warning!", message: text, preferredStyle: .alert)
            let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
            alertController.addAction(alertAction)
            self.present(alertController, animated: true, completion: nil)
-       }
+       }*/
+}
+extension CityViewController: CityViewModelDelegate {
 }

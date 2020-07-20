@@ -84,16 +84,12 @@ class NoteViewController: UIViewController, ViewModelSupportedViewControllers {
             return
         }
         do {
-            try viewModel.save(title: title, body: txtDesc.text ?? "")
+            viewModel.save(title: title, body: txtDesc.text ?? "")
             if let navigationController = navigationController {
                 navigationController.popViewController(animated: true)
             } else {
                 self.dismiss(animated: true, completion: nil)
             }
-        } catch let error as NoteViewModelError {
-            showAlert(text: error.rawValue)
-        } catch {
-            print(error)
         }
         
     }
@@ -123,4 +119,7 @@ class NoteViewController: UIViewController, ViewModelSupportedViewControllers {
     @objc func tapDone(sender: Any) {
         self.view.endEditing(true)
     }
+}
+extension NoteViewController: NoteViewModelDelegate {
+    
 }

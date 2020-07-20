@@ -28,15 +28,9 @@ class CountryViewController: UIViewController, ViewModelSupportedViewControllers
             showAlert(text: "Please fill all the fields.")
             return
         }
-        do {
-            try viewModel.add(name: name, flag: flag)
-            txtCountryName.text = ""
-            txtCountryFlag.text = ""
-        } catch let error as CountryViewModelError {
-            showAlert(text: error.rawValue)
-        } catch {
-            showAlert(text: "Try again later.")
-        }
+        viewModel.add(name: name, flag: flag)
+        txtCountryName.text = ""
+        txtCountryFlag.text = ""
     }
     @IBAction func done(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -83,4 +77,6 @@ extension CountryViewController: UITextFieldDelegate {
             return true
         }
     }
+}
+extension CountryViewController: CountryViewModelDelegate {
 }

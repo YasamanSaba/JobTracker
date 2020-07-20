@@ -9,8 +9,8 @@
 import UIKit
 import CoreData
 
-class NotesViewModel {
-    
+class NotesViewModel: CoordinatorSupportedViewModel {
+    // MARK: - Nested Types -
     struct NoteItem: Hashable {
         let note: Note
         let title: String
@@ -21,49 +21,6 @@ class NotesViewModel {
             self.body = note.body ?? ""
         }
     }
-    
-    let appCoordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
-    let noteService: NoteServiceType
-    var noteDataSource: NoteDataSource?
-    var noteResultsController: NSFetchedResultsController<Note>?
-    init(noteService: NoteServiceType) {
-        self.noteService = noteService
-    }
-    
-    func add(sender: UIViewController) {
-        appCoordinator?.present(scene: .note(nil), sender: sender)
-    }
-    func select(at indexPath: IndexPath, sender: UIViewController) {
-        if let note = noteDataSource?.snapshot().itemIdentifiers[indexPath.row] {
-            appCoordinator?.present(scene: .note(note.note), sender: sender)
-        }
-    }
-    func configure(tableView: UITableView) {
-        noteDataSource = NoteDataSource(tableView: tableView) {
-            (tableView, indexPath, note) -> UITableViewCell? in
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteTableViewCell.reuseIdentifier) as? NoteTableViewCell else {
-                return nil
-            }
-            cell.configure(title: note.title)
-            return cell
-        }
-        noteDataSource?.noteService = noteService
-        noteResultsController = noteService.getAll()
-        noteResultsController?.delegate = noteDataSource
-        do {
-            try noteResultsController?.performFetch()
-            if let objects = noteResultsController?.fetchedObjects {
-                var snapshot = NSDiffableDataSourceSnapshot<Int,NoteItem>()
-                snapshot.appendSections([1])
-                snapshot.appendItems(objects.map{NoteItem($0)},toSection: 1)
-                noteDataSource?.apply(snapshot)
-            }
-        } catch {
-            print(error
-            )
-        }
-    }
-    
     class NoteDataSource: UITableViewDiffableDataSource<Int,NoteItem>, NSFetchedResultsControllerDelegate {
         var noteService: NoteServiceType?
         func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
@@ -88,6 +45,49 @@ class NotesViewModel {
                     try? noteService?.delete(note: note.note)
                 }
             }
+        }
+    }
+    // MARK: - Properties -
+    weak var delegate: NotesViewModelDelegate?
+    var coordinator: CoordinatorType!
+    let noteService: NoteServiceType
+    var noteDataSource: NoteDataSource?
+    var noteResultsController: NSFetchedResultsController<Note>?
+    // MARK: - Initializer -
+    init(noteService: NoteServiceType) {
+        self.noteService = noteService
+    }
+    // MARK: - Functions -
+    func add(sender: UIViewController) {
+        coordinator.present(scene: .note(nil), sender: sender)
+    }
+    func select(at indexPath: IndexPath, sender: UIViewController) {
+        if let note = noteDataSource?.snapshot().itemIdentifiers[indexPath.row] {
+            coordinator.present(scene: .note(note.note), sender: sender)
+        }
+    }
+    func configure(tableView: UITableView) {
+        noteDataSource = NoteDataSource(tableView: tableView) {
+            (tableView, indexPath, note) -> UITableViewCell? in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteTableViewCell.reuseIdentifier) as? NoteTableViewCell else {
+                return nil
+            }
+            cell.configure(title: note.title)
+            return cell
+        }
+        noteDataSource?.noteService = noteService
+        noteResultsController = noteService.getAll()
+        noteResultsController?.delegate = noteDataSource
+        do {
+            try noteResultsController?.performFetch()
+            if let objects = noteResultsController?.fetchedObjects {
+                var snapshot = NSDiffableDataSourceSnapshot<Int,NoteItem>()
+                snapshot.appendSections([1])
+                snapshot.appendItems(objects.map{NoteItem($0)},toSection: 1)
+                noteDataSource?.apply(snapshot)
+            }
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

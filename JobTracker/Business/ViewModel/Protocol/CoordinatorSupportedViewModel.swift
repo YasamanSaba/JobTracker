@@ -22,7 +22,7 @@ extension ViewModelDelegate where Self: UIViewController {
         let alertController = UIAlertController(title: "Warning!", message: text, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(alertAction)
-        self.show(alertController, sender: self)
+        self.present(alertController, animated: true, completion: nil)
     }
     func error(text:String) {
         showAlert(text: text)

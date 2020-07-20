@@ -31,8 +31,10 @@ extension Scene {
             let storyboard = UIStoryboard(name: "Reminder", bundle: nil)
             let viewController = storyboard.instantiateViewController(identifier: ReminderViewController.reuseIdentifier) as ReminderViewController
             let service = ReminderService(context: context)
-            let viewModel = ReminderViewModel(subject: reminderable, service: service)
+            var viewModel = ReminderViewModel(subject: reminderable, service: service)
             viewController.viewModel = viewModel
+            viewModel.delegate = viewController
+            viewModel.coordinator = coordinator
             return viewController
         case .applies:
             let storyboard = UIStoryboard(name: "Apply", bundle: nil)
@@ -51,6 +53,8 @@ extension Scene {
             let noteService = NoteService(context: context)
             let viewModel = NotesViewModel(noteService: noteService)
             viewController.viewModel = viewModel
+            viewModel.delegate = viewController
+            viewModel.coordinator = coordinator
             let navController = UINavigationController(rootViewController: viewController)
             return navController
         case .note(let note):
@@ -84,6 +88,8 @@ extension Scene {
             let stateService = StateService(context: context)
             let viewModel = NewApplyViewModel(countryService: countryService, cityService: cityService, applyService: applyService, tagService: tagService, stateService: stateService, apply: apply)
             viewController.viewModel = viewModel
+            viewModel.delegate = viewController
+            viewModel.coordinator = coordinator
             return viewController
         case .company(let onComplete):
             let storyboard = UIStoryboard(name: "Company", bundle: nil)
@@ -102,6 +108,8 @@ extension Scene {
             let stateService = StateService(context: context)
             let viewModel = FilterViewModel(tagService: tagService, cityService: cityService, stateService: stateService, country: country, onCompletion: onCompletion)
             viewController.viewModel = viewModel
+            viewModel.delegate = viewController
+            viewModel.coordinator = coordinator
             return viewController
         case .country:
             let storyboard = UIStoryboard(name: "Country", bundle: nil)
@@ -109,6 +117,8 @@ extension Scene {
             let countryService = CountryService(context: context)
             let viewModel = CountryViewModel(countryService: countryService)
             viewController.viewModel = viewModel
+            viewModel.delegate = viewController
+            viewModel.coordinator = coordinator
             return viewController
         case .city(let country):
             let storyboard = UIStoryboard(name: "City", bundle: nil)
@@ -116,6 +126,8 @@ extension Scene {
             let cityService = CityService(context: context)
             let viewModel = CityViewModel(country: country, cityService: cityService)
             viewController.viewModel = viewModel
+            viewModel.delegate = viewController
+            viewModel.coordinator = coordinator
             return viewController
         case .resume:
             let storyboard = UIStoryboard(name: "Resume", bundle: nil)
