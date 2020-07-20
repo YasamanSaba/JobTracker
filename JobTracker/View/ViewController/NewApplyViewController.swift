@@ -12,15 +12,15 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
     
     // MARK: - ViewModel
     var viewModel: NewApplyViewModel!
-    
-    
+    // MARK: - Properties
+    var blurEffect: UIBlurEffect?
+    var blurEffectView: UIVisualEffectView?
     // MARK: - Outlets
     @IBOutlet weak var pkvResume: UIPickerView!
     @IBOutlet weak var pkvStatus: UIPickerView!
     @IBOutlet weak var pkvCountry: UIPickerView!
     @IBOutlet weak var pkvCity: UIPickerView!
     @IBOutlet weak var pkvDate: UIDatePicker!
-    
     @IBOutlet weak var btnCompany: UIButton!
     @IBOutlet weak var txtJobURL: UITextField!
     @IBOutlet weak var txtApplyDate: UITextField!
@@ -34,7 +34,6 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
     @IBOutlet weak var vwCityPicker: UIView!
     @IBOutlet weak var vwResumePicker: UIView!
     @IBOutlet weak var vwState: UIView!
-    
     @IBOutlet weak var colTags: UICollectionView!
     // MARK: - Actions
     @IBAction func btnSave(_ sender: Any) {
@@ -72,7 +71,6 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
     @IBAction func btnCountryViewAdd(_ sender: Any) {
         viewModel.addContry(sender: self)
     }
-    
     @IBAction func btnCityViewDone(_ sender: Any) {
         txtCity.resignFirstResponder()
     }
@@ -82,15 +80,9 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
     @IBAction func btnStateDone(_ sender: Any) {
         txtState.resignFirstResponder()
     }
-    
     @IBAction func addTags(_ sender: Any) {
         viewModel.addTags(sender: self)
     }
-    // MARK: - Properties
-    
-    var blurEffect: UIBlurEffect?
-    var blurEffectView: UIVisualEffectView?
-    
     // MARK: - Functions
     fileprivate func activateBlur() {
         blurEffect = UIBlurEffect(style: .light)
@@ -102,11 +94,9 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
             self.view.addSubview(blurEffectView)
         }
     }
-    
     fileprivate func deactiveBlur() {
         self.blurEffectView?.removeFromSuperview()
     }
-    
     @objc func tapSalaryDone(sender: Any?) {
         txtSalary.resignFirstResponder()
     }
@@ -120,15 +110,10 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
         txtState.inputView = vwState
         txtResume.inputView = vwResumePicker
         self.txtSalary.addDoneButton(title: "Done", target: self, selector: #selector(tapSalaryDone(sender:)))
-        viewModel.configureCountry(pickerView: pkvCountry)
-        viewModel.configureCity(pickerView: pkvCity)
-        viewModel.configureResume(pickerView: pkvResume)
-        viewModel.configureState(pickerView: pkvStatus)
-        viewModel.configureTags(collectionView: colTags)
-        viewModel.start()
+        viewModel.start(tagCollectionView: colTags, statePickerView: pkvStatus, resumePickerView: pkvResume, cityPickerView: pkvCity, countryPickerView: pkvCountry)
     }
 }
-
+// MARK: - Extensions
 extension NewApplyViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

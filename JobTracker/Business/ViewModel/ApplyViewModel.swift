@@ -58,41 +58,22 @@ class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
         self.tagService = tagService
     }
     // MARK: - Functions -
-    func start() {
+    func start(collectionView: UICollectionView, interviewTableView: UITableView?, taskTableview: UITableView?) {
         let info = ApplyInfo(companyName: apply.company?.title ?? "Unknown", jobOfferURL: apply.jobLink ?? URL(string: "www.google.com")!, location: "\(apply.city?.country?.name ?? "Unknown"), \(apply.city?.name ?? "Unknown")", timeElapsed: MyDateFormatter.shared.passedTime(from: apply.date!) ,state: apply.statusEnum?.rawValue ?? "Unknown", resume: apply.resume?.version ?? "Unknown", isFavorite: apply.company?.isFavorite ?? false)
         delegate?.applyInfo(info)
         applyResultController = applyService.fetch(apply: apply)
         try? applyResultController.performFetch()
         applyResultController.delegate = self
-    }
-    func addTask(sender: Any) {
-        coordinator.push(scene: .task(apply,nil), sender: sender)
-    }
-    func configureResume(pickerView: UIPickerView) {
-        pickerView.accessibilityIdentifier = "ResumePickerView"
-        resumeResultController = applyService.getAllResumeVersion()
-        self.resumePickerView = pickerView
-        resumeResultControllerDelegate = ResumeResultControllerDelegate(resumePickerView: pickerView)
-        resumeResultController.delegate = resumeResultControllerDelegate
-        do {
-            try resumeResultController.performFetch()
-            self.resumePickerView = pickerView
-            pickerView.delegate = self
-            pickerView.dataSource = self
-            pickerView.selectRow(resumeResultController.fetchedObjects?.firstIndex(of: apply.resume!) ?? 0, inComponent: 0, animated: true)
-        } catch {
-            print(error.localizedDescription)
+        // MARK: Call private functions
+        configureTag(collectionView: collectionView)
+        if let interviewTableView = interviewTableView {
+            configureInterviewDataSource(for: interviewTableView)
+        }
+        if let taskTableview = taskTableview {
+            configureTaskDataSource(for: taskTableview)
         }
     }
-    func configureState(pickerView: UIPickerView) {
-        self.states = stateService.getAllState()
-        self.statePickerView = pickerView
-        pickerView.accessibilityIdentifier = "StatePickerView"
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        pickerView.selectRow(states.firstIndex(of: apply.statusEnum ?? Status.hr) ?? 0, inComponent: 0, animated: true)
-    }
-    func configureTag(collectionView: UICollectionView) {
+    private func configureTag(collectionView: UICollectionView) {
         tagDataSource = UICollectionViewDiffableDataSource<Section,Tag>(collectionView: collectionView) { (collectionView, indexPath, tag) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.reuseIdentifier, for: indexPath) as? TagCollectionViewCell else {return nil}
             cell.configure(tag: tag)
@@ -105,26 +86,7 @@ class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
             tagDataSource.apply(snapShot)
         }
     }
-    func checklist(sender: UIViewController) {
-        coordinator.present(scene: .checklist(apply), sender: sender)
-    }
-    func editApply(sender: UIViewController) {
-        coordinator.push(scene: .newApply(apply), sender: sender)
-    }
-    func addTags(sender: UIViewController) {
-        coordinator.present(scene: .tag({ [weak self] tags in
-            guard let self = self else {return}
-            try? self.applyService.deleteTags(from: self.apply)
-            try? self.applyService.add(tags: tags, to: self.apply)
-            if let tagSet = self.apply.tag {
-                       var snapShot = NSDiffableDataSourceSnapshot<Section,Tag>()
-                       snapShot.appendSections([.main])
-                       snapShot.appendItems(Array(tagSet.map{$0 as! Tag}), toSection: .main)
-                self.tagDataSource.apply(snapShot)
-                   }
-        }, apply.tag == nil ? [] : Array(apply.tag!.map{$0 as! Tag})), sender: sender)
-    }
-    func configureInterviewDataSource(for tableView: UITableView) {
+    private func configureInterviewDataSource(for tableView: UITableView) {
         interviewDataSource = InterviewDataSource(tableView: tableView) { (tableView, indexPath, interview) -> UITableViewCell? in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: InterviewTableViewCell.reuseIdentifier, for: indexPath) as? InterviewTableViewCell else { return nil }
             let dateFormatter = DateFormatter()
@@ -150,7 +112,7 @@ class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
             print(error.localizedDescription)
         }
     }
-    func configureTaskDataSource(for tableView: UITableView) {
+    private func configureTaskDataSource(for tableView: UITableView) {
         taskDataSource = TaskDataSource(tableView: tableView) { (tableView, indexPath, task) -> UITableViewCell? in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.reuseIdentifier, for: indexPath) as? TaskTableViewCell else {return nil}
             let dateFormatter = DateFormatter()
@@ -183,6 +145,28 @@ class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    func checklist(sender: UIViewController) {
+        coordinator.present(scene: .checklist(apply), sender: sender)
+    }
+    func editApply(sender: UIViewController) {
+        coordinator.push(scene: .newApply(apply), sender: sender)
+    }
+    func addTags(sender: UIViewController) {
+        coordinator.present(scene: .tag({ [weak self] tags in
+            guard let self = self else {return}
+            try? self.applyService.deleteTags(from: self.apply)
+            try? self.applyService.add(tags: tags, to: self.apply)
+            if let tagSet = self.apply.tag {
+                var snapShot = NSDiffableDataSourceSnapshot<Section,Tag>()
+                snapShot.appendSections([.main])
+                snapShot.appendItems(Array(tagSet.map{$0 as! Tag}), toSection: .main)
+                self.tagDataSource.apply(snapShot)
+            }
+            }, apply.tag == nil ? [] : Array(apply.tag!.map{$0 as! Tag})), sender: sender)
+    }
+    func addTask(sender: Any) {
+        coordinator.push(scene: .task(apply,nil), sender: sender)
     }
     func setIsFavorite(_ value: Bool) {
         try? companyService.setIsFavorite(for: apply, value)

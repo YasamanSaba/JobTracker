@@ -98,25 +98,16 @@ class FilterViewController: UIViewController, ViewModelSupportedViewControllers 
         let barBtnCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
         navigationItem.leftBarButtonItem = barBtnCancel
         setup()
+        viewModel.start(tagTableView: tblTag, cityTableView: tblCity, stateTableView: tblState, collectionView: colFilter)
     }
     // MARK: - Functions -
     func setup() {
         configureSegmentViews()
         colFilter.collectionViewLayout = configureLayout()
-        viewModel.setupCityDataSource(for: tblCity)
-        viewModel.setupTagDataSource(for: tblTag)
-        viewModel.setupStateDataSource(for: tblState)
-        viewModel.setupFilterObjectDataSource(for: colFilter)
         srbCity.searchTextField.addTarget(self, action: #selector(cityTextChanged), for: .allEditingEvents)
         srbTag.searchTextField.addTarget(self, action: #selector(tagTextChanged), for: .allEditingEvents)
         srbState.searchTextField.addTarget(self, action: #selector(stateTextChanged), for: .allEditingEvents)
         configureTextBoxDatePicker()
-        viewModel.date(isFromDate: true) { [weak self] in
-            self?.txtFromDate.text = $0
-        }
-        viewModel.date(isFromDate: false) { [weak self] in
-            self?.txtToDate.text = $0
-        }
     }
     func activateBlur() {
         blurEffect = UIBlurEffect(style: .light)
@@ -254,4 +245,10 @@ extension FilterViewController: UITextFieldDelegate {
     }
 }
 extension FilterViewController: FilterViewModelDelegate {
+    func fromDate(text: String) {
+        txtFromDate.text = text
+    }
+    func toDate(text: String) {
+        txtToDate.text = text
+    }
 }

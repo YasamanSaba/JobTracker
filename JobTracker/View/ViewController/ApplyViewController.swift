@@ -45,18 +45,16 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
-        viewModel.start()
+        viewModel.start(collectionView: colTags, interviewTableView: tblInterview, taskTableview: tblTask)
     }
     override func viewWillAppear(_ animated: Bool) {
-        viewModel.configureTag(collectionView: colTags)
+        viewModel.start(collectionView: colTags, interviewTableView: nil, taskTableview: nil)
     }
     // MARK: - Functions -
     func setUp() {
         let barButton = UIBarButtonItem(image: UIImage(systemName: "list.number"), style: .done, target: self, action: #selector(btnChecklist))
         let editButton = UIBarButtonItem(image: UIImage(systemName: "pencil"), style: .done, target: self, action: #selector(btnEditApply))
         navigationItem.rightBarButtonItems = [barButton, editButton]
-        viewModel.configureInterviewDataSource(for: tblInterview)
-        viewModel.configureTaskDataSource(for: tblTask)
     }
     fileprivate func activateBlur() {
         let blurEffect = UIBlurEffect(style: .light)

@@ -63,6 +63,8 @@ extension Scene {
             let noteService = NoteService(context: context)
             let viewModel = NoteViewModel(note: note, noteService: noteService)
             viewController.viewModel = viewModel
+            viewModel.delegate = viewController
+            viewModel.coordinator = coordinator
             return viewController
         case .apply(let apply):
             let storyboard = UIStoryboard(name: "ApplyDetail", bundle: nil)

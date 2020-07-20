@@ -40,16 +40,14 @@ class TagViewController: UIViewController, ViewModelSupportedViewControllers {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.srbSearchBar.searchTextField.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
-        viewModel.configureDatasource(for: tblTableView)
-        viewModel.configureSelectedTags(collectionView: colTags)
+        viewModel.start(collectionView: colTags, tableView: tblTableView)
     }
-    // MARK: - Functions -
+    // MARK: - Functions
     @objc func tapDone(sender: Any) {
         self.view.endEditing(true)
     }
-    
 }
-
+// MARK: - Extensions
 extension TagViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {

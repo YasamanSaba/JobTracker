@@ -10,6 +10,29 @@ import UIKit
 import CoreData
 
 class TagViewModel: NSObject, CoordinatorSupportedViewModel {
+    // - Nested Type -
+    class TagDataSource: UITableViewDiffableDataSource<Int,Tag> {
+        var service: TagServiceType!
+        weak var superDelegate: TagViewModelDelegate?
+        // MARK: editing support
+        override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
+        }
+        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                if let identifierToDelete = itemIdentifier(for: indexPath) {
+                    do {
+                        try service.delete(tag: identifierToDelete)
+                    } catch TagServiceError.tagHasOtherRelation {
+                        superDelegate?.error(text: "You have used it in other place")
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        }
+    }
+    // MARK: - Properties -
     weak var delegate: TagViewModelDelegate?
     var coordinator: CoordinatorType!
     let service: TagServiceType
@@ -25,14 +48,14 @@ class TagViewModel: NSObject, CoordinatorSupportedViewModel {
             selectedTagsDataSource.apply(snapShot)
         }
     }
-    
+    // MARK: - Initializer -
     init(service: TagServiceType, onCompletion: @escaping ([Tag]) -> Void, initialTags: [Tag]? = nil) {
         self.service = service
         self.onCompletion = onCompletion
         self.selectedTags = initialTags ?? []
     }
-    
-    func configureSelectedTags(collectionView: UICollectionView) {
+    // MARK: - Functions -
+    private func configureSelectedTags(collectionView: UICollectionView) {
         selectedTagsDataSource = UICollectionViewDiffableDataSource<Int,Tag>(collectionView: collectionView) { (collectionView, indexPath, tag) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.reuseIdentifier, for: indexPath) as? TagCollectionViewCell else { return nil}
             
@@ -50,8 +73,7 @@ class TagViewModel: NSObject, CoordinatorSupportedViewModel {
         snapShot.appendItems(selectedTags, toSection: 1)
         selectedTagsDataSource.apply(snapShot)
     }
-    
-    func configureDatasource(for tableView: UITableView) {
+    private func configureDatasource(for tableView: UITableView) {
         dataSource = TagDataSource(tableView: tableView ){ (tableView, indexPath, item) -> UITableViewCell? in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TagTableViewCell.reuseIdentifier) as? TagTableViewCell else { return nil }
             
@@ -76,17 +98,13 @@ class TagViewModel: NSObject, CoordinatorSupportedViewModel {
             print(error)
         }
     }
-    
     func addNew(tag: String) {
         do {
             try service.add(tag: tag)
-        } catch TagServiceError.existingTag{
-            delegate?.error(text: "Tag already exists")
         } catch {
-            print(error)
+            delegate?.error(text: "Tag already exists")
         }
     }
-    
     func filterTags(by text: String) {
         if let objects = fetchedResultController.fetchedObjects {
             var snapShot = NSDiffableDataSourceSnapshot<Int,Tag>()
@@ -96,34 +114,15 @@ class TagViewModel: NSObject, CoordinatorSupportedViewModel {
             dataSource.apply(snapShot)
         }
     }
-    
     func save() {
         onCompletion(selectedTags)
     }
-    
-    class TagDataSource: UITableViewDiffableDataSource<Int,Tag> {
-        var service: TagServiceType!
-        weak var superDelegate: TagViewModelDelegate?
-        // MARK: editing support
-        override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-            return true
-        }
-        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-            if editingStyle == .delete {
-                if let identifierToDelete = itemIdentifier(for: indexPath) {
-                    do {
-                        try service.delete(tag: identifierToDelete)
-                    } catch TagServiceError.tagHasOtherRelation {
-                        superDelegate?.error(text: "You have used it in other place")
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                }
-            }
-        }
+    func start(collectionView: UICollectionView, tableView: UITableView) {
+        configureDatasource(for: tableView)
+        configureSelectedTags(collectionView: collectionView)
     }
 }
-
+// MARK: - Extensions -
 extension TagViewModel: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
         var newSnapShot = NSDiffableDataSourceSnapshot<Int,Tag>()
@@ -138,7 +137,6 @@ extension TagViewModel: NSFetchedResultsControllerDelegate {
         dataSource.apply(newSnapShot)
     }
 }
-
 extension TagViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tag = dataSource.snapshot().itemIdentifiers[indexPath.row]

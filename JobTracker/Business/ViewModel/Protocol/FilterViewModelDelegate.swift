@@ -9,5 +9,6 @@
 import Foundation
 
 protocol FilterViewModelDelegate: ViewModelDelegate {
-    
+    func fromDate(text: String)
+    func toDate(text: String)
 }

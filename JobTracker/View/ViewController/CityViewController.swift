@@ -9,10 +9,8 @@
 import UIKit
 
 class CityViewController: UIViewController, ViewModelSupportedViewControllers {
-    
     // MARK: - ViewModel
     var viewModel: CityViewModel!
-    
     // MARK: - Outlets
     @IBOutlet weak var lblCountryFlag: UILabel!
     @IBOutlet weak var lblCountryName: UILabel!
@@ -26,30 +24,23 @@ class CityViewController: UIViewController, ViewModelSupportedViewControllers {
         }
         txtCity.text = ""
     }
-    
     @IBAction func done(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.configure(collectionView: colCities)
+        viewModel.start(collectionView: colCities)
         let countryInfo = viewModel.getCountry()
         lblCountryName.text = countryInfo.0
         lblCountryFlag.text = countryInfo.1
         txtCity.addTarget(self, action: #selector(onTxtCountryChanged), for: .allEditingEvents)
     }
-
+    // MARK: - Functions
     @objc func onTxtCountryChanged() {
         viewModel.filter(by: txtCity.text ?? "")
     }
-    /*
-    func showAlert(text: String) {
-           let alertController = UIAlertController(title: "Warning!", message: text, preferredStyle: .alert)
-           let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-           alertController.addAction(alertAction)
-           self.present(alertController, animated: true, completion: nil)
-       }*/
 }
+// MARK: - Extension
 extension CityViewController: CityViewModelDelegate {
 }

@@ -26,8 +26,8 @@
             filePath = "JobTracker/Business/ViewModel/FilterViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "setupFilterObjectDataSource(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -61,22 +61,6 @@
             startingLineNumber = "57"
             endingLineNumber = "57"
             landmarkName = "remainTime(to:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EBF989F4-C0D3-476A-96DB-080004505275"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "JobTracker/Business/ViewModel/CompanyViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "configureCompany(tableView:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

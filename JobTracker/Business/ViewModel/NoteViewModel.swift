@@ -9,13 +9,10 @@
 import Foundation
 
 class NoteViewModel: CoordinatorSupportedViewModel {
-    
-    struct InitialValues {
-        let title: String
-        let body: String
-    }
+    // MARK: - Properties
     weak var delegate: NoteViewModelDelegate?
     var coordinator: CoordinatorType!
+    let noteService: NoteServiceType
     var note: Note? {
         didSet{
             if note != nil {
@@ -23,10 +20,8 @@ class NoteViewModel: CoordinatorSupportedViewModel {
             }
         }
     }
-    let noteService: NoteServiceType
-    
     var isEditingMode: Bool = false
-    
+    // MARK: - Initializer
     init(note: Note?, noteService: NoteServiceType) {
         self.note = note
         if note != nil {
@@ -34,15 +29,7 @@ class NoteViewModel: CoordinatorSupportedViewModel {
         }
         self.noteService = noteService
     }
-    
-    func getInitialValues() -> InitialValues? {
-        if isEditingMode {
-            return InitialValues(title: note!.title ?? "", body: note!.body ?? "")
-        } else {
-            return nil
-        }
-    }
-    
+    // MARK: - Functions
     func save(title: String, body: String) {
         do {
             if isEditingMode {
@@ -52,6 +39,12 @@ class NoteViewModel: CoordinatorSupportedViewModel {
             }
         } catch {
             delegate?.error(text: "Unknown")
+        }
+    }
+    func start() {
+        if isEditingMode {
+            delegate?.title(text: note!.title ?? "")
+            delegate?.body(text: note!.body ?? "")
         }
     }
 }

@@ -9,5 +9,6 @@
 import Foundation
 
 protocol NoteViewModelDelegate: ViewModelDelegate {
-    
+    func title(text: String)
+    func body(text: String)
 }

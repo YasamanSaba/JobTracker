@@ -50,10 +50,11 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
         refreshControl.addTarget(self, action: #selector(tableViewRefresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
         setUpView()
+        viewModel.start(collectionView: collectionView, tableView: tableView)
     }
     // MARK: - Functions
     @objc func tableViewRefresh() {
-        viewModel.configureApplyDataSource(for: tableView)
+        viewModel.start(collectionView: nil, tableView: tableView)
         refreshControl.endRefreshing()
     }
     private func setUpView() {
@@ -61,8 +62,6 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
         tableView.delegate = self
         collectionView.register(BadgeSupplementaryView.self, forSupplementaryViewOfKind: AppliesViewController.badgeElementKind, withReuseIdentifier: BadgeSupplementaryView.reuseIdentifier)
         collectionView.collectionViewLayout = configureLayout()
-        self.viewModel.configureApplyDataSource(for: self.tableView)
-        self.viewModel.configureCountryDataSource(for: self.collectionView)
         configureSearchController()
         createNonEditingBarButtons()
         let btnFilter = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3.decrease.circle"), style: .done, target: self, action: #selector(filter))

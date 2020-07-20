@@ -9,15 +9,12 @@
 import UIKit
 
 class CountryViewController: UIViewController, ViewModelSupportedViewControllers {
-    
     // MARK: - ViewModel
     var viewModel: CountryViewModel!
-    
     // MARK: - Outlets
     @IBOutlet weak var txtCountryName: UITextField!
     @IBOutlet weak var txtCountryFlag: UITextField!
     @IBOutlet weak var colCountries: UICollectionView!
-    
     // MARK: - Actions
     @IBAction func add(_ sender: Any) {
         guard let name = txtCountryName.text, let flag = txtCountryFlag.text else {
@@ -35,28 +32,21 @@ class CountryViewController: UIViewController, ViewModelSupportedViewControllers
     @IBAction func done(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.configure(collectionView: colCountries)
+        viewModel.start(collectionView: colCountries)
         txtCountryName.delegate = self
         txtCountryFlag.delegate = self
         txtCountryName.addTarget(self, action: #selector(onTxtCountryChanged), for: .allEditingEvents)
         txtCountryFlag.accessibilityIdentifier = "Flag"
     }
-
-    func showAlert(text: String) {
-        let alertController = UIAlertController(title: "Warning!", message: text, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(alertAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
+    // MARK: - Functions
     @objc func onTxtCountryChanged() {
         viewModel.filter(by: txtCountryName.text ?? "")
     }
 }
-
+// MARK: - Extensions
 extension CountryViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

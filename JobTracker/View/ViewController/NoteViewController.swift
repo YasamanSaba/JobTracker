@@ -34,10 +34,8 @@ class NoteViewController: UIViewController, ViewModelSupportedViewControllers {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        if let initialValues = viewModel.getInitialValues() {
-            txtTitle.text =  initialValues.title
-            txtDesc.text = initialValues.body
+        viewModel.start()
+        if viewModel.isEditingMode {
             editMode(on: false)
         } else {
             editMode(on: true)
@@ -121,5 +119,10 @@ class NoteViewController: UIViewController, ViewModelSupportedViewControllers {
     }
 }
 extension NoteViewController: NoteViewModelDelegate {
-    
+    func title(text: String) {
+        txtTitle.text = text
+    }
+    func body(text: String) {
+        txtDesc.text = text
+    }
 }
