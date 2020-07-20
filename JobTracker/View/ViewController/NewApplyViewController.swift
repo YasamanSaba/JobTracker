@@ -42,17 +42,12 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
             showAlert(text: "Complete fields.")
             return
         }
-        do {
-            try viewModel.save(link: url, salary: Int(salaryText)!,sender: self)
-            if let navigationController = navigationController {
-                navigationController.popViewController(animated: true)
-            } else {
-                self.dismiss(animated: true, completion: nil)
-            }
-        } catch let error as NewApplyViewModelError {
-            showAlert(text: error.rawValue)
-        } catch {
-            print(error)
+        if viewModel.save(link: url, salary: Int(salaryText)!) {
+        if let navigationController = navigationController {
+            navigationController.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
         }
     }
     @IBAction func addResume(_ sender: Any) {
@@ -92,18 +87,11 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
         viewModel.addTags(sender: self)
     }
     // MARK: - Properties
-
+    
     var blurEffect: UIBlurEffect?
     var blurEffectView: UIVisualEffectView?
-        
-    // MARK: - Functions
-    func showAlert(text: String) {
-        let alertController = UIAlertController(title: "Warning!", message: text, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(alertAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
     
+    // MARK: - Functions
     fileprivate func activateBlur() {
         blurEffect = UIBlurEffect(style: .light)
         blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -132,38 +120,14 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
         txtState.inputView = vwState
         txtResume.inputView = vwResumePicker
         self.txtSalary.addDoneButton(title: "Done", target: self, selector: #selector(tapSalaryDone(sender:)))
-        viewModel.setCountryName{ [weak self] in
-            self?.txtCountry.text = $0
-        }
-        viewModel.setCityName{ [weak self] in
-            self?.txtCity.text = $0 ?? ""
-        }
-        viewModel.setDateText{ [weak self] in
-            self?.txtApplyDate.text = $0
-        }
-        viewModel.setCompanyText{ [weak self] in
-            self?.btnCompany.setTitle($0, for: .normal)
-        }
-        viewModel.setResumeText{ [weak self] in
-            self?.txtResume.text = $0
-        }
-        viewModel.setStateText{ [weak self] in
-            self?.txtState.text = $0
-        }
         viewModel.configureCountry(pickerView: pkvCountry)
         viewModel.configureCity(pickerView: pkvCity)
         viewModel.configureResume(pickerView: pkvResume)
         viewModel.configureState(pickerView: pkvStatus)
         viewModel.configureTags(collectionView: colTags)
-        if let initialValue = viewModel.getInitialValue() {
-            txtJobURL.text = initialValue.jobURL
-            txtSalary.text = initialValue.salary
-        }
+        viewModel.start()
     }
-    
-    
 }
-
 
 extension NewApplyViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -182,5 +146,38 @@ extension NewApplyViewController: UITextFieldDelegate {
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         deactiveBlur()
+    }
+}
+extension NewApplyViewController: NewApplyViewModelDelegate {
+    func country(text: String) {
+        txtCountry.text = text
+    }
+    
+    func city(text: String) {
+        txtCity.text = text
+    }
+    
+    func date(text: String) {
+        txtApplyDate.text = text
+    }
+    
+    func company(text: String) {
+        btnCompany.setTitle(text, for: .normal)
+    }
+    
+    func resume(text: String) {
+        txtResume.text = text
+    }
+    
+    func state(text: String) {
+        txtState.text = text
+    }
+    
+    func link(text: String) {
+        txtJobURL.text = text
+    }
+    
+    func salary(text: String) {
+        txtSalary.text = text
     }
 }

@@ -8,17 +8,14 @@
 
 import Foundation
 
-enum NoteViewModelError: String, Error {
-    case unknown = "Something went wrong, try again later."
-}
-
-class NoteViewModel {
+class NoteViewModel: CoordinatorSupportedViewModel {
     
     struct InitialValues {
         let title: String
         let body: String
     }
-    
+    weak var delegate: NoteViewModelDelegate?
+    var coordinator: CoordinatorType!
     var note: Note? {
         didSet{
             if note != nil {
@@ -46,7 +43,7 @@ class NoteViewModel {
         }
     }
     
-    func save(title: String, body: String) throws {
+    func save(title: String, body: String) {
         do {
             if isEditingMode {
                 try noteService.update(title: title, body: body, for: note!)
@@ -54,7 +51,7 @@ class NoteViewModel {
                 try noteService.add(title: title, body: body)
             }
         } catch {
-            throw NoteViewModelError.unknown
+            delegate?.error(text: "Unknown")
         }
     }
 }

@@ -32,3 +32,5 @@ extension NotesViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+extension NotesViewController: NotesViewModelDelegate {
+}

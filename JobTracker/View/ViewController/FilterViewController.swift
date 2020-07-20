@@ -64,13 +64,7 @@ class FilterViewController: UIViewController, ViewModelSupportedViewControllers 
         isCompanyFavorite.toggle()
     }
     @IBAction func addDate(_ sender: Any) {
-        do {
-            try viewModel.addDate()
-        } catch let error as FilterViewModelError {
-            showAlert(text: error.rawValue)
-        } catch {
-            print(error)
-        }
+        viewModel.addDate()
     }
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -258,4 +252,6 @@ extension FilterViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         deactiveBlur()
     }
+}
+extension FilterViewController: FilterViewModelDelegate {
 }

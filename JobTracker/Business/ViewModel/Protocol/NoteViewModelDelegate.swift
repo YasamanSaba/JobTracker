@@ -1,5 +1,5 @@
 //
-//  ApplyViewModelDelegate.swift
+//  NoteViewModelDelegate.swift
 //  JobTracker
 //
 //  Created by Yasaman Farahani Saba on 7/19/20.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ApplyViewModelDelegate: ViewModelDelegate {
-    func applyInfo(_ : ApplyViewModel.ApplyInfo)
+protocol NoteViewModelDelegate: ViewModelDelegate {
+    
 }

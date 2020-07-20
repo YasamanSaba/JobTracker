@@ -48,3 +48,6 @@ class ReminderViewController: UIViewController, ViewModelSupportedViewController
     }
     
 }
+extension ReminderViewController: ReminderViewModelDelegate{
+    
+}

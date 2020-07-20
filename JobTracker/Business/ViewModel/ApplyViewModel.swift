@@ -33,6 +33,7 @@ class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     private let companyService: CompanyServiceType
     private let tagService: TagServiceType
     private let apply: Apply
+    var applyResultController: NSFetchedResultsController<Apply>!
     var resumeResultController: NSFetchedResultsController<Resume>!
     var resumeResultControllerDelegate: ResumeResultControllerDelegate!
     var interviewResultController: NSFetchedResultsController<Interview>!
@@ -57,6 +58,13 @@ class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
         self.tagService = tagService
     }
     // MARK: - Functions -
+    func start() {
+        let info = ApplyInfo(companyName: apply.company?.title ?? "Unknown", jobOfferURL: apply.jobLink ?? URL(string: "www.google.com")!, location: "\(apply.city?.country?.name ?? "Unknown"), \(apply.city?.name ?? "Unknown")", timeElapsed: MyDateFormatter.shared.passedTime(from: apply.date!) ,state: apply.statusEnum?.rawValue ?? "Unknown", resume: apply.resume?.version ?? "Unknown", isFavorite: apply.company?.isFavorite ?? false)
+        delegate?.applyInfo(info)
+        applyResultController = applyService.fetch(apply: apply)
+        try? applyResultController.performFetch()
+        applyResultController.delegate = self
+    }
     func addTask(sender: Any) {
         coordinator.push(scene: .task(apply,nil), sender: sender)
     }
@@ -115,9 +123,6 @@ class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
                 self.tagDataSource.apply(snapShot)
                    }
         }, apply.tag == nil ? [] : Array(apply.tag!.map{$0 as! Tag})), sender: sender)
-    }
-    func getApplyInfo() -> ApplyInfo {
-        return ApplyInfo(companyName: apply.company?.title ?? "Unknown", jobOfferURL: apply.jobLink ?? URL(string: "www.google.com")!, location: "\(apply.city?.country?.name ?? "Unknown"), \(apply.city?.name ?? "Unknown")", timeElapsed: MyDateFormatter.shared.passedTime(from: apply.date!) ,state: apply.statusEnum?.rawValue ?? "Unknown", resume: apply.resume?.version ?? "Unknown", isFavorite: apply.company?.isFavorite ?? false)
     }
     func configureInterviewDataSource(for tableView: UITableView) {
         interviewDataSource = InterviewDataSource(tableView: tableView) { (tableView, indexPath, interview) -> UITableViewCell? in
@@ -331,6 +336,7 @@ extension ApplyViewModel: UIPickerViewDelegate, UIPickerViewDataSource {
 }
 extension ApplyViewModel: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.resumePickerView?.reloadAllComponents()
+        let info = ApplyInfo(companyName: apply.company?.title ?? "Unknown", jobOfferURL: apply.jobLink ?? URL(string: "www.google.com")!, location: "\(apply.city?.country?.name ?? "Unknown"), \(apply.city?.name ?? "Unknown")", timeElapsed: MyDateFormatter.shared.passedTime(from: apply.date!) ,state: apply.statusEnum?.rawValue ?? "Unknown", resume: apply.resume?.version ?? "Unknown", isFavorite: apply.company?.isFavorite ?? false)
+        delegate?.applyInfo(info)
     }
 }

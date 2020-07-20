@@ -57,6 +57,7 @@ extension TagViewController: UISearchBarDelegate {
             viewModel.filterTags(by: searchText)
         } else {
             btnAdd.isEnabled = false
+            viewModel.filterTags(by: searchText)
         }
     }
 }

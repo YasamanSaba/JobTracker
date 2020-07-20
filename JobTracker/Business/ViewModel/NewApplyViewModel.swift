@@ -9,20 +9,10 @@
 import UIKit
 import CoreData
 
-enum NewApplyViewModelError: String, Error {
-    case inCompleteDataToSave = "Please fill all the fields."
-    case unKnownError = "Please try again later."
-}
-
-class NewApplyViewModel: NSObject {
-    // MARK: Nested Type
-    struct InitialValues {
-        let jobURL: String?
-        let salary: String?
-    }
-    
+class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     // MARK: - Properties
-    let appCoordinator = (UIApplication.shared.delegate as! AppDelegate).appCoordinator
+    weak var delegate: NewApplyViewModelDelegate?
+    var coordinator: CoordinatorType!
     let apply: Apply?
     let applyService: ApplyServiceType
     let stateService: StateServiceType
@@ -38,16 +28,10 @@ class NewApplyViewModel: NSObject {
     var countryControllerDelegate: CountryResultsControllerDelegate?
     var countryPickerView: UIPickerView?
     var cityPickerView: UIPickerView?
-    var countryNameSetter: ((String?) -> Void)?
-    var cityNameSetter: ((String?) -> Void)?
-    var dateSetter: ((String?) -> Void)?
-    var companySetter: ((String?) -> Void)?
-    var resumeSetter: ((String?) -> Void)?
-    var stateSetter: ((String?) -> Void)?
     var states: [Status] = []
     var selectedStateIndex: Int = 0 {
         didSet {
-            stateSetter?(states.count > 0 ? states[selectedStateIndex].rawValue : "No state")
+            delegate?.state(text: states.count > 0 ? states[selectedStateIndex].rawValue : "No state")
         }
     }
     var selectedTags: [Tag] = [] {
@@ -60,30 +44,30 @@ class NewApplyViewModel: NSObject {
     }
     var selectedCountry: Country? {
         didSet {
-            countryNameSetter?(selectedCountry?.name)
+            delegate?.country(text: selectedCountry?.name ?? "")
             selectedCity = nil
         }
     }
     var selectedCity: City? {
         didSet {
-            cityNameSetter?(selectedCity?.name)
+            delegate?.city(text: selectedCity?.name ?? "")
         }
     }
     var selectedDate: Date? {
         didSet {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MMM-dd"
-            dateSetter?(dateFormatter.string(from: selectedDate ?? Date()))
+            delegate?.date(text: dateFormatter.string(from: selectedDate ?? Date()))
         }
     }
     var selectedComapy: Company? {
         didSet {
-            companySetter?(selectedComapy?.title ?? "Unknown")
+            delegate?.company(text: selectedComapy?.title ?? "Unknown")
         }
     }
     var selectedResume: Resume? {
         didSet {
-            resumeSetter?(selectedResume?.version ?? "Unknown")
+            delegate?.resume(text: selectedResume?.version ?? "Unknown")
         }
     }
     var isEditingMode: Bool = false
@@ -147,24 +131,6 @@ class NewApplyViewModel: NSObject {
     func set(date: Date) {
         selectedDate = date
     }
-    func setCountryName(onChange: @escaping (String?) -> Void) {
-        countryNameSetter = onChange
-    }
-    func setCityName(onChange: @escaping (String?) -> Void) {
-        cityNameSetter = onChange
-    }
-    func setDateText(onChange: @escaping (String?) -> Void) {
-        dateSetter = onChange
-    }
-    func setStateText(onChange: @escaping (String?) -> Void) {
-        stateSetter = onChange
-    }
-    func setCompanyText(onChange: @escaping (String?) -> Void) {
-        companySetter = onChange
-    }
-    func setResumeText(onChange: @escaping (String?) -> Void) {
-        resumeSetter = onChange
-    }
     func configureResume(pickerView: UIPickerView) {
         pickerView.accessibilityIdentifier = "ResumePickerView"
         resumeResultController = applyService.getAllResumeVersion()
@@ -193,11 +159,11 @@ class NewApplyViewModel: NSObject {
         }
     }
     func addContry(sender: UIViewController) {
-        appCoordinator?.present(scene: .country, sender: sender)
+        coordinator.present(scene: .country, sender: sender)
     }
     func addCity(sender: UIViewController) {
         if let selectedCountry = selectedCountry {
-            appCoordinator?.present(scene: .city(selectedCountry), sender: sender)
+            coordinator.present(scene: .city(selectedCountry), sender: sender)
         }
     }
     func configureTags(collectionView: UICollectionView) {
@@ -223,7 +189,7 @@ class NewApplyViewModel: NSObject {
         }
     }
     func addTags(sender: UIViewController) {
-        appCoordinator?.present(scene: .tag({ [weak self] tags in
+        coordinator.present(scene: .tag({ [weak self] tags in
             self?.selectedTags = tags
             var snapShot = NSDiffableDataSourceSnapshot<Int,Tag>()
             snapShot.appendSections([1])
@@ -232,45 +198,50 @@ class NewApplyViewModel: NSObject {
         },selectedTags), sender: sender)
     }
     func chooseCompany(sender: UIViewController) {
-        appCoordinator?.present(scene: .company({ [weak self] company in
+        coordinator.present(scene: .company({ [weak self] company in
             self?.selectedComapy = company
         }), sender: sender)
     }
     func addResume(sender: UIViewController) {
-        appCoordinator?.present(scene: .resume, sender: sender)
+        coordinator.present(scene: .resume, sender: sender)
     }
-    func save(link: String?, salary: Int?, sender: UIViewController) throws {
+    func save(link: String?, salary: Int?) -> Bool {
         if let city = selectedCity,
             let date = selectedDate,
             let company = selectedComapy,
             let resume = selectedResume
         {
-            let url = link == nil ? nil : URL(string: link!)
+            let url = (link != nil) ? URL(string: link!) : nil
             let item = ApplyService.ApplyItem(date: date, link: url, salary: salary ?? 0, state: states[selectedStateIndex], city: city, company: company, resume: resume, tags: selectedTags)
             do {
                 if isEditingMode {
                     try applyService.update(apply: apply!, company: company, city: city, country: city.country, link: url, salary: Int32(salary ?? 0), state: states[selectedStateIndex], resume: resume, date: date, tags: selectedTags)
+                    return true
                 } else {
                 try applyService.save(applyItem: item)
-                sender.navigationController?.popViewController(animated: true)
+                    return true
                 }
             } catch {
-                throw NewApplyViewModelError.unKnownError
+                delegate?.error(text: "Please try again later.")
+                return false
             }
         } else {
-            throw NewApplyViewModelError.inCompleteDataToSave
+            delegate?.error(text: "Please fill all the fields.")
+            return false
         }
     }
-    func getInitialValue() -> InitialValues? {
-        guard isEditingMode, let apply = apply else { return nil }
-        selectedCountry = apply.city?.country
-        selectedCity = apply.city
-        selectedTags = apply.tag != nil ? apply.tag!.allObjects.map{$0 as! Tag} : []
-        selectedDate = apply.date
-        selectedComapy = apply.company
-        selectedResume = apply.resume
-        selectedStateIndex = states.firstIndex(of: apply.statusEnum!)!
-        return InitialValues(jobURL: apply.jobLink?.absoluteString, salary: apply.salaryExpectation == 0 ? nil : String(apply.salaryExpectation))
+    func start() {
+        if isEditingMode, let apply = apply {
+            selectedCountry = apply.city?.country
+            selectedCity = apply.city
+            selectedTags = apply.tag != nil ? apply.tag!.allObjects.map{$0 as! Tag} : []
+            selectedDate = apply.date
+            selectedComapy = apply.company
+            selectedResume = apply.resume
+            selectedStateIndex = states.firstIndex(of: apply.statusEnum!)!
+            delegate?.link(text: apply.jobLink?.absoluteString ?? "")
+            delegate?.salary(text: apply.salaryExpectation == 0 ? "" : String(apply.salaryExpectation))
+        }
     }
 }
 // MARK: - Extensions
@@ -278,7 +249,6 @@ extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
-    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView.accessibilityIdentifier {
         case "CountryPickerView":
@@ -303,7 +273,6 @@ extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
         }
         
     }
-    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView.accessibilityIdentifier {
         case "CountryPickerView":
@@ -330,7 +299,6 @@ extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
             return nil
         }
     }
-    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView.accessibilityIdentifier {
         case "CountryPickerView":
@@ -352,7 +320,6 @@ extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
             return
         }
     }
-    
 }
 extension NewApplyViewModel {
     class CountryResultsControllerDelegate: NSObject, NSFetchedResultsControllerDelegate{

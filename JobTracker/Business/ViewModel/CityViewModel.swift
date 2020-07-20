@@ -9,11 +9,9 @@
 import UIKit
 import CoreData
 
-enum CityViewModelError: String, Error {
-    case alreadyExists = "This city already exists."
-}
-
-class CityViewModel: NSObject {
+class CityViewModel: NSObject, CoordinatorSupportedViewModel {
+    weak var delegate: CityViewModelDelegate?
+    var coordinator: CoordinatorType!
     let country: Country
     let cityService: CityServiceType
     var cityResultsController: NSFetchedResultsController<City>?
@@ -46,13 +44,11 @@ class CityViewModel: NSObject {
         }
     }
     
-    func add(name:String) throws {
+    func add(name:String) {
         do {
             try cityService.add(name: name, to: country)
-        } catch CityServiceError.alreadyExists {
-            throw CityViewModelError.alreadyExists
         } catch {
-            throw error
+            delegate?.error(text: "This city already exists.")
         }
     }
     

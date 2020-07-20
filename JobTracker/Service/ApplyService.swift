@@ -43,6 +43,14 @@ struct ApplyService: ApplyServiceType {
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultsController
     }
+    func fetch(apply: Apply) -> NSFetchedResultsController<Apply> {
+        let fetchRequest: NSFetchRequest<Apply> = Apply.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "(SELF = %@)", apply)
+        let sort = NSSortDescriptor(key: #keyPath(Apply.date), ascending: false)
+        fetchRequest.sortDescriptors = [sort]
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultsController
+    }
     func save(apply: Apply, state: Status) throws {
         apply.statusEnum = state
         do {

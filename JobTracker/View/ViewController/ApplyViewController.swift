@@ -45,15 +45,9 @@ class ApplyViewController: UIViewController, ViewModelSupportedViewControllers {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
+        viewModel.start()
     }
     override func viewWillAppear(_ animated: Bool) {
-        applyInfo = viewModel.getApplyInfo()
-        heartState = applyInfo!.isFavorite
-        btnCompanyName.setTitle(applyInfo!.companyName, for: .normal)
-        lblPassedTime.text = applyInfo!.timeElapsed
-        lblLocation.text = applyInfo!.location
-        lblState.text = applyInfo!.state
-        btnResume.setTitle(applyInfo!.resume, for: .normal)
         viewModel.configureTag(collectionView: colTags)
     }
     // MARK: - Functions -
@@ -105,4 +99,12 @@ extension ApplyViewController: UITableViewDelegate {
     }
 }
 extension ApplyViewController: ApplyViewModelDelegate {
+    func applyInfo(_ applyInfo : ApplyViewModel.ApplyInfo) {
+        heartState = applyInfo.isFavorite
+        btnCompanyName.setTitle(applyInfo.companyName, for: .normal)
+        lblPassedTime.text = applyInfo.timeElapsed
+        lblLocation.text = applyInfo.location
+        lblState.text = applyInfo.state
+        btnResume.setTitle(applyInfo.resume, for: .normal)
+    }
 }
