@@ -231,7 +231,6 @@ class AppliesViewModel: NSObject, CoordinatorSupportedViewModel {
         coordinator.present(scene: .filter(selectedCountry,applyFilter(filters:hasInterview:hasTask:isCompanyFavorite:)), sender: sender)
     }
     func applyFilter(filters:[FilterViewModel.FilterObject], hasInterview:Bool, hasTask:Bool, isCompanyFavorite: Bool) {
-        guard filters.count > 0 else {return}
         let currentApplies = applyDataSource.snapshot().itemIdentifiers
         var filteredCityApplies: [ApplyItem] = []
         var filteredStateApplies: [ApplyItem] = []

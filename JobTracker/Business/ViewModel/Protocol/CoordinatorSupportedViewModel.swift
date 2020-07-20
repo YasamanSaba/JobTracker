@@ -38,6 +38,6 @@ extension ViewModelDelegate where Self: UIViewController {
         }
         alertController.addAction(yesAction)
         alertController.addAction(noAction)
-        self.show(alertController, sender: self)
+        self.present(alertController, animated: true, completion: nil)
     }
 }

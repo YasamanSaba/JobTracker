@@ -89,6 +89,7 @@ class TaskViewModel: NSObject, CoordinatorSupportedViewModel {
             return cell
         }
         reminderDataSource?.reminderService = reminderService
+        reminderDataSource?.superDelegate = delegate
         createFirstSnapshot()
     }
     

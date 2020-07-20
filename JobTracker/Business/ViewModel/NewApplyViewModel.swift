@@ -231,6 +231,11 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
         }
     }
     func start(tagCollectionView: UICollectionView, statePickerView: UIPickerView, resumePickerView: UIPickerView, cityPickerView: UIPickerView, countryPickerView: UIPickerView) {
+        configureTags(collectionView: tagCollectionView)
+        configureState(pickerView: statePickerView)
+        configureResume(pickerView: resumePickerView)
+        configureCity(pickerView: cityPickerView)
+        configureCountry(pickerView: countryPickerView)
         if isEditingMode, let apply = apply {
             selectedCountry = apply.city?.country
             selectedCity = apply.city
@@ -242,11 +247,6 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
             delegate?.link(text: apply.jobLink?.absoluteString ?? "")
             delegate?.salary(text: apply.salaryExpectation == 0 ? "" : String(apply.salaryExpectation))
         }
-        configureTags(collectionView: tagCollectionView)
-        configureState(pickerView: statePickerView)
-        configureResume(pickerView: resumePickerView)
-        configureCity(pickerView: cityPickerView)
-        configureCountry(pickerView: countryPickerView)
     }
 }
 // MARK: - Extensions
