@@ -9,28 +9,23 @@
 import UIKit
 import CoreData
 
-enum ChecklistViewModelError: String, Error {
-    case general = "Please try again later."
-}
-
-struct WrappedItem: Hashable {
-    let item: CheckListItem
-    var isDone: Bool
-}
-
-class ChecklistViewModel: NSObject {
+class ChecklistViewModel: NSObject, CoordinatorSupportedViewModel {
     
-    let apply: Apply
-    let checklistService: ChecklistServiceType
-    var checklistDataSource: CheckListDataSource?
-    var checklistResultsController: NSFetchedResultsController<CheckListItem>?
+    var coordinator: CoordinatorType!
+    var delegate: ChecklistViewModelDelegate?
+    private let apply: Apply
+    private let checklistService: ChecklistServiceType
+    private var checklistDataSource: CheckListDataSource?
+    private var checklistResultsController: NSFetchedResultsController<CheckListItem>?
     
+    // MARK: - Initializer
     init(apply: Apply, checklistService: ChecklistServiceType) {
         self.apply = apply
         self.checklistService = checklistService
     }
     
-    func configure(tableView: UITableView) {
+    // MARK: - Private Functions
+    private func configure(tableView: UITableView) {
         checklistDataSource = CheckListDataSource(tableView: tableView) { (tableView, indexPath, wrappedItem) -> UITableViewCell? in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ChecklistItemTableViewCell.reuseIdentifier) as? ChecklistItemTableViewCell else {
                 return nil
@@ -39,6 +34,7 @@ class ChecklistViewModel: NSObject {
             return cell
         }
         checklistDataSource?.checklistService = checklistService
+        checklistDataSource?.superDelegate = delegate
         checklistResultsController = checklistService.fetchAll(for: apply)
         checklistResultsController?.delegate = checklistDataSource
         do {
@@ -55,31 +51,39 @@ class ChecklistViewModel: NSObject {
         }
     }
     
-    func add(title: String) throws {
+    // MARK: - Public API
+    func start(tableView: UITableView) {
+        configure(tableView: tableView)
+    }
+    func add(title: String) {
+        guard !title.trimmingCharacters(in: .whitespaces).isEmpty else {
+            delegate?.error(text: "Please fill checklist item name")
+            return
+        }
         do {
             try checklistService.add(title: title, for: apply)
         } catch _ as ChecklistServiceError {
-            throw ChecklistViewModelError.general
+            delegate?.error(text: "Try again later")
         } catch {
-            print(error)
+            delegate?.error(text: "Try again later")
         }
     }
-    
-    func selectItem(at indexPath: IndexPath, tableView: UITableView) throws {
+    func selectItem(at indexPath: IndexPath, tableView: UITableView) {
         if var item = checklistDataSource?.snapshot().itemIdentifiers[indexPath.row], let cell = checklistDataSource?.tableView(tableView, cellForRowAt: indexPath) as? ChecklistItemTableViewCell {
             do {
                 item.isDone.toggle()
                 try checklistService.set(isDone: !item.item.isDone, for: item.item)
                 cell.isDone.toggle()
             } catch {
-                throw ChecklistViewModelError.general
+                delegate?.error(text: "Try again later")
             }
         }
     }
     
-    class CheckListDataSource: UITableViewDiffableDataSource<Int,WrappedItem>, NSFetchedResultsControllerDelegate {
+    // MARK: - Nested Types
+    private class CheckListDataSource: UITableViewDiffableDataSource<Int,WrappedItem>, NSFetchedResultsControllerDelegate {
         var checklistService: ChecklistServiceType?
-        
+        var superDelegate: ChecklistViewModelDelegate?
         func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
             var newSnapshot = NSDiffableDataSourceSnapshot<Int,WrappedItem>()
             snapshot.sectionIdentifiers.forEach{ _ in
@@ -100,16 +104,21 @@ class ChecklistViewModel: NSObject {
         override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
             if editingStyle == .delete {
                 if let identifierToDelete = itemIdentifier(for: indexPath) {
-                    do {
-                        try checklistService?.delete(item: identifierToDelete.item)
-                        var snapshot = self.snapshot()
-                        snapshot.deleteItems([identifierToDelete])
-                        apply(snapshot)
-                    } catch {
-                        print(error)
+                    superDelegate?.deleteConfirmation() { [weak self] in
+                        if $0 {
+                            do {
+                                try self?.checklistService?.delete(item: identifierToDelete.item)
+                            } catch {
+                                print(error)
+                            }
+                        }
                     }
                 }
             }
         }
+    }
+    struct WrappedItem: Hashable {
+        let item: CheckListItem
+        var isDone: Bool
     }
 }

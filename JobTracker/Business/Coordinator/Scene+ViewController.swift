@@ -136,6 +136,8 @@ extension Scene {
             let viewController = storyboard.instantiateViewController(identifier: ResumeViewController.reuseIdentifier) as ResumeViewController
             let resumeService = ResumeService(context: context)
             let viewModel = ResumeViewModel(resumeService: resumeService)
+            viewModel.delegate = viewController
+            viewModel.coordinator = coordinator
             viewController.viewModel = viewModel
             return viewController
         case .interview(let apply, let interview):
@@ -146,6 +148,8 @@ extension Scene {
             let reminderService = ReminderService(context: context)
             let viewModel = InterviewViewModel(interviewService: interviewService, tagService: tagService, interview: interview, reminderService: reminderService, apply: apply)
             viewController.viewModel = viewModel
+            viewModel.coordinator = coordinator
+            viewModel.delegate = viewController
             return viewController
         case .task(let apply, let task):
             let storyboard = UIStoryboard(name: "Task", bundle: nil)
@@ -154,12 +158,16 @@ extension Scene {
             let taskService = TaskService(context: context)
             let viewModel = TaskViewModel(apply: apply, task: task, taskService: taskService, reminderService: reminderService)
             viewController.viewModel = viewModel
+            viewModel.delegate = viewController 
+            viewModel.coordinator = coordinator
             return viewController
         case .checklist(let apply):
             let storyboard = UIStoryboard(name: "CheckList", bundle: nil)
             let viewController = storyboard.instantiateViewController(identifier: ChecklistViewController.reuseIdentifier) as ChecklistViewController
             let checklistService = ChecklistService(context: context)
             let viewModel = ChecklistViewModel(apply: apply, checklistService: checklistService)
+            viewModel.coordinator = coordinator
+            viewModel.delegate = viewController
             viewController.viewModel = viewModel
             return viewController
         }

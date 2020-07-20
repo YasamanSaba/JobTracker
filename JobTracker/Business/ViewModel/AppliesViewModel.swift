@@ -32,12 +32,18 @@ class AppliesViewModel: NSObject, CoordinatorSupportedViewModel {
         let jobLink: URL?
         let salaryExpectation: Int32
         let status: Status
+        let companyName: String
+        let countryName: String
+        let cityName: String
         init(_ apply: Apply) {
             self.apply = apply
             date = apply.date
             jobLink = apply.jobLink
             salaryExpectation = apply.salaryExpectation
             status = apply.statusEnum!
+            companyName = apply.company?.title ?? ""
+            countryName = apply.city?.country?.name ?? ""
+            cityName = apply.city?.name ?? ""
         }
     }
         // MARK: - ApplyResultControllerDelegate

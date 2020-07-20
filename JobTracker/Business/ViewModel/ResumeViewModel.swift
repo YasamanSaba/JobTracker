@@ -9,28 +9,27 @@
 import UIKit
 import CoreData
 
-enum ResumeViewModelError: String, Error {
-    case alreadyExists = "This Resume already exists."
-    case notValidURL = "The URL is not a valid."
-    case unKnownError = "Please try again later."
-}
-
-class ResumeViewModel: NSObject {
+class ResumeViewModel: NSObject, CoordinatorSupportedViewModel {
     
-    let resumeService: ResumeServiceType
-    var resumeFetchedResultsController: NSFetchedResultsController<Resume>?
-    var resumeDataSource: ResumeDataSourece?
-    var selectedVersion: [Int] = [0,0,0]
+    // MARK: - Properties
+    var coordinator: CoordinatorType!
+    var delegate: ResumeViewModelDelegate?
+    private let resumeService: ResumeServiceType
+    private var resumeFetchedResultsController: NSFetchedResultsController<Resume>?
+    private var resumeDataSource: ResumeDataSourece?
+    private var selectedVersion: [Int] = [0,0,0]
+    
+    // MARK: Initializer
     init(resumeService: ResumeServiceType) {
         self.resumeService = resumeService
     }
     
-    func configureVersion(pickerView: UIPickerView) {
+    // MARK: - Private Functions
+    private func configureVersion(pickerView: UIPickerView) {
         pickerView.dataSource = self
         pickerView.delegate = self
     }
-    
-    func configure(tableView: UITableView) {
+    private func configure(tableView: UITableView) {
         resumeDataSource = ResumeDataSourece(tableView: tableView) {tableView,indexPath,resume -> UITableViewCell? in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ResumeTableViewCell.reuseIdentifier) as? ResumeTableViewCell else { return nil }
             
@@ -52,28 +51,34 @@ class ResumeViewModel: NSObject {
         }
     }
     
-    func add(urlString: String?) throws {
+    // MARK: - Public API
+    func start(tableView: UITableView, pickerView: UIPickerView) {
+        configure(tableView: tableView)
+        configureVersion(pickerView: pickerView)
+    }
+    func add(urlString: String?) {
         let versionString = selectedVersion.map{String($0)}.joined(separator: ".")
         do {
             try resumeService.add(version: versionString, url: urlString == nil ? nil : URL(string: urlString!))
         } catch ResumeServiceError.alreadyExists {
-            throw ResumeViewModelError.alreadyExists
+            delegate?.error(text: "This Resume already exists")
         } catch {
-            throw ResumeViewModelError.unKnownError
+            delegate?.error(text: "Please try again later")
         }
     }
-    
     func openURL(at indexPath: IndexPath) {
         if let item = resumeDataSource?.snapshot().itemIdentifiers[indexPath.row], let url = item.linkToGit {
             UIApplication.shared.open(url)
         }
     }
     
+    // MARK: - Nested Types
     class ResumeDataSourece: UITableViewDiffableDataSource<Int,Resume> {
         
     }
 }
 
+// MARK: - Extensions
 extension ResumeViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         3
@@ -91,7 +96,6 @@ extension ResumeViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
 }
-
 extension ResumeViewModel: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
         var newSnapShot = NSDiffableDataSourceSnapshot<Int,Resume>()
