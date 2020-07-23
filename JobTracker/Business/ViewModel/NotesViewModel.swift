@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class NotesViewModel: CoordinatorSupportedViewModel {
-    // MARK: - Nested Types -
+    // MARK: - Nested Types
     struct NoteItem: Hashable {
         let note: Note
         let title: String
@@ -47,7 +47,7 @@ class NotesViewModel: CoordinatorSupportedViewModel {
             }
         }
     }
-    // MARK: - Properties -
+    // MARK: - Properties
     weak var delegate: NotesViewModelDelegate?
     var coordinator: CoordinatorType!
     let noteService: NoteServiceType
@@ -57,7 +57,7 @@ class NotesViewModel: CoordinatorSupportedViewModel {
     init(noteService: NoteServiceType) {
         self.noteService = noteService
     }
-    // MARK: - Functions -
+    // MARK: - Functions
     func add(sender: UIViewController) {
         coordinator.present(scene: .note(nil), sender: sender)
     }
@@ -66,7 +66,7 @@ class NotesViewModel: CoordinatorSupportedViewModel {
             coordinator.present(scene: .note(note.note), sender: sender)
         }
     }
-    func configure(tableView: UITableView) {
+    private func configure(tableView: UITableView) {
         noteDataSource = NoteDataSource(tableView: tableView) {
             (tableView, indexPath, note) -> UITableViewCell? in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteTableViewCell.reuseIdentifier) as? NoteTableViewCell else {
@@ -89,5 +89,8 @@ class NotesViewModel: CoordinatorSupportedViewModel {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    func start(tableView: UITableView) {
+        configure(tableView: tableView)
     }
 }

@@ -10,19 +10,20 @@ import UIKit
 import CoreData
 
 class CityViewModel: NSObject, CoordinatorSupportedViewModel {
+    // MARK: - Properties
     weak var delegate: CityViewModelDelegate?
     var coordinator: CoordinatorType!
     let country: Country
     let cityService: CityServiceType
     var cityResultsController: NSFetchedResultsController<City>?
     var cityDataSource: UICollectionViewDiffableDataSource<Int,City>?
-    
+    // MARK: - Initializer
     init(country: Country, cityService: CityServiceType) {
         self.country = country
         self.cityService = cityService
     }
-    
-    func configure(collectionView: UICollectionView) {
+    // MARK: - Functions
+    private func configure(collectionView: UICollectionView) {
         cityDataSource = UICollectionViewDiffableDataSource<Int,City>(collectionView: collectionView){ (collectionView, indexPath, city) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CityCollectionViewCell.reuseIdentifier, for: indexPath) as? CityCollectionViewCell else { return nil}
             
@@ -40,10 +41,9 @@ class CityViewModel: NSObject, CoordinatorSupportedViewModel {
                 cityDataSource?.apply(snapShot)
             }
         } catch {
-            print(error)
+            print(error.localizedDescription)
         }
     }
-    
     func add(name:String) {
         do {
             try cityService.add(name: name, to: country)
@@ -51,7 +51,6 @@ class CityViewModel: NSObject, CoordinatorSupportedViewModel {
             delegate?.error(text: "This city already exists.")
         }
     }
-    
     func filter(by text: String) {
         if let objects = cityResultsController?.fetchedObjects {
             var snapShot = NSDiffableDataSourceSnapshot<Int,City>()
@@ -61,14 +60,14 @@ class CityViewModel: NSObject, CoordinatorSupportedViewModel {
             cityDataSource?.apply(snapShot)
         }
     }
-    
     func getCountry() -> (String,String) {
         return (country.name ?? "" ,country.flag ?? "")
     }
-    
+    func start(collectionView: UICollectionView) {
+        configure(collectionView: collectionView)
+    }
 }
-
-
+// MARK: - Extension
 extension CityViewModel: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
         var newSnapShot = NSDiffableDataSourceSnapshot<Int,City>()

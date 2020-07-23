@@ -69,23 +69,21 @@ class FilterViewModel: CoordinatorSupportedViewModel {
     var selectedFromDate: Date? = nil {
         didSet {
             if selectedFromDate == nil {
-                fromDateTextSetter?("")
+                delegate?.fromDate(text: "")
             } else {
-                fromDateTextSetter?(dateFormatter(for: selectedFromDate!))
+                delegate?.fromDate(text: dateFormatter(for: selectedFromDate!))
             }
         }
     }
     var selectedToDate: Date? = nil {
         didSet {
             if selectedToDate == nil {
-                toDateTextSetter?("")
+                delegate?.toDate(text: "")
             } else {
-                toDateTextSetter?(dateFormatter(for: selectedToDate!))
+                delegate?.toDate(text: dateFormatter(for: selectedToDate!))
             }
         }
     }
-    var fromDateTextSetter: ((String) -> Void)?
-    var toDateTextSetter: ((String) -> Void)?
     // MARK: - Initializer
     init(tagService: TagServiceType, cityService: CityServiceType, stateService: StateServiceType, country: Country, onCompletion: @escaping ([FilterObject], Bool, Bool, Bool) -> Void) {
         self.tagService = tagService
@@ -95,14 +93,7 @@ class FilterViewModel: CoordinatorSupportedViewModel {
         self.onCompletion = onCompletion
     }
     // MARK: - Functions -
-    func date( isFromDate: Bool, setter: @escaping (String) -> Void) {
-        if isFromDate {
-            fromDateTextSetter = setter
-        } else {
-            toDateTextSetter = setter
-        }
-    }
-    func setupTagDataSource(for tableView: UITableView) {
+    private func setupTagDataSource(for tableView: UITableView) {
         tagDataSource = UITableViewDiffableDataSource<Section, Tag>(tableView: tableView) { (tableView, indexPath, tag) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "TagCell", for: indexPath)
             cell.textLabel?.text = tag.title
@@ -123,32 +114,32 @@ class FilterViewModel: CoordinatorSupportedViewModel {
             }
         }
     }
-    func setupCityDataSource(for tableView: UITableView) {
-        cityDataSource = UITableViewDiffableDataSource<Section, City>(tableView:  tableView) { (tableView, indexPath, city) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
-            cell.textLabel?.text = city.name
-            return cell
-        }
-        if country.name == "World" {
-            cityResultController = cityService.fetchAll()
-        } else {
-            cityResultController = cityService.fetchAll(in: country)
-        }
-        if let cityResultController = cityResultController {
-            do {
-                try cityResultController.performFetch()
-                if let objects = cityResultController.fetchedObjects {
-                    var snapShot = NSDiffableDataSourceSnapshot<Section, City>()
-                    snapShot.appendSections([.main])
-                    snapShot.appendItems(objects, toSection: .main)
-                    cityDataSource?.apply(snapShot, animatingDifferences: false)
-                }
-            } catch {
-                print(error.localizedDescription)
+    private func setupCityDataSource(for tableView: UITableView) {
+    cityDataSource = UITableViewDiffableDataSource<Section, City>(tableView:  tableView) { (tableView, indexPath, city) -> UITableViewCell? in
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
+        cell.textLabel?.text = city.name
+        return cell
+    }
+    if country.name == "World" {
+        cityResultController = cityService.fetchAll()
+    } else {
+        cityResultController = cityService.fetchAll(in: country)
+    }
+    if let cityResultController = cityResultController {
+        do {
+            try cityResultController.performFetch()
+            if let objects = cityResultController.fetchedObjects {
+                var snapShot = NSDiffableDataSourceSnapshot<Section, City>()
+                snapShot.appendSections([.main])
+                snapShot.appendItems(objects, toSection: .main)
+                cityDataSource?.apply(snapShot, animatingDifferences: false)
             }
+        } catch {
+            print(error.localizedDescription)
         }
     }
-    func setupStateDataSource(for tableView: UITableView) {
+}
+    private func setupStateDataSource(for tableView: UITableView) {
         stateDataSource = UITableViewDiffableDataSource<Section, Status>(tableView: tableView) { (tableView, indexPath, state) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "StateCell", for: indexPath)
             cell.textLabel?.text = state.rawValue
@@ -160,7 +151,7 @@ class FilterViewModel: CoordinatorSupportedViewModel {
         snapShot.appendItems(states, toSection: .main)
         stateDataSource?.apply(snapShot, animatingDifferences: false)
     }
-    func setupFilterObjectDataSource(for collectionView: UICollectionView) {
+    private func setupFilterObjectDataSource(for collectionView: UICollectionView) {
         filterObjectDataSource = UICollectionViewDiffableDataSource<Section, FilterObject>(collectionView: collectionView) { (collectionView, indexPath, filter) -> UICollectionViewCell? in
             switch filter.filterType {
             case .city:
@@ -315,5 +306,11 @@ class FilterViewModel: CoordinatorSupportedViewModel {
         } else {
             self.selectedToDate = date
         }
+    }
+    func start(tagTableView: UITableView, cityTableView: UITableView, stateTableView: UITableView, collectionView: UICollectionView) {
+        setupTagDataSource(for: tagTableView)
+        setupCityDataSource(for: cityTableView)
+        setupStateDataSource(for: stateTableView)
+        setupFilterObjectDataSource(for: collectionView)
     }
 }

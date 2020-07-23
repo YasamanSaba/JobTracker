@@ -9,23 +9,19 @@
 import UIKit
 
 class NotesViewController: UIViewController, ViewModelSupportedViewControllers {
-
+    // MARK: - Properties
     var viewModel: NotesViewModel!
-    
     @IBOutlet weak var tblNotes: UITableView!
-    
     @IBAction func btnAdd(_ sender: Any) {
         viewModel.add(sender: self)
     }
-    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel.configure(tableView: tblNotes)
+        viewModel.start(tableView: tblNotes)
     }
-
 }
-
+// MARK: - Extensions
 extension NotesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.select(at: indexPath, sender: self)

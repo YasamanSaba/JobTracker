@@ -85,7 +85,7 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     }
     
     // MARK: - Functions
-    func configureCountry(pickerView: UIPickerView) {
+    private func configureCountry(pickerView: UIPickerView) {
         pickerView.accessibilityIdentifier = "CountryPickerView"
         countryPickerView = pickerView
         countryResultController = countryService.fetchAll()
@@ -106,7 +106,7 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
             print(error)
         }
     }
-    func configureCity(pickerView: UIPickerView) {
+    private func configureCity(pickerView: UIPickerView) {
         pickerView.accessibilityIdentifier = "CityPickerView"
         cityPickerView = pickerView
         if let selectedCountry = selectedCountry {
@@ -128,10 +128,7 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
             }
         }
     }
-    func set(date: Date) {
-        selectedDate = date
-    }
-    func configureResume(pickerView: UIPickerView) {
+    private func configureResume(pickerView: UIPickerView) {
         pickerView.accessibilityIdentifier = "ResumePickerView"
         resumeResultController = applyService.getAllResumeVersion()
         let resumeResultsControllerDelegate = ResumeResultsControllerDelegate()
@@ -149,7 +146,7 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
             print(error.localizedDescription)
         }
     }
-    func configureState(pickerView: UIPickerView) {
+    private func configureState(pickerView: UIPickerView) {
         self.states = stateService.getAllState()
         pickerView.accessibilityIdentifier = "StatePickerView"
         pickerView.delegate = self
@@ -158,15 +155,7 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
             selectedStateIndex = 0
         }
     }
-    func addContry(sender: UIViewController) {
-        coordinator.present(scene: .country, sender: sender)
-    }
-    func addCity(sender: UIViewController) {
-        if let selectedCountry = selectedCountry {
-            coordinator.present(scene: .city(selectedCountry), sender: sender)
-        }
-    }
-    func configureTags(collectionView: UICollectionView) {
+    private func configureTags(collectionView: UICollectionView) {
         tagDatasource = UICollectionViewDiffableDataSource<Int,Tag>(collectionView: collectionView) { (collectionView, indexPath, tag) -> UICollectionViewCell? in
             guard let cell =
             collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.reuseIdentifier, for: indexPath)
@@ -178,6 +167,17 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
         snapShot.appendSections([1])
         snapShot.appendItems(selectedTags)
         tagDatasource.apply(snapShot)
+    }
+    func set(date: Date) {
+        selectedDate = date
+    }
+    func addContry(sender: UIViewController) {
+        coordinator.present(scene: .country, sender: sender)
+    }
+    func addCity(sender: UIViewController) {
+        if let selectedCountry = selectedCountry {
+            coordinator.present(scene: .city(selectedCountry), sender: sender)
+        }
     }
     func delete(tag: Tag) {
         if let index = selectedTags.firstIndex(of: tag) {
@@ -230,7 +230,12 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
             return false
         }
     }
-    func start() {
+    func start(tagCollectionView: UICollectionView, statePickerView: UIPickerView, resumePickerView: UIPickerView, cityPickerView: UIPickerView, countryPickerView: UIPickerView) {
+        configureTags(collectionView: tagCollectionView)
+        configureState(pickerView: statePickerView)
+        configureResume(pickerView: resumePickerView)
+        configureCity(pickerView: cityPickerView)
+        configureCountry(pickerView: countryPickerView)
         if isEditingMode, let apply = apply {
             selectedCountry = apply.city?.country
             selectedCity = apply.city

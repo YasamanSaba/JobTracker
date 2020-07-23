@@ -10,17 +10,18 @@ import UIKit
 import CoreData
 
 class CountryViewModel: NSObject, CoordinatorSupportedViewModel {
+    // MARK: - Properties
     weak var delegate: CountryViewModelDelegate?
     var coordinator: CoordinatorType!
     let countryService: CountryServiceType
     var countryResultsController: NSFetchedResultsController<Country>?
     var countryDataSource: UICollectionViewDiffableDataSource<Int,Country>?
-    
+    // MARK: - Initializer
     init(countryService: CountryServiceType) {
         self.countryService = countryService
     }
-    
-    func configure(collectionView: UICollectionView) {
+    // MARK: - Functions
+    private func configure(collectionView: UICollectionView) {
         countryDataSource = UICollectionViewDiffableDataSource<Int,Country>(collectionView: collectionView){ (collectionView, indexPath, country) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CountryCollectionViewCell.reuseIdentifier, for: indexPath) as? CountryCollectionViewCell else { return nil}
             
@@ -41,7 +42,6 @@ class CountryViewModel: NSObject, CoordinatorSupportedViewModel {
             print(error)
         }
     }
-    
     func add(name:String, flag: String) {
         do {
             try countryService.add(name: name, flag: flag)
@@ -49,7 +49,6 @@ class CountryViewModel: NSObject, CoordinatorSupportedViewModel {
             delegate?.error(text: "This country already exists.")
         }
     }
-    
     func filter(by text: String) {
         if let objects = countryResultsController?.fetchedObjects {
             var snapShot = NSDiffableDataSourceSnapshot<Int,Country>()
@@ -59,9 +58,11 @@ class CountryViewModel: NSObject, CoordinatorSupportedViewModel {
             countryDataSource?.apply(snapShot)
         }
     }
-    
+    func start(collectionView: UICollectionView) {
+        configure(collectionView: collectionView)
+    }
 }
-
+// MARK: - Extensions
 extension CountryViewModel: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
         var newSnapShot = NSDiffableDataSourceSnapshot<Int,Country>()

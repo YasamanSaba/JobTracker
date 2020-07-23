@@ -9,7 +9,6 @@
 import UIKit
 
 class CompanyViewController: UIViewController, ViewModelSupportedViewControllers {
-    
     // MARK: - Properties
     var viewModel: CompanyViewModel!
     var heartState: Bool = false {
@@ -21,7 +20,6 @@ class CompanyViewController: UIViewController, ViewModelSupportedViewControllers
             }
         }
     }
-    
     // MARK: - Outlets
     @IBOutlet weak var tblCompanies: UITableView!
     @IBOutlet weak var srbSearchBar: UISearchBar!
@@ -40,13 +38,15 @@ class CompanyViewController: UIViewController, ViewModelSupportedViewControllers
     @IBAction func tapOnHeart(_ sender: Any) {
         heartState.toggle()
     }
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.configureCompany(tableView: tblCompanies)
+        viewModel.start(tableView: tblCompanies)
         tblCompanies.delegate = self
         srbSearchBar.delegate = self
     }
 }
+// MARK: - Extensions
 extension CompanyViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
@@ -71,5 +71,5 @@ extension CompanyViewController: UITextFieldDelegate {
     }
 }
 extension CompanyViewController: CompanyViewModelDelegate {
-
+    
 }

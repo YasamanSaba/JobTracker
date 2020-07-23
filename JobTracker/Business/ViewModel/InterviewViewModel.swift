@@ -20,6 +20,7 @@ class InterviewViewModel: NSObject, CoordinatorSupportedViewModel {
     // MARK: - Nested types
     class ReminderDataSource: UITableViewDiffableDataSource<Int, Reminder>, NSFetchedResultsControllerDelegate {
         var reminderService: ReminderServiceType?
+        var superDelegate: InterviewViewModelDelegate?
         func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
             var newSnapshot = NSDiffableDataSourceSnapshot<Int, Reminder>()
             snapshot.sectionIdentifiers.forEach { _ in
@@ -37,7 +38,11 @@ class InterviewViewModel: NSObject, CoordinatorSupportedViewModel {
         override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
             if editingStyle == .delete {
                 if let reminder = itemIdentifier(for: indexPath) {
-                    try? reminderService?.delete(reminder: reminder)
+                    superDelegate?.deleteConfirmation { [weak self] in
+                        if $0 {
+                            try? self?.reminderService?.delete(reminder: reminder)
+                        }
+                    }
                 }
             }
         }
@@ -145,6 +150,7 @@ class InterviewViewModel: NSObject, CoordinatorSupportedViewModel {
             return cell
         }
         reminderDataSource.reminderService = reminderService
+        reminderDataSource.superDelegate = delegate
         reminderSnapShot()
     }
     

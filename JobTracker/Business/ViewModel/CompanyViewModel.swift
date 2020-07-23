@@ -10,8 +10,6 @@ import UIKit
 import CoreData
 
 class CompanyViewModel: NSObject, CoordinatorSupportedViewModel {
-    var coordinator: CoordinatorType!
-    
     // MARK: - NestedType -
     class CompanyDataSource: UITableViewDiffableDataSource<Int, Company> {
         var companyService: CompanyServiceType?
@@ -32,18 +30,19 @@ class CompanyViewModel: NSObject, CoordinatorSupportedViewModel {
         }
     }
     // MARK: - Properties -
+    weak var delegate: CompanyViewModelDelegate?
+    var coordinator: CoordinatorType!
     let companyService: CompanyServiceType
     let onComplete: (Company) -> Void
     var companyResultsController: NSFetchedResultsController<Company>!
     var companyDataSource: CompanyDataSource!
-    weak var delegate: CompanyViewModelDelegate?
-    
+    // MARK: - Initializer
     init(companyService: CompanyServiceType, onComplete: @escaping (Company) -> Void) {
         self.companyService = companyService
         self.onComplete = onComplete
     }
-    
-    func configureCompany(tableView: UITableView) {
+    // MARK: - Functions
+    private func configureCompany(tableView: UITableView) {
         companyDataSource = CompanyDataSource(tableView: tableView) { (tableView, indexPath, company) -> UITableViewCell? in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CompanyTableViewCell.reuseIdentifier) as? CompanyTableViewCell else {
                 return nil
@@ -67,7 +66,6 @@ class CompanyViewModel: NSObject, CoordinatorSupportedViewModel {
             print(error)
         }
     }
-    
     func filterCompanies(by text: String) {
         if let objects = companyResultsController.fetchedObjects {
             var snapShot = NSDiffableDataSourceSnapshot<Int,Company>()
@@ -77,12 +75,10 @@ class CompanyViewModel: NSObject, CoordinatorSupportedViewModel {
             companyDataSource.apply(snapShot)
         }
     }
-    
     func select(at indexPath: IndexPath) {
         let company = companyDataSource.snapshot().itemIdentifiers[indexPath.row]
         onComplete(company)
     }
-    
     func add(name: String, isFavorite: Bool) {
         guard !name.isEmpty, !name.trimmingCharacters(in: .whitespaces).isEmpty else {
             delegate?.error(text: "Company name cannot be empty")
@@ -108,8 +104,11 @@ class CompanyViewModel: NSObject, CoordinatorSupportedViewModel {
             return
         }
     }
+    func start(tableView: UITableView) {
+        configureCompany(tableView: tableView)
+    }
 }
-
+// MARK: - Extension
 extension CompanyViewModel: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
         var newSnapShot = NSDiffableDataSourceSnapshot<Int,Company>()

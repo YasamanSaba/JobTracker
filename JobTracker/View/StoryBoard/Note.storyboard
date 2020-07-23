@@ -27,15 +27,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOl-8f-eEf">
-                                                    <rect key="frame" x="37" y="5" width="336" height="34"/>
+                                                    <rect key="frame" x="25" y="5" width="348" height="34"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="textbox" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qdI-12-nuW">
-                                                    <rect key="frame" x="10" y="12" width="22" height="19.5"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hexagon.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qdI-12-nuW">
+                                                    <rect key="frame" x="10" y="16.5" width="10" height="10.5"/>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="22" id="2gr-fT-dJc"/>
+                                                        <constraint firstAttribute="height" constant="10" id="2gr-fT-dJc"/>
                                                         <constraint firstAttribute="width" secondItem="qdI-12-nuW" secondAttribute="height" multiplier="1:1" id="3es-6R-ZYJ"/>
                                                     </constraints>
                                                 </imageView>
@@ -98,6 +99,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YbK-VD-SHY">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="106"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
@@ -221,6 +223,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="textbox" catalog="system" width="128" height="91"/>
+        <image name="hexagon.fill" catalog="system" width="128" height="124"/>
     </resources>
 </document>
