@@ -20,15 +20,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dfu-IP-ix9">
-                                <rect key="frame" x="0.0" y="160" width="375" height="618"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dfu-IP-ix9">
+                                <rect key="frame" x="5" y="160" width="365" height="618"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ApplyTableViewCell" id="ata-Zh-ypA" customClass="ApplyTableViewCell" customModule="JobTracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="28" width="365" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ata-Zh-ypA" id="qgR-Sj-ciZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="339" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇩🇪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5X9-TW-JEg">
@@ -100,11 +101,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SAf-LX-Chn">
-                                                    <rect key="frame" x="318.33333333333331" y="34.333333333333329" width="20.666666666666686" height="17.333333333333336"/>
+                                                    <rect key="frame" x="308.33333333333331" y="34.333333333333329" width="20.666666666666686" height="17.333333333333336"/>
                                                     <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="InProgress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJq-r2-Ger">
-                                                    <rect key="frame" x="278.66666666666669" y="8" width="60.333333333333314" height="14.333333333333336"/>
+                                                    <rect key="frame" x="268.66666666666669" y="8" width="60.333333333333314" height="14.333333333333336"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -209,8 +210,8 @@
                         <constraints>
                             <constraint firstItem="o3h-cR-6RB" firstAttribute="top" secondItem="pAs-vT-ohA" secondAttribute="bottom" constant="8" id="4m0-3E-L8U"/>
                             <constraint firstItem="dfu-IP-ix9" firstAttribute="top" secondItem="o3h-cR-6RB" secondAttribute="bottom" constant="10" id="Htx-zf-W3C"/>
-                            <constraint firstAttribute="trailing" secondItem="dfu-IP-ix9" secondAttribute="trailing" id="V9z-pV-uhe"/>
-                            <constraint firstItem="dfu-IP-ix9" firstAttribute="leading" secondItem="aeK-GE-ZIK" secondAttribute="leading" id="h25-ow-sT2"/>
+                            <constraint firstAttribute="trailing" secondItem="dfu-IP-ix9" secondAttribute="trailing" constant="5" id="V9z-pV-uhe"/>
+                            <constraint firstItem="dfu-IP-ix9" firstAttribute="leading" secondItem="aeK-GE-ZIK" secondAttribute="leading" constant="5" id="h25-ow-sT2"/>
                             <constraint firstItem="jld-6c-m7H" firstAttribute="top" secondItem="dfu-IP-ix9" secondAttribute="bottom" id="q6c-oy-Anj"/>
                             <constraint firstItem="o3h-cR-6RB" firstAttribute="leading" secondItem="aeK-GE-ZIK" secondAttribute="leading" id="vIl-Ih-DOU"/>
                             <constraint firstAttribute="trailing" secondItem="o3h-cR-6RB" secondAttribute="trailing" id="zry-Ua-6Df"/>

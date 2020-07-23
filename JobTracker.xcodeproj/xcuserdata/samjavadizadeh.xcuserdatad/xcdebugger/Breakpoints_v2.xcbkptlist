@@ -106,8 +106,8 @@
             filePath = "JobTracker/Business/ViewModel/AppliesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "updateCountryDataSource()"
             landmarkType = "7">
             <Locations>
@@ -169,8 +169,8 @@
             filePath = "JobTracker/Business/ViewModel/AppliesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "updateCountryDataSource()"
             landmarkType = "7">
          </BreakpointContent>
@@ -188,22 +188,6 @@
             startingLineNumber = "108"
             endingLineNumber = "108"
             landmarkName = "tableView(_:commit:forRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CF172F3A-BBA5-486D-BC6A-AE848108F427"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "JobTracker/Business/ViewModel/Protocol/CoordinatorSupportedViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "showAlert(text:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
