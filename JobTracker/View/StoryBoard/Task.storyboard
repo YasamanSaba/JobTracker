@@ -19,12 +19,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fG-3b-iJk" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
-                                <rect key="frame" x="5" y="233.5" width="404" height="618.5"/>
+                                <rect key="frame" x="5" y="234" width="404" height="618"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8oZ-ez-dey">
-                                        <rect key="frame" x="0.0" y="0.0" width="404" height="618.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="618"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xug-Wk-8Kz">
-                                            <rect key="frame" x="0.0" y="0.0" width="404" height="618.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="618"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LXx-qi-tsi">
@@ -128,12 +128,12 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHj-h5-tNJ" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
-                                <rect key="frame" x="5" y="49" width="404" height="174.5"/>
+                                <rect key="frame" x="5" y="49" width="404" height="175"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Bd-T6-mgR">
-                                        <rect key="frame" x="0.0" y="0.0" width="404" height="174.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="175"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MKA-OV-pM7">
-                                            <rect key="frame" x="0.0" y="0.0" width="404" height="174.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="175"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What is this task? (Title)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Cf-mU-LiO">
@@ -144,7 +144,7 @@
                                                         <outlet property="delegate" destination="31L-Sv-rjV" id="nuC-sF-Lyp"/>
                                                     </connections>
                                                 </textField>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="laptopcomputer" translatesAutoresizingMaskIntoConstraints="NO" id="C24-6X-0xz">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="laptopcomputer" translatesAutoresizingMaskIntoConstraints="NO" id="C24-6X-0xz" customClass="IconUIImageView" customModule="JobTracker" customModuleProvider="target">
                                                     <rect key="frame" x="5" y="15" width="20" height="20"/>
                                                     <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -199,7 +199,7 @@
                                                         <outlet property="delegate" destination="31L-Sv-rjV" id="lFY-2E-siW"/>
                                                     </connections>
                                                 </textField>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="L4Z-s6-NgS">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="L4Z-s6-NgS" customClass="IconUIImageView" customModule="JobTracker" customModuleProvider="target">
                                                     <rect key="frame" x="5" y="58" width="20" height="17.5"/>
                                                     <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -210,7 +210,7 @@
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="x1v-zU-eOk"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stopwatch" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yli-8j-MYj">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stopwatch" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yli-8j-MYj" customClass="IconUIImageView" customModule="JobTracker" customModuleProvider="target">
                                                     <rect key="frame" x="5" y="97" width="20" height="21"/>
                                                     <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -219,7 +219,7 @@
                                                         <constraint firstAttribute="height" constant="20" id="gM9-Ma-szw"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="AgU-mk-BaP">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="AgU-mk-BaP" customClass="IconUIImageView" customModule="JobTracker" customModuleProvider="target">
                                                     <rect key="frame" x="5" y="139.5" width="20" height="21"/>
                                                     <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
