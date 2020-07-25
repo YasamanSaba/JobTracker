@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ApplyTableViewCell: UITableViewCell {
+@IBDesignable class ApplyTableViewCell: UITableViewCell {
     static let reuseIdentifier = String(describing: ApplyTableViewCell.self)
     
     // MARK: - Outlets
@@ -21,8 +21,20 @@ class ApplyTableViewCell: UITableViewCell {
     @IBOutlet weak var lblApplyStatus: UILabel!
     @IBOutlet weak var imgIsFavorite: UIImageView!
     
+    override var frame: CGRect {
+        get {
+            return super.frame
+        }
+        set (newFrame) {
+            
+            var frame =  newFrame
+            frame.origin.y += 4
+            frame.size.height -= 8
+            super.frame = frame
+        }
+    }
+    
     func configure(apply: AppliesViewModel.ApplyItem) {
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MMM-dd"
         lblApplyDate.text = dateFormatter.string(from: apply.date!)
@@ -57,5 +69,82 @@ class ApplyTableViewCell: UITableViewCell {
             print("Unexpected status")
         }
         imgIsFavorite.isHidden = !(apply.apply.company?.isFavorite ?? false)
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+        }
+    }
+    
+    @IBInspectable var borderColor: UIColor? {
+        get {
+            if let color = layer.borderColor {
+                return UIColor(cgColor: color)
+            }
+            return nil
+        }
+        set {
+            if let color = newValue{
+                layer.borderColor = color.cgColor
+            }else{
+                layer.borderColor = nil
+            }
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat {
+        get {
+            return layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
+        }
+    }
+    
+    @IBInspectable var shadowRadius: CGFloat {
+        get {
+            return layer.shadowRadius
+        }
+        set {
+            layer.shadowRadius = newValue
+        }
+    }
+    
+    @IBInspectable var shadowOpacity: Float {
+        get {
+            return layer.shadowOpacity
+        }
+        set {
+            layer.shadowOpacity = newValue
+        }
+    }
+    
+    @IBInspectable var shadowOffset: CGSize {
+        get {
+            return layer.shadowOffset
+        }
+        set {
+            layer.shadowOffset = newValue
+        }
+    }
+    
+    @IBInspectable var shadowColor: UIColor? {
+        get {
+            if let color = layer.shadowColor {
+                return UIColor(cgColor: color)
+            }
+            return nil
+        }
+        set {
+            if let color = newValue {
+                layer.shadowColor = color.cgColor
+            }else{
+                layer.shadowColor = nil
+            }
+        }
     }
 }

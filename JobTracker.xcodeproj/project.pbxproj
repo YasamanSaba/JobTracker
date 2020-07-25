@@ -489,22 +489,22 @@
 		70AEFEE5248E4D190063C352 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
-				7009B1CD24A383C300B6437D /* Interview.storyboard */,
-				7009B1CB24A383A600B6437D /* Task.storyboard */,
+				70EA24502490AE55007FD797 /* Apply.storyboard */,
 				7009B1C824A3835C00B6437D /* ApplyDetail.storyboard */,
 				7009B1C624A3832E00B6437D /* CheckList.storyboard */,
+				70773C5624ACBEEE00097FFE /* City.storyboard */,
+				7051A55724AB03EF00B98C4B /* Company.storyboard */,
+				70773C4E24AC66A800097FFE /* Country.storyboard */,
+				F29ABCF524ACA4B50032D3E2 /* Filter.storyboard */,
+				7009B1CD24A383C300B6437D /* Interview.storyboard */,
+				F2035582248BBBD000A9F9F8 /* LaunchScreen.storyboard */,
+				709CDEE524A20C2D00A9DAE0 /* Main.storyboard */,
 				7009B1C324A382FA00B6437D /* NewApply.storyboard */,
 				709CDEDF24A1E62200A9DAE0 /* Note.storyboard */,
 				7060EFFB2496178300A229B8 /* Reminder.storyboard */,
-				7060EFF62494A47500A229B8 /* Tag.storyboard */,
-				70EA24502490AE55007FD797 /* Apply.storyboard */,
-				F2035582248BBBD000A9F9F8 /* LaunchScreen.storyboard */,
-				709CDEE524A20C2D00A9DAE0 /* Main.storyboard */,
-				7051A55724AB03EF00B98C4B /* Company.storyboard */,
-				F29ABCF524ACA4B50032D3E2 /* Filter.storyboard */,
-				70773C4E24AC66A800097FFE /* Country.storyboard */,
-				70773C5624ACBEEE00097FFE /* City.storyboard */,
 				70D30A4D24B053A0005D29B2 /* Resume.storyboard */,
+				7060EFF62494A47500A229B8 /* Tag.storyboard */,
+				7009B1CB24A383A600B6437D /* Task.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
