@@ -108,6 +108,7 @@ class FilterViewController: UIViewController, ViewModelSupportedViewControllers 
         srbTag.searchTextField.addTarget(self, action: #selector(tagTextChanged), for: .allEditingEvents)
         srbState.searchTextField.addTarget(self, action: #selector(stateTextChanged), for: .allEditingEvents)
         configureTextBoxDatePicker()
+        
     }
     func activateBlur() {
         blurEffect = UIBlurEffect(style: .light)
@@ -244,6 +245,11 @@ extension FilterViewController: UITextFieldDelegate {
         deactiveBlur()
     }
 }
+extension FilterViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+}
 extension FilterViewController: FilterViewModelDelegate {
     func fromDate(text: String) {
         txtFromDate.text = text
@@ -252,3 +258,4 @@ extension FilterViewController: FilterViewModelDelegate {
         txtToDate.text = text
     }
 }
+

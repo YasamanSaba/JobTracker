@@ -91,6 +91,7 @@
 		70EA244C2490A745007FD797 /* AppliesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244B2490A745007FD797 /* AppliesViewController.swift */; };
 		70EA244F2490A8D1007FD797 /* ApplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA244E2490A8D1007FD797 /* ApplyTableViewCell.swift */; };
 		70EA24522490AE55007FD797 /* Apply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70EA24502490AE55007FD797 /* Apply.storyboard */; };
+		F202C91524CC21D900750486 /* IconUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F202C91424CC21D900750486 /* IconUIImageView.swift */; };
 		F2035575248BBBC600A9F9F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2035574248BBBC600A9F9F8 /* AppDelegate.swift */; };
 		F2035577248BBBC600A9F9F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2035576248BBBC600A9F9F8 /* SceneDelegate.swift */; };
 		F203557F248BBBC600A9F9F8 /* JobTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F203557D248BBBC600A9F9F8 /* JobTracker.xcdatamodeld */; };
@@ -251,6 +252,7 @@
 		70EA244B2490A745007FD797 /* AppliesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliesViewController.swift; sourceTree = "<group>"; };
 		70EA244E2490A8D1007FD797 /* ApplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyTableViewCell.swift; sourceTree = "<group>"; };
 		70EA24512490AE55007FD797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JobTracker/View/StoryBoard/Base.lproj/Apply.storyboard; sourceTree = "<group>"; };
+		F202C91424CC21D900750486 /* IconUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconUIImageView.swift; sourceTree = "<group>"; };
 		F2035571248BBBC600A9F9F8 /* JobTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2035574248BBBC600A9F9F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2035576248BBBC600A9F9F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 				70BE562D249F47AA0039D123 /* UITextFieldExtension.swift */,
 				7009B1BF24A327D400B6437D /* BoxUIView.swift */,
 				F2A2D6E324A38FC100D25B35 /* UIButtonExtension.swift */,
+				F202C91424CC21D900750486 /* IconUIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -489,22 +492,22 @@
 		70AEFEE5248E4D190063C352 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
-				7009B1CD24A383C300B6437D /* Interview.storyboard */,
-				7009B1CB24A383A600B6437D /* Task.storyboard */,
+				70EA24502490AE55007FD797 /* Apply.storyboard */,
 				7009B1C824A3835C00B6437D /* ApplyDetail.storyboard */,
 				7009B1C624A3832E00B6437D /* CheckList.storyboard */,
+				70773C5624ACBEEE00097FFE /* City.storyboard */,
+				7051A55724AB03EF00B98C4B /* Company.storyboard */,
+				70773C4E24AC66A800097FFE /* Country.storyboard */,
+				F29ABCF524ACA4B50032D3E2 /* Filter.storyboard */,
+				7009B1CD24A383C300B6437D /* Interview.storyboard */,
+				F2035582248BBBD000A9F9F8 /* LaunchScreen.storyboard */,
+				709CDEE524A20C2D00A9DAE0 /* Main.storyboard */,
 				7009B1C324A382FA00B6437D /* NewApply.storyboard */,
 				709CDEDF24A1E62200A9DAE0 /* Note.storyboard */,
 				7060EFFB2496178300A229B8 /* Reminder.storyboard */,
-				7060EFF62494A47500A229B8 /* Tag.storyboard */,
-				70EA24502490AE55007FD797 /* Apply.storyboard */,
-				F2035582248BBBD000A9F9F8 /* LaunchScreen.storyboard */,
-				709CDEE524A20C2D00A9DAE0 /* Main.storyboard */,
-				7051A55724AB03EF00B98C4B /* Company.storyboard */,
-				F29ABCF524ACA4B50032D3E2 /* Filter.storyboard */,
-				70773C4E24AC66A800097FFE /* Country.storyboard */,
-				70773C5624ACBEEE00097FFE /* City.storyboard */,
 				70D30A4D24B053A0005D29B2 /* Resume.storyboard */,
+				7060EFF62494A47500A229B8 /* Tag.storyboard */,
+				7009B1CB24A383A600B6437D /* Task.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -872,6 +875,7 @@
 				F24633B024A8C89E004D1DE5 /* TaskService.swift in Sources */,
 				709191BE24C2D79B000006A1 /* NoteServiceType.swift in Sources */,
 				F24633AC24A8A291004D1DE5 /* InterviewServiceType.swift in Sources */,
+				F202C91524CC21D900750486 /* IconUIImageView.swift in Sources */,
 				70483E8424979ACF00612288 /* ReminderTableViewCell.swift in Sources */,
 				70773C5D24ACCC4800097FFE /* CityViewModel.swift in Sources */,
 				709191BC24C2D682000006A1 /* NoteService.swift in Sources */,

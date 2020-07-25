@@ -18,50 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hxm-V4-eHl" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
-                                <rect key="frame" x="10" y="298.5" width="394" height="299"/>
-                                <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="gA2-7S-oZy">
-                                        <rect key="frame" x="0.0" y="54" width="394" height="235"/>
-                                    </datePicker>
-                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reminder Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1KG-No-QP8">
-                                        <rect key="frame" x="10" y="10" width="374" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="gA2-7S-oZy" secondAttribute="bottom" constant="10" id="FSb-a9-ni8"/>
-                                    <constraint firstItem="1KG-No-QP8" firstAttribute="top" secondItem="hxm-V4-eHl" secondAttribute="top" constant="10" id="QXU-bv-YId"/>
-                                    <constraint firstAttribute="trailing" secondItem="1KG-No-QP8" secondAttribute="trailing" constant="10" id="TAc-jV-RKy"/>
-                                    <constraint firstItem="gA2-7S-oZy" firstAttribute="top" secondItem="1KG-No-QP8" secondAttribute="bottom" constant="10" id="Voj-e0-Ou2"/>
-                                    <constraint firstItem="1KG-No-QP8" firstAttribute="leading" secondItem="hxm-V4-eHl" secondAttribute="leading" constant="10" id="YGd-Qh-9Ws"/>
-                                    <constraint firstAttribute="trailing" secondItem="gA2-7S-oZy" secondAttribute="trailing" id="kbL-hJ-PGM"/>
-                                    <constraint firstItem="gA2-7S-oZy" firstAttribute="leading" secondItem="hxm-V4-eHl" secondAttribute="leading" id="tox-Ab-g5w"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ke0-NL-1do">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Add Reminder" id="oG1-He-xKp">
+                                    <navigationItem title="Reminder" id="oG1-He-xKp">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NfD-gS-wV1">
                                             <connections>
                                                 <action selector="btnCancel:" destination="2CM-vX-DpW" id="hhw-Ca-5eq"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="sdz-DB-zy5">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="sdz-DB-zy5">
                                             <connections>
                                                 <action selector="btnDone:" destination="2CM-vX-DpW" id="kLD-eK-ARf"/>
                                             </connections>
@@ -69,17 +35,50 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1KG-No-QP8">
+                                <rect key="frame" x="10" y="64" width="394" height="34"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textField>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hxm-V4-eHl" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
+                                <rect key="frame" x="10" y="108" width="394" height="299"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="gA2-7S-oZy">
+                                        <rect key="frame" x="37" y="41.5" width="320" height="216"/>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="gA2-7S-oZy" firstAttribute="height" secondItem="hxm-V4-eHl" secondAttribute="height" multiplier="0.722408" id="QQm-fZ-ZQl"/>
+                                    <constraint firstItem="gA2-7S-oZy" firstAttribute="centerY" secondItem="hxm-V4-eHl" secondAttribute="centerY" id="gm6-O7-vi2"/>
+                                    <constraint firstItem="gA2-7S-oZy" firstAttribute="width" secondItem="hxm-V4-eHl" secondAttribute="width" multiplier="0.812183" id="oBN-f6-dn5"/>
+                                    <constraint firstItem="gA2-7S-oZy" firstAttribute="centerX" secondItem="hxm-V4-eHl" secondAttribute="centerX" id="t7U-JV-tnn"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.59999999999999998"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="hxm-V4-eHl" firstAttribute="centerX" secondItem="Ljo-hF-q9A" secondAttribute="centerX" id="0dD-xu-6Yq"/>
-                            <constraint firstItem="hxm-V4-eHl" firstAttribute="trailing" secondItem="Ljo-hF-q9A" secondAttribute="trailingMargin" constant="10" id="896-uE-osO"/>
-                            <constraint firstItem="ke0-NL-1do" firstAttribute="top" secondItem="Ljo-hF-q9A" secondAttribute="top" id="I6R-y1-fwe"/>
-                            <constraint firstAttribute="trailing" secondItem="ke0-NL-1do" secondAttribute="trailing" id="Jp2-wQ-cJ8"/>
-                            <constraint firstItem="hxm-V4-eHl" firstAttribute="height" secondItem="Ljo-hF-q9A" secondAttribute="height" multiplier="1/3" id="XQF-YB-Zj4"/>
-                            <constraint firstItem="hxm-V4-eHl" firstAttribute="centerY" secondItem="Ljo-hF-q9A" secondAttribute="centerY" id="ZK4-Qp-6zA"/>
-                            <constraint firstItem="hxm-V4-eHl" firstAttribute="leading" secondItem="Ljo-hF-q9A" secondAttribute="leading" constant="10" id="eIc-Wz-Wct"/>
-                            <constraint firstItem="ke0-NL-1do" firstAttribute="leading" secondItem="Ljo-hF-q9A" secondAttribute="leading" id="gW5-Q3-nif"/>
+                            <constraint firstAttribute="trailing" secondItem="ke0-NL-1do" secondAttribute="trailing" id="0wd-7z-Brt"/>
+                            <constraint firstItem="hxm-V4-eHl" firstAttribute="top" secondItem="1KG-No-QP8" secondAttribute="bottom" constant="10" id="AFH-vB-kIj"/>
+                            <constraint firstAttribute="trailing" secondItem="1KG-No-QP8" secondAttribute="trailing" constant="10" id="QKH-oH-v8o"/>
+                            <constraint firstItem="1KG-No-QP8" firstAttribute="leading" secondItem="Ljo-hF-q9A" secondAttribute="leading" constant="10" id="QMz-Fo-cfg"/>
+                            <constraint firstItem="hxm-V4-eHl" firstAttribute="leading" secondItem="Ljo-hF-q9A" secondAttribute="leading" constant="10" id="SJy-uO-WNP"/>
+                            <constraint firstItem="ke0-NL-1do" firstAttribute="leading" secondItem="Ljo-hF-q9A" secondAttribute="leading" id="Wvs-lj-4dj"/>
+                            <constraint firstItem="1KG-No-QP8" firstAttribute="top" secondItem="ke0-NL-1do" secondAttribute="bottom" constant="20" id="X2L-5x-Hbb"/>
+                            <constraint firstAttribute="trailing" secondItem="hxm-V4-eHl" secondAttribute="trailing" constant="10" id="Zoc-bo-aJr"/>
+                            <constraint firstItem="ke0-NL-1do" firstAttribute="top" secondItem="Ljo-hF-q9A" secondAttribute="top" id="zW4-e3-ejO"/>
                         </constraints>
                     </view>
                     <connections>
@@ -89,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgl-V1-Iop" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1619.5652173913045" y="2567.4107142857142"/>
+            <point key="canvasLocation" x="1618.840579710145" y="2567.4107142857142"/>
         </scene>
     </scenes>
 </document>

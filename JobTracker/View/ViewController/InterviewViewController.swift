@@ -24,6 +24,8 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
     @IBOutlet weak var colTag: UICollectionView!
     @IBOutlet weak var tblReminder: UITableView!
     @IBOutlet weak var vwReminder: UIView!
+    @IBOutlet weak var vwMain: UIView!
+    @IBOutlet weak var vwTag: UIView!
     // MARK: - IBAction -
     
     @IBAction func btnAddTag(_ sender: Any) {
@@ -56,8 +58,14 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
             blurEffectView!.alpha = 0.75
             blurEffectView!.backgroundColor = .systemGray5
             blurEffectView!.frame = view.bounds
-            blurEffectView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            blurEffectView!.translatesAutoresizingMaskIntoConstraints = false
             self.vwReminder.addSubview(blurEffectView!)
+            NSLayoutConstraint.activate([
+                blurEffectView!.leadingAnchor.constraint(equalTo: vwReminder.leadingAnchor),
+                blurEffectView!.trailingAnchor.constraint(equalTo: vwReminder.trailingAnchor),
+                blurEffectView!.topAnchor.constraint(equalTo: vwReminder.topAnchor),
+                blurEffectView!.bottomAnchor.constraint(equalTo: vwReminder.bottomAnchor)
+            ])
             let nextBtn = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(nextButton))
             navigationItem.rightBarButtonItem = nextBtn
         }
@@ -115,6 +123,8 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
         blurEffectView!.alpha = 0.75
         blurEffectView!.backgroundColor = .systemGray5
         blurEffectView!.translatesAutoresizingMaskIntoConstraints = false
+        blurEffectView!.layer.cornerRadius = 10
+        blurEffectView!.clipsToBounds = true
         let label = UILabel()
         label.text = "You can add your reminder(s) below"
         label.font = UIFont.preferredFont(forTextStyle: .headline, compatibleWith: .none)
@@ -126,10 +136,10 @@ class InterviewViewController: UIViewController, ViewModelSupportedViewControlle
         blurEffectView!.contentView.addSubview(label)
         blurEffectView!.contentView.addSubview(imageView)
         NSLayoutConstraint.activate([
-            blurEffectView!.topAnchor.constraint(equalTo: txtInterviewDate.topAnchor),
-            blurEffectView!.leadingAnchor.constraint(equalTo: colTag.leadingAnchor),
-            blurEffectView!.trailingAnchor.constraint(equalTo: txtInterviewDate.trailingAnchor),
-            blurEffectView!.bottomAnchor.constraint(equalTo: colTag.bottomAnchor),
+            blurEffectView!.leadingAnchor.constraint(equalTo: vwMain.leadingAnchor),
+            blurEffectView!.trailingAnchor.constraint(equalTo: vwMain.trailingAnchor),
+            blurEffectView!.topAnchor.constraint(equalTo: vwMain.topAnchor),
+            blurEffectView!.bottomAnchor.constraint(equalTo: vwTag.bottomAnchor),
             blurEffectView!.centerXAnchor.constraint(equalTo: label.centerXAnchor),
             blurEffectView!.centerYAnchor.constraint(equalTo: label.centerYAnchor),
             label.bottomAnchor.constraint(greaterThanOrEqualTo: imageView.topAnchor, constant: -10),
