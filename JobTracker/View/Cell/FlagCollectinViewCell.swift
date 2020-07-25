@@ -10,8 +10,13 @@ import UIKit
 
 class FlagCollectinViewCell: UICollectionViewCell {
     static let reuseIdentifier = String(describing: FlagCollectinViewCell.self)
-    @IBOutlet weak var lblFlag: UILabel!
-    @IBOutlet weak var lblCountryName: UILabel!
+    @IBOutlet private weak var lblFlag: UILabel!
+    @IBOutlet private weak var lblCountryName: UILabel!
+    
+    func configure(flag: String, name: String) {
+        lblFlag.text = flag
+        lblCountryName.text = name
+    }
     
     override func prepareForReuse() {
         backgroundColor = nil

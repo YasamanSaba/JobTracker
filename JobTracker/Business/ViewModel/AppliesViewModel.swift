@@ -35,6 +35,17 @@ class AppliesViewModel: NSObject, CoordinatorSupportedViewModel {
         let companyName: String
         let countryName: String
         let cityName: String
+        let checklistItems: [CheckListItem]
+        let completedChecklistItems: [CheckListItem]
+        let companyIsFavorie: Bool
+        let numberOfInterviews: Int
+        let numberOfTasks: Int
+        var numberOfCheckListItems: Int {
+            checklistItems.count
+        }
+        var numberOfNotCompletedChecklistItems: Int {
+            completedChecklistItems.count
+        }
         init(_ apply: Apply) {
             self.apply = apply
             date = apply.date
@@ -44,48 +55,11 @@ class AppliesViewModel: NSObject, CoordinatorSupportedViewModel {
             companyName = apply.company?.title ?? ""
             countryName = apply.city?.country?.name ?? ""
             cityName = apply.city?.name ?? ""
-        }
-    }
-        // MARK: - ApplyResultControllerDelegate
-    class ApplyResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
-        let applyDataSource: UITableViewDiffableDataSource<Section, ApplyItem>
-        init(applyDataSource: UITableViewDiffableDataSource<Section, ApplyItem>) {
-            self.applyDataSource = applyDataSource
-        }
-        
-        func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
-            var diff = NSDiffableDataSourceSnapshot<Section,ApplyItem>()
-            snapshot.sectionIdentifiers.forEach { _ in
-                diff.appendSections([.main])
-                let items = snapshot.itemIdentifiers.map { (objectId: Any) -> Apply in
-                    let oid =  objectId as! NSManagedObjectID
-                    return controller.managedObjectContext.object(with: oid) as! Apply
-                }
-                diff.appendItems(items.map{ApplyItem($0)}, toSection: .main) }
-            applyDataSource.apply(diff)
-        }
-    }
-    class ApplyDataSource: UITableViewDiffableDataSource<Section, ApplyItem> {
-        var applyService: ApplyServiceType!
-        var countryUpdater: (() -> Void)!
-        override func apply(_ snapshot: NSDiffableDataSourceSnapshot<AppliesViewModel.Section, ApplyItem>, animatingDifferences: Bool = true, completion: (() -> Void)? = nil) {
-            super.apply(snapshot, animatingDifferences: animatingDifferences, completion: completion)
-            countryUpdater()
-        }
-        override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-            return true
-        }
-        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-            if editingStyle == .delete, let apply = itemIdentifier(for: indexPath) {
-                do {
-                    try applyService.delete(apply: apply.apply)
-                    var snapShot = snapshot()
-                    snapShot.deleteItems([apply])
-                    self.apply(snapShot )
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
+            checklistItems = apply.checkListItem?.allObjects.map{$0 as! CheckListItem} ?? []
+            completedChecklistItems = apply.checkListItem?.allObjects.map{$0 as! CheckListItem}.filter{$0.isDone} ?? []
+            companyIsFavorie = apply.company?.isFavorite ?? false
+            numberOfInterviews = apply.interview?.count ?? 0
+            numberOfTasks = apply.task?.count ?? 0
         }
     }
     // MARK: - Properties
@@ -111,8 +85,7 @@ class AppliesViewModel: NSObject, CoordinatorSupportedViewModel {
     private func configureCountryDataSource(for collectionView: UICollectionView) {
         countryDataSource = UICollectionViewDiffableDataSource<Section, CountryItem>(collectionView: collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlagCollectinViewCell.reuseIdentifier, for: indexPath) as! FlagCollectinViewCell
-            cell.lblCountryName.text = item.name
-            cell.lblFlag.text = item.flag
+            cell.configure(flag: item.flag ?? "", name: item.name ?? "")
             return cell
         }
         countryDataSource?.supplementaryViewProvider = { [weak self] (
@@ -129,9 +102,9 @@ class AppliesViewModel: NSObject, CoordinatorSupportedViewModel {
                 let countryName = currentCountrySnapshot?.itemIdentifiers(inSection: .main)[indexPath.row].name
                 let countryCount = currentApplyObjects.filter{ $0.city?.country?.name == countryName }.count
                 let count = countryName == "World" ? currentApplyObjects.count : countryCount
-                badgeView.label.text = "\(count)"
+                badgeView.configure(count: count)
             } else {
-                badgeView.label.text = "0"
+                badgeView.configure(count: 0)
             }
             return badgeView
         }
@@ -144,6 +117,7 @@ class AppliesViewModel: NSObject, CoordinatorSupportedViewModel {
             return cell
         }
         applyDataSource.applyService = applyService
+        applyDataSource.superDelegate = delegate
         applyDataSource.countryUpdater = updateCountryDataSource
         applyResultController = applyService.fetchAll()
         do {
@@ -337,6 +311,51 @@ class AppliesViewModel: NSObject, CoordinatorSupportedViewModel {
         configureApplyDataSource(for: tableView)
         if let collectionView = collectionView {
             configureCountryDataSource(for: collectionView)
+        }
+    }
+    // MARK: - ApplyResultControllerDelegate
+    class ApplyResultControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
+        let applyDataSource: UITableViewDiffableDataSource<Section, ApplyItem>
+        init(applyDataSource: UITableViewDiffableDataSource<Section, ApplyItem>) {
+            self.applyDataSource = applyDataSource
+        }
+        
+        func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
+            var diff = NSDiffableDataSourceSnapshot<Section,ApplyItem>()
+            snapshot.sectionIdentifiers.forEach { _ in
+                diff.appendSections([.main])
+                let items = snapshot.itemIdentifiers.map { (objectId: Any) -> Apply in
+                    let oid =  objectId as! NSManagedObjectID
+                    return controller.managedObjectContext.object(with: oid) as! Apply
+                }
+                diff.appendItems(items.map{ApplyItem($0)}, toSection: .main) }
+            applyDataSource.apply(diff)
+        }
+    }
+    class ApplyDataSource: UITableViewDiffableDataSource<Section, ApplyItem> {
+        var applyService: ApplyServiceType!
+        var countryUpdater: (() -> Void)!
+        var superDelegate: AppliesViewModelDelegate?
+        override func apply(_ snapshot: NSDiffableDataSourceSnapshot<AppliesViewModel.Section, ApplyItem>, animatingDifferences: Bool = true, completion: (() -> Void)? = nil) {
+            super.apply(snapshot, animatingDifferences: animatingDifferences, completion: completion)
+            countryUpdater()
+        }
+        override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
+        }
+        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete, let apply = itemIdentifier(for: indexPath) {
+                superDelegate?.deleteConfirmation { [weak self] in
+                    guard let self = self else { return }
+                    if $0 {
+                        do {
+                            try self.applyService.delete(apply: apply.apply)
+                        } catch {
+                            self.superDelegate?.error(text: "Try again later")
+                        }
+                    }
+                }
+            }
         }
     }
 }

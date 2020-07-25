@@ -19,6 +19,7 @@ import UIKit
     func configure(country: Country) {
         lblFlag.text = country.flag
         lblCountryName.text = country.name
+        
     }
     
     @IBInspectable var cornerRadius: CGFloat {

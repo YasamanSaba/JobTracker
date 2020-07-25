@@ -15,7 +15,7 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Actions
-    @objc func addApply() {
+    @IBAction func addApply(_ sender: Any) {
         viewModel.addApply(sender: self)
     }
     
@@ -77,14 +77,13 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
         }
     }
     func createNonEditingBarButtons() {
-        let btnAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addApply))
         let btnEdit = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editApplies))
-        navigationItem.rightBarButtonItems = [btnAdd, btnEdit]
+        navigationItem.rightBarButtonItem = btnEdit
         
     }
     func configureLayout() -> UICollectionViewCompositionalLayout {
         let anchorEdges: NSDirectionalRectEdge = [.top, .trailing]
-        let offset = CGPoint(x: 0.2, y: -0.2)
+        let offset = CGPoint(x: 0.0, y: -0.0)
         let badgeAncher = NSCollectionLayoutAnchor(edges: anchorEdges, fractionalOffset: offset)
         let badgeSize = NSCollectionLayoutSize(widthDimension: .absolute(17), heightDimension: .absolute(17))
         let badge = NSCollectionLayoutSupplementaryItem(layoutSize: badgeSize, elementKind: AppliesViewController.badgeElementKind, containerAnchor: badgeAncher)
