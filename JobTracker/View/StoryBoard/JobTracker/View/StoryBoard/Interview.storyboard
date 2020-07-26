@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InterviewBackground" translatesAutoresizingMaskIntoConstraints="NO" id="FM5-5C-hRJ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background4" translatesAutoresizingMaskIntoConstraints="NO" id="FM5-5C-hRJ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxp-O0-vdm" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
@@ -474,7 +474,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="InterviewBackground" width="2400" height="3600"/>
+        <image name="Background4" width="600" height="800"/>
         <image name="alarm.fill" catalog="system" width="124" height="128"/>
         <image name="bin.xmark.fill" catalog="system" width="128" height="93"/>
         <image name="calendar.circle" catalog="system" width="128" height="121"/>

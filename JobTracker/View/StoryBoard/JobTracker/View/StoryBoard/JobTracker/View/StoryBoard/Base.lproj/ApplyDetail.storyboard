@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background11" translatesAutoresizingMaskIntoConstraints="NO" id="0TO-2U-0TJ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background3" translatesAutoresizingMaskIntoConstraints="NO" id="0TO-2U-0TJ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="My1-tO-GFV" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
@@ -509,7 +509,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Background11" width="1500" height="1000"/>
+        <image name="Background3" width="495" height="800"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="desktopcomputer" catalog="system" width="128" height="101"/>
         <image name="heart" catalog="system" width="128" height="109"/>

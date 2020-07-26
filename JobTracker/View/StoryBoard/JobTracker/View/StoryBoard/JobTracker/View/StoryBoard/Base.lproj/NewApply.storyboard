@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NewApplyBackground" translatesAutoresizingMaskIntoConstraints="NO" id="3s8-fe-eRP">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background3" translatesAutoresizingMaskIntoConstraints="NO" id="3s8-fe-eRP">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ja-lL-ELI">
@@ -636,7 +636,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NewApplyBackground" width="2400" height="3508"/>
+        <image name="Background3" width="495" height="800"/>
         <image name="bin.xmark.fill" catalog="system" width="128" height="93"/>
         <image name="building.2.crop.circle" width="17" height="17"/>
         <image name="calendar" catalog="system" width="128" height="106"/>

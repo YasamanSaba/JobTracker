@@ -15,16 +15,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background11" translatesAutoresizingMaskIntoConstraints="NO" id="r7k-k4-qf8">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background4" translatesAutoresizingMaskIntoConstraints="NO" id="r7k-k4-qf8">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fG-3b-iJk" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
-                                <rect key="frame" x="5" y="234" width="404" height="618"/>
+                                <rect key="frame" x="5" y="233.5" width="404" height="618.5"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8oZ-ez-dey">
-                                        <rect key="frame" x="0.0" y="0.0" width="404" height="618"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="618.5"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xug-Wk-8Kz">
-                                            <rect key="frame" x="0.0" y="0.0" width="404" height="618"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="618.5"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LXx-qi-tsi">
@@ -128,12 +128,12 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHj-h5-tNJ" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
-                                <rect key="frame" x="5" y="49" width="404" height="175"/>
+                                <rect key="frame" x="5" y="49" width="404" height="174.5"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Bd-T6-mgR">
-                                        <rect key="frame" x="0.0" y="0.0" width="404" height="175"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="174.5"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MKA-OV-pM7">
-                                            <rect key="frame" x="0.0" y="0.0" width="404" height="175"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="174.5"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What is this task? (Title)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Cf-mU-LiO">
@@ -431,7 +431,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Background11" width="1500" height="1000"/>
+        <image name="Background4" width="600" height="800"/>
         <image name="alarm.fill" catalog="system" width="124" height="128"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="laptopcomputer" width="24" height="14"/>

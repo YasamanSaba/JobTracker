@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FilterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ANx-Kp-CMP">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background1" translatesAutoresizingMaskIntoConstraints="NO" id="ANx-Kp-CMP">
                                 <rect key="frame" x="0.0" y="5" width="414" height="896"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ynH-SA-I3w" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
@@ -824,7 +824,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="FilterBackground" width="2400" height="3508"/>
+        <image name="Background1" width="2400" height="3508"/>
         <image name="bin.xmark" catalog="system" width="128" height="93"/>
         <image name="calendar.circle" catalog="system" width="128" height="121"/>
         <image name="flag.circle" catalog="system" width="128" height="121"/>
