@@ -36,10 +36,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ApplyTableViewCell" id="ata-Zh-ypA" customClass="ApplyTableViewCell" customModule="JobTracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="365" height="4"/>
+                                        <rect key="frame" x="0.0" y="32" width="365" height="36"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ata-Zh-ypA" id="qgR-Sj-ciZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="365" height="4"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="365" height="36"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZtN-iY-2Fx">
@@ -62,7 +62,7 @@
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RKo-Au-r86">
                                                                 <rect key="frame" x="43" y="28.666666666666664" width="20" height="17.000000000000007"/>
-                                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="RKo-Au-r86" secondAttribute="height" multiplier="1:1" id="BU6-Tc-hhs"/>
                                                                     <constraint firstAttribute="height" constant="20" id="yfM-hK-yOe"/>
@@ -76,7 +76,7 @@
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8KG-0i-Gvt">
                                                                 <rect key="frame" x="147.33333333333334" y="28.666666666666657" width="18" height="17.333333333333343"/>
-                                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="TSN-iR-L2n"/>
                                                                     <constraint firstAttribute="width" secondItem="8KG-0i-Gvt" secondAttribute="height" multiplier="9:10" id="tEz-ST-FQM"/>
@@ -96,7 +96,7 @@
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list.dash" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Tqz-xU-hoc">
                                                                 <rect key="frame" x="238.33333333333334" y="30.333333333333329" width="20.000000000000028" height="13.666666666666671"/>
-                                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="4qk-F6-fja"/>
                                                                     <constraint firstAttribute="width" secondItem="Tqz-xU-hoc" secondAttribute="height" multiplier="1:1" id="YUq-Gt-JHL"/>
@@ -104,7 +104,7 @@
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left.slash.chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uq0-LF-3TE">
                                                                 <rect key="frame" x="186" y="26.666666666666668" width="28" height="20.666666666666661"/>
-                                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="uq0-LF-3TE" secondAttribute="height" multiplier="7:5" id="aZO-aS-ZM1"/>
                                                                     <constraint firstAttribute="height" constant="20" id="siv-kc-Lub"/>
@@ -160,7 +160,7 @@
                                                             <constraint firstItem="gcd-Hz-QlT" firstAttribute="leading" secondItem="uq0-LF-3TE" secondAttribute="trailing" constant="3" id="ufm-lO-MeN"/>
                                                         </constraints>
                                                     </view>
-                                                    <blurEffect style="systemUltraThinMaterialDark"/>
+                                                    <blurEffect style="regular"/>
                                                 </visualEffectView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
