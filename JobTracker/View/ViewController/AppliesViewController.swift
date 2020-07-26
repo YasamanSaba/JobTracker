@@ -78,7 +78,7 @@ class AppliesViewController: UIViewController, ViewModelSupportedViewControllers
     }
     func createNonEditingBarButtons() {
         let btnEdit = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editApplies))
-        navigationItem.rightBarButtonItem = btnEdit
+        navigationItem.rightBarButtonItems = [btnEdit]
         
     }
     func configureLayout() -> UICollectionViewCompositionalLayout {
