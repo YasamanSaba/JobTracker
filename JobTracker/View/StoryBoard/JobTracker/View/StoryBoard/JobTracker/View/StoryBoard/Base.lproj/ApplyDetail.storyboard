@@ -163,15 +163,19 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="373" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qub-iE-lxQ">
-                                                                        <rect key="frame" x="5" y="6.5" width="20" height="17"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qub-iE-lxQ" customClass="IconUIImageView" customModule="JobTracker" customModuleProvider="target">
+                                                                        <rect key="frame" x="5" y="5.5" width="20" height="19"/>
+                                                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="qub-iE-lxQ" secondAttribute="height" multiplier="1:1" id="QFh-Ad-xzt"/>
                                                                             <constraint firstAttribute="height" constant="20" id="UNp-wl-pf3"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0Tm-JS-vKy">
-                                                                        <rect key="frame" x="176" y="6" width="21" height="17.5"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0Tm-JS-vKy" customClass="IconUIImageView" customModule="JobTracker" customModuleProvider="target">
+                                                                        <rect key="frame" x="176.5" y="5.5" width="20" height="19"/>
+                                                                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="2" translatesAutoresizingMaskIntoConstraints="NO" id="uEy-mx-9to">
                                                                         <rect key="frame" x="35" y="8" width="17" height="14.5"/>
@@ -180,7 +184,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-06-14 (2 days left)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="3" translatesAutoresizingMaskIntoConstraints="NO" id="fRH-gs-YhC">
-                                                                        <rect key="frame" x="202" y="8" width="166" height="14.5"/>
+                                                                        <rect key="frame" x="201.5" y="8" width="166.5" height="14.5"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -284,18 +288,22 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="desktopcomputer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WEa-dV-wrQ">
-                                                                        <rect key="frame" x="5" y="5.5" width="20" height="19"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left.slash.chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WEa-dV-wrQ" customClass="IconUIImageView" customModule="JobTracker" customModuleProvider="target">
+                                                                        <rect key="frame" x="5" y="4.5" width="20" height="21"/>
+                                                                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="20" id="3wS-e4-ack"/>
                                                                             <constraint firstAttribute="width" secondItem="WEa-dV-wrQ" secondAttribute="height" multiplier="1:1" id="nbR-wq-AVZ"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="84Y-D7-xZW">
-                                                                        <rect key="frame" x="176" y="6" width="21" height="17.5"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="84Y-D7-xZW" customClass="IconUIImageView" customModule="JobTracker" customModuleProvider="target">
+                                                                        <rect key="frame" x="176.5" y="5.5" width="20" height="19"/>
+                                                                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-06-14 (2 days left)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="2" translatesAutoresizingMaskIntoConstraints="NO" id="auu-eP-0H4">
-                                                                        <rect key="frame" x="202" y="8" width="166" height="14.5"/>
+                                                                        <rect key="frame" x="201.5" y="8" width="166.5" height="14.5"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -384,9 +392,10 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="112" height="20"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tag.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Rw7-5Z-Kgm">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tag.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Rw7-5Z-Kgm" customClass="IconUIImageView" customModule="JobTracker" customModuleProvider="target">
                                                                         <rect key="frame" x="5" y="0.5" width="20" height="19"/>
-                                                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Core Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuW-fh-o9y">
                                                                         <rect key="frame" x="30" y="-0.5" width="77" height="21"/>
@@ -510,10 +519,10 @@
     </scenes>
     <resources>
         <image name="Background3" width="495" height="800"/>
-        <image name="calendar" catalog="system" width="128" height="106"/>
-        <image name="desktopcomputer" catalog="system" width="128" height="101"/>
+        <image name="calendar.circle" catalog="system" width="128" height="121"/>
+        <image name="chevron.left.slash.chevron.right" catalog="system" width="128" height="97"/>
         <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="tag.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>
