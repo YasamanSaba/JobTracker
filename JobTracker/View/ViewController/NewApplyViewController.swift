@@ -37,11 +37,7 @@ class NewApplyViewController: UIViewController, ViewModelSupportedViewController
     @IBOutlet weak var colTags: UICollectionView!
     // MARK: - Actions
     @IBAction func btnSave(_ sender: Any) {
-        guard let url = txtJobURL.text, let salaryText = txtSalary.text, salaryText != "" else {
-            showAlert(text: "Complete fields.")
-            return
-        }
-        if viewModel.save(link: url, salary: Int(salaryText)!) {
+        if viewModel.save(link: txtJobURL.text, salary: txtSalary.text) {
         if let navigationController = navigationController {
             navigationController.popViewController(animated: true)
         } else {

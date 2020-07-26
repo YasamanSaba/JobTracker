@@ -516,19 +516,19 @@
 			isa = PBXGroup;
 			children = (
 				70EA244B2490A745007FD797 /* AppliesViewController.swift */,
-				7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */,
-				7060EFF42494A32900A229B8 /* TagViewController.swift */,
 				7060EFF92494E6CB00A229B8 /* ApplyViewController.swift */,
-				70483E76249651DC00612288 /* NoteViewController.swift */,
 				70483E7B249795B100612288 /* ChecklistViewController.swift */,
-				70ADFFA02498B93600345379 /* ReminderViewController.swift */,
-				709CDEE124A1E66400A9DAE0 /* NotesViewController.swift */,
-				7051A55924AB088C00B98C4B /* CompanyViewController.swift */,
-				F29ABCF724ACC1060032D3E2 /* FilterViewController.swift */,
-				70773C5224AC6EFB00097FFE /* CountryViewController.swift */,
 				70773C5A24ACC30300097FFE /* CityViewController.swift */,
-				70D30A4F24B057EE005D29B2 /* ResumeViewController.swift */,
+				7051A55924AB088C00B98C4B /* CompanyViewController.swift */,
+				70773C5224AC6EFB00097FFE /* CountryViewController.swift */,
+				F29ABCF724ACC1060032D3E2 /* FilterViewController.swift */,
 				F293DDC924B99B8300326E5A /* InterviewViewController.swift */,
+				7060EFEE2490C88400A229B8 /* NewApplyViewController.swift */,
+				709CDEE124A1E66400A9DAE0 /* NotesViewController.swift */,
+				70483E76249651DC00612288 /* NoteViewController.swift */,
+				70ADFFA02498B93600345379 /* ReminderViewController.swift */,
+				70D30A4F24B057EE005D29B2 /* ResumeViewController.swift */,
+				7060EFF42494A32900A229B8 /* TagViewController.swift */,
 				70BC371624B995BF00E0680A /* TaskViewController.swift */,
 			);
 			path = ViewController;

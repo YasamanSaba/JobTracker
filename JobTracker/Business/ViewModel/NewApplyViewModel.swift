@@ -216,28 +216,29 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     func addResume(sender: UIViewController) {
         coordinator.present(scene: .resume, sender: sender)
     }
-    func save(link: String?, salary: Int?) -> Bool {
+    func save(link: String?, salary: String?) -> Bool {
         if let city = selectedCity,
             let date = selectedDate,
             let company = selectedComapy,
             let resume = selectedResume
         {
+            let sal = (salary == nil || salary == "") ? 0 : Int(salary!)
             let url = (link != nil) ? URL(string: link!) : nil
-            let item = ApplyService.ApplyItem(date: date, link: url, salary: salary ?? 0, state: states[selectedStateIndex], city: city, company: company, resume: resume, tags: selectedTags)
+            let item = ApplyService.ApplyItem(date: date, link: url, salary: sal!, state: states[selectedStateIndex], city: city, company: company, resume: resume, tags: selectedTags)
             do {
                 if isEditingMode {
-                    try applyService.update(apply: apply!, company: company, city: city, country: city.country, link: url, salary: Int32(salary ?? 0), state: states[selectedStateIndex], resume: resume, date: date, tags: selectedTags)
+                    try applyService.update(apply: apply!, company: company, city: city, country: city.country, link: url, salary: Int32(sal!), state: states[selectedStateIndex], resume: resume, date: date, tags: selectedTags)
                     return true
                 } else {
                 try applyService.save(applyItem: item)
                     return true
                 }
             } catch {
-                delegate?.error(text: "Please try again later.")
+                delegate?.error(text: "Please try again later")
                 return false
             }
         } else {
-            delegate?.error(text: "Please fill all the fields.")
+            delegate?.error(text: "Please fill all the fields")
             return false
         }
     }
