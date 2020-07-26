@@ -26,7 +26,6 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     var resumeControllerDelegate: ResumeResultsControllerDelegate?
     var cityControllerDelegate: CityResultsControllerDelegate?
     var countryControllerDelegate: CountryResultsControllerDelegate?
-    var countryPickerView: UIPickerView?
     var cityPickerView: UIPickerView?
     var states: [Status] = []
     var selectedStateIndex: Int = 0 {
@@ -46,6 +45,7 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
         didSet {
             delegate?.country(text: selectedCountry?.name ?? "")
             selectedCity = nil
+            fetchCities()
         }
     }
     var selectedCity: City? {
@@ -71,6 +71,12 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
         }
     }
     var isEditingMode: Bool = false
+    var countries: [Country] = []
+    var cities: [City] = [] {
+        didSet {
+            cityPickerView?.reloadAllComponents()
+        }
+    }
     // MARK: - Initializer
     init(countryService: CountryServiceType, cityService: CityServiceType, applyService: ApplyServiceType, tagService: TagServiceType, stateService: StateServiceType, apply: Apply?) {
         self.countryService = countryService
@@ -87,10 +93,9 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     // MARK: - Functions
     private func configureCountry(pickerView: UIPickerView) {
         pickerView.accessibilityIdentifier = "CountryPickerView"
-        countryPickerView = pickerView
         countryResultController = countryService.fetchAll()
         let countryResultsControllerDelegate = CountryResultsControllerDelegate()
-        countryResultsControllerDelegate.countryPickerView = pickerView
+        countryResultsControllerDelegate.parent = self
         countryResultController?.delegate = countryResultsControllerDelegate
         self.countryControllerDelegate = countryResultsControllerDelegate
         pickerView.dataSource = self
@@ -100,6 +105,7 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
             try countryResultController?.performFetch()
             pickerView.selectRow(0, inComponent: 0, animated: true)
             if let objects = countryResultController?.fetchedObjects, objects.count > 0 {
+                countries = objects
                 selectedCountry = objects[0]
             }
         } catch {
@@ -108,20 +114,25 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     }
     private func configureCity(pickerView: UIPickerView) {
         pickerView.accessibilityIdentifier = "CityPickerView"
+        pickerView.dataSource = self
+        pickerView.delegate = self
         cityPickerView = pickerView
+    }
+    private func fetchCities() {
         if let selectedCountry = selectedCountry {
             cityResultController = cityService.fetchAll(in: selectedCountry)
             let cityResultsControllerDelegate = CityResultsControllerDelegate()
-            cityResultsControllerDelegate.cityPickerView = pickerView
             cityResultController?.delegate = cityResultsControllerDelegate
+            cityResultsControllerDelegate.parent = self
             self.cityControllerDelegate = cityResultsControllerDelegate
-            pickerView.dataSource = self
-            pickerView.delegate = self
+            
             do {
                 try cityResultController?.performFetch()
-                if let objects = cityResultController?.fetchedObjects, objects.count > 0 {
-                pickerView.selectRow(0, inComponent: 0, animated: true)
-                selectedCity = cityResultController?.fetchedObjects?[0]
+                if let objects = cityResultController?.fetchedObjects {
+                    cities = objects
+                    if cities.count > 0 {
+                        selectedCity = cities[0]
+                    }
                 }
             } catch {
                 print(error)
@@ -257,15 +268,9 @@ extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView.accessibilityIdentifier {
         case "CountryPickerView":
-            if let objects = countryResultController?.fetchedObjects {
-                return objects.count
-            }
-            return 0
+            return countries.count
         case "CityPickerView":
-            if let objects = cityResultController?.fetchedObjects {
-                return objects.count
-            }
-            return 0
+            return cities.count
         case "ResumePickerView":
             if let objects = resumeResultController?.fetchedObjects {
                 return objects.count
@@ -281,13 +286,13 @@ extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView.accessibilityIdentifier {
         case "CountryPickerView":
-            if let objects = countryResultController?.fetchedObjects {
-                return objects[row].name
+            if row < countries.count {
+                return countries[row].name
             }
             return nil
         case "CityPickerView":
-            if let objects = cityResultController?.fetchedObjects {
-                return objects[row].name
+            if row < cities.count {
+                return cities[row].name
             }
             return nil
         case "ResumePickerView":
@@ -307,14 +312,13 @@ extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView.accessibilityIdentifier {
         case "CountryPickerView":
-            if let objects = countryResultController?.fetchedObjects, objects.count > 0 {
-                selectedCountry = objects[row]
-                if let cityPickerView = cityPickerView {
-                    configureCity(pickerView: cityPickerView)
-                }
+            if row < countries.count {
+                selectedCountry = countries[row]
             }
         case "CityPickerView":
-            selectedCity = cityResultController?.fetchedObjects?[row]
+            if row < cities.count {
+                selectedCity = cities[row]
+            }
         case "ResumePickerView":
             if let objects = resumeResultController.fetchedObjects, row < objects.count {
                 selectedResume = objects[row]
@@ -328,20 +332,29 @@ extension NewApplyViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
 }
 extension NewApplyViewModel {
     class CountryResultsControllerDelegate: NSObject, NSFetchedResultsControllerDelegate{
-        var countryPickerView: UIPickerView?
+        var parent: NewApplyViewModel?
         func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-            self.countryPickerView?.reloadAllComponents()
-            self.countryPickerView?.selectRow(0, inComponent: 0, animated: true)
+            do {
+                try controller.performFetch()
+                if let objects = controller.fetchedObjects {
+                    parent?.countries = objects.map({ $0 as! Country})
+                }
+            } catch {
+                print(error)
+            }
         }
     }
     
     class CityResultsControllerDelegate: NSObject, NSFetchedResultsControllerDelegate{
-        var cityPickerView: UIPickerView?
+        var parent: NewApplyViewModel?
         func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-            self.cityPickerView?.reloadAllComponents()
-            self.cityPickerView?.selectRow(0, inComponent: 0, animated: true)
-            if let cityPickerView = cityPickerView {
-                self.cityPickerView?.delegate?.pickerView?(cityPickerView, didSelectRow: 0, inComponent: 0)
+            do {
+                try controller.performFetch()
+                if let objects = controller.fetchedObjects {
+                    parent?.cities = objects.map({ $0 as! City})
+                }
+            } catch {
+                print(error)
             }
         }
     }
