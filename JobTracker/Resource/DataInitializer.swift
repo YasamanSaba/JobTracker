@@ -18,7 +18,7 @@ struct DataInitializer {
         let world = Country(context: context)
         world.name = "World"
         world.flag = "🌍"
-        let germany = Country(context: context)
+        /*let germany = Country(context: context)
         germany.name = "Germany"
         germany.flag = "🇩🇪"
         let spain = Country(context: context)
@@ -192,7 +192,7 @@ struct DataInitializer {
         resume5.version = "9.5.1"
         resume5.addToApply(apply5)
         company5.addToApply(apply5)
-        apply5.addToTask(task5)
+        apply5.addToTask(task5)*/
         
         do {
             try context.save()
