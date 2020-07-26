@@ -27,7 +27,20 @@ class CityViewModel: NSObject, CoordinatorSupportedViewModel {
         cityDataSource = UICollectionViewDiffableDataSource<Int,City>(collectionView: collectionView){ (collectionView, indexPath, city) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CityCollectionViewCell.reuseIdentifier, for: indexPath) as? CityCollectionViewCell else { return nil}
             
-            cell.configure(city: city)
+            cell.configure(city: city) { [weak self] city in
+                guard let self = self else { return }
+                self.delegate?.deleteConfirmation {
+                    if $0 {
+                        do {
+                            try self.cityService.delete(city: city)
+                        } catch CityServiceError.cityHasOtherRelation {
+                            self.delegate?.error(text: "There is some applies on this city")
+                        } catch {
+                            self.delegate?.error(text: "Something is wrong, try later")
+                        }
+                    }
+                }
+            }
             return cell
         }
         cityResultsController = cityService.fetchAll(in: country)
