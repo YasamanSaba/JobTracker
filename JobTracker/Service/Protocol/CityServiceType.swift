@@ -13,10 +13,13 @@ enum CityServiceError: Error {
     case fetchError
     case addError
     case alreadyExists
+    case cityHasOtherRelation
+    case deleteError
 }
 
 protocol CityServiceType {
     func fetchAll() -> NSFetchedResultsController<City>
     func fetchAll(in country: Country) -> NSFetchedResultsController<City>
     func add(name: String, to country: Country) throws
+    func delete(city: City) throws
 }

@@ -23,7 +23,6 @@ struct CityService: CityServiceType {
         let fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchResultController
     }
-    
     func fetchAll(in country: Country) -> NSFetchedResultsController<City> {
         let fetchRequest: NSFetchRequest<City> = City.fetchRequest()
         let predicate = NSPredicate(format: "%K == %@", #keyPath(City.country), country)
@@ -55,6 +54,17 @@ struct CityService: CityServiceType {
             try context.save()
         } catch {
             throw CityServiceError.addError
+        }
+    }
+    func delete(city: City) throws {
+        if city.apply?.count != 0 {
+            throw CityServiceError.cityHasOtherRelation
+        }
+        do {
+            context.delete(city)
+            try context.save()
+        } catch {
+            throw CityServiceError.deleteError
         }
     }
 }
