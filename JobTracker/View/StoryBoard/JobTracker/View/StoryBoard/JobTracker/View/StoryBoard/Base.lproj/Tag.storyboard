@@ -46,17 +46,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="179"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yV-L2-M4Q">
-                                                    <rect key="frame" x="8" y="8" width="108" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Tags" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yV-L2-M4Q">
+                                                    <rect key="frame" x="141" y="7" width="112.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BzV-3L-LKx" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="34" width="394" height="145"/>
+                                                    <rect key="frame" x="0.0" y="34.5" width="394" height="144.5"/>
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="25E-sB-g3v">
-                                                            <rect key="frame" x="0.0" y="0.0" width="394" height="145"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="394" height="144.5"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pAx-jO-hL8">
                                                                 <size key="itemSize" width="150" height="25"/>
@@ -85,7 +85,7 @@
                                                                                     <constraint firstAttribute="width" secondItem="Ydi-gw-XAo" secondAttribute="height" multiplier="1:1" id="UEs-VI-xBo"/>
                                                                                 </constraints>
                                                                             </imageView>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tag.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SAx-32-vKf">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tag.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SAx-32-vKf" customClass="IconUIImageView" customModule="JobTracker" customModuleProvider="target">
                                                                                 <rect key="frame" x="5" y="3.5" width="24" height="23"/>
                                                                                 <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -147,13 +147,12 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2yV-L2-M4Q" secondAttribute="trailing" constant="8" id="0tT-3z-goM"/>
                                                 <constraint firstAttribute="bottom" secondItem="BzV-3L-LKx" secondAttribute="bottom" id="P6K-k1-aw8"/>
                                                 <constraint firstItem="BzV-3L-LKx" firstAttribute="leading" secondItem="LRC-xn-RPS" secondAttribute="leading" id="UnG-UW-M6f"/>
-                                                <constraint firstItem="BzV-3L-LKx" firstAttribute="top" secondItem="2yV-L2-M4Q" secondAttribute="bottom" constant="5" id="vY4-18-JOE"/>
-                                                <constraint firstItem="2yV-L2-M4Q" firstAttribute="leading" secondItem="LRC-xn-RPS" secondAttribute="leading" constant="8" id="wUo-c3-HYO"/>
+                                                <constraint firstItem="2yV-L2-M4Q" firstAttribute="centerX" secondItem="LRC-xn-RPS" secondAttribute="centerX" id="X57-tG-Yy8"/>
+                                                <constraint firstItem="BzV-3L-LKx" firstAttribute="top" secondItem="2yV-L2-M4Q" secondAttribute="bottom" constant="7" id="f5e-nO-mKo"/>
+                                                <constraint firstItem="2yV-L2-M4Q" firstAttribute="top" secondItem="LRC-xn-RPS" secondAttribute="top" constant="7" id="gdS-Ej-azh"/>
                                                 <constraint firstAttribute="trailing" secondItem="BzV-3L-LKx" secondAttribute="trailing" id="wWW-eA-M7t"/>
-                                                <constraint firstItem="2yV-L2-M4Q" firstAttribute="top" secondItem="LRC-xn-RPS" secondAttribute="top" constant="8" id="xRK-CH-emm"/>
                                             </constraints>
                                         </view>
                                         <blurEffect style="regular"/>

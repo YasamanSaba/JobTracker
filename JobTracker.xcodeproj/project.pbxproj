@@ -112,6 +112,7 @@
 		F23EFE2024C4697D00894B8B /* NewApplyViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23EFE1F24C4697D00894B8B /* NewApplyViewModelDelegate.swift */; };
 		F23F3052249DF28B00A92C49 /* ApplyServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23F3051249DF28B00A92C49 /* ApplyServiceType.swift */; };
 		F23F3054249DF35A00A92C49 /* ApplyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23F3053249DF35A00A92C49 /* ApplyService.swift */; };
+		F240992924CEC05F00BD0F47 /* GeneralMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F240992824CEC05F00BD0F47 /* GeneralMessages.swift */; };
 		F24633AA24A8A226004D1DE5 /* InterviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24633A924A8A226004D1DE5 /* InterviewService.swift */; };
 		F24633AC24A8A291004D1DE5 /* InterviewServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24633AB24A8A291004D1DE5 /* InterviewServiceType.swift */; };
 		F24633AE24A8C814004D1DE5 /* TaskServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24633AD24A8C814004D1DE5 /* TaskServiceType.swift */; };
@@ -280,6 +281,7 @@
 		F23EFE1F24C4697D00894B8B /* NewApplyViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewApplyViewModelDelegate.swift; sourceTree = "<group>"; };
 		F23F3051249DF28B00A92C49 /* ApplyServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyServiceType.swift; sourceTree = "<group>"; };
 		F23F3053249DF35A00A92C49 /* ApplyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyService.swift; sourceTree = "<group>"; };
+		F240992824CEC05F00BD0F47 /* GeneralMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralMessages.swift; sourceTree = "<group>"; };
 		F24633A924A8A226004D1DE5 /* InterviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewService.swift; sourceTree = "<group>"; };
 		F24633AB24A8A291004D1DE5 /* InterviewServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewServiceType.swift; sourceTree = "<group>"; };
 		F24633AD24A8C814004D1DE5 /* TaskServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskServiceType.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				F219F4F5248E797100B7A3D5 /* Interview+CoreDataClass.swift */,
 				F219F4F7248E797100B7A3D5 /* Apply+CoreDataClass.swift */,
 				F2B6F2082490F88F0088B0F7 /* InMemoryStore.swift */,
+				F240992824CEC05F00BD0F47 /* GeneralMessages.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 		70AEFEE2248E4CF20063C352 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				709CDEE924A2111B00A9DAE0 /* Protocol */,
 				F2EAA8B52498EBAC00876FA9 /* AppliesViewModel.swift */,
 				F24A0DC824A470F600D38217 /* ApplyViewModel.swift */,
 				70966A9624BC44140072C23E /* ChecklistViewModel.swift */,
@@ -456,7 +460,6 @@
 				704866D224A777EF00FA80B5 /* NewApplyViewModel.swift */,
 				709CDEE324A1E7C500A9DAE0 /* NotesViewModel.swift */,
 				709CDEE724A20DB000A9DAE0 /* NoteViewModel.swift */,
-				709CDEE924A2111B00A9DAE0 /* Protocol */,
 				70ADFF992498A08F00345379 /* ReminderViewModel.swift */,
 				70D30A5124B05A4F005D29B2 /* ResumeViewModel.swift */,
 				700F52FA249DF4B2000EBCD3 /* TagViewModel.swift */,
@@ -885,6 +888,7 @@
 				7060EFF52494A32900A229B8 /* TagViewController.swift in Sources */,
 				70483E7A249761D200612288 /* UITextViewExtension.swift in Sources */,
 				700F52FB249DF4B2000EBCD3 /* TagViewModel.swift in Sources */,
+				F240992924CEC05F00BD0F47 /* GeneralMessages.swift in Sources */,
 				709CDEEB24A2113E00A9DAE0 /* CoordinatorSupportedViewModel.swift in Sources */,
 				F293DDCA24B99B8300326E5A /* InterviewViewController.swift in Sources */,
 				700F52FD249DF749000EBCD3 /* TagTableViewCell.swift in Sources */,

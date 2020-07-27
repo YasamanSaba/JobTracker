@@ -12,9 +12,12 @@ import CoreData
 enum ResumeServiceError: Error {
     case fetchError
     case alreadyExists
+    case resumeHasOtherRelation
+    case deleteError
 }
 
 protocol ResumeServiceType {
     func getAll() -> NSFetchedResultsController<Resume>
     func add(version: String, url: URL?) throws
+    func delete(resume: Resume) throws
 }

@@ -36,6 +36,8 @@ class ResumeViewModel: NSObject, CoordinatorSupportedViewModel {
             cell.configure(version: resume.version ?? "Unkown" , applyCount: String(resume.apply?.count ?? 0), hasLink: resume.linkToGit != nil)
             return cell
         }
+        resumeDataSource?.superDelegate = delegate
+        resumeDataSource?.resumeService = resumeService
         resumeFetchedResultsController = resumeService.getAll()
         resumeFetchedResultsController?.delegate = self
         do {
@@ -74,10 +76,29 @@ class ResumeViewModel: NSObject, CoordinatorSupportedViewModel {
     
     // MARK: - Nested Types
     class ResumeDataSourece: UITableViewDiffableDataSource<Int,Resume> {
-        
+        var superDelegate: ResumeViewModelDelegate?
+        var resumeService: ResumeServiceType?
+        override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
+        }
+        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                superDelegate?.deleteConfirmation { [weak self] in
+                    guard let self = self else { return }
+                    if $0, let resume = self.itemIdentifier(for: indexPath) {
+                        do {
+                            try self.resumeService?.delete(resume: resume)
+                        } catch ResumeServiceError.resumeHasOtherRelation {
+                            self.superDelegate?.error(text: "You used it for some applies")
+                        } catch {
+                            self.superDelegate?.error(text: "Try again later!")
+                        }
+                    }
+                }
+            }
+        }
     }
 }
-
 // MARK: - Extensions
 extension ResumeViewModel: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
