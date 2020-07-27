@@ -32,6 +32,7 @@ class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     private let taskService: TaskServiceType
     private let companyService: CompanyServiceType
     private let tagService: TagServiceType
+    private let reminderService: ReminderService
     private let apply: Apply
     var applyResultController: NSFetchedResultsController<Apply>!
     var resumeResultController: NSFetchedResultsController<Resume>!
@@ -48,7 +49,7 @@ class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     weak var resumePickerView: UIPickerView?
     var states: [Status] = []
     // MARK: - Initializer -
-    init(applyService: ApplyServiceType,interviewService: InterviewServiceType, apply: Apply, taskService: TaskServiceType, companyService: CompanyServiceType, stateService: StateServiceType, tagService: TagServiceType) {
+    init(applyService: ApplyServiceType,interviewService: InterviewServiceType, apply: Apply, taskService: TaskServiceType, companyService: CompanyServiceType, stateService: StateServiceType, tagService: TagServiceType, reminderService: ReminderService) {
         self.applyService = applyService
         self.interviewService = interviewService
         self.taskService = taskService
@@ -56,6 +57,7 @@ class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
         self.companyService = companyService
         self.stateService = stateService
         self.tagService = tagService
+        self.reminderService = reminderService
     }
     // MARK: - Functions -
     func start(collectionView: UICollectionView, interviewTableView: UITableView?, taskTableview: UITableView?) {
@@ -96,6 +98,8 @@ class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
             cell.configure(role: interview.interviewerRoleEnum?.rawValue ?? "Unknown", date: date)
             return cell
         }
+        interviewDataSource.superDelegate = delegate
+        interviewDataSource.reminderService = reminderService
         interviewDataSource.interviewService = interviewService
         interviewResultController = interviewService.fetch(apply: apply)
         do {
@@ -130,6 +134,8 @@ class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
             cell.configure(title: task.title ?? "Unknown", deadLine: date)
             return cell
         }
+        taskDataSource.superDelegate = delegate
+        taskDataSource.reminderService = reminderService
         taskDataSource.taskService = taskService
         taskResultController = taskService.fetch(apply: apply)
         do {
@@ -259,36 +265,54 @@ class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     // MARK: - Override
     class InterviewDataSource: UITableViewDiffableDataSource<Section, Interview> {
         var interviewService: InterviewServiceType!
+        var reminderService: ReminderServiceType!
+        var superDelegate: ApplyViewModelDelegate!
         override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
             return true
         }
         override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
             if editingStyle == .delete, let interview = itemIdentifier(for: indexPath) {
-                do {
-                    try interviewService.delete(interview: interview)
-                    var snapShot = self.snapshot()
-                    snapShot.deleteItems([interview])
-                    self.apply(snapShot)
-                } catch {
-                    print(error.localizedDescription)
+                superDelegate.deleteConfirmation { [weak self] in
+                    guard let self = self else { return }
+                    if $0 {
+                        do {
+                            if let reminders = interview.reminder, reminders.count > 0 {
+                                try reminders.forEach {
+                                    try self.reminderService.delete(reminder: $0 as! Reminder)
+                                }
+                            }
+                            try self.interviewService.delete(interview: interview)
+                        } catch {
+                            self.superDelegate.error(text: "Please try again later")
+                        }
+                    }
                 }
             }
         }
     }
     class TaskDataSource: UITableViewDiffableDataSource<Section, Task> {
         var taskService: TaskServiceType!
+        var reminderService: ReminderServiceType!
+        var superDelegate: ApplyViewModelDelegate!
         override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
             return true
         }
         override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
             if editingStyle == .delete, let task = itemIdentifier(for: indexPath) {
-                do {
-                    try taskService.delete(task: task)
-                    var snapShot = self.snapshot()
-                    snapShot.deleteItems([task])
-                    self.apply(snapShot)
-                } catch {
-                    print(error.localizedDescription)
+                superDelegate.deleteConfirmation { [weak self] in
+                    guard let self = self else { return }
+                    if $0 {
+                        do {
+                            if let reminders = task.reminder, reminders.count > 0 {
+                                try reminders.forEach {
+                                    try self.reminderService.delete(reminder: $0 as! Reminder)
+                                }
+                            }
+                            try self.taskService.delete(task: task)
+                        } catch {
+                            self.superDelegate.error(text: "Please try again later")
+                        }
+                    }
                 }
             }
         }

@@ -28,7 +28,7 @@ class CountryViewModel: NSObject, CoordinatorSupportedViewModel {
             cell.configure(country: country)
             return cell
         }
-        countryResultsController = countryService.fetchAll()
+        countryResultsController = countryService.fetchAll(withoutworld: true)
         countryResultsController?.delegate = self
         do {
             try countryResultsController?.performFetch()

@@ -99,6 +99,10 @@ class TagViewModel: NSObject, CoordinatorSupportedViewModel {
         }
     }
     func addNew(tag: String) {
+        guard !tag.isEmpty, !tag.trimmingCharacters(in: .whitespaces).isEmpty else {
+            delegate?.error(text: "Tag cannot be empty")
+            return
+        }
         do {
             try service.add(tag: tag)
         } catch {
