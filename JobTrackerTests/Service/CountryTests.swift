@@ -36,7 +36,7 @@ class CountryTests: XCTestCase {
         uk.flag = "🇬🇧"
         
         XCTAssertNoThrow(try context.save())
-        let controller = service.fetchAll()
+        let controller = service.fetchAll(withoutworld: false)
         XCTAssertNoThrow(try controller.performFetch())
         XCTAssertNotNil(controller.fetchedObjects)
         XCTAssertEqual(controller.fetchedObjects!.count, 2)
