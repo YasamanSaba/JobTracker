@@ -98,6 +98,7 @@
 		F2035581248BBBD000A9F9F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2035580248BBBD000A9F9F8 /* Assets.xcassets */; };
 		F2035584248BBBD000A9F9F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2035582248BBBD000A9F9F8 /* LaunchScreen.storyboard */; };
 		F203559A248BBBD100A9F9F8 /* JobTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2035599248BBBD100A9F9F8 /* JobTrackerUITests.swift */; };
+		F20C8F5A24CF0EED0079F577 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = F20C8F5924CF0EED0079F577 /* 1.png */; };
 		F219F4F9248E797100B7A3D5 /* Interview+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219F4F5248E797100B7A3D5 /* Interview+CoreDataClass.swift */; };
 		F220D96E24ADC0F00085DCED /* StateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220D96D24ADC0F00085DCED /* StateCollectionViewCell.swift */; };
 		F220D97024ADC6540085DCED /* StateServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220D96F24ADC6540085DCED /* StateServiceType.swift */; };
@@ -266,6 +267,7 @@
 		F2035595248BBBD100A9F9F8 /* JobTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2035599248BBBD100A9F9F8 /* JobTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTrackerUITests.swift; sourceTree = "<group>"; };
 		F203559B248BBBD100A9F9F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F20C8F5924CF0EED0079F577 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		F219F4F5248E797100B7A3D5 /* Interview+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Interview+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F219F4F7248E797100B7A3D5 /* Apply+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apply+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F220D96D24ADC0F00085DCED /* StateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 		70AEFEE8248E4D670063C352 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F20C8F5924CF0EED0079F577 /* 1.png */,
 				F2035580248BBBD000A9F9F8 /* Assets.xcassets */,
 				F2EAA8B72498F43E00876FA9 /* DataInitializer.swift */,
 			);
@@ -767,6 +770,7 @@
 				7060EFFD2496178300A229B8 /* Reminder.storyboard in Resources */,
 				F2035581248BBBD000A9F9F8 /* Assets.xcassets in Resources */,
 				7060EFF82494A47500A229B8 /* Tag.storyboard in Resources */,
+				F20C8F5A24CF0EED0079F577 /* 1.png in Resources */,
 				70D30A4E24B053A0005D29B2 /* Resume.storyboard in Resources */,
 				F29ABCF624ACA4B50032D3E2 /* Filter.storyboard in Resources */,
 				7009B1CE24A383C300B6437D /* Interview.storyboard in Resources */,
@@ -1127,7 +1131,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1148,7 +1152,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

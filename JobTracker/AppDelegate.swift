@@ -36,10 +36,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print(response)
-        
-        
-        
+        let userInfo = response.notification.request.content.userInfo
+        if let applyObjectIdString = userInfo["ApplyObjectId"] as? String,
+            let subjectIdString = userInfo["SubjectObjectId"] as? String,
+            let type = userInfo["Type"] as? String,
+            let applyObjectIdURL = URL(string: applyObjectIdString) ,
+            let subjectIdURL = URL(string: subjectIdString),
+            let applyObjectID = persistentContainer.persistentStoreCoordinator.managedObjectID(forURIRepresentation: applyObjectIdURL),
+            let subjectObjectID = persistentContainer.persistentStoreCoordinator.managedObjectID(forURIRepresentation: subjectIdURL)
+        {
+            
+            
+            let request: NSFetchRequest<Apply> = Apply.fetchRequest()
+            let predicate = NSPredicate(format: "self == %@", applyObjectID)
+            request.predicate = predicate
+            do {
+                guard let apply = try persistentContainer.viewContext.fetch(request).first else { return }
+                switch type {
+                case "Interview":
+                    let interviewRequest: NSFetchRequest<Interview> = Interview.fetchRequest()
+                    let interviewPredicate = NSPredicate(format: "self == %@", subjectObjectID)
+                    interviewRequest.predicate = interviewPredicate
+                    guard let interview = try persistentContainer.viewContext.fetch(interviewRequest).first else { return }
+                    appCoordinator.push(scene: .apply(apply), sender: ((appCoordinator.window.rootViewController! as! UITabBarController).viewControllers![0] as! UINavigationController).viewControllers[0])
+                    appCoordinator.push(scene: .interview(apply, interview), sender: ((appCoordinator.window.rootViewController! as! UITabBarController).viewControllers![0] as! UINavigationController).viewControllers[0])
+                case "Task":
+                    let taskRequest: NSFetchRequest<Task> = Task.fetchRequest()
+                    let taskPredicate = NSPredicate(format: "self == %@", subjectObjectID)
+                    taskRequest.predicate = taskPredicate
+                    guard let task = try persistentContainer.viewContext.fetch(taskRequest).first else { return }
+                    appCoordinator.push(scene: .apply(apply), sender: ((appCoordinator.window.rootViewController! as! UITabBarController).viewControllers![0] as! UINavigationController).viewControllers[0])
+                    appCoordinator.push(scene: .task(apply, task), sender: ((appCoordinator.window.rootViewController! as! UITabBarController).viewControllers![0] as! UINavigationController).viewControllers[0])
+                default:
+                    return
+                }
+            } catch {
+                return
+            }
+        }
         completionHandler()
     }
     

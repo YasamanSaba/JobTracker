@@ -40,16 +40,22 @@ struct ReminderViewModel: CoordinatorSupportedViewModel {
             let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
             let content = UNMutableNotificationContent()
             var title = "!"
-            if let _ = self.subject as? Interview {
+            if let interview = self.subject as? Interview {
                 title = " your interview!"
+                content.userInfo["ApplyObjectId"] = interview.apply?.objectID.uriRepresentation().absoluteString
+                content.userInfo["SubjectObjectId"] = interview.objectID.uriRepresentation().absoluteString
+                content.userInfo["Type"] = "Interview"
             }
             if let task = self.subject as? Task {
                 title = " to do \(task.title ?? "your task")"
+                content.userInfo["ApplyObjectId"] = task.apply?.objectID.uriRepresentation().absoluteString
+                content.userInfo["SubjectObjectId"] = task.objectID.uriRepresentation().absoluteString
+                content.userInfo["Type"] = "Task"
             }
             content.title = "Don't forget\(title)"
             content.body = message
             content.sound = .defaultCritical
-            content.userInfo["name"] = "sam"
+            
             let reminderNotificationID = UUID().uuidString
             let request = UNNotificationRequest(identifier: reminderNotificationID, content: content, trigger: trigger)
             
