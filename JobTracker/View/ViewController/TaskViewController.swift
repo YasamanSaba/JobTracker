@@ -30,8 +30,7 @@ class TaskViewController: UIViewController, ViewModelSupportedViewControllers {
     @IBOutlet weak var dtpAssignDate: UIDatePicker!
     @IBOutlet weak var dtpDeadline: UIDatePicker!
     @IBOutlet weak var vwReminder: UIView!
-    @IBOutlet weak var vwSwitch: UIView!
-    
+    @IBOutlet weak var vwTop: UIView!
     // MARK: - Actions
     @IBAction func switchChanged(_ sender: UISwitch) {
         if sender.isOn {
@@ -95,14 +94,14 @@ class TaskViewController: UIViewController, ViewModelSupportedViewControllers {
         imageView.tintColor = .systemGray
         label.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(mainEffectView!)
+        self.vwTop.addSubview(mainEffectView!)
         mainEffectView!.contentView.addSubview(label)
         mainEffectView!.contentView.addSubview(imageView)
         NSLayoutConstraint.activate([
-            mainEffectView!.topAnchor.constraint(equalTo: vwSwitch.topAnchor),
-            mainEffectView!.leadingAnchor.constraint(equalTo: tblReminder.leadingAnchor),
-            mainEffectView!.trailingAnchor.constraint(equalTo: txtTitle.trailingAnchor),
-            mainEffectView!.bottomAnchor.constraint(equalTo: txtLink.bottomAnchor),
+            mainEffectView!.topAnchor.constraint(equalTo: vwTop.topAnchor),
+            mainEffectView!.leadingAnchor.constraint(equalTo: vwTop.leadingAnchor),
+            mainEffectView!.trailingAnchor.constraint(equalTo: vwTop.trailingAnchor),
+            mainEffectView!.bottomAnchor.constraint(equalTo: vwTop.bottomAnchor),
             mainEffectView!.centerXAnchor.constraint(equalTo: label.centerXAnchor),
             mainEffectView!.centerYAnchor.constraint(equalTo: label.centerYAnchor),
             label.bottomAnchor.constraint(greaterThanOrEqualTo: imageView.topAnchor, constant: -10),

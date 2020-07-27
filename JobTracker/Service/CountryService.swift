@@ -17,8 +17,12 @@ class CountryService: CountryServiceType {
         self.context = context
     }
     
-    func fetchAll() -> NSFetchedResultsController<Country> {
+    func fetchAll(withoutworld: Bool) -> NSFetchedResultsController<Country> {
         let fetchRequest: NSFetchRequest<Country> = Country.fetchRequest()
+        if withoutworld {
+            let predicate = NSPredicate(format: "%K != %@", #keyPath(Country.name), "World")
+            fetchRequest.predicate = predicate
+        }
         let sort = NSSortDescriptor(key: #keyPath(Country.name), ascending: true)
         fetchRequest.sortDescriptors = [sort]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)

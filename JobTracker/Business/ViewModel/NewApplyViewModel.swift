@@ -80,6 +80,9 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     var cities: [City] = [] {
         didSet {
             cityPickerView?.reloadAllComponents()
+            if cities.count > 0 {
+                selectedCity = cities[0]
+            }
         }
     }
     // MARK: - Initializer
@@ -99,7 +102,7 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     private func configureCountry(pickerView: UIPickerView) {
         pickerView.accessibilityIdentifier = "CountryPickerView"
         countryPickerView = pickerView
-        countryResultController = countryService.fetchAll()
+        countryResultController = countryService.fetchAll(withoutworld: true)
         let countryResultsControllerDelegate = CountryResultsControllerDelegate()
         countryResultsControllerDelegate.parent = self
         countryResultController?.delegate = countryResultsControllerDelegate

@@ -19,12 +19,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fG-3b-iJk" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
-                                <rect key="frame" x="5" y="233.5" width="404" height="618.5"/>
+                                <rect key="frame" x="5" y="234" width="404" height="618"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8oZ-ez-dey">
-                                        <rect key="frame" x="0.0" y="0.0" width="404" height="618.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="618"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xug-Wk-8Kz">
-                                            <rect key="frame" x="0.0" y="0.0" width="404" height="618.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="618"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LXx-qi-tsi">
@@ -128,12 +128,12 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHj-h5-tNJ" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
-                                <rect key="frame" x="5" y="49" width="404" height="174.5"/>
+                                <rect key="frame" x="5" y="49" width="404" height="175"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Bd-T6-mgR">
-                                        <rect key="frame" x="0.0" y="0.0" width="404" height="174.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="175"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MKA-OV-pM7">
-                                            <rect key="frame" x="0.0" y="0.0" width="404" height="174.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="175"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What is this task? (Title)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Cf-mU-LiO">
@@ -359,7 +359,7 @@
                         <outlet property="vwAssignDatePicker" destination="g0v-DA-Rlz" id="73u-Pp-V1c"/>
                         <outlet property="vwDeadlinePicker" destination="gxv-5j-DyW" id="n0L-Er-0OZ"/>
                         <outlet property="vwReminder" destination="6fG-3b-iJk" id="esc-oC-Ndf"/>
-                        <outlet property="vwSwitch" destination="mGD-WI-OzK" id="kWt-YR-lcC"/>
+                        <outlet property="vwTop" destination="NHj-h5-tNJ" id="0Zd-GO-bBg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="giQ-ay-zZn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

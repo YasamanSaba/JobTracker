@@ -75,7 +75,8 @@ extension Scene {
             let companyService = CompanyService(context: context)
             let stateService = StateService(context: context)
             let tagService = TagService(context: context)
-            let viewModel = ApplyViewModel(applyService: applyService, interviewService: interviewService, apply: apply, taskService: taskService, companyService: companyService, stateService: stateService, tagService: tagService)
+            let reminderService = ReminderService(context: context)
+            let viewModel = ApplyViewModel(applyService: applyService, interviewService: interviewService, apply: apply, taskService: taskService, companyService: companyService, stateService: stateService, tagService: tagService, reminderService: reminderService)
             viewController.viewModel = viewModel
             viewModel.delegate = viewController
             viewModel.coordinator = coordinator
