@@ -24,7 +24,7 @@ class TagViewModel: NSObject, CoordinatorSupportedViewModel {
                     do {
                         try service.delete(tag: identifierToDelete)
                     } catch TagServiceError.tagHasOtherRelation {
-                        superDelegate?.error(text: "You have used it in other place")
+                        superDelegate?.error(text: GeneralMessages.exists.rawValue)
                     } catch {
                         print(error.localizedDescription)
                     }
@@ -100,13 +100,13 @@ class TagViewModel: NSObject, CoordinatorSupportedViewModel {
     }
     func addNew(tag: String) {
         guard !tag.isEmpty, !tag.trimmingCharacters(in: .whitespaces).isEmpty else {
-            delegate?.error(text: "Tag cannot be empty")
+            delegate?.error(text: GeneralMessages.addEmptyItem.rawValue)
             return
         }
         do {
             try service.add(tag: tag)
         } catch {
-            delegate?.error(text: "Tag already exists")
+            delegate?.error(text: GeneralMessages.exists.rawValue)
         }
     }
     func filterTags(by text: String) {

@@ -63,9 +63,9 @@ class ResumeViewModel: NSObject, CoordinatorSupportedViewModel {
         do {
             try resumeService.add(version: versionString, url: urlString == nil ? nil : URL(string: urlString!))
         } catch ResumeServiceError.alreadyExists {
-            delegate?.error(text: "This Resume already exists")
+            delegate?.error(text: GeneralMessages.exists.rawValue)
         } catch {
-            delegate?.error(text: "Please try again later")
+            delegate?.error(text: GeneralMessages.unknown.rawValue)
         }
     }
     func openURL(at indexPath: IndexPath) {
@@ -89,9 +89,9 @@ class ResumeViewModel: NSObject, CoordinatorSupportedViewModel {
                         do {
                             try self.resumeService?.delete(resume: resume)
                         } catch ResumeServiceError.resumeHasOtherRelation {
-                            self.superDelegate?.error(text: "You used it for some applies")
+                            self.superDelegate?.error(text: GeneralMessages.exists.rawValue)
                         } catch {
-                            self.superDelegate?.error(text: "Try again later!")
+                            self.superDelegate?.error(text: GeneralMessages.unknown.rawValue)
                         }
                     }
                 }

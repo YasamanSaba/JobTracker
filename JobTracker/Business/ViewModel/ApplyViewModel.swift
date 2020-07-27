@@ -283,7 +283,7 @@ class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
                             }
                             try self.interviewService.delete(interview: interview)
                         } catch {
-                            self.superDelegate.error(text: "Please try again later")
+                            self.superDelegate.error(text: GeneralMessages.unknown.rawValue)
                         }
                     }
                 }
@@ -310,7 +310,7 @@ class ApplyViewModel: NSObject, CoordinatorSupportedViewModel {
                             }
                             try self.taskService.delete(task: task)
                         } catch {
-                            self.superDelegate.error(text: "Please try again later")
+                            self.superDelegate.error(text: GeneralMessages.unknown.rawValue)
                         }
                     }
                 }

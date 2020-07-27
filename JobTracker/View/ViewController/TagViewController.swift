@@ -32,6 +32,7 @@ class TagViewController: UIViewController, ViewModelSupportedViewControllers {
     @IBAction func btnAdd(_ sender: Any) {
         if let title = srbSearchBar.text {
             viewModel.addNew(tag: title)
+            srbSearchBar.text = ""
         }
     }
     

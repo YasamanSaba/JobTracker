@@ -57,15 +57,15 @@ class ChecklistViewModel: NSObject, CoordinatorSupportedViewModel {
     }
     func add(title: String) {
         guard !title.trimmingCharacters(in: .whitespaces).isEmpty else {
-            delegate?.error(text: "Please fill checklist item name")
+            delegate?.error(text: GeneralMessages.addEmptyItem.rawValue)
             return
         }
         do {
             try checklistService.add(title: title, for: apply)
         } catch _ as ChecklistServiceError {
-            delegate?.error(text: "Try again later")
+            delegate?.error(text: GeneralMessages.unknown.rawValue)
         } catch {
-            delegate?.error(text: "Try again later")
+            delegate?.error(text: GeneralMessages.unknown.rawValue)
         }
     }
     func selectItem(at indexPath: IndexPath, tableView: UITableView) {
@@ -75,7 +75,7 @@ class ChecklistViewModel: NSObject, CoordinatorSupportedViewModel {
                 try checklistService.set(isDone: !item.item.isDone, for: item.item)
                 cell.isDone.toggle()
             } catch {
-                delegate?.error(text: "Try again later")
+                delegate?.error(text: GeneralMessages.unknown.rawValue)
             }
         }
     }

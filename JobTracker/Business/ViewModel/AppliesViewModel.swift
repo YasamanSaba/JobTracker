@@ -351,7 +351,8 @@ class AppliesViewModel: NSObject, CoordinatorSupportedViewModel {
                         do {
                             try self.applyService.delete(apply: apply.apply)
                         } catch {
-                            self.superDelegate?.error(text: "Try again later")
+                            
+                            self.superDelegate?.error(text: GeneralMessages.unknown.rawValue)
                         }
                     }
                 }

@@ -111,7 +111,7 @@ class TaskViewModel: NSObject, CoordinatorSupportedViewModel {
     }
     func next(title: String, isDone: Bool, link: String?) -> Bool {
         guard let aDate = selectedAssignDate, let dDate = selectedDeadline else {
-            delegate?.error(text: "Please fill all the necessary fields")
+            delegate?.error(text: GeneralMessages.addEmptyItem.rawValue)
             return false
         }
         do {
@@ -121,15 +121,15 @@ class TaskViewModel: NSObject, CoordinatorSupportedViewModel {
             createFirstSnapshot()
             return true
         } catch _ as TaskServiceError {
-            delegate?.error(text: "Try again later")
+            delegate?.error(text: GeneralMessages.unknown.rawValue)
         } catch {
-            delegate?.error(text: "Try again later")
+            delegate?.error(text: GeneralMessages.unknown.rawValue)
         }
         return false
     }
     func save(title: String, isDone: Bool, link: String?) -> Bool {
         guard let task = task, let aDate = selectedAssignDate, let dDate = selectedDeadline else {
-            delegate?.error(text: "Please fill all the necessary fields")
+            delegate?.error(text: GeneralMessages.addEmptyItem.rawValue)
             return false
         }
         do {
@@ -137,9 +137,9 @@ class TaskViewModel: NSObject, CoordinatorSupportedViewModel {
             try taskService.update(task: task, title: title, date: aDate, deadline: dDate, isDone: isDone, link: url, for: apply)
             return true
         } catch _ as TaskServiceError {
-            delegate?.error(text: "Try again later")
+            delegate?.error(text: GeneralMessages.unknown.rawValue)
         } catch {
-            delegate?.error(text: "Try again later")
+            delegate?.error(text: GeneralMessages.unknown.rawValue)
         }
         return false
     }
@@ -173,7 +173,7 @@ class TaskViewModel: NSObject, CoordinatorSupportedViewModel {
                             do {
                                 try self?.reminderService?.delete(reminder: identifierToDelete)
                             } catch {
-                                self?.superDelegate?.error(text: "Please try again later")
+                                self?.superDelegate?.error(text: GeneralMessages.unknown.rawValue)
                             }
                         }
                     }

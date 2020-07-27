@@ -46,7 +46,7 @@ class CountryViewModel: NSObject, CoordinatorSupportedViewModel {
         do {
             try countryService.add(name: name, flag: flag)
         } catch {
-            delegate?.error(text: "This country already exists.")
+            delegate?.error(text: GeneralMessages.exists.rawValue)
         }
     }
     func filter(by text: String) {

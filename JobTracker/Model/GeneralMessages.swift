@@ -8,6 +8,9 @@
 
 import Foundation
 
-enum GeneralMessages: String {
+public enum GeneralMessages: String {
     case unknown = "Something went wrong, please try again"
+    case addEmptyItem = "Item can't be empty"
+    case hasRelation = "The item is in use"
+    case exists = "Already exists"
 }

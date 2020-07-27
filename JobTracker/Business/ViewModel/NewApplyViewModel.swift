@@ -243,11 +243,11 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
                     return true
                 }
             } catch {
-                delegate?.error(text: "Please try again later")
+                delegate?.error(text: GeneralMessages.unknown.rawValue)
                 return false
             }
         } else {
-            delegate?.error(text: "Please fill all the fields")
+            delegate?.error(text: GeneralMessages.addEmptyItem.rawValue)
             return false
         }
     }

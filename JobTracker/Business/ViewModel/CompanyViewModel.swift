@@ -22,7 +22,7 @@ class CompanyViewModel: NSObject, CoordinatorSupportedViewModel {
                 do {
                     try companyService?.delete(company: company)
                 } catch CompanyServiceError.companyHasRelation {
-                    superDelegate?.error(text: "You have apply in this company")
+                    superDelegate?.error(text: GeneralMessages.unknown.rawValue)
                 } catch {
                     print(error.localizedDescription)
                 }
@@ -89,18 +89,18 @@ class CompanyViewModel: NSObject, CoordinatorSupportedViewModel {
         } catch let error as CompanyServiceError {
             switch error {
             case .alreadyExists:
-                delegate?.error(text: "Company name already exists")
+                delegate?.error(text: GeneralMessages.exists.rawValue)
                 return
             case .addError:
-                delegate?.error(text: "Try again later")
+                delegate?.error(text: GeneralMessages.unknown.rawValue)
                 return
             default:
-                delegate?.error(text: "Try again later")
+                delegate?.error(text: GeneralMessages.unknown.rawValue)
                 return
             }
             
         } catch {
-            delegate?.error(text: "Try again later")
+            delegate?.error(text: GeneralMessages.unknown.rawValue)
             return
         }
     }

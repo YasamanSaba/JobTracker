@@ -9,12 +9,6 @@
 import UIKit
 import CoreData
 
-/*
- enum InterviewViewModelError: String ,Error {
- case unKnown = "Please try again later."
- case saveInterviewError = "Please select your interview date"
- }*/
-
 class InterviewViewModel: NSObject, CoordinatorSupportedViewModel {
     
     // MARK: - Nested types
@@ -212,7 +206,7 @@ class InterviewViewModel: NSObject, CoordinatorSupportedViewModel {
                 try interviewService.update(interview: interview!, date: interviewDate, link: link == nil ? nil : URL(string: link!), interviewer: interviewer, role: selectedRole, desc: desc, tags: selectedTags)
                 return true
             } catch {
-                delegate?.error(text: "Please try again later")
+                delegate?.error(text: GeneralMessages.unknown.rawValue)
                 return false
             }
         } else {
@@ -225,7 +219,7 @@ class InterviewViewModel: NSObject, CoordinatorSupportedViewModel {
                 reminderSnapShot()
                 return true
             } catch {
-                delegate?.error(text: "Please try again later")
+                delegate?.error(text: GeneralMessages.unknown.rawValue)
                 return false
             }
         }

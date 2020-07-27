@@ -271,11 +271,11 @@ class FilterViewModel: CoordinatorSupportedViewModel {
     }
     func addDate() {
         guard !isDateFilterSelected else {
-            delegate?.error(text: "One date filter already exists.")
+            delegate?.error(text: GeneralMessages.exists.rawValue)
             return
         }
         if selectedFromDate == nil && selectedToDate == nil {
-            delegate?.error(text: "Both from and to date can't be empty.")
+            delegate?.error(text: GeneralMessages.addEmptyItem.rawValue)
             return
         }
         isDateFilterSelected = true

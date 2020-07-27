@@ -34,9 +34,9 @@ class CityViewModel: NSObject, CoordinatorSupportedViewModel {
                         do {
                             try self.cityService.delete(city: city)
                         } catch CityServiceError.cityHasOtherRelation {
-                            self.delegate?.error(text: "There is some applies on this city")
+                            self.delegate?.error(text: GeneralMessages.hasRelation.rawValue)
                         } catch {
-                            self.delegate?.error(text: "Something is wrong, try later")
+                            self.delegate?.error(text: GeneralMessages.unknown.rawValue)
                         }
                     }
                 }
@@ -61,7 +61,7 @@ class CityViewModel: NSObject, CoordinatorSupportedViewModel {
         do {
             try cityService.add(name: name, to: country)
         } catch {
-            delegate?.error(text: "This city already exists.")
+            delegate?.error(text: GeneralMessages.exists.rawValue)
         }
     }
     func filter(by text: String) {
