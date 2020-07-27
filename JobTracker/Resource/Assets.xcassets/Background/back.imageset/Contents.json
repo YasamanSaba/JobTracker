@@ -1,17 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "back.png",
-      "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "filename" : "back-Dark.png",
+      "filename" : "wesley-tingey-kMNHlbwunsY-unsplash.jpg",
       "idiom" : "universal"
     }
   ],

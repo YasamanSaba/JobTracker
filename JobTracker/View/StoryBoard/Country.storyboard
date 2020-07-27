@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background1" translatesAutoresizingMaskIntoConstraints="NO" id="emE-DA-iOu">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="emE-DA-iOu">
                                 <rect key="frame" x="0.0" y="5" width="414" height="896"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MWz-1a-Kwi" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
@@ -257,6 +257,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Background1" width="2400" height="3508"/>
+        <image name="back" width="2400" height="3863"/>
     </resources>
 </document>
