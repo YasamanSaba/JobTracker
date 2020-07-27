@@ -49,6 +49,7 @@ struct ReminderViewModel: CoordinatorSupportedViewModel {
             content.title = "Don't forget\(title)"
             content.body = message
             content.sound = .defaultCritical
+            content.userInfo["name"] = "sam"
             let reminderNotificationID = UUID().uuidString
             let request = UNNotificationRequest(identifier: reminderNotificationID, content: content, trigger: trigger)
             
