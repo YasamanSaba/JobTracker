@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background3" translatesAutoresizingMaskIntoConstraints="NO" id="zH1-E9-lMZ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="zH1-E9-lMZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qop-5o-RHc">
@@ -382,7 +382,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Background3" width="495" height="800"/>
+        <image name="back" width="2400" height="3863"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="chevron.left.slash.chevron.right" catalog="system" width="128" height="97"/>
         <image name="doc.on.doc.fill" catalog="system" width="117" height="128"/>

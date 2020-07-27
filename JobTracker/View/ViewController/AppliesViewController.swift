@@ -135,6 +135,8 @@ extension AppliesViewController: UICollectionViewDelegate {
         if let cell = collectionView.cellForItem(at: indexPath) {
             let color:UIColor = .systemGray
             cell.backgroundColor = color.withAlphaComponent(0.23)
+            cell.layer.cornerRadius = 5
+            cell.clipsToBounds = true
         }
     }
     

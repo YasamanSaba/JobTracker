@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background1" translatesAutoresizingMaskIntoConstraints="NO" id="NIl-Xt-XvP">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="NIl-Xt-XvP">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5OH-Pb-C2Z">
@@ -328,7 +328,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Background1" width="2400" height="3508"/>
+        <image name="back" width="2400" height="3863"/>
         <image name="bin.xmark.fill" catalog="system" width="128" height="93"/>
         <image name="location.circle" catalog="system" width="128" height="121"/>
     </resources>
