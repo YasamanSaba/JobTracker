@@ -17,7 +17,6 @@ class TagViewController: UIViewController, ViewModelSupportedViewControllers {
     @IBOutlet weak var srbSearchBar: UISearchBar!
     @IBOutlet weak var tblTableView: UITableView!
     @IBOutlet weak var colTags: UICollectionView!
-    @IBOutlet weak var btnAdd: UIButton!
     
     
     // MARK: - Actions
@@ -51,10 +50,8 @@ class TagViewController: UIViewController, ViewModelSupportedViewControllers {
 extension TagViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
-            btnAdd.isEnabled = true
             viewModel.filterTags(by: searchText)
         } else {
-            btnAdd.isEnabled = false
             viewModel.filterTags(by: searchText)
         }
     }
