@@ -27,6 +27,7 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     var cityControllerDelegate: CityResultsControllerDelegate?
     var countryControllerDelegate: CountryResultsControllerDelegate?
     var cityPickerView: UIPickerView?
+    var countryPickerView: UIPickerView?
     var states: [Status] = []
     var selectedStateIndex: Int = 0 {
         didSet {
@@ -71,7 +72,11 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
         }
     }
     var isEditingMode: Bool = false
-    var countries: [Country] = []
+    var countries: [Country] = [] {
+        didSet {
+            countryPickerView?.reloadAllComponents()
+        }
+    }
     var cities: [City] = [] {
         didSet {
             cityPickerView?.reloadAllComponents()
@@ -93,6 +98,7 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     // MARK: - Functions
     private func configureCountry(pickerView: UIPickerView) {
         pickerView.accessibilityIdentifier = "CountryPickerView"
+        countryPickerView = pickerView
         countryResultController = countryService.fetchAll()
         let countryResultsControllerDelegate = CountryResultsControllerDelegate()
         countryResultsControllerDelegate.parent = self
