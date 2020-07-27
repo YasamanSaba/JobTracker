@@ -18,6 +18,7 @@ class ChecklistViewController: UIViewController, ViewModelSupportedViewControlle
     @IBAction func addChecklistItem(_ sender: Any) {
         if let title = txtChecklistItem.text {
             viewModel.add(title: title)
+            txtChecklistItem.text = ""
         }
     }
     @IBAction func done(_ sender: Any) {

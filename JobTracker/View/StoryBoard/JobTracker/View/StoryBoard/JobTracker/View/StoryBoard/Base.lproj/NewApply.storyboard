@@ -456,7 +456,7 @@
                         <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vnZ-jS-Agj">
                             <rect key="frame" x="0.0" y="0.0" width="378" height="44"/>
                             <items>
-                                <navigationItem title="Title" id="MMC-LF-78f">
+                                <navigationItem id="MMC-LF-78f">
                                     <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="4SE-r3-U1K">
                                         <connections>
                                             <action selector="btnDateViewCancel:" destination="IbK-hr-YdP" id="mlO-9O-Q2H"/>

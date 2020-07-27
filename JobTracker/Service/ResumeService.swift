@@ -10,13 +10,13 @@ import Foundation
 import CoreData
 
 class ResumeService: ResumeServiceType {
-    
+    // MARK: Properties
     let context: NSManagedObjectContext
-    
+    // MARK: - Initializer
     init(context: NSManagedObjectContext) {
         self.context = context
     }
-    
+    // MARK: - Functions
     func getAll() -> NSFetchedResultsController<Resume> {
         let request: NSFetchRequest<Resume> = Resume.fetchRequest()
         let sort = NSSortDescriptor(key: #keyPath(Resume.version), ascending: false)
@@ -24,7 +24,6 @@ class ResumeService: ResumeServiceType {
         let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         return controller
     }
-    
     func add(version: String, url: URL?) throws {
         let request:NSFetchRequest<Resume> = Resume.fetchRequest()
         let predicate = NSPredicate(format: "%K == %@", #keyPath(Resume.version), version)
@@ -45,5 +44,16 @@ class ResumeService: ResumeServiceType {
         } catch {
             throw error
         }
+    }
+    func delete(resume: Resume) throws {
+        if resume.apply?.count != 0 {
+                   throw ResumeServiceError.resumeHasOtherRelation
+               }
+               context.delete(resume)
+               do {
+                   try context.save()
+               } catch {
+                   throw ResumeServiceError.deleteError
+               }
     }
 }
