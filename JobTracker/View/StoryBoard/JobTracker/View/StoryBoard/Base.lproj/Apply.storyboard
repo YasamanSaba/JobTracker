@@ -261,12 +261,12 @@
                                 </cells>
                             </collectionView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cl-AD-JdD" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
-                                <rect key="frame" x="275" y="658" width="80" height="80"/>
+                                <rect key="frame" x="295" y="678" width="60" height="60"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDA-gT-Y4G">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Rh2-bR-46w">
-                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <gestureRecognizers/>
                                             <connections>
@@ -276,35 +276,26 @@
                                         <blurEffect style="systemUltraThinMaterialDark"/>
                                     </visualEffectView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ymI-by-CXT">
-                                        <rect key="frame" x="0.0" y="5.9999999999999964" width="80" height="57.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="1" width="60" height="58.666666666666671"/>
                                         <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="New Apply" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="6CB-LX-uR8">
-                                        <rect key="frame" x="2" y="63.666666666666636" width="76" height="14.333333333333336"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                        <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="ymI-by-CXT" firstAttribute="leading" secondItem="8cl-AD-JdD" secondAttribute="leading" id="1F6-Ok-D8q"/>
-                                    <constraint firstAttribute="height" constant="80" id="1uG-va-Kpf"/>
-                                    <constraint firstAttribute="trailing" secondItem="ymI-by-CXT" secondAttribute="trailing" id="2hX-aK-bWf"/>
+                                    <constraint firstAttribute="height" constant="60" id="1uG-va-Kpf"/>
                                     <constraint firstAttribute="width" secondItem="8cl-AD-JdD" secondAttribute="height" multiplier="1:1" id="9L5-Wv-j2I"/>
-                                    <constraint firstItem="ymI-by-CXT" firstAttribute="top" secondItem="8cl-AD-JdD" secondAttribute="top" constant="5" id="9cX-Lm-ZSe"/>
+                                    <constraint firstItem="ymI-by-CXT" firstAttribute="centerX" secondItem="8cl-AD-JdD" secondAttribute="centerX" id="GTc-7Y-qni"/>
+                                    <constraint firstItem="ymI-by-CXT" firstAttribute="width" secondItem="8cl-AD-JdD" secondAttribute="width" id="KMo-Bn-Fuf"/>
                                     <constraint firstItem="QDA-gT-Y4G" firstAttribute="height" secondItem="8cl-AD-JdD" secondAttribute="height" id="NBD-E3-Wt3"/>
-                                    <constraint firstAttribute="trailing" secondItem="6CB-LX-uR8" secondAttribute="trailing" constant="2" id="Oje-Je-A0M"/>
-                                    <constraint firstItem="6CB-LX-uR8" firstAttribute="top" secondItem="ymI-by-CXT" secondAttribute="bottom" id="P2p-9K-p2s"/>
+                                    <constraint firstItem="ymI-by-CXT" firstAttribute="centerY" secondItem="8cl-AD-JdD" secondAttribute="centerY" id="QwH-Ts-6XN"/>
                                     <constraint firstItem="QDA-gT-Y4G" firstAttribute="centerX" secondItem="8cl-AD-JdD" secondAttribute="centerX" id="azc-BW-Ns6"/>
-                                    <constraint firstAttribute="bottom" secondItem="6CB-LX-uR8" secondAttribute="bottom" constant="2" id="dyH-TE-eG0"/>
                                     <constraint firstItem="QDA-gT-Y4G" firstAttribute="centerY" secondItem="8cl-AD-JdD" secondAttribute="centerY" id="mMG-rd-FRx"/>
                                     <constraint firstItem="QDA-gT-Y4G" firstAttribute="width" secondItem="8cl-AD-JdD" secondAttribute="width" id="qXo-aW-Vny"/>
-                                    <constraint firstItem="6CB-LX-uR8" firstAttribute="leading" secondItem="8cl-AD-JdD" secondAttribute="leading" constant="2" id="zFh-8i-wY3"/>
+                                    <constraint firstItem="ymI-by-CXT" firstAttribute="height" secondItem="8cl-AD-JdD" secondAttribute="height" id="ujD-w6-C1E"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="20"/>
+                                        <real key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
