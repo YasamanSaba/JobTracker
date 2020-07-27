@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="RZ8-2I-Mbi">
-                                <rect key="frame" x="0.0" y="5" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMS-YN-cRW">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -230,26 +230,28 @@
                                                         </tableViewCell>
                                                     </prototypes>
                                                 </tableView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SdE-2R-aZb" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
-                                                    <rect key="frame" x="308" y="10" width="88" height="37"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oxS-E4-O3C" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
+                                                    <rect key="frame" x="330" y="11" width="66" height="34"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ Add Tag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmN-Fx-EVX">
-                                                            <rect key="frame" x="5" y="8" width="78" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eok-ag-hY0">
+                                                            <rect key="frame" x="17.5" y="6.5" width="31" height="21"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
-                                                        <constraint firstItem="CmN-Fx-EVX" firstAttribute="centerY" secondItem="SdE-2R-aZb" secondAttribute="centerY" id="BsL-OK-3Vm"/>
-                                                        <constraint firstItem="CmN-Fx-EVX" firstAttribute="leading" secondItem="SdE-2R-aZb" secondAttribute="leading" constant="5" id="TAq-5t-3xa"/>
-                                                        <constraint firstAttribute="height" constant="37" id="VAV-d2-LD9"/>
-                                                        <constraint firstAttribute="trailing" secondItem="CmN-Fx-EVX" secondAttribute="trailing" constant="5" id="ZT5-eb-1WQ"/>
+                                                        <constraint firstAttribute="height" constant="34" id="AQa-zQ-V2G"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="66" id="Fku-QW-nw3"/>
+                                                        <constraint firstAttribute="width" constant="66" id="M0B-sg-Uje"/>
+                                                        <constraint firstItem="Eok-ag-hY0" firstAttribute="centerX" secondItem="oxS-E4-O3C" secondAttribute="centerX" id="WJT-7G-aOr"/>
+                                                        <constraint firstItem="Eok-ag-hY0" firstAttribute="centerY" secondItem="oxS-E4-O3C" secondAttribute="centerY" id="WUJ-W1-iNY"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                             <real key="value" value="1"/>
@@ -258,16 +260,19 @@
                                                             <real key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="Qvm-Tq-aY7" appends="YES" id="hbc-K6-WOw"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="d3u-dG-b8y" secondAttribute="trailing" id="1lZ-Ud-R6N"/>
-                                                <constraint firstAttribute="trailing" secondItem="SdE-2R-aZb" secondAttribute="trailing" constant="8" id="7lU-pY-jmS"/>
+                                                <constraint firstAttribute="trailing" secondItem="9qw-MQ-i6n" secondAttribute="trailing" id="Af3-A2-EGL"/>
                                                 <constraint firstItem="d3u-dG-b8y" firstAttribute="top" secondItem="9qw-MQ-i6n" secondAttribute="bottom" id="Kw6-pV-4fs"/>
                                                 <constraint firstItem="d3u-dG-b8y" firstAttribute="leading" secondItem="jjs-gO-gYX" secondAttribute="leading" id="RNQ-lA-u2U"/>
-                                                <constraint firstAttribute="trailing" secondItem="9qw-MQ-i6n" secondAttribute="trailing" id="UiE-ZP-8vh"/>
+                                                <constraint firstItem="oxS-E4-O3C" firstAttribute="centerY" secondItem="9qw-MQ-i6n" secondAttribute="centerY" id="Z1p-pz-W8e"/>
                                                 <constraint firstAttribute="bottom" secondItem="d3u-dG-b8y" secondAttribute="bottom" id="ZZg-nv-vyy"/>
-                                                <constraint firstItem="SdE-2R-aZb" firstAttribute="top" secondItem="jjs-gO-gYX" secondAttribute="top" constant="10" id="e89-xM-Az9"/>
+                                                <constraint firstAttribute="trailing" secondItem="oxS-E4-O3C" secondAttribute="trailing" constant="8" id="ahs-i0-Isr"/>
                                                 <constraint firstItem="9qw-MQ-i6n" firstAttribute="leading" secondItem="jjs-gO-gYX" secondAttribute="leading" id="rGE-IF-6pg"/>
                                                 <constraint firstItem="9qw-MQ-i6n" firstAttribute="top" secondItem="jjs-gO-gYX" secondAttribute="top" id="tBW-41-HBq"/>
                                             </constraints>
@@ -305,10 +310,10 @@
                             <constraint firstItem="8KY-86-CAd" firstAttribute="trailing" secondItem="YjV-ej-Djh" secondAttribute="trailing" constant="10" id="JgZ-DL-QTL"/>
                             <constraint firstItem="cta-Mw-yJi" firstAttribute="leading" secondItem="8KY-86-CAd" secondAttribute="leading" constant="5" id="WhA-CZ-GXo"/>
                             <constraint firstItem="8KY-86-CAd" firstAttribute="trailing" secondItem="cta-Mw-yJi" secondAttribute="trailing" constant="5" id="YK3-6k-8Zh"/>
-                            <constraint firstItem="RZ8-2I-Mbi" firstAttribute="centerX" secondItem="8KY-86-CAd" secondAttribute="centerX" id="axZ-aq-kZ3"/>
+                            <constraint firstItem="RZ8-2I-Mbi" firstAttribute="centerX" secondItem="SHa-HP-NFe" secondAttribute="centerX" id="axZ-aq-kZ3"/>
                             <constraint firstItem="fMS-YN-cRW" firstAttribute="top" secondItem="8KY-86-CAd" secondAttribute="top" id="f1n-mR-k4O"/>
                             <constraint firstItem="YjV-ej-Djh" firstAttribute="height" secondItem="SHa-HP-NFe" secondAttribute="height" multiplier="0.2" id="fEm-bF-wJn"/>
-                            <constraint firstItem="RZ8-2I-Mbi" firstAttribute="centerY" secondItem="8KY-86-CAd" secondAttribute="centerY" id="gNJ-zw-HJA"/>
+                            <constraint firstItem="RZ8-2I-Mbi" firstAttribute="centerY" secondItem="SHa-HP-NFe" secondAttribute="centerY" id="gNJ-zw-HJA"/>
                             <constraint firstItem="cta-Mw-yJi" firstAttribute="bottom" secondItem="8KY-86-CAd" secondAttribute="bottom" constant="5" id="kFT-lf-yR8"/>
                             <constraint firstItem="fMS-YN-cRW" firstAttribute="leading" secondItem="8KY-86-CAd" secondAttribute="leading" id="xp3-Do-cbj"/>
                             <constraint firstItem="fMS-YN-cRW" firstAttribute="trailing" secondItem="8KY-86-CAd" secondAttribute="trailing" id="yPS-Ft-qr5"/>
@@ -323,6 +328,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h38-xS-Aze" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Qvm-Tq-aY7">
+                    <connections>
+                        <action selector="btnAdd:" destination="tck-Ha-jOm" id="y4X-rj-IVi"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1439.1304347826087" y="1575"/>
         </scene>

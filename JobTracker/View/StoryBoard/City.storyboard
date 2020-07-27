@@ -94,32 +94,55 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TEp-Y4-pFu">
-                                                    <rect key="frame" x="10" y="56" width="335" height="34"/>
+                                                    <rect key="frame" x="10" y="56" width="298" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJT-w8-rw9">
-                                                    <rect key="frame" x="350" y="53" width="34" height="40"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VBc-U7-vPU" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
+                                                    <rect key="frame" x="318" y="56" width="66" height="34"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zR-aP-gjU">
+                                                            <rect key="frame" x="17.5" y="6.5" width="31" height="21"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="xJT-w8-rw9" secondAttribute="height" multiplier="17:20" id="0Hg-m9-L68"/>
-                                                        <constraint firstAttribute="height" constant="40" id="wGT-0M-ZID"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="66" id="5rE-A0-Fx0"/>
+                                                        <constraint firstItem="9zR-aP-gjU" firstAttribute="centerY" secondItem="VBc-U7-vPU" secondAttribute="centerY" id="7ww-qw-V4k"/>
+                                                        <constraint firstItem="9zR-aP-gjU" firstAttribute="centerX" secondItem="VBc-U7-vPU" secondAttribute="centerX" id="EEG-JP-UHr"/>
+                                                        <constraint firstAttribute="width" constant="66" id="Lwm-JU-90j"/>
                                                     </constraints>
-                                                    <state key="normal" image="plus.circle" catalog="system"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="add:" destination="Hpt-Xa-X8c" eventType="touchUpInside" id="gAf-dt-Pdn"/>
+                                                        <outletCollection property="gestureRecognizers" destination="LrD-Wa-dsH" appends="YES" id="yOh-9C-WSZ"/>
                                                     </connections>
-                                                </button>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="1LF-xm-OjG" firstAttribute="centerY" secondItem="WVT-Vc-2MW" secondAttribute="centerY" id="BHy-St-NII"/>
+                                                <constraint firstItem="VBc-U7-vPU" firstAttribute="centerY" secondItem="TEp-Y4-pFu" secondAttribute="centerY" id="BQy-3b-dC7"/>
+                                                <constraint firstItem="VBc-U7-vPU" firstAttribute="height" secondItem="TEp-Y4-pFu" secondAttribute="height" id="Cwz-Jd-UHK"/>
                                                 <constraint firstItem="1LF-xm-OjG" firstAttribute="leading" secondItem="WVT-Vc-2MW" secondAttribute="trailing" constant="5" id="Fnh-p5-nKt"/>
+                                                <constraint firstItem="VBc-U7-vPU" firstAttribute="trailing" secondItem="iO6-jw-EMi" secondAttribute="trailing" id="Ova-lC-bw7"/>
                                                 <constraint firstItem="TEp-Y4-pFu" firstAttribute="leading" secondItem="WVT-Vc-2MW" secondAttribute="leading" id="Pfb-h3-BbD"/>
                                                 <constraint firstItem="iO6-jw-EMi" firstAttribute="leading" secondItem="1LF-xm-OjG" secondAttribute="trailing" constant="5" id="QfA-jk-FVs"/>
-                                                <constraint firstItem="xJT-w8-rw9" firstAttribute="centerY" secondItem="TEp-Y4-pFu" secondAttribute="centerY" id="Y8K-Ns-InN"/>
+                                                <constraint firstItem="VBc-U7-vPU" firstAttribute="leading" secondItem="TEp-Y4-pFu" secondAttribute="trailing" constant="10" id="VCl-4l-xFf"/>
                                                 <constraint firstAttribute="trailing" secondItem="iO6-jw-EMi" secondAttribute="trailing" constant="10" id="eaH-nb-LAe"/>
-                                                <constraint firstItem="xJT-w8-rw9" firstAttribute="trailing" secondItem="iO6-jw-EMi" secondAttribute="trailing" id="kX2-gW-dId"/>
                                                 <constraint firstItem="WVT-Vc-2MW" firstAttribute="leading" secondItem="rnU-gb-dpd" secondAttribute="leading" constant="10" id="pZK-VW-eAw"/>
-                                                <constraint firstItem="xJT-w8-rw9" firstAttribute="leading" secondItem="TEp-Y4-pFu" secondAttribute="trailing" constant="5" id="q2w-sR-ENV"/>
                                                 <constraint firstAttribute="bottom" secondItem="TEp-Y4-pFu" secondAttribute="bottom" constant="10" id="qC2-LC-dUk"/>
                                                 <constraint firstItem="iO6-jw-EMi" firstAttribute="centerY" secondItem="1LF-xm-OjG" secondAttribute="centerY" id="sGU-F0-CB1"/>
                                                 <constraint firstItem="WVT-Vc-2MW" firstAttribute="top" secondItem="rnU-gb-dpd" secondAttribute="top" constant="15" id="yCr-jW-B6y"/>
@@ -295,6 +318,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRt-kc-LDX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LrD-Wa-dsH">
+                    <connections>
+                        <action selector="add:" destination="Hpt-Xa-X8c" id="fQw-cn-AMh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-404.34782608695656" y="-106.47321428571428"/>
         </scene>
@@ -303,6 +331,5 @@
         <image name="back" width="2400" height="3863"/>
         <image name="bin.xmark.fill" catalog="system" width="128" height="93"/>
         <image name="location.circle" catalog="system" width="128" height="121"/>
-        <image name="plus.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>

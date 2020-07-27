@@ -445,22 +445,22 @@
 		70AEFEE2248E4CF20063C352 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				709CDEE924A2111B00A9DAE0 /* Protocol */,
-				70ADFF992498A08F00345379 /* ReminderViewModel.swift */,
-				700F52FA249DF4B2000EBCD3 /* TagViewModel.swift */,
 				F2EAA8B52498EBAC00876FA9 /* AppliesViewModel.swift */,
+				F24A0DC824A470F600D38217 /* ApplyViewModel.swift */,
+				70966A9624BC44140072C23E /* ChecklistViewModel.swift */,
+				70773C5C24ACCC4800097FFE /* CityViewModel.swift */,
+				7051A55B24AB08F100B98C4B /* CompanyViewModel.swift */,
+				70773C5424AC71C200097FFE /* CountryViewModel.swift */,
+				F29ABCF924ACC6470032D3E2 /* FilterViewModel.swift */,
+				F293DDCB24B9A39200326E5A /* InterviewViewModel.swift */,
+				704866D224A777EF00FA80B5 /* NewApplyViewModel.swift */,
 				709CDEE324A1E7C500A9DAE0 /* NotesViewModel.swift */,
 				709CDEE724A20DB000A9DAE0 /* NoteViewModel.swift */,
-				F24A0DC824A470F600D38217 /* ApplyViewModel.swift */,
-				704866D224A777EF00FA80B5 /* NewApplyViewModel.swift */,
-				7051A55B24AB08F100B98C4B /* CompanyViewModel.swift */,
-				F29ABCF924ACC6470032D3E2 /* FilterViewModel.swift */,
-				70773C5424AC71C200097FFE /* CountryViewModel.swift */,
-				70773C5C24ACCC4800097FFE /* CityViewModel.swift */,
+				709CDEE924A2111B00A9DAE0 /* Protocol */,
+				70ADFF992498A08F00345379 /* ReminderViewModel.swift */,
 				70D30A5124B05A4F005D29B2 /* ResumeViewModel.swift */,
-				F293DDCB24B9A39200326E5A /* InterviewViewModel.swift */,
+				700F52FA249DF4B2000EBCD3 /* TagViewModel.swift */,
 				70BC371824B9965300E0680A /* TaskViewModel.swift */,
-				70966A9624BC44140072C23E /* ChecklistViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
