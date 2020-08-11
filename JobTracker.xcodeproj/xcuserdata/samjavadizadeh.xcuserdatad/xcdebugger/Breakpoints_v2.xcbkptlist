@@ -185,8 +185,8 @@
             filePath = "JobTracker/Business/ViewModel/NewApplyViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "selectedCountry"
             landmarkType = "24">
          </BreakpointContent>
@@ -201,8 +201,8 @@
             filePath = "JobTracker/Business/ViewModel/NewApplyViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "pickerView(_:didSelectRow:inComponent:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -217,8 +217,8 @@
             filePath = "JobTracker/Business/ViewModel/NewApplyViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "save(link:salary:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -233,10 +233,42 @@
             filePath = "JobTracker/Business/ViewModel/NewApplyViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "save(link:salary:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C8080A47-7CAA-4FD4-AF25-2524C33D0A9C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JobTracker/Business/ViewModel/NewApplyViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "addTags(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4E68472B-6AC8-4677-94A4-403365BF7EC2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JobTracker/Business/ViewModel/NewApplyViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "countries"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

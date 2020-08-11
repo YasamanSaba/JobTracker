@@ -26,6 +26,7 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
     var resumeControllerDelegate: ResumeResultsControllerDelegate?
     var cityControllerDelegate: CityResultsControllerDelegate?
     var countryControllerDelegate: CountryResultsControllerDelegate?
+    var countryResultsControllerDelegate: CountryResultsControllerDelegate!
     var cityPickerView: UIPickerView?
     var countryPickerView: UIPickerView?
     var states: [Status] = []
@@ -103,7 +104,7 @@ class NewApplyViewModel: NSObject, CoordinatorSupportedViewModel {
         pickerView.accessibilityIdentifier = "CountryPickerView"
         countryPickerView = pickerView
         countryResultController = countryService.fetchAll(withoutworld: true)
-        let countryResultsControllerDelegate = CountryResultsControllerDelegate()
+        countryResultsControllerDelegate = CountryResultsControllerDelegate()
         countryResultsControllerDelegate.parent = self
         countryResultController?.delegate = countryResultsControllerDelegate
         self.countryControllerDelegate = countryResultsControllerDelegate
