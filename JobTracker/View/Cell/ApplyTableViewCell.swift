@@ -20,6 +20,7 @@ import UIKit
     @IBOutlet weak var lblCheckListStatus: UILabel!
     @IBOutlet weak var lblApplyStatus: UILabel!
     @IBOutlet weak var imgIsFavorite: UIImageView!
+    @IBOutlet weak var vwBlur: UIVisualEffectView!
     
     override var frame: CGRect {
         get {
@@ -47,24 +48,31 @@ import UIKit
         case .ceo:
             lblApplyStatus.text = "CEO"
             lblApplyStatus.tintColor = .systemGreen
+            vwBlur.backgroundColor = .systemGreen
         case .challenge:
             lblApplyStatus.text = "Challenge"
             lblApplyStatus.tintColor = .systemOrange
+            vwBlur.backgroundColor = .systemOrange
         case .contract:
             lblApplyStatus.text = "Contract"
             lblApplyStatus.tintColor = .systemGreen
+            vwBlur.backgroundColor = .systemGreen
         case .hr:
             lblApplyStatus.text = "HR"
             lblApplyStatus.tintColor = .systemGreen
+            vwBlur.backgroundColor = .systemGreen
         case .inSite:
             lblApplyStatus.text = "inSite"
             lblApplyStatus.tintColor = .systemGreen
+            vwBlur.backgroundColor = .systemGreen
         case .rejected:
             lblApplyStatus.text = "Rejected"
             lblApplyStatus.tintColor = .systemRed
+            vwBlur.backgroundColor = .systemRed
         case .tech:
             lblApplyStatus.text = "Technical"
             lblApplyStatus.tintColor = .systemGreen
+            vwBlur.backgroundColor = .systemGreen
         case .none:
             print("Unexpected status")
         }
