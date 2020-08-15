@@ -36,16 +36,16 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ApplyTableViewCell" id="ata-Zh-ypA" customClass="ApplyTableViewCell" customModule="JobTracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="32" width="365" height="36"/>
+                                        <rect key="frame" x="0.0" y="32" width="365" height="28"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ata-Zh-ypA" id="qgR-Sj-ciZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="365" height="36"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="365" height="28"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZtN-iY-2Fx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="365" height="52"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="365" height="60"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ann-kE-4Lg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="365" height="52"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="365" height="60"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="🇩🇪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5X9-TW-JEg">
@@ -60,7 +60,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RKo-Au-r86">
-                                                                <rect key="frame" x="43" y="28.666666666666664" width="20" height="17.000000000000007"/>
+                                                                <rect key="frame" x="43" y="36.666666666666664" width="20" height="17"/>
                                                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="RKo-Au-r86" secondAttribute="height" multiplier="1:1" id="BU6-Tc-hhs"/>
@@ -68,13 +68,13 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="2020-03-08" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccL-XX-raH">
-                                                                <rect key="frame" x="66" y="29.999999999999996" width="71.333333333333314" height="14.333333333333332"/>
+                                                                <rect key="frame" x="66" y="38" width="71.333333333333314" height="14.333333333333336"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8KG-0i-Gvt">
-                                                                <rect key="frame" x="147.33333333333334" y="28.666666666666657" width="18" height="17.333333333333343"/>
+                                                                <rect key="frame" x="147.33333333333334" y="36.666666666666657" width="18" height="17.333333333333336"/>
                                                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="TSN-iR-L2n"/>
@@ -82,19 +82,19 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltb-2n-j2l">
-                                                                <rect key="frame" x="168.33333333333334" y="29.999999999999996" width="7.6666666666666572" height="14.333333333333332"/>
+                                                                <rect key="frame" x="168.33333333333334" y="38" width="7.6666666666666572" height="14.333333333333336"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3/5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmN-BC-Rcn">
-                                                                <rect key="frame" x="261.33333333333331" y="29.999999999999996" width="19" height="14.333333333333332"/>
+                                                                <rect key="frame" x="261.33333333333331" y="38" width="19" height="14.333333333333336"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list.dash" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Tqz-xU-hoc">
-                                                                <rect key="frame" x="238.33333333333334" y="30.333333333333329" width="20.000000000000028" height="13.666666666666671"/>
+                                                                <rect key="frame" x="238.33333333333334" y="38.333333333333329" width="20.000000000000028" height="13.666666666666671"/>
                                                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="4qk-F6-fja"/>
@@ -102,7 +102,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left.slash.chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uq0-LF-3TE">
-                                                                <rect key="frame" x="186" y="26.666666666666668" width="28" height="20.666666666666661"/>
+                                                                <rect key="frame" x="186" y="34.666666666666671" width="28" height="20.666666666666664"/>
                                                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="uq0-LF-3TE" secondAttribute="height" multiplier="7:5" id="aZO-aS-ZM1"/>
@@ -115,13 +115,13 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcd-Hz-QlT">
-                                                                <rect key="frame" x="217" y="29.999999999999996" width="11.333333333333343" height="14.333333333333332"/>
+                                                                <rect key="frame" x="217" y="38" width="11.333333333333343" height="14.333333333333336"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SAf-LX-Chn">
-                                                                <rect key="frame" x="337" y="29" width="20" height="17"/>
+                                                                <rect key="frame" x="337" y="37" width="20" height="17"/>
                                                                 <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="48V-wW-4h0"/>
