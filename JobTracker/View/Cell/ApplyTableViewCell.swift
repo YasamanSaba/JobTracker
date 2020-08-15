@@ -48,11 +48,11 @@ import UIKit
         case .ceo:
             lblApplyStatus.text = "CEO"
             lblApplyStatus.tintColor = .systemGreen
-            vwBlur.backgroundColor = .systemGreen
+            vwBlur.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.5)
         case .challenge:
             lblApplyStatus.text = "Challenge"
             lblApplyStatus.tintColor = .systemOrange
-            vwBlur.backgroundColor = .systemOrange
+            vwBlur.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.3)
         case .contract:
             lblApplyStatus.text = "Contract"
             lblApplyStatus.tintColor = .systemGreen
@@ -60,19 +60,19 @@ import UIKit
         case .hr:
             lblApplyStatus.text = "HR"
             lblApplyStatus.tintColor = .systemGreen
-            vwBlur.backgroundColor = .systemGreen
+            vwBlur.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.1)
         case .inSite:
             lblApplyStatus.text = "inSite"
             lblApplyStatus.tintColor = .systemGreen
-            vwBlur.backgroundColor = .systemGreen
+            vwBlur.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.4)
         case .rejected:
             lblApplyStatus.text = "Rejected"
             lblApplyStatus.tintColor = .systemRed
-            vwBlur.backgroundColor = .systemRed
+            vwBlur.backgroundColor = UIColor.systemRed.withAlphaComponent(0.2)
         case .tech:
             lblApplyStatus.text = "Technical"
             lblApplyStatus.tintColor = .systemGreen
-            vwBlur.backgroundColor = .systemGreen
+            vwBlur.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.2)
         case .none:
             print("Unexpected status")
         }

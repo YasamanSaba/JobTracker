@@ -22,7 +22,7 @@ class CompanyViewModel: NSObject, CoordinatorSupportedViewModel {
                 do {
                     try companyService?.delete(company: company)
                 } catch CompanyServiceError.companyHasRelation {
-                    superDelegate?.error(text: GeneralMessages.unknown.rawValue)
+                    superDelegate?.error(text: GeneralMessages.hasRelation.rawValue)
                 } catch {
                     print(error.localizedDescription)
                 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -30,12 +30,8 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="dQm-N9-Nqs">
-                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iul-9y-ccW" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
-                                <rect key="frame" x="10" y="149" width="394" height="54"/>
+                                <rect key="frame" x="10" y="98" width="394" height="54"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUG-5X-0x4">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="54"/>
@@ -43,19 +39,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="54"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Company" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nmx-3Z-DPo">
-                                                    <rect key="frame" x="10" y="10" width="258" height="34"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="5ib-7F-O4v" id="ZWC-Yo-XZ8"/>
-                                                    </connections>
-                                                </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSu-Z8-bAI" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
-                                                    <rect key="frame" x="318" y="10" width="66" height="34"/>
+                                                    <rect key="frame" x="318" y="5.5" width="66" height="43"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75L-zE-S7M">
-                                                            <rect key="frame" x="17.5" y="6.5" width="31" height="21"/>
+                                                            <rect key="frame" x="17.5" y="11" width="31" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -95,22 +83,29 @@
                                                         <outletCollection property="gestureRecognizers" destination="tHM-8H-jwY" appends="YES" id="k0H-Eg-ZS8"/>
                                                     </connections>
                                                 </imageView>
+                                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="pGR-rQ-Ayc">
+                                                    <rect key="frame" x="0.0" y="-1" width="268" height="56"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="5ib-7F-O4v" id="3KI-fb-1qb"/>
+                                                    </connections>
+                                                </searchBar>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="OSu-Z8-bAI" firstAttribute="height" secondItem="Nmx-3Z-DPo" secondAttribute="height" id="06d-GZ-ZPP"/>
                                                 <constraint firstItem="OSu-Z8-bAI" firstAttribute="leading" secondItem="bNL-B7-otZ" secondAttribute="trailing" constant="10" id="15d-ff-D8n"/>
-                                                <constraint firstItem="bNL-B7-otZ" firstAttribute="leading" secondItem="Nmx-3Z-DPo" secondAttribute="trailing" constant="10" id="HHM-VG-0tx"/>
                                                 <constraint firstItem="OSu-Z8-bAI" firstAttribute="centerY" secondItem="KHt-8t-txB" secondAttribute="centerY" id="LuM-3w-Yen"/>
+                                                <constraint firstItem="pGR-rQ-Ayc" firstAttribute="height" secondItem="OSu-Z8-bAI" secondAttribute="height" multiplier="1.29412" id="NXS-73-hH6"/>
                                                 <constraint firstAttribute="trailing" secondItem="OSu-Z8-bAI" secondAttribute="trailing" constant="10" id="YLr-0H-X3A"/>
+                                                <constraint firstItem="pGR-rQ-Ayc" firstAttribute="centerY" secondItem="KHt-8t-txB" secondAttribute="centerY" id="av3-iw-p7a"/>
+                                                <constraint firstItem="bNL-B7-otZ" firstAttribute="leading" secondItem="pGR-rQ-Ayc" secondAttribute="trailing" constant="10" id="esc-Bn-dR6"/>
                                                 <constraint firstItem="bNL-B7-otZ" firstAttribute="centerY" secondItem="KHt-8t-txB" secondAttribute="centerY" id="tej-uU-VHy"/>
-                                                <constraint firstItem="Nmx-3Z-DPo" firstAttribute="centerY" secondItem="KHt-8t-txB" secondAttribute="centerY" id="uH8-wv-Jaa"/>
-                                                <constraint firstItem="Nmx-3Z-DPo" firstAttribute="leading" secondItem="KHt-8t-txB" secondAttribute="leading" constant="10" id="ztV-9c-u3p"/>
+                                                <constraint firstItem="pGR-rQ-Ayc" firstAttribute="leading" secondItem="KHt-8t-txB" secondAttribute="leading" id="zac-pU-qWX"/>
                                             </constraints>
                                         </view>
                                         <blurEffect style="regular"/>
                                     </visualEffectView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="QUG-5X-0x4" firstAttribute="centerY" secondItem="iul-9y-ccW" secondAttribute="centerY" id="3wB-is-bPG"/>
                                     <constraint firstItem="QUG-5X-0x4" firstAttribute="width" secondItem="iul-9y-ccW" secondAttribute="width" id="B9G-Tf-XYZ"/>
@@ -131,16 +126,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fAp-wF-5IY" customClass="BoxUIView" customModule="JobTracker" customModuleProvider="target">
-                                <rect key="frame" x="10" y="208" width="394" height="649"/>
+                                <rect key="frame" x="10" y="157" width="394" height="700"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKZ-9T-YhD">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="649"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="700"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ZPt-nI-V7s">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="649"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="700"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CGa-hC-L26">
-                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="649"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="700"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompanyTableViewCell" id="k9l-Lq-8TA" customClass="CompanyTableViewCell" customModule="JobTracker" customModuleProvider="target">
@@ -232,11 +227,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="DE3-3J-j6L" firstAttribute="height" secondItem="m13-jX-xSm" secondAttribute="height" id="0tU-yf-wGH"/>
-                            <constraint firstItem="iul-9y-ccW" firstAttribute="top" secondItem="dQm-N9-Nqs" secondAttribute="bottom" constant="5" id="Arj-ym-7AF"/>
                             <constraint firstItem="a55-Ae-RkP" firstAttribute="top" secondItem="eHt-kk-uYu" secondAttribute="top" id="FbV-A3-7ik"/>
                             <constraint firstItem="DE3-3J-j6L" firstAttribute="width" secondItem="m13-jX-xSm" secondAttribute="width" id="GIo-0R-Icd"/>
-                            <constraint firstItem="dQm-N9-Nqs" firstAttribute="top" secondItem="a55-Ae-RkP" secondAttribute="bottom" id="HwO-qP-37D"/>
-                            <constraint firstItem="dQm-N9-Nqs" firstAttribute="leading" secondItem="eHt-kk-uYu" secondAttribute="leading" id="L3Q-bf-5dO"/>
                             <constraint firstItem="iul-9y-ccW" firstAttribute="leading" secondItem="eHt-kk-uYu" secondAttribute="leading" constant="10" id="R5E-RH-ORE"/>
                             <constraint firstItem="fAp-wF-5IY" firstAttribute="leading" secondItem="m13-jX-xSm" secondAttribute="leading" constant="10" id="SbH-Ou-FqI"/>
                             <constraint firstItem="DE3-3J-j6L" firstAttribute="centerX" secondItem="m13-jX-xSm" secondAttribute="centerX" id="VKx-Bc-DFW"/>
@@ -247,15 +239,14 @@
                             <constraint firstItem="eHt-kk-uYu" firstAttribute="trailing" secondItem="iul-9y-ccW" secondAttribute="trailing" constant="10" id="gJw-iw-cDx"/>
                             <constraint firstItem="a55-Ae-RkP" firstAttribute="leading" secondItem="eHt-kk-uYu" secondAttribute="leading" id="iWu-oa-SGN"/>
                             <constraint firstItem="DE3-3J-j6L" firstAttribute="centerY" secondItem="m13-jX-xSm" secondAttribute="centerY" id="l5X-TP-mKM"/>
-                            <constraint firstItem="eHt-kk-uYu" firstAttribute="trailing" secondItem="dQm-N9-Nqs" secondAttribute="trailing" id="yri-OW-jP5"/>
+                            <constraint firstItem="iul-9y-ccW" firstAttribute="top" secondItem="a55-Ae-RkP" secondAttribute="bottom" constant="10" id="xlk-k2-iIk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eHt-kk-uYu"/>
                     </view>
                     <connections>
                         <outlet property="imgHeart" destination="bNL-B7-otZ" id="Tvz-fC-Olm"/>
-                        <outlet property="srbSearchBar" destination="dQm-N9-Nqs" id="Hgh-LS-F6l"/>
+                        <outlet property="srbSearchBar" destination="pGR-rQ-Ayc" id="Gja-TK-AKf"/>
                         <outlet property="tblCompanies" destination="CGa-hC-L26" id="dmh-mr-f8p"/>
-                        <outlet property="txtCompanyName" destination="Nmx-3Z-DPo" id="xM9-q8-r2H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nBL-N7-4ca" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

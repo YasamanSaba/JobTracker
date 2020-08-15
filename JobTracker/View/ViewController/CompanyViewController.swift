@@ -23,13 +23,14 @@ class CompanyViewController: UIViewController, ViewModelSupportedViewControllers
     // MARK: - Outlets
     @IBOutlet weak var tblCompanies: UITableView!
     @IBOutlet weak var srbSearchBar: UISearchBar!
-    @IBOutlet weak var btnAddCompany: UIButton!
+    //@IBOutlet weak var btnAddCompany: UIButton!
     @IBOutlet weak var imgHeart: UIImageView!
-    @IBOutlet weak var txtCompanyName: UITextField!
+    //@IBOutlet weak var txtCompanyName: UITextField!
     // MARK: - Actions
     @IBAction func addCompany(_ sender: Any) {
-        if let name = txtCompanyName.text {
+        if let name = srbSearchBar.text {
             viewModel.add(name: name,isFavorite: heartState)
+            srbSearchBar.text = ""
         }
     }
     @IBAction func cancel(_ sender: Any) {
@@ -43,21 +44,9 @@ class CompanyViewController: UIViewController, ViewModelSupportedViewControllers
         super.viewDidLoad()
         viewModel.start(tableView: tblCompanies)
         tblCompanies.delegate = self
-        srbSearchBar.delegate = self
     }
 }
 // MARK: - Extensions
-extension CompanyViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText != "" {
-            btnAddCompany.isEnabled = true
-            viewModel.filterCompanies(by: searchText)
-        } else {
-            btnAddCompany.isEnabled = false
-            viewModel.filterCompanies(by: searchText)
-        }
-    }
-}
 extension CompanyViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.select(at: indexPath)
@@ -72,4 +61,13 @@ extension CompanyViewController: UITextFieldDelegate {
 }
 extension CompanyViewController: CompanyViewModelDelegate {
     
+}
+extension CompanyViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText != "" {
+            viewModel.filterCompanies(by: searchText)
+        } else {
+            viewModel.filterCompanies(by: searchText)
+        }
+    }
 }
