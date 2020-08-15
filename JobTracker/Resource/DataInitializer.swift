@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 struct DataInitializer {
     static func importInitialData() {
@@ -18,37 +19,87 @@ struct DataInitializer {
         let world = Country(context: context)
         world.name = "World"
         world.flag = "🌍"
-        /*let germany = Country(context: context)
-        germany.name = "Germany"
-        germany.flag = "🇩🇪"
-        let spain = Country(context: context)
-        spain.name = "Spain"
-        spain.flag = "🇪🇸"
-        let france = Country(context: context)
-        france.name = "France"
-        france.flag = "🇫🇷"
-        let portugal = Country(context: context)
-        portugal.name = "Portugal"
-        portugal.flag = "🇵🇹"
-        let poland = Country(context: context)
-        poland.name = "Poland"
-        poland.flag = "🇵🇱"
-        let netherland = Country(context: context)
-        netherland.name = "Netherland"
-        netherland.flag = "🇳🇱"
-        let austria = Country(context: context)
-        austria.name = "Austria"
-        austria.flag = "🇦🇹"
-        let belgium = Country(context: context)
-        belgium.name = "Belgium"
-        belgium.flag = "🇧🇪"
-        let england = Country(context: context)
-        england.name = "UK"
-        england.flag = "🇬🇧"
-        let luxembourg = Country(context: context)
-        luxembourg.name = "Luxembourg"
-        luxembourg.flag = "🇱🇺"
         
+        let fetchRequest: NSFetchRequest<Country> = Country.fetchRequest()
+        var predicate = NSPredicate(format: "%K == %@", #keyPath(Country.name), "Germany")
+        fetchRequest.predicate = predicate
+        if try! context.fetch(fetchRequest).count == 0 {
+            let germany = Country(context: context)
+            germany.name = "Germany"
+            germany.flag = "🇩🇪"
+        }
+        predicate = NSPredicate(format: "%K == %@", #keyPath(Country.name), "Spain")
+        fetchRequest.predicate = predicate
+        if try! context.fetch(fetchRequest).count == 0 {
+            let spain = Country(context: context)
+            spain.name = "Spain"
+            spain.flag = "🇪🇸"
+        }
+        
+        predicate = NSPredicate(format: "%K == %@", #keyPath(Country.name), "France")
+        fetchRequest.predicate = predicate
+        if try! context.fetch(fetchRequest).count == 0 {
+            let france = Country(context: context)
+            france.name = "France"
+            france.flag = "🇫🇷"
+        }
+        
+        predicate = NSPredicate(format: "%K == %@", #keyPath(Country.name), "Portugal")
+        fetchRequest.predicate = predicate
+        if try! context.fetch(fetchRequest).count == 0 {
+            let portugal = Country(context: context)
+            portugal.name = "Portugal"
+            portugal.flag = "🇵🇹"
+        }
+        
+        predicate = NSPredicate(format: "%K == %@", #keyPath(Country.name), "Poland")
+        fetchRequest.predicate = predicate
+        if try! context.fetch(fetchRequest).count == 0 {
+            let poland = Country(context: context)
+            poland.name = "Poland"
+            poland.flag = "🇵🇱"
+        }
+        
+        predicate = NSPredicate(format: "%K == %@", #keyPath(Country.name), "Netherland")
+        fetchRequest.predicate = predicate
+        if try! context.fetch(fetchRequest).count == 0 {
+            let netherland = Country(context: context)
+            netherland.name = "Netherland"
+            netherland.flag = "🇳🇱"
+        }
+        
+        predicate = NSPredicate(format: "%K == %@", #keyPath(Country.name), "Austria")
+        fetchRequest.predicate = predicate
+        if try! context.fetch(fetchRequest).count == 0 {
+            let austria = Country(context: context)
+            austria.name = "Austria"
+            austria.flag = "🇦🇹"
+        }
+        
+        predicate = NSPredicate(format: "%K == %@", #keyPath(Country.name), "Belgium")
+        fetchRequest.predicate = predicate
+        if try! context.fetch(fetchRequest).count == 0 {
+            let belgium = Country(context: context)
+            belgium.name = "Belgium"
+            belgium.flag = "🇧🇪"
+        }
+        
+        predicate = NSPredicate(format: "%K == %@", #keyPath(Country.name), "UK")
+        fetchRequest.predicate = predicate
+        if try! context.fetch(fetchRequest).count == 0 {
+            let england = Country(context: context)
+            england.name = "UK"
+            england.flag = "🇬🇧"
+        }
+        
+        predicate = NSPredicate(format: "%K == %@", #keyPath(Country.name), "Luxembourg")
+        fetchRequest.predicate = predicate
+        if try! context.fetch(fetchRequest).count == 0 {
+            let luxembourg = Country(context: context)
+            luxembourg.name = "Luxembourg"
+            luxembourg.flag = "🇱🇺"
+        }
+        /*
         let berlin = City(context: context)
         berlin.name = "Berlin"
         let munich = City(context: context)
