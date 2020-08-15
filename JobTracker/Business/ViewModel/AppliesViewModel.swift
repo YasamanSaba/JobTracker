@@ -97,10 +97,11 @@ class AppliesViewModel: NSObject, CoordinatorSupportedViewModel {
                 let badgeView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BadgeSupplementaryView.reuseIdentifier, for: indexPath) as? BadgeSupplementaryView else {
                     return nil
             }
-            if let currentApplyObjects = self.applyResultController.fetchedObjects {
+            let currentApplyObjects = self.applyDataSource.snapshot().itemIdentifiers
+            if  currentApplyObjects.count > 0 {
                 let currentCountrySnapshot = self.countryDataSource?.snapshot()
                 let countryName = currentCountrySnapshot?.itemIdentifiers(inSection: .main)[indexPath.row].name
-                let countryCount = currentApplyObjects.filter{ $0.city?.country?.name == countryName }.count
+                let countryCount = currentApplyObjects.filter{ $0.apply.city?.country?.name == countryName }.count
                 let count = countryName == "World" ? currentApplyObjects.count : countryCount
                 badgeView.configure(count: count)
             } else {
