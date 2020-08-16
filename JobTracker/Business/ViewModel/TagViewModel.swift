@@ -112,7 +112,7 @@ class TagViewModel: NSObject, CoordinatorSupportedViewModel {
     func filterTags(by text: String) {
         if let objects = fetchedResultController.fetchedObjects {
             var snapShot = NSDiffableDataSourceSnapshot<Int,Tag>()
-            let filteredObjects = objects.filter{ $0.title?.contains(text) ?? false}
+            let filteredObjects = objects.filter{ $0.title?.lowercased().contains(text.lowercased()) ?? false}
             snapShot.appendSections([1])
             snapShot.appendItems(text == "" ? objects : filteredObjects, toSection: 1)
             dataSource.apply(snapShot)
